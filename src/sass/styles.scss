@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+
+@import "../sass/global.scss";
+@import "../sass/typography.scss";
+@import "../sass/layout.scss";
+@import "../sass/forms.scss";
+@import "../sass/accordion.scss";
+@import "../sass/slider.scss";
+
+@tailwind utilities;
