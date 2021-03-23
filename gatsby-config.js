@@ -49,32 +49,6 @@ module.exports = {
          },
       },
       {
-         resolve: `gatsby-transformer-remark`,
-         options: {
-            plugins: [
-               {
-                  resolve: `gatsby-remark-relative-images`,
-                  options: {
-                     name: `uploads`,
-                  },
-               },
-               {
-                  resolve: `gatsby-remark-images`,
-                  options: {
-                     maxWidth: 1440,
-                     quality: 100,
-                  },
-               },
-               {
-                  resolve: `gatsby-remark-copy-linked-files`,
-                  options: {
-                     destinationDir: `static`,
-                  },
-               },
-            ],
-         },
-      },
-      {
          resolve: `gatsby-source-filesystem`,
          options: {
             path: `${__dirname}/static/images`,
@@ -109,15 +83,10 @@ module.exports = {
       {
          resolve: `gatsby-plugin-purgecss`,
          options: {
+            develop: true,
             tailwind: true,
-            purgeOnly: ["static/fonts/fontawesome-pro/css/all.min.css"],
+            purgeOnly: ["node_modules/@fortawesome/fontawesome-pro/css/all.min.css"],
             ignore: ["node_modules/slick-carousel/slick/slick-theme.css", "node_modules/slick-carousel/slick/slick.css"],
-         },
-      },
-      {
-         resolve: `gatsby-source-instagram`,
-         options: {
-            username: `9474257617`,
          },
       },
       {
@@ -132,31 +101,24 @@ module.exports = {
             icon: `static/images/favicon.png`,
          },
       },
-      {
-         resolve: "gatsby-omni-font-loader",
-         options: {
-            mode: "async",
-            enableListener: true,
-            preconnect: ["https://fonts.gstatic.com"],
-            custom: [
-               {
-                  name: ["Font Awesome 5 Brands", "Font Awesome 5 Pro"],
-                  file: "/fonts/fontawesome-pro/css/all.min.css",
-               },
-            ],
-            web: [
-               {
-                  name: "Barlow",
-                  file: "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&display=swap",
-               },
-            ],
-         },
-      },
       // {
-      //    resolve: `gatsby-plugin-recaptcha`,
+      //    resolve: "gatsby-omni-font-loader",
       //    options: {
-      //       async: true,
-      //       defer: true,
+      //       mode: "async",
+      //       enableListener: true,
+      //       preconnect: ["https://fonts.gstatic.com"],
+      //       custom: [
+      //          {
+      //             name: ["Font Awesome 5 Brands", "Font Awesome 5 Pro"],
+      //             file: "/fonts/fontawesome-pro/css/all.min.css",
+      //          },
+      //       ],
+      //       web: [
+      //          {
+      //             name: "Barlow",
+      //             file: "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&display=swap",
+      //          },
+      //       ],
       //    },
       // },
       // {
