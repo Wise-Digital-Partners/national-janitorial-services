@@ -1,15 +1,13 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Blog = () => {
    const data = useStaticQuery(graphql`
       {
          blogPostThumbnail: file(relativePath: { eq: "blog/373x280.png" }) {
             childImageSharp {
-               fluid(maxWidth: 373, quality: 100) {
-                  ...GatsbyImageSharpFluid_withWebp
-               }
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }
@@ -21,10 +19,20 @@ const Blog = () => {
             <div className="relative overflow-hidden mb-6">
                <a href="/blog-post/">
                   <Img
-                     fadeIn={true}
-                     loading="eager"
+                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
                      className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
-                     fluid={data.blogPostThumbnail.childImageSharp.fluid}
+                     alt="Blog post thumbnail"
+                  />
+               </a>
+            </div>
+            <span className="font-heading text-lg font-semibold text-gray-700 block mb-0">Blog Title Goes Here</span>
+         </div>
+         <div>
+            <div className="relative overflow-hidden mb-6">
+               <a href="# ">
+                  <GatsbyImage
+                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
+                     className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
                      alt="Blog post thumbnail"
                   />
                </a>
@@ -35,24 +43,8 @@ const Blog = () => {
             <div className="relative overflow-hidden mb-6">
                <a href="# ">
                   <Img
-                     fadeIn={true}
-                     loading="eager"
+                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
                      className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
-                     fluid={data.blogPostThumbnail.childImageSharp.fluid}
-                     alt="Blog post thumbnail"
-                  />
-               </a>
-            </div>
-            <span className="font-heading text-lg font-semibold text-gray-700 block mb-0">Blog Title Goes Here</span>
-         </div>
-         <div>
-            <div className="relative overflow-hidden mb-6">
-               <a href="# ">
-                  <Img
-                     fadeIn={true}
-                     loading="eager"
-                     className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
-                     fluid={data.blogPostThumbnail.childImageSharp.fluid}
                      alt="Blog post thumbnail"
                   />
                </a>

@@ -9,10 +9,11 @@ const StyledBurger = styled.button`
       ${tw`outline-none`}
    }
    .line {
-      ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-white` : tw`bg-gray-800`)};
+      ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-gray-800` : tw`bg-gray-800`)};
       ${({ scrolled }) => (scrolled ? tw`bg-gray-800` : null)};
       ${tw`relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear`}
       transform-origin: 1px;
+      ${({ offcanvasOpen }) => (offcanvasOpen ? tw`bg-white` : null)};
       &:first-of-type {
          transform: ${({ offcanvasOpen }) => (offcanvasOpen ? "rotate(45deg)" : "rotate(0)")};
       }
@@ -22,11 +23,6 @@ const StyledBurger = styled.button`
       }
       &:nth-of-type(3) {
          transform: ${({ offcanvasOpen }) => (offcanvasOpen ? "translateY(2px) rotate(-45deg)" : "rotate(0)")};
-      }
-      @media (max-width: 1023px) {
-         ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-white` : null)};
-         ${({ scrolled }) => (scrolled ? tw`bg-gray-800` : null)};
-         ${({ offcanvasOpen }) => (offcanvasOpen ? tw`bg-white` : null)};
       }
    }
 `;

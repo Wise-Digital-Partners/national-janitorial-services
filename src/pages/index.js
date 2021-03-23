@@ -44,8 +44,8 @@ const Page = ({ data }) => {
             <header className="relative">
                <p className="text-mobile-6xl md:text-6xl font-display font-black text-gray-800 uppercase mb-4">Reliable. Local. Professional.</p>
                <p className="text-mobile-2xl md:text-2xl text-gray-900 mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
-               <div className="flex items-center">
-                  <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="mr-6" />
+               <div className="grid md:flex gap-y-6 md:items-center">
+                  <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
                   <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" />
                </div>
             </header>
@@ -53,11 +53,11 @@ const Page = ({ data }) => {
 
          <section className="py-20 md:py-32">
             <div className="container">
-               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-20 items-center">
-                  <div className="md:col-start-1 md:col-span-5">
+               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-20 gap-y-10 items-center">
+                  <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
                      <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
                   </div>
-                  <div className="md:col-end-13 md:col-span-7">
+                  <div className="md:col-end-13 md:col-span-7 order-1 md:order-2">
                      <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your

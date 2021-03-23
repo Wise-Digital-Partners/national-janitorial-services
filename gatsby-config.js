@@ -102,26 +102,6 @@ module.exports = {
          },
       },
       // {
-      //    resolve: "gatsby-omni-font-loader",
-      //    options: {
-      //       mode: "async",
-      //       enableListener: true,
-      //       preconnect: ["https://fonts.gstatic.com"],
-      //       custom: [
-      //          {
-      //             name: ["Font Awesome 5 Brands", "Font Awesome 5 Pro"],
-      //             file: "/fonts/fontawesome-pro/css/all.min.css",
-      //          },
-      //       ],
-      //       web: [
-      //          {
-      //             name: "Barlow",
-      //             file: "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&display=swap",
-      //          },
-      //       ],
-      //    },
-      // },
-      // {
       //    resolve: "gatsby-plugin-google-tagmanager",
       //    options: {
       //       // id: "",

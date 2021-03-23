@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 
@@ -25,7 +25,7 @@ const Blog = ({ featuredImage, ...props }) => {
                </header>
             </div>
 
-            <Img fadeIn={false} loading="eager" fluid={featuredImage} alt={props.title} />
+            <GatsbyImage image={featuredImage} alt={props.title} />
 
             <div className="container">
                <div className="max-w-3xl mx-auto mt-12 md:mt-16">

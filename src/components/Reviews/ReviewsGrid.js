@@ -1,5 +1,4 @@
 import React from "react";
-// import Img from "gatsby-image"
 import Masonry from "react-masonry-component";
 import styled from "@emotion/styled";
 import tw from "twin.macro";

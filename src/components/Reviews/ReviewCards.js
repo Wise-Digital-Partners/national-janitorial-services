@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 
@@ -20,37 +20,27 @@ const ReviewCards = ({ gridLayout }) => {
       {
          yelp: file(relativePath: { eq: "reviews/yelp.png" }) {
             childImageSharp {
-               fixed(width: 70, quality: 100) {
-                  ...GatsbyImageSharpFixed
-               }
+               gatsbyImageData(layout: FIXED, width: 70, placeholder: BLURRED, quality: 100)
             }
          }
          google: file(relativePath: { eq: "reviews/google.png" }) {
             childImageSharp {
-               fixed(width: 76, quality: 100) {
-                  ...GatsbyImageSharpFixed
-               }
+               gatsbyImageData(layout: FIXED, width: 76, placeholder: BLURRED, quality: 100)
             }
          }
          facebook: file(relativePath: { eq: "reviews/facebook.png" }) {
             childImageSharp {
-               fixed(width: 95, quality: 100) {
-                  ...GatsbyImageSharpFixed
-               }
+               gatsbyImageData(layout: FIXED, width: 95, placeholder: BLURRED, quality: 100)
             }
          }
          houzz: file(relativePath: { eq: "reviews/houzz.png" }) {
             childImageSharp {
-               fixed(width: 98, quality: 100) {
-                  ...GatsbyImageSharpFixed
-               }
+               gatsbyImageData(layout: FIXED, width: 98, placeholder: BLURRED, quality: 100)
             }
          }
          thumbtack: file(relativePath: { eq: "reviews/thumbtack.png" }) {
             childImageSharp {
-               fixed(width: 124, quality: 100) {
-                  ...GatsbyImageSharpFixed
-               }
+               gatsbyImageData(layout: FIXED, width: 124, placeholder: BLURRED, quality: 100)
             }
          }
          headshot: file(relativePath: { eq: "reviews/User.svg" }) {
@@ -78,7 +68,7 @@ const ReviewCards = ({ gridLayout }) => {
                   </div>
                </div>
                <div className="hidden md:block">
-                  <Img fadeIn={false} loading="eager" fixed={data.google.childImageSharp.fixed} />
+                  <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} />
                </div>
             </div>
             <blockquote>
@@ -89,7 +79,7 @@ const ReviewCards = ({ gridLayout }) => {
                </q>
             </blockquote>
             <div className="block md:hidden">
-               <Img fadeIn={false} loading="eager" fixed={data.google.childImageSharp.fixed} />
+               <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} />
             </div>
          </div>
       </StyledReviewCards>

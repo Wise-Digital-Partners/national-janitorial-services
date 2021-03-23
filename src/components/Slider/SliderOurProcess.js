@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { graphql, StaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Slick from "react-slick";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
@@ -157,72 +157,52 @@ export default class Slider extends Component {
                {
                   slide1Desktop: file(relativePath: { eq: "home/5.1 Fully Licensed Design.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 720, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide1Mobile: file(relativePath: { eq: "home/5.1 Fully Licensed Design_sq.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 384, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide2Desktop: file(relativePath: { eq: "home/5.2 Building Permits.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 720, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide2Mobile: file(relativePath: { eq: "home/5.2 Building Permit Services_Sq.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 384, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide3Desktop: file(relativePath: { eq: "home/5.3 Construction Admin.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 720, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide3Mobile: file(relativePath: { eq: "home/5.3 Construction Admin_Sq.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 384, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide4Desktop: file(relativePath: { eq: "home/5.4 Photorealistic Rendering.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 720, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide4Mobile: file(relativePath: { eq: "home/5.4 Photorealistic Rendering_Sq.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 384, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide5Desktop: file(relativePath: { eq: "home/5.5 Real Estate Photography.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 720, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                   slide5Mobile: file(relativePath: { eq: "home/5.5 Real Estate Photography_Sq.jpg" }) {
                      childImageSharp {
-                        fluid(maxWidth: 384, quality: 100) {
-                           ...GatsbyImageSharpFluid_withWebp
-                        }
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
                      }
                   }
                }
@@ -231,24 +211,22 @@ export default class Slider extends Component {
                <StyledSlider>
                   <Slick className="slider-nav mb-8" {...imageSliderSettings}>
                      <div>
-                        <Img
-                           fadeIn={false}
-                           loading="eager"
-                           fluid={data.slide1Mobile.childImageSharp.fluid}
+                        <GatsbyImage
+                           image={data.slide1Mobile.childImageSharp.gatsbyImageData}
                            alt="Fully Licensed Design - Architectural, Structural & Civil"
                         />
                      </div>
                      <div>
-                        <Img fadeIn={false} loading="eager" fluid={data.slide2Mobile.childImageSharp.fluid} alt="Building Permits" />
+                        <GatsbyImage image={data.slide2Mobile.childImageSharp.gatsbyImageData} alt="Building Permits" />
                      </div>
                      <div>
-                        <Img fadeIn={false} loading="eager" fluid={data.slide3Mobile.childImageSharp.fluid} alt="Construction Administration" />
+                        <GatsbyImage image={data.slide3Mobile.childImageSharp.gatsbyImageData} alt="Construction Administration" />
                      </div>
                      <div>
-                        <Img fadeIn={false} loading="eager" fluid={data.slide4Mobile.childImageSharp.fluid} alt="Photorealistic Rendering" />
+                        <GatsbyImage image={data.slide4Mobile.childImageSharp.gatsbyImageData} alt="Photorealistic Rendering" />
                      </div>
                      <div>
-                        <Img fadeIn={false} loading="eager" fluid={data.slide5Mobile.childImageSharp.fluid} alt="Real Estate Photography" />
+                        <GatsbyImage image={data.slide5Mobile.childImageSharp.gatsbyImageData} alt="Real Estate Photography" />
                      </div>
                   </Slick>
 
@@ -266,10 +244,8 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <Img
-                                 fadeIn={false}
-                                 loading="eager"
-                                 fluid={data.slide1Desktop.childImageSharp.fluid}
+                              <GatsbyImage
+                                 image={data.slide1Desktop.childImageSharp.gatsbyImageData}
                                  alt="Fully Licensed Design - Architectural, Structural & Civil"
                               />
                            </div>
@@ -288,7 +264,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <Img fadeIn={false} loading="eager" fluid={data.slide2Desktop.childImageSharp.fluid} alt="Building Permits" />
+                              <GatsbyImage image={data.slide2Desktop.childImageSharp.gatsbyImageData} alt="Building Permits" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">02</span>
@@ -305,12 +281,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <Img
-                                 fadeIn={false}
-                                 loading="eager"
-                                 fluid={data.slide3Desktop.childImageSharp.fluid}
-                                 alt="Construction Administration"
-                              />
+                              <GatsbyImage image={data.slide3Desktop.childImageSharp.gatsbyImageData} alt="Construction Administration" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">03</span>
@@ -327,7 +298,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <Img fadeIn={false} loading="eager" fluid={data.slide4Desktop.childImageSharp.fluid} alt="Photorealistic Rendering" />
+                              <GatsbyImage image={data.slide4Desktop.childImageSharp.gatsbyImageData} alt="Photorealistic Rendering" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">04</span>
@@ -344,7 +315,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <Img fadeIn={false} loading="eager" fluid={data.slide5Desktop.childImageSharp.fluid} alt="Real Estate Photography" />
+                              <GatsbyImage image={data.slide5Desktop.childImageSharp.gatsbyImageData} alt="Real Estate Photography" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">05</span>
