@@ -94,13 +94,13 @@ const Modal = () => {
                   data-modal-close
                >
                   <div
-                     className="content-wrapper bg-white w-full h-screen overflow-auto max-w-3xl ml-auto py-16 md:py-20 px-6 md:px-20"
+                     className="content-wrapper bg-gray-700 w-full h-screen overflow-auto max-w-3xl ml-auto py-16 md:py-20 px-6 md:px-20"
                      role="dialog"
                      aria-modal="true"
                   >
                      <header className="mb-8">
-                        <p className="heading-three">Contact Heading</p>
-                        <p className="mb-0">
+                        <p className="heading-three text-white">Contact Heading</p>
+                        <p className="text-white mb-0">
                            Interdu velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis
                            nunc sed id semper.
                         </p>
@@ -115,7 +115,7 @@ const Modal = () => {
                      <Contact />
 
                      <i
-                        className="close fal fa-times absolute top-0 right-0 mr-8 md:mr-12 mt-12 text-2xl text-black hover:text-primary focus:text-primary active:text-primary cursor-pointer transition-all duration-300 ease-linear"
+                        className="close fal fa-times absolute top-0 right-0 mr-8 md:mr-12 mt-12 text-2xl text-white hover:text-primary focus:text-primary active:text-primary cursor-pointer transition-all duration-300 ease-linear"
                         data-modal-close
                      ></i>
                   </div>

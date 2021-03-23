@@ -15,7 +15,7 @@ const StyledForm = styled.div`
       ${tw`mb-6`}
    }
    .label {
-      ${tw`text-sm font-semibold text-black block mb-1`}
+      ${tw`text-sm font-semibold text-white block mb-1`}
    }
    [multiple],
    [type="date"],
@@ -32,7 +32,7 @@ const StyledForm = styled.div`
    [type="week"],
    select,
    textarea {
-      ${tw`w-full px-4 py-3 border-gray-100 rounded-sm focus:border-blue-300 focus:ring-blue-300`}
+      ${tw`w-full bg-transparent text-white px-4 py-3 border-gray-100 rounded-sm focus:border-blue-300 focus:ring-blue-300`}
    }
 `;
 
