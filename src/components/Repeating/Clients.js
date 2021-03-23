@@ -7,17 +7,17 @@ const WhyUs = ({ ...props }) => {
       {
          icon1: file(relativePath: { eq: "repeating/clients/client-1.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          icon2: file(relativePath: { eq: "repeating/clients/client-2.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          icon3: file(relativePath: { eq: "repeating/clients/client-3.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }

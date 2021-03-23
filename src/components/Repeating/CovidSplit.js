@@ -9,7 +9,7 @@ const Covid = ({ ...props }) => {
       {
          covideCleaning: file(relativePath: { eq: "industries/covid-cleaning.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }

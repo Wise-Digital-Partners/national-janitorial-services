@@ -78,12 +78,12 @@ export const query = graphql`
    {
       heroStacked: file(relativePath: { eq: "industries/hospitals/hero.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       intro: file(relativePath: { eq: "industries/hospitals/intro.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
    }

@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+// import { graphql } from "gatsby";
 import Services from "../components/Repeating/Services";
 
 import Layout from "../components/Layout";
@@ -35,23 +35,5 @@ const Page = ({ data }) => {
    );
 };
 
-export const query = graphql`
-   {
-      heroFullWidthDesktop: file(relativePath: { eq: "home/hero-desktop.jpg" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
-         }
-      }
-      heroFullWidthMobile: file(relativePath: { eq: "home/hero-desktop.jpg" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
-         }
-      }
-      intro: file(relativePath: { eq: "home/intro.png" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
-         }
-      }
-   }
-`;
+// export const query = graphql``;
 export default Page;

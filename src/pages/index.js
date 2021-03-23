@@ -91,17 +91,17 @@ export const query = graphql`
    {
       heroFullWidthDesktop: file(relativePath: { eq: "home/hero.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       heroFullWidthMobile: file(relativePath: { eq: "home/hero.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       intro: file(relativePath: { eq: "home/intro.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
    }

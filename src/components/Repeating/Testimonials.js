@@ -50,12 +50,12 @@ const Testimonial = ({ ...props }) => {
       {
          backgroundDesktop: file(relativePath: { eq: "repeating/testimonials/background.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          backgroundMobile: file(relativePath: { eq: "repeating/testimonials/background.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          google: file(relativePath: { eq: "repeating/testimonials/google.png" }) {

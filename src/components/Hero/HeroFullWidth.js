@@ -1,11 +1,5 @@
 import React from "react";
 import { BgImage } from "gbimage-bridge";
-// import styled from "@emotion/styled";
-// import tw from "twin.macro";
-
-// const StyledHero = styled.section`
-
-// `;
 
 const Hero = ({ ...props }) => (
    <BgImage

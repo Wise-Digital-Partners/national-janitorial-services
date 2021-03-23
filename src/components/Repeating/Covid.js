@@ -10,7 +10,7 @@ const Covid = ({ ...props }) => {
       {
          background: file(relativePath: { eq: "repeating/covid/background.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }

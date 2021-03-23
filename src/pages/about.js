@@ -104,12 +104,12 @@ export const query = graphql`
    {
       heroFullWidthDesktop: file(relativePath: { eq: "about/1.0 About Hero.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       heroFullWidthMobile: file(relativePath: { eq: "about/1.0 About Hero.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       exceptional: file(relativePath: { eq: "about/2.0 exceptional.svg" }) {
@@ -123,12 +123,12 @@ export const query = graphql`
       }
       patrick: file(relativePath: { eq: "about/3.0 Patrick.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       anthony: file(relativePath: { eq: "about/3.1 Anthony.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
    }

@@ -132,62 +132,62 @@ export const query = graphql`
    {
       hospitals: file(relativePath: { eq: "industries/hub/1.0 hospitals.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       hoa: file(relativePath: { eq: "industries/hub/1.1 HOA.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       privateOffices: file(relativePath: { eq: "industries/hub/1.2 private offices.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       officeBuildings: file(relativePath: { eq: "industries/hub/1.3 Office buildings.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       churches: file(relativePath: { eq: "industries/hub/1.4 Churches.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       schools: file(relativePath: { eq: "industries/hub/1.5 Schools.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       carDealers: file(relativePath: { eq: "industries/hub/1.6 Car-dealers.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       movie: file(relativePath: { eq: "industries/hub/1.7 Movie.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       bars: file(relativePath: { eq: "industries/hub/1.8 Bars-Night.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       gyms: file(relativePath: { eq: "industries/hub/1.9 Gyms.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       medical: file(relativePath: { eq: "industries/hub/1.10 Medical.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
       dispensaries: file(relativePath: { eq: "industries/hub/1.11 Dispensaries.jpg" }) {
          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
    }

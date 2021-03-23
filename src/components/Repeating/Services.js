@@ -9,32 +9,32 @@ const Services = ({ ...props }) => {
       {
          janitorialServices: file(relativePath: { eq: "repeating/services/janitorial-services.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          commercialCleaning: file(relativePath: { eq: "repeating/services/commercial-cleaning.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          deepCleaning: file(relativePath: { eq: "repeating/services/deep-cleaning.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          disinfectatServices: file(relativePath: { eq: "repeating/services/disinfectat-services.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          officeCleaning: file(relativePath: { eq: "repeating/services/office-cleaning.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          porterServices: file(relativePath: { eq: "repeating/services/porter-service(s).jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }

@@ -7,7 +7,7 @@ const About = ({ ...props }) => {
       {
          about: file(relativePath: { eq: "repeating/about/about.png" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }

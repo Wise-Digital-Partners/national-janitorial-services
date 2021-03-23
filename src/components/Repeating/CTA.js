@@ -10,12 +10,12 @@ const Covid = ({ ...props }) => {
       {
          backgroundDesktop: file(relativePath: { eq: "repeating/cta/background.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
          backgroundMobile: file(relativePath: { eq: "repeating/cta/background.jpg" }) {
             childImageSharp {
-               gatsbyImageData(layout: FULL_WIDTH, quality: 100)
+               gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
       }
