@@ -18,14 +18,13 @@
 }
 .slick-prev {
    @apply left-0 #{!important};
- }
- .slick-next {
+}
+.slick-next {
    @apply right-0 #{!important};
- }
+}
 .slick-dots {
    @apply bottom-0 #{!important};
    li {
-      @apply w-auto h-auto my-3;
       button {
          @apply p-0 #{!important};
          @apply rounded-full transition-all duration-300 ease-linear;

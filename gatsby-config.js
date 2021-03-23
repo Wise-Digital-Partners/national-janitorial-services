@@ -10,7 +10,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 module.exports = {
    siteMetadata: {
       siteUrl,
-      author: `WISE Digital Partners`,
+      author: `National Janitorial Services`,
    },
    plugins: [
       `gatsby-plugin-netlify`,
@@ -86,17 +86,16 @@ module.exports = {
             develop: true,
             tailwind: true,
             purgeOnly: ["node_modules/@fortawesome/fontawesome-pro/css/all.min.css"],
-            ignore: ["node_modules/slick-carousel/slick/slick-theme.css", "node_modules/slick-carousel/slick/slick.css"],
          },
       },
       {
          resolve: `gatsby-plugin-manifest`,
          options: {
-            name: `nest UI Kit`,
-            short_name: `nest UI Kit`,
+            name: `National Janitorial Services`,
+            short_name: `NJS`,
             start_url: `/`,
-            background_color: `#289f44`,
-            theme_color: `#289f44`,
+            background_color: `#53AF3B`,
+            theme_color: `#53AF3B`,
             display: `standalone`,
             icon: `static/images/favicon.png`,
          },

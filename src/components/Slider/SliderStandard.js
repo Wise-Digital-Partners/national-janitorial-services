@@ -58,7 +58,7 @@ const Slider = ({ ...props }) => {
    }
 
    const sliderSettings = {
-      dots: true,
+      dots: false,
       arrows: true,
       prevArrow: <PrevArrow />,
       nextArrow: <NextArrow />,

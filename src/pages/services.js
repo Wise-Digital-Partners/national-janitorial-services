@@ -5,19 +5,12 @@ import Services from "../components/Repeating/Services";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import Covid from "../components/Repeating/Covid";
-import {
-   Accordion,
-   AccordionItem,
-   AccordionItemHeading,
-   AccordionItemButton,
-   AccordionItemPanel,
-   AccordionItemState,
-} from "react-accessible-accordion";
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemPanel, AccordionItemState } from "react-accessible-accordion";
 
 const Page = ({ data }) => {
-   const [accordionOpen1, setAccordionOpen1] = useState("rotate-0"),
-      [accordionOpen2, setAccordionOpen2] = useState("rotate-0"),
-      [accordionOpen3, setAccordionOpen3] = useState("rotate-0");
+   const [accordionOpen1, setAccordionOpen1] = useState(""),
+      [accordionOpen2, setAccordionOpen2] = useState(""),
+      [accordionOpen3, setAccordionOpen3] = useState("");
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SEO
@@ -54,18 +47,16 @@ const Page = ({ data }) => {
                   <div className="md:col-end-13 md:col-span-7">
                      <Accordion allowZeroExpanded={true}>
                         <AccordionItem className="mb-4 bg-gray-50 px-6 md:px-10 py-4" uuid="1">
-                           <AccordionItemHeading className="accordion-heading">
-                              <AccordionItemButton className="flex items-center justify-between focus:outline-none">
-                                 <AccordionItemState>
-                                    {({ expanded }) => {
-                                       const state = expanded ? "expanded" : "collapsed";
-                                       setAccordionOpen1(state === "expanded" ? "rotate-180" : "rotate-0");
-                                    }}
-                                 </AccordionItemState>
-                                 <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Standard Billing</h4>
-                                 <i className={`fas fa-caret-down transform ${accordionOpen1} transition-all duration-300 ease-linear`}></i>
-                              </AccordionItemButton>
-                           </AccordionItemHeading>
+                           <AccordionItemButton className="flex items-center justify-between focus:outline-none">
+                              <AccordionItemState>
+                                 {({ expanded }) => {
+                                    const state = expanded ? "expanded" : "collapsed";
+                                    setAccordionOpen1(state === "expanded" ? "rotate-180" : "rotate-0");
+                                 }}
+                              </AccordionItemState>
+                              <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Standard Billing</h4>
+                              <i className={`fas fa-caret-down transform ${accordionOpen1} transition-all duration-300 ease-linear`}></i>
+                           </AccordionItemButton>
                            <AccordionItemPanel className="pt-4 animate-fadein">
                               <p className="mb-0">
                                  NJS invoices you at the beginning of the month for that coming month's service (e.g February total invoice is sent to
@@ -76,18 +67,16 @@ const Page = ({ data }) => {
                         </AccordionItem>
 
                         <AccordionItem className="mb-4 bg-gray-50 px-6 md:px-10 py-4" uuid="2">
-                           <AccordionItemHeading className="accordion-heading">
-                              <AccordionItemButton className="flex items-center justify-between focus:outline-none">
-                                 <AccordionItemState>
-                                    {({ expanded }) => {
-                                       const state = expanded ? "expanded" : "collapsed";
-                                       setAccordionOpen2(state === "expanded" ? "rotate-180" : "rotate-0");
-                                    }}
-                                 </AccordionItemState>
-                                 <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Financed Billing </h4>
-                                 <i className={`fas fa-caret-down transform ${accordionOpen2} transition-all duration-300 ease-linear`}></i>
-                              </AccordionItemButton>
-                           </AccordionItemHeading>
+                           <AccordionItemButton className="flex items-center justify-between focus:outline-none">
+                              <AccordionItemState>
+                                 {({ expanded }) => {
+                                    const state = expanded ? "expanded" : "collapsed";
+                                    setAccordionOpen2(state === "expanded" ? "rotate-180" : "rotate-0");
+                                 }}
+                              </AccordionItemState>
+                              <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Financed Billing </h4>
+                              <i className={`fas fa-caret-down transform ${accordionOpen2} transition-all duration-300 ease-linear`}></i>
+                           </AccordionItemButton>
                            <AccordionItemPanel className="pt-4 animate-fadein">
                               <p className="mb-0">
                                  NJS invoices you at the beginning of the following month for the previous month's service (e.g February total invoice
@@ -98,18 +87,16 @@ const Page = ({ data }) => {
                         </AccordionItem>
 
                         <AccordionItem className="bg-gray-50 px-6 md:px-10 py-4" uuid="3">
-                           <AccordionItemHeading className="accordion-heading">
-                              <AccordionItemButton className="flex items-center justify-between focus:outline-none">
-                                 <AccordionItemState>
-                                    {({ expanded }) => {
-                                       const state = expanded ? "expanded" : "collapsed";
-                                       setAccordionOpen3(state === "expanded" ? "rotate-180" : "rotate-0");
-                                    }}
-                                 </AccordionItemState>
-                                 <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Extra Services</h4>
-                                 <i className={`fas fa-caret-down transform ${accordionOpen3} transition-all duration-300 ease-linear`}></i>
-                              </AccordionItemButton>
-                           </AccordionItemHeading>
+                           <AccordionItemButton className="flex items-center justify-between focus:outline-none">
+                              <AccordionItemState>
+                                 {({ expanded }) => {
+                                    const state = expanded ? "expanded" : "collapsed";
+                                    setAccordionOpen3(state === "expanded" ? "rotate-180" : "rotate-0");
+                                 }}
+                              </AccordionItemState>
+                              <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Extra Services</h4>
+                              <i className={`fas fa-caret-down transform ${accordionOpen3} transition-all duration-300 ease-linear`}></i>
+                           </AccordionItemButton>
                            <AccordionItemPanel className="pt-4 animate-fadein">
                               <p className="mb-0">
                                  If needed, we are happy to provide additional services beyond the current scope of work. Any time a request for extra
