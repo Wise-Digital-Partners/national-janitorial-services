@@ -110,6 +110,7 @@ module.exports = {
          resolve: `gatsby-plugin-purgecss`,
          options: {
             tailwind: true,
+            purgeOnly: ["static/fonts/fontawesome-pro/css/all.min.css"],
             ignore: ["node_modules/slick-carousel/slick/slick-theme.css", "node_modules/slick-carousel/slick/slick.css"],
          },
       },
