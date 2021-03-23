@@ -8,7 +8,7 @@ import tw from "twin.macro";
 import Burger from "./Burger";
 import OffCanvas from "../OffCanvas/OffCanvas";
 import ButtonSolid from "../Button/ButtonSolid";
-import Accordion from "./Accordion";
+import Accordion from "../Accordion/Accordion";
 
 const StyledMainNav = styled.nav`
    ${({ headerStyle }) => (headerStyle === "hidden" ? tw`hidden` : null)};
@@ -115,7 +115,7 @@ const StyledMainNav = styled.nav`
          }
          > a,
          button {
-            ${tw`font-heading text-mobile-4xl text-white font-bold no-underline`}
+            ${tw`font-heading text-mobile-4xl text-white font-bold no-underline transition-colors duration-300 ease-linear`}
             &:hover {
                ${tw`text-primary`}
             }

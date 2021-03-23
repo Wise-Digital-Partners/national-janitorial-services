@@ -22,6 +22,7 @@ const Hero = ({ ...props }) => (
       <div className="container">
          <Header
             headingLevel={props.headingLevel}
+            headingClassName={props.headingClassName}
             heading={props.heading}
             subtext={props.subtext}
             subtextSize={props.subtextSize}

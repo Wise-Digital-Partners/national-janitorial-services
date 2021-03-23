@@ -6,7 +6,7 @@ const Header = ({ ...props }) => {
       <div>
          {props.headingLevel && props.heading ? (
             <header className={`${props.maxWidth} ${props.textAlignment} ${props.margin}`}>
-               {props.heading ? <HeadingTag>{props.heading}</HeadingTag> : null}
+               {props.heading ? <HeadingTag className={`${props.headingClassName}`}>{props.heading}</HeadingTag> : null}
                {props.subtext ? <p className={`${props.subtextSize}`}>{props.subtext}</p> : null}
             </header>
          ) : null}

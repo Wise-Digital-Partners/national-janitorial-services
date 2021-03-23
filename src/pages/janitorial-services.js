@@ -30,6 +30,7 @@ const Page = ({ data }) => {
             imageMaxHeight="468px"
             padding="pt-6 md:pt-14"
             headingLevel="h1"
+            // headingClassName="text-primary"
             heading="Long Beach Janitorial Services"
             subtext="Working hard to keep your workspace clean so you don’t have to."
             subtextSize="text-2xl-mobile md:text-2xl"
@@ -44,11 +45,11 @@ const Page = ({ data }) => {
 
          <section className="py-20 md:py-32">
             <div className="container">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 items-center">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 items-center">
                   <div>
                      <h2>Keeping Long Beach Businesses Clean</h2>
                      <p className="mb-0">
-                        Your business is unique and so should your cleaning services. Not only do we tailor our cleaning and disinfecting to your
+                        Your business is unique and your cleaning services should be too. Not only do we tailor our cleaning and disinfecting to your
                         specific industry requirements, we go above and beyond. Our professional and reliable commercial cleaning experts use only
                         EPA-registered disinfectants and provide thorough cleaning for your office, building, and more. Make great first impressions,
                         prevent illness, and maintain a hygienic and welcoming environment with our Long Beach janitorial services.
@@ -116,7 +117,7 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
-      heroStacked: file(relativePath: { eq: "services/janitorial-services/hero.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/janitorial-services/hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

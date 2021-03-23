@@ -53,7 +53,7 @@ const Page = ({ data }) => {
 
          <section className="py-20 md:py-32">
             <div className="container">
-               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-20 gap-y-10 items-center">
+               <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
                   <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
                      <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
                   </div>

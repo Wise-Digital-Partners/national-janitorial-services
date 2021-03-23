@@ -4,14 +4,9 @@ import styled from "@emotion/styled";
 import tw from "twin.macro";
 
 const StyledBurger = styled.button`
-   ${tw`flex flex-col justify-between w-auto h-4 bg-transparent border-0 cursor-pointer relative z-30`}
-   &:focus {
-      ${tw`outline-none`}
-   }
    .line {
       ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-gray-800` : tw`bg-gray-800`)};
       ${({ scrolled }) => (scrolled ? tw`bg-gray-800` : null)};
-      ${tw`relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear`}
       transform-origin: 1px;
       ${({ offcanvasOpen }) => (offcanvasOpen ? tw`bg-white` : null)};
       &:first-of-type {
@@ -31,6 +26,7 @@ const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled, ...pro
    const isExpanded = offcanvasOpen ? true : false;
    return (
       <StyledBurger
+         className="flex flex-col justify-between w-auto h-4 bg-transparent border-0 cursor-pointer focus:outline-none relative z-30"
          aria-label="Toggle menu"
          aria-expanded={isExpanded}
          offcanvasOpen={offcanvasOpen}
@@ -39,9 +35,9 @@ const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled, ...pro
          scrolled={scrolled}
          {...props}
       >
-         <div className="line" />
-         <div className="line" />
-         <div className="line" />
+         <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />
+         <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />
+         <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />
       </StyledBurger>
    );
 };

@@ -1,12 +1,25 @@
 module.exports = {
    purge: ["./src/**/*.js"],
    theme: {
+      container: {
+         center: true,
+         padding: {
+            DEFAULT: "1rem",
+            md: "1.5rem",
+         },
+         screens: {
+            DEFAULT: "77rem",
+         },
+      },
       fontFamily: {
          heading: ['"Barlow", sans-serif'],
          // 'display': [''],
          body: ['"Barlow", sans-serif'],
       },
       extend: {
+         animation: {
+            fadeIn: "fadeIn 0.5s ease-in",
+         },
          boxShadow: {
             "3xl": "0px 4px 20px #D6DFE6",
          },
@@ -40,7 +53,7 @@ module.exports = {
             "4xl": ["1.875rem", "2.25rem"],
             "5xl": ["2.25rem", "2.688rem"],
             "6xl": ["2.625rem", "3.125rem"],
-            "7xl": "3rem",
+            // "7xl": "",
             // "8xl": "",
             "mobile-lg": ["1.125rem", "1.375rem"],
             "mobile-xl": ["1.25rem", "1.5rem"],
@@ -49,7 +62,7 @@ module.exports = {
             "mobile-4xl": ["1.875rem", "2.25rem"],
             "mobile-5xl": ["2.25rem", "2.688rem"],
             "mobile-6xl": ["2.625rem", "3.125rem"],
-            "mobile-7xl": "",
+            // "mobile-7xl": "",
             // "mobile-8xl": "",
          },
          height: {
@@ -58,8 +71,11 @@ module.exports = {
             "75vh": "75vh",
             "75vw": "75vw",
          },
-         maxWidth: {
-            "7xl": "77rem",
+         keyframes: {
+            fadeIn: {
+               "0%": { opacity: 0 },
+               "100%": { opacity: 1 },
+            },
          },
          spacing: {
             18: "4.5rem",
@@ -74,7 +90,4 @@ module.exports = {
       },
    },
    plugins: [require("@tailwindcss/forms")],
-   corePlugins: {
-      container: false,
-   },
 };
