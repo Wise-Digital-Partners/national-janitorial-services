@@ -16,9 +16,7 @@ const StyledSlider = styled.div`
    }
    .slick-list,
    .slick-slider {
-      @media (min-width: 768px) {
-         ${tw`overflow-visible`}
-      }
+      ${tw`md:overflow-visible`}
    }
    /* .slick-list {
     ${tw`z-20`}
@@ -36,19 +34,13 @@ const StyledSlider = styled.div`
          ${tw`border-opacity-100`}
       }
    }
-   .slick-prev {
-      ${tw`left-0`}
-   }
-   .slick-next {
-      ${tw`right-0`}
-   }
    .slick-dots {
-      ${tw`z-20 bottom-0 left-0 top-0 text-left h-0 flex! flex-col`}
+      ${tw`left-0 top-0 text-left h-0 flex! flex-col z-20`}
       transform: translateX(-35%);
       li {
          ${tw`w-full w-full mb-5`}
          &:before {
-            ${tw`text-sm text-gray-800 text-opacity-40 transition-all duration-300 ease-linear`}
+            ${tw`text-sm text-gray-700 text-opacity-40 transition-all duration-300 ease-linear`}
          }
          &:first-of-type {
             &:before {
@@ -86,9 +78,7 @@ const StyledSlider = styled.div`
       }
    }
    .slider-nav {
-      @media (min-width: 768px) {
-         ${tw`hidden!`}
-      }
+      ${tw`md:hidden!`}
       .slick-list {
          ${tw`pr-24`}
       }

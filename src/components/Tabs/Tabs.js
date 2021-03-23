@@ -10,7 +10,7 @@ const StyledTabs = styled.ul`
       ${tw`gap-y-4 gap-x-2 flex flex-wrap justify-between max-w-lg mx-auto mb-10 md:mb-20`}
    }
    .tab-list-item {
-      ${tw`relative text-sm md:text-xl text-gray-800 text-opacity-50 font-medium pb-3 cursor-pointer transition-all duration-300 ease-linear`}
+      ${tw`relative text-sm md:text-xl text-gray-700 text-opacity-50 font-medium pb-3 cursor-pointer transition-all duration-300 ease-linear`}
       &.active,
       &:hover {
          ${tw` text-opacity-100`}

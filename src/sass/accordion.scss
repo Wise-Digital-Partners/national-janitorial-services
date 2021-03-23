@@ -14,7 +14,7 @@
       @apply ml-26;
       &:before {
          content: "";
-         @apply block absolute left-0 bg-gray-800 h-px w-0 transition-300-ease;
+         @apply block absolute left-0 bg-gray-700 h-px w-0 transition-all duration-300 ease-linear;
       }
       &[aria-expanded="true"],
       &[aria-selected="true"] {

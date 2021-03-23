@@ -21,7 +21,7 @@ const StyledScrollNavigation = styled.div`
         ul {
             ${tw`absolute top-0 left-0 p-0 m-0 w-full bg-white shadow-lg list-none transform translate-y-12`}
             li {
-                ${tw`text-sm text-gray-900 flex items-center`}
+                ${tw`text-sm text-gray-800 flex items-center`}
                 a {
                     ${tw`block w-full px-6 py-3 no-underline`}
                     &:hover {

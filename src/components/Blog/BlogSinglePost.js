@@ -8,13 +8,7 @@ import BlogRecentPosts from "../Blog/BlogRecentPosts";
 const StyledBlogPost = styled.div`
    p,
    li {
-      ${tw`text-lg mb-12`}
-   }
-   @media (min-width: 768px) {
-      p,
-      li {
-         ${tw`text-xl`}
-      }
+      ${tw`text-lg md:text-xl mb-12`}
    }
 `;
 
@@ -25,8 +19,8 @@ const Blog = ({ featuredImage, ...props }) => {
             <div className="container">
                <header className="mb-12 md:mb-14 max-w-3xl mx-auto">
                   <h1>{props.title}</h1>
-                  <div className="font-heading text-gray-800">
-                     <span className="font-bold">{props.category} /</span> <span className="text-gray-800 text-opacity-50"> {props.date}</span>
+                  <div className="font-heading text-gray-700">
+                     <span className="font-bold">{props.category} /</span> <span className="text-gray-700 text-opacity-50"> {props.date}</span>
                   </div>
                </header>
             </div>

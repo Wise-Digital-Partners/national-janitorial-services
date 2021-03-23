@@ -6,55 +6,70 @@ import tw from "twin.macro";
 import Contact from "../Form/Contact";
 
 const StyledModal = styled.div`
-    .modal {
-        &.is-open {
-            ${tw`block`}
-        }
-        &[aria-hidden="false"] {
-            .overlay {
-                animation: mmfadeIn .5s cubic-bezier(0, 0, .2, 1);
-            }
-        }
-        &[aria-hidden="false"] {
-            .content-wrapper {
-                animation: mmslideIn .5s cubic-bezier(0, 0, .2, 1);
-            }
-        }
-        &[aria-hidden="true"] {
-            .overlay {
-                animation: mmfadeOut .5s cubic-bezier(0, 0, .2, 1);
-            }
-        }
-        &[aria-hidden="true"] {
-            .content-wrapper {
-                animation: mmslideOut .5s cubic-bezier(0, 0, .2, 1);
-            }
-        }
-        .content-wrapper,
-        .overlay {
-            will-change: transform;
-        } 
-    }
-    @keyframes mmfadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+   .modal {
+      &.is-open {
+         ${tw`block`}
+      }
+      &[aria-hidden="false"] {
+         .overlay {
+            animation: mmfadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+         }
+      }
+      &[aria-hidden="false"] {
+         .content-wrapper {
+            animation: mmslideIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+         }
+      }
+      &[aria-hidden="true"] {
+         .overlay {
+            animation: mmfadeOut 0.5s cubic-bezier(0, 0, 0.2, 1);
+         }
+      }
+      &[aria-hidden="true"] {
+         .content-wrapper {
+            animation: mmslideOut 0.5s cubic-bezier(0, 0, 0.2, 1);
+         }
+      }
+      .content-wrapper,
+      .overlay {
+         will-change: transform;
+      }
+   }
+   @keyframes mmfadeIn {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
 
-    @keyframes mmfadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
+   @keyframes mmfadeOut {
+      from {
+         opacity: 1;
+      }
+      to {
+         opacity: 0;
+      }
+   }
 
-    @keyframes mmslideIn {
-        from { transform: translateX(100%); }
-        to { transform: translateX(0); }
-    }
+   @keyframes mmslideIn {
+      from {
+         transform: translateX(100%);
+      }
+      to {
+         transform: translateX(0);
+      }
+   }
 
-    @keyframes mmslideOut {
-        from { transform: translateX(0); }
-        to { transform: translateX(100%); }
-    }
-}
+   @keyframes mmslideOut {
+      from {
+         transform: translateX(0);
+      }
+      to {
+         transform: translateX(100%);
+      }
+   }
 `;
 
 const Modal = () => {
@@ -83,12 +98,19 @@ const Modal = () => {
                      role="dialog"
                      aria-modal="true"
                   >
-                     {/* <header className="mb-8">
-                                <p className="heading-three">Let’s Connect!</p> 
-                                <p className="mb-0">Ready to pamper your pup? Book an appointment, inquire about dog training, or ask us questions. Please fill out the form below or give us a call. </p>
-                            </header>
+                     <header className="mb-8">
+                        <p className="heading-three">Contact Heading</p>
+                        <p className="mb-0">
+                           Interdu velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis
+                           nunc sed id semper.
+                        </p>
+                     </header>
 
-                            <p><a className="gtm-phone-number text-gray-400 hover:text-primary font-bold" href="tel:+1-619-237-0730"><i className="far fa-phone-alt mr-1 text-2xl text-primary"></i> (619) 237-0730</a></p> */}
+                     <span className="inline-block mb-8">
+                        <a className="text-primary font-semibold flex items-center" href="tel:+1-123-456-7890">
+                           <i className="fas fa-phone-alt mr-2"></i> 123-456-7890
+                        </a>
+                     </span>
 
                      <Contact />
 

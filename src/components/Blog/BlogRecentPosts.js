@@ -1,7 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const Blog = () => {
    const data = useStaticQuery(graphql`
@@ -20,7 +19,7 @@ const Blog = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-y-12 lg:gap-y-14 md:gap-x-6 lg:gap-x-10">
          <div>
             <div className="relative overflow-hidden mb-6">
-               <AniLink fade to="/blog-post/">
+               <a href="/blog-post/">
                   <Img
                      fadeIn={true}
                      loading="eager"
@@ -28,13 +27,13 @@ const Blog = () => {
                      fluid={data.blogPostThumbnail.childImageSharp.fluid}
                      alt="Blog post thumbnail"
                   />
-               </AniLink>
+               </a>
             </div>
-            <span className="font-heading text-lg font-semibold text-gray-800 block mb-0">Blog Title Goes Here</span>
+            <span className="font-heading text-lg font-semibold text-gray-700 block mb-0">Blog Title Goes Here</span>
          </div>
          <div>
             <div className="relative overflow-hidden mb-6">
-               <AniLink fade to="#">
+               <a href="# ">
                   <Img
                      fadeIn={true}
                      loading="eager"
@@ -42,13 +41,13 @@ const Blog = () => {
                      fluid={data.blogPostThumbnail.childImageSharp.fluid}
                      alt="Blog post thumbnail"
                   />
-               </AniLink>
+               </a>
             </div>
-            <span className="font-heading text-lg font-semibold text-gray-800 block mb-0">Blog Title Goes Here</span>
+            <span className="font-heading text-lg font-semibold text-gray-700 block mb-0">Blog Title Goes Here</span>
          </div>
          <div>
             <div className="relative overflow-hidden mb-6">
-               <AniLink fade to="#">
+               <a href="# ">
                   <Img
                      fadeIn={true}
                      loading="eager"
@@ -56,9 +55,9 @@ const Blog = () => {
                      fluid={data.blogPostThumbnail.childImageSharp.fluid}
                      alt="Blog post thumbnail"
                   />
-               </AniLink>
+               </a>
             </div>
-            <span className="font-heading text-lg font-semibold text-gray-800 block mb-0">Blog Title Goes Here</span>
+            <span className="font-heading text-lg font-semibold text-gray-700 block mb-0">Blog Title Goes Here</span>
          </div>
       </div>
    );

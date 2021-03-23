@@ -9,13 +9,7 @@ import ReviewCards from "./ReviewCards";
 export const Reviews = ({ gridLayout }) => {
    const StyledReviews = styled.div`
       .masonry-grid {
-         ${tw`-mb-8`}
-         @media (min-width: 768px) {
-            ${tw`-mx-3 -mb-10`}
-         }
-         @media (min-width: 1024px) {
-            ${tw`-mx-5 -mb-12`}
-         }
+         ${tw`md:-mx-3m lg:-mx-5 -mb-8 md:-mb-10 lg:-mb-12`}
       }
    `;
    const masonryOptions = {

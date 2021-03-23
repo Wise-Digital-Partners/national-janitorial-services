@@ -1,6 +1,6 @@
 const {
    NODE_ENV,
-   URL: NETLIFY_SITE_URL = "https://national-janitorial-services.netlify.app/",
+   URL: NETLIFY_SITE_URL = "https://nest-ui-kit.netlify.app/",
    DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
    CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env;
@@ -17,7 +17,6 @@ module.exports = {
       `gatsby-plugin-react-helmet`,
       `gatsby-plugin-sitemap`,
       `gatsby-plugin-postcss`,
-      `gatsby-plugin-transition-link`,
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
@@ -123,11 +122,11 @@ module.exports = {
       {
          resolve: `gatsby-plugin-manifest`,
          options: {
-            name: `National Janitorial Services`,
-            short_name: `National Janitorial Services`,
+            name: `nest UI Kit`,
+            short_name: `nest UI Kit`,
             start_url: `/`,
-            background_color: `#53AF3B`,
-            theme_color: `#53AF3B`,
+            background_color: `#289f44`,
+            theme_color: `#289f44`,
             display: `standalone`,
             icon: `static/images/favicon.png`,
          },
@@ -146,12 +145,8 @@ module.exports = {
             ],
             web: [
                {
-                  name: "Mulish",
-                  file: "https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;900&display=swap",
-               },
-               {
-                  name: "Lato",
-                  file: "https://fonts.googleapis.com/css2?family=Lato&display=swap",
+                  name: "Barlow",
+                  file: "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&display=swap",
                },
             ],
          },
