@@ -32,7 +32,7 @@ const StyledForm = styled.div`
    [type="week"],
    select,
    textarea {
-      ${tw`w-full bg-transparent text-white px-4 py-3 border-gray-100 rounded-sm focus:border-blue-300 focus:ring-blue-300`}
+      ${tw`w-full bg-transparent text-white px-4 py-3 border border-solid border-gray-100 rounded-sm focus:border-blue-300 focus:ring-blue-300`}
    }
 `;
 
