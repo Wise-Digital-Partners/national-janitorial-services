@@ -29,7 +29,7 @@ const Covid = ({ className }) => {
                      Disinfecting Tablets, an EPA-registered disinfectant that is effective against pathogens like Staphylococcus aureus, Norovirus,
                      and the novel coronavirus.
                   </p>
-                  <ButtonUnderline href="# " text="Download Fact Sheet" />
+                  <ButtonUnderline href="/covid-cleaning-services/" text="Learn More" />
                </div>
             </div>
          </div>

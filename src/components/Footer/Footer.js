@@ -39,22 +39,22 @@ const Footer = () => {
 
                   <ul className="flex flex-col md:flex-row items-center">
                      <li className="mr-6">
-                        <a href="/commercial-cleaning-services/" className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/commercial-cleaning-services/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Services
                         </a>
                      </li>
                      <li className="mr-6">
-                        <a href="/industries-we-serve/" className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Facilities
                         </a>
                      </li>
                      <li className="mr-6">
-                        <a href="/about/" className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/about/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            About
                         </a>
                      </li>
                      {/* <li className="mr-6">
-                        <a href="# " className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
                         </a>
                      </li> */}
@@ -74,11 +74,7 @@ const Footer = () => {
                            </a>
                         </li>
                         <li className="text-sm md:mr-6">
-                           <div
-                              className="relative cursor-pointer transition-all duration-300 ease-linear closed"
-                              onKeyDown={citiesClickHandler}
-                              onClick={citiesClickHandler}
-                           >
+                           <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
                               <span className="text-white flex items-center justify-between">
                                  Cities
                                  <i
@@ -88,7 +84,7 @@ const Footer = () => {
                                  ></i>
                               </span>
                               <ul
-                                 className={`bg-white absolute bottom-0 px-4 py-5 flex flex-col transform transition-all duration-300 ease-linear ${
+                                 className={`bg-white text-left absolute bottom-0 px-4 py-5 flex flex-col transform transition-all duration-300 ease-linear ${
                                     cityDropdownOpen ? "opacity-100 -translate-y-10 visible" : "opacity-0 -translate-y-4 invisible"
                                  }`}
                               >
@@ -123,7 +119,7 @@ const Footer = () => {
                                     </a>
                                  </li>
                               </ul>
-                           </div>
+                           </button>
                         </li>
                         <li className="text-sm text-white">
                            <div className="flex items-center justify-center mt-2 md:mt-0">
@@ -146,17 +142,12 @@ const Footer = () => {
                         href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mr-6 transition-all duration-300 ease-linear"
+                        className="mr-6"
                      >
-                        <i className="fab fa-yelp text-2xl text-white"></i>
+                        <i className="fab fa-yelp text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
                      </a>
-                     <a
-                        href="https://www.facebook.com/nationaljanitorialservices"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-all duration-300 ease-linear"
-                     >
-                        <i className="fab fa-facebook-f text-2xl text-white"></i>
+                     <a href="https://www.facebook.com/nationaljanitorialservices" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-facebook-f text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
                      </a>
                   </div>
                </div>
