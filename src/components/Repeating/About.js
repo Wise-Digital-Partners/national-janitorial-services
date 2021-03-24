@@ -16,7 +16,7 @@ const About = ({ ...props }) => {
    const HeadingTag = props.headingLevel;
 
    return (
-      <section className={`${props.className} ${props.padding}`}>
+      <section className={`${props.className ? props.className : ""}`}>
          <div className="container">
             <div className="grid md:grid-cols-2 gap-y-10 gap-x-18 items-center">
                <div>

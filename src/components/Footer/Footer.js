@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 // import { GatsbyImage } from "gatsby-plugin-image";
 
@@ -9,6 +9,12 @@ import ButtonSolid from "../Button/ButtonSolid";
 const Footer = () => {
    const getYear = () => {
       return new Date().getFullYear();
+   };
+
+   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
+
+   const citiesClickHandler = () => {
+      setCityDropdownOpen(!cityDropdownOpen);
    };
 
    const data = useStaticQuery(graphql`
@@ -26,7 +32,7 @@ const Footer = () => {
       <div>
          <footer className="bg-gray-800 pt-24 md:pt-40 pb-6 md:pb-6 text-center md:text-left">
             <div className="container">
-               <div className="md:flex md:justify-between md-24 md:mb-36">
+               <div className="md:flex md:justify-between md-24 md:mb-40 whitespace-nowrap">
                   <div className="mb-16 md:mb-0">
                      <img src={data.logo.publicURL} alt="Logo" width="233" className="mx-auto md:mx-0" />
                   </div>
@@ -66,6 +72,58 @@ const Footer = () => {
                            <a href="# " className="text-white">
                               Privacy Policy
                            </a>
+                        </li>
+                        <li className="text-sm md:mr-6">
+                           <div
+                              className="relative cursor-pointer transition-all duration-300 ease-linear closed"
+                              onKeyDown={citiesClickHandler}
+                              onClick={citiesClickHandler}
+                           >
+                              <span className="text-white flex items-center justify-between">
+                                 Cities
+                                 <i
+                                    className={`far fa-chevron-up ml-2 transition-all duration-300 ease-linear transform ${
+                                       cityDropdownOpen ? "rotate-180" : "rotate-0"
+                                    }`}
+                                 ></i>
+                              </span>
+                              <ul
+                                 className={`bg-white absolute bottom-0 px-4 py-5 flex flex-col transform transition-all duration-300 ease-linear ${
+                                    cityDropdownOpen ? "opacity-100 -translate-y-10 visible" : "opacity-0 -translate-y-4 invisible"
+                                 }`}
+                              >
+                                 <li className="mb-3 whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       San Diego
+                                    </a>
+                                 </li>
+                                 <li className="mb-3 whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       Orange County
+                                    </a>
+                                 </li>
+                                 <li className="mb-3 whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       Long Beach
+                                    </a>
+                                 </li>
+                                 <li className="mb-3 whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       Los Angeles
+                                    </a>
+                                 </li>
+                                 <li className="mb-3 whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       Phoenix
+                                    </a>
+                                 </li>
+                                 <li className="whitespace-nowrap">
+                                    <a href="# " className="hover:text-gray-800">
+                                       Denver
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
                         </li>
                         <li className="text-sm text-white">
                            <div className="flex items-center justify-center mt-2 md:mt-0">

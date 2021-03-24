@@ -16,7 +16,7 @@ const Covid = ({ ...props }) => {
    `);
 
    return (
-      <section className={`${props.padding} ${props.margin} ${props.className ? props.className : ""}`}>
+      <section className={`${props.className ? props.className : ""}`}>
          <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 items-center">
                <div className="order-2 md:order-1">

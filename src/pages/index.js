@@ -72,15 +72,15 @@ const Page = ({ data }) => {
 
          <Covid headingLevel="h2" />
 
-         <Services padding="py-20 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
+         <Services className="py-20 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
 
          <Testimonials headingLevel="h2" />
 
-         <About padding="py-20 md:py-32" headingLevel="h2" />
+         <About className="pt-20 md:pt-32 mb-20 md:mb-32" headingLevel="h2" />
 
-         <Clients headingLevel="h2" />
+         <Clients className="mb-20 md:mb-32" headingLevel="h2" />
 
-         <WhyUs padding="py-20 md:py-32" headingLevel="h2" />
+         <WhyUs className="pb-20 md:pb-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>

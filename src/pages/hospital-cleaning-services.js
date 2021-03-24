@@ -35,12 +35,7 @@ const Page = ({ data }) => {
             subtextSize="text-2xl-mobile md:text-2xl"
             // textAlignment=""
             textMaxWidth="max-w-3xl"
-         >
-            <header className="relative">
-               <h1>Long Beach Janitorial Services</h1>
-               <p className="mb-0">Working hard to keep your workspace clean so you don’t have to.</p>
-            </header>
-         </HeroStacked>
+         />
 
          <section className="py-20 md:py-32">
             <div className="container">
@@ -61,13 +56,44 @@ const Page = ({ data }) => {
             </div>
          </section>
 
-         <CovidSplit padding="mb-20 md:mb-32" />
+         <section className="bg-gray-50 py-14 md:py-18">
+            <div className="container">
+               <h3>Hospital Areas We Clean</h3>
 
-         <Clients padding="pb-20 md:pb-32" headingLevel="h2" />
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
+                  <div>
+                     <p className="md:mb-0">
+                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        dusting, wiping, vacuuming, disinfection, and more for the following areas.
+                     </p>
+                  </div>
+                  <div>
+                     <ul className="styled-list">
+                        <li>Glass Surfaces (partitions, doors, windows)</li>
+                        <li>Kitchens & Break Rooms</li>
+                        <li>Lobbies </li>
+                        <li>Restrooms</li>
+                     </ul>
+                  </div>
+                  <div>
+                     <ul className="styled-list">
+                        <li>Restrooms</li>
+                        <li>Floor Care</li>
+                        <li>Stairwells</li>
+                        <li>... And more!</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <CovidSplit className="pt-20 md:pt-32 mb-20 md:mb-32" />
+
+         <Clients className="pb-20 md:pb-32" headingLevel="h2" />
 
          <Testimonials headingLevel="h2" />
 
-         <WhyUs padding="py-20 md:py-32" headingLevel="h2" />
+         <WhyUs className="py-20 md:py-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>
@@ -76,12 +102,12 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
-      heroStacked: file(relativePath: { eq: "industries/hospitals/hero.jpg" }) {
+      heroStacked: file(relativePath: { eq: "industries/hospitals/1.0 Hospital Hero Desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "industries/hospitals/intro.jpg" }) {
+      intro: file(relativePath: { eq: "industries/hospitals/2.0 Hospital cleaning.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

@@ -91,9 +91,9 @@ const Page = ({ data }) => {
 
          <Testimonials headingLevel="h2" />
 
-         <Clients padding="py-20 md:py-32" headingLevel="h2" />
+         <Clients className="pt-20 md:pt-32 mb-20 md:mb-32" headingLevel="h2" />
 
-         <WhyUs padding="pb-20 md:pb-32" headingLevel="h2" />
+         <WhyUs className="pb-20 md:pb-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>

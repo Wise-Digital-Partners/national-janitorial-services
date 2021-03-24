@@ -31,27 +31,54 @@ const Page = ({ data }) => {
             padding="pt-6 md:pt-14"
             headingLevel="h1"
             // headingClassName="text-primary"
-            heading="Long Beach Janitorial Services"
-            subtext="Working hard to keep your workspace clean so you don’t have to."
+            heading="COVID-19 Cleaning"
+            subtext="Our COVID cleaning services help Long Beach businesses stop the spread."
             subtextSize="text-2xl-mobile md:text-2xl"
             // textAlignment=""
             textMaxWidth="max-w-3xl"
          />
 
-         <section className="py-20 md:py-32">
+         <section className="pt-20 md:pt-32 mb-20 md:mb-32">
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 items-center">
                   <div>
-                     <h2>Keeping Long Beach Businesses Clean</h2>
+                     <h2>COVID-19 Cleaning in Long Beach</h2>
                      <p className="mb-0">
-                        Your business is unique and your cleaning services should be too. Not only do we tailor our cleaning and disinfecting to your
-                        specific industry requirements, we go above and beyond. Our professional and reliable commercial cleaning experts use only
-                        EPA-registered disinfectants and provide thorough cleaning for your office, building, and more. Make great first impressions,
-                        prevent illness, and maintain a hygienic and welcoming environment with our Long Beach janitorial services.
+                        We help Long Beach businesses do their part in stopping the spread of the coronavirus. Using only EPA-registered
+                        disinfectants, our certified cleaning experts provide thorough sanitation and disinfection at your commercial space or
+                        facility. From site visit to job completion, we offer an easy process to help business owners operate fuss-free. We pay
+                        attention to your goals, do the dirty work, and deliver a consistent clean so that you don’t have to. Reduce the risk of
+                        infection and provide peace of mind to your staff, clients, and guests with regular COVID cleaning.
                      </p>
                   </div>
                   <div>
                      <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section className="pb-16 md:pb-20">
+            <div className="container">
+               <header className="mb-24 max-w-3xl">
+                  <h2>The Process</h2>
+                  <p>
+                     At NJS, we’re serious about workplace disinfection. Our disinfection & COVID cleaning teams are certified and professionally
+                     trained on the best practices in accordance with CDC Guidelines.
+                  </p>
+               </header>
+               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-10 items-center">
+                  <div className="md:col-start-1 md:col-span-3">
+                     <GatsbyImage image={data.toolGun.childImageSharp.gatsbyImageData} />
+                  </div>
+                  <div className="md:col-start-4 md:col-span-4">
+                     <p className="heading-two">The Tools</p>
+                     <p className="mb-0">
+                        We invest in the best new equipment and cleaning systems to keep your workplace safe and secure for anyone that enters.{" "}
+                     </p>
+                  </div>
+                  <div className="md:col-end-13 md:col-span-5">
+                     <GatsbyImage image={data.toolBackpack.childImageSharp.gatsbyImageData} />
                   </div>
                </div>
             </div>
@@ -67,8 +94,6 @@ const Page = ({ data }) => {
                      <ul className="styled-list">
                         <li>Carpet</li>
                         <li>Countertops</li>
-                        <li>Degreasing (exhaust fans, filters, ducts)</li>
-                        <li>Dumpster Area Cleaning</li>
                         <li>Elevators</li>
                         <li>Furniture</li>
                      </ul>
@@ -78,18 +103,14 @@ const Page = ({ data }) => {
                         <li>Glass Surfaces (partitions, doors, windows)</li>
                         <li>Kitchens & Break Rooms</li>
                         <li>Lobbies </li>
-                        <li>Move-in/Move-out Cleaning</li>
-                        <li>Post-construction Cleanup</li>
-                        <li>Pressure Washing</li>
+                        <li>Restrooms</li>
                      </ul>
                   </div>
                   <div>
                      <ul className="styled-list">
-                        <li>Trash & Recycling Removal</li>
                         <li>Restrooms</li>
                         <li>Floor Care</li>
                         <li>Stairwells</li>
-                        <li>Warehouses</li>
                         <li>... And more!</li>
                      </ul>
                   </div>
@@ -112,12 +133,22 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
-      heroStacked: file(relativePath: { eq: "services/janitorial-services/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/covid-cleaning/hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/janitorial-services/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/covid-cleaning/intro.jpg" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      toolGun: file(relativePath: { eq: "services/covid-cleaning/3.0-Tools-gun.png" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      toolBackpack: file(relativePath: { eq: "services/covid-cleaning/3.1-Tool-backpack.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

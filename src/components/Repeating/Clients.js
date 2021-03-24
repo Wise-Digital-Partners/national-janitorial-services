@@ -24,7 +24,7 @@ const WhyUs = ({ ...props }) => {
    `);
 
    return (
-      <section className={`${props.className} ${props.padding}`}>
+      <section className={`${props.className ? props.className : ""}`}>
          <div className="container max-w-5xl">
             <header className="text-center mb-12 md:mb-18">
                <h2>Some of Our Happy Clients</h2>

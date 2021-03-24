@@ -57,7 +57,7 @@ const Page = ({ data }) => {
                               <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Standard Billing</h4>
                               <i className={`fas fa-caret-down transform ${accordionOpen1} transition-all duration-300 ease-linear`}></i>
                            </AccordionItemButton>
-                           <AccordionItemPanel className="pt-4 animate-fadein">
+                           <AccordionItemPanel className="pt-4 animate-fadeIn">
                               <p className="mb-0">
                                  NJS invoices you at the beginning of the month for that coming month's service (e.g February total invoice is sent to
                                  client on Feb 1). Terms are Net 30. Interest is charged at 1.5% monthly on the outstanding balance on accounts over
@@ -77,7 +77,7 @@ const Page = ({ data }) => {
                               <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Financed Billing </h4>
                               <i className={`fas fa-caret-down transform ${accordionOpen2} transition-all duration-300 ease-linear`}></i>
                            </AccordionItemButton>
-                           <AccordionItemPanel className="pt-4 animate-fadein">
+                           <AccordionItemPanel className="pt-4 animate-fadeIn">
                               <p className="mb-0">
                                  NJS invoices you at the beginning of the following month for the previous month's service (e.g February total invoice
                                  is sent to client on March 1). Terms are Net 15. Interest is charged at 1.5% monthly on the outstanding balance on
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                               <h4 className="text-lg md:text-xl text-gray-400 uppercase mb-0">Extra Services</h4>
                               <i className={`fas fa-caret-down transform ${accordionOpen3} transition-all duration-300 ease-linear`}></i>
                            </AccordionItemButton>
-                           <AccordionItemPanel className="pt-4 animate-fadein">
+                           <AccordionItemPanel className="pt-4 animate-fadeIn">
                               <p className="mb-0">
                                  If needed, we are happy to provide additional services beyond the current scope of work. Any time a request for extra
                                  work is received we will provide a quote prior to commencing work, so that approval is clear and in writing.
@@ -110,7 +110,7 @@ const Page = ({ data }) => {
             </div>
          </section>
 
-         <Services padding="pb-20 md:pb-32" cardHeadingLevel="h3" />
+         <Services className="pb-20 md:pb-32" cardHeadingLevel="h3" />
       </Layout>
    );
 };

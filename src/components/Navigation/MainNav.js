@@ -67,14 +67,14 @@ const StyledMainNav = styled.nav`
       .is-submenu-parent {
          ${tw`relative`}
          .submenu {
-            ${tw`absolute flex flex-col w-auto bg-white shadow-3xl pt-8 pr-14 pb-10 pl-6 opacity-0 invisible z-10 transform -translate-x-10 translate-y-12 transition-all duration-300 ease-linear`}
+            ${tw`absolute flex flex-col w-auto bg-white shadow-xl pt-8 pr-14 pb-10 pl-6 opacity-0 invisible z-10 transform -translate-x-10 translate-y-12 transition-all duration-300 ease-linear`}
             li {
                ${tw`whitespace-nowrap`}
                &:not(:last-child) {
                   ${tw`mb-4`}
                }
                a {
-                  ${tw`relative font-heading text-black text-opacity-40 no-underline`}
+                  ${tw`relative font-heading text-gray-800 text-opacity-40 no-underline`}
                   /* &:after {
                             content: '';
                             ${tw`absolute left-auto right-0 bottom-0 h-px bg-primary w-0 transition-all duration-300 ease-linear`}
@@ -347,7 +347,7 @@ const MainNav = ({ ...props }) => {
                   </li>
                </ul>
                <div className="hidden lg:inline-flex items-center">
-                  <ButtonSolid data="modal-contact" text="Contact" />
+                  <ButtonSolid className="min-w-[160px]" data="modal-contact" text="Contact" />
                </div>
 
                <div className="lg:hidden" ref={node}>
