@@ -1,13 +1,13 @@
 import React from "react";
 
-const Header = ({ ...props }) => {
-   const HeadingTag = props.headingLevel;
+const Header = ({ headingLevel, heading, subtext, subtextSize, textMaxWidth, textAlignment, textMargin }) => {
+   const HeadingTag = headingLevel;
    return (
       <div>
-         {props.headingLevel && props.heading ? (
-            <header className={`${props.maxWidth} ${props.textAlignment} ${props.margin}`}>
-               {props.heading ? <HeadingTag className={`${props.headingClassName}`}>{props.heading}</HeadingTag> : null}
-               {props.subtext ? <p className={`${props.subtextSize}`}>{props.subtext}</p> : null}
+         {headingLevel && heading ? (
+            <header className={`${textMaxWidth || ""} ${textAlignment || ""} ${textMargin || ""}`}>
+               {heading ? <HeadingTag>{heading}</HeadingTag> : null}
+               {subtext ? <p className={`mb-0 ${subtextSize}`}>{subtext}</p> : null}
             </header>
          ) : null}
       </div>

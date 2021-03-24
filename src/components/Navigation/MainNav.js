@@ -156,7 +156,7 @@ const StyledMainNav = styled.nav`
    }
 `;
 
-const MainNav = ({ ...props }) => {
+const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) => {
    // determine if offcanvas is open
    const [offcanvasOpen, setOffcanvasOpen] = useState(false);
 
@@ -206,13 +206,13 @@ const MainNav = ({ ...props }) => {
       // stickyPhoneIcon = null,
       className = null;
 
-   if (props.headerStyle === "overlap") {
+   if (headerStyle === "overlap") {
       initialLogo = data.logoDark.publicURL;
       stickyLogo = data.logoDark.publicURL;
       // initialPhoneIcon = data.phoneLight.publicURL;
       // stickyPhoneIcon = data.phoneDark.publicURL;
       className = "absolute";
-   } else if (props.headerStyle === "standard") {
+   } else if (headerStyle === "standard") {
       initialLogo = data.logoDark.publicURL;
       stickyLogo = data.logoDark.publicURL;
       // initialPhoneIcon = data.phoneDark.publicURL;
@@ -237,10 +237,10 @@ const MainNav = ({ ...props }) => {
          className={`py-4 w-full transition duration-300 ease-linear ${className}`}
          role="navigation"
          aria-label="main-navigation"
-         data-fixed={props.scrolled}
-         headerStyle={props.eaderStyle}
-         headerHasBorder={props.headerHasBorder}
-         headerLinkColor={props.headerLinkColor}
+         data-fixed={scrolled}
+         headerStyle={headerStyle}
+         headerHasBorder={headerHasBorder}
+         headerLinkColor={headerLinkColor}
          // megaMenuHovering={megaMenuHovering}
          offcanvasOpen={offcanvasOpen}
       >
@@ -272,27 +272,27 @@ const MainNav = ({ ...props }) => {
             <div className="flex items-center justify-end flex-auto">
                <ul id="navigation-desktop" className="hidden lg:flex lg:items-center lg:justify-end lg:mr-10">
                   <li className={`is-submenu-parent ${subMenuHovering1 ? "active" : ""}`}>
-                     <a onMouseEnter={isHoveringSubMenu1} onMouseLeave={notHoveringSubMenu1} href="/services/">
+                     <a onMouseEnter={isHoveringSubMenu1} onMouseLeave={notHoveringSubMenu1} href="/commercial-cleaning-services/">
                         Services
                      </a>
                      <ul className="submenu">
                         <li>
-                           <a href="/janitorial-services/">Janitorial Services</a>
+                           <a href="/janitorial-cleaning-company/">Janitorial Services</a>
                         </li>
                         <li>
-                           <a href="# ">Commercial Cleaning</a>
+                           <a href="/commercial-cleaning-company/">Commercial Cleaning</a>
                         </li>
                         <li>
-                           <a href="# ">Office Cleaning</a>
+                           <a href="/office-cleaning-services/">Office Cleaning</a>
                         </li>
                         <li>
-                           <a href="# ">Porter Service(s)</a>
+                           <a href="/day-porter-services/">Porter Service(s)</a>
                         </li>
                         <li>
-                           <a href="# ">Deep Cleaning</a>
+                           <a href="/deep-cleaning-services/">Deep Cleaning</a>
                         </li>
                         <li>
-                           <a href="# ">Disinfectant Services</a>
+                           <a href="/disinfection-services/">Disinfectant Services</a>
                         </li>
                      </ul>
                   </li>
@@ -305,46 +305,46 @@ const MainNav = ({ ...props }) => {
                            <a href="/hospital-cleaning-services/">Hospitals</a>
                         </li>
                         <li>
-                           <a href="# ">Restaurants</a>
+                           <a href="/hoa-cleaning-services/">HOA</a>
                         </li>
                         <li>
-                           <a href="# ">HOA</a>
+                           <a href="/commercial-office-cleaning/">Private Offices</a>
                         </li>
                         <li>
-                           <a href="# ">Private Offices</a>
+                           <a href="/office-building-cleaning/">Office Buildings</a>
                         </li>
                         <li>
-                           <a href="# ">Office Buildings</a>
+                           <a href="/church-cleaning-services/">Churches</a>
                         </li>
                         <li>
-                           <a href="# ">Churches</a>
+                           <a href="/school-cleaning-services/">Schools</a>
                         </li>
                         <li>
-                           <a href="# ">Schools</a>
+                           <a href="/car-dealership-cleaning/">Car Dealerships</a>
                         </li>
                         <li>
-                           <a href="# ">Car Dealerships</a>
+                           <a href="/movie-theater-cleaning/">Movie Theaters</a>
                         </li>
                         <li>
-                           <a href="# ">Movie Theaters</a>
+                           <a href="/bar-cleaning-services/">Bars & Nightclubs</a>
                         </li>
                         <li>
-                           <a href="# ">Bars & Nightclubs</a>
+                           <a href="/gym-cleaning-services/">Gyms & Fitness</a>
                         </li>
                         <li>
-                           <a href="# ">Gyms & Fitness</a>
+                           <a href="/medical-dental-office-cleaning/">Medical & Dental</a>
                         </li>
                         <li>
-                           <a href="# ">Medical & Dental</a>
+                           <a href="/dispensary-cleaning-services/">Dispensaries</a>
                         </li>
                      </ul>
                   </li>
                   <li>
                      <a href="/about/">About</a>
                   </li>
-                  <li>
-                     <a href="/blog/">Blog</a>
-                  </li>
+                  {/* <li>
+                     <a href="# ">Blog</a>
+                  </li> */}
                </ul>
                <div className="hidden lg:inline-flex items-center">
                   <ButtonSolid className="min-w-[160px]" data="modal-contact" text="Contact" />
@@ -354,8 +354,8 @@ const MainNav = ({ ...props }) => {
                   <Burger
                      offcanvasOpen={offcanvasOpen}
                      setOffcanvasOpen={setOffcanvasOpen}
-                     headerStyle={props.headerStyle}
-                     scrolled={props.scrolled}
+                     headerStyle={headerStyle}
+                     scrolled={scrolled}
                      aria-controls="offcanvas-navigation"
                   />
                   <OffCanvas offcanvasOpen={offcanvasOpen} id="offcanvas-navigation">
@@ -363,7 +363,7 @@ const MainNav = ({ ...props }) => {
                         <li>
                            <Accordion title="Services">
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="# ">
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-services/">
                                     All Services
                                  </a>
                               </li>
@@ -390,13 +390,82 @@ const MainNav = ({ ...props }) => {
                            </Accordion>
                         </li>
                         <li>
+                           <Accordion title="Industries">
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/industries-we-serve/">
+                                    All Industries
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/hospital-cleaning-services/">
+                                    Hospitals
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/hoa-cleaning-services/">
+                                    HOA
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-office-cleaning/">
+                                    Private Offices
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/office-building-cleaning/">
+                                    Office Buildings
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/church-cleaning-services/">
+                                    Churches
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/school-cleaning-services/">
+                                    Schools
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/car-dealership-cleaning/">
+                                    Car Dealerships
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/movie-theater-cleaning/">
+                                    Movie Theaters
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/bar-cleaning-services/">
+                                    Bars & Nightclubs
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/gym-cleaning-services/">
+                                    Gyms & Fitness
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/medical-dental-office-cleaning/">
+                                    Medical & Dental
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/dispensary-cleaning-services/">
+                                    Dispensaries
+                                 </a>
+                              </li>
+                           </Accordion>
+                        </li>
+                        <li>
                            <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
                               About
                            </a>
                         </li>
                         <li>
                            <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
-                              Contact
+                              Blog
                            </a>
                         </li>
                      </ul>

@@ -29,21 +29,16 @@ const Page = ({ data }) => {
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}
-            // backgroundSize=""
-            // backgroundPosition=""
-            // backgroundRepeat=""
             padding="pt-24 md:pt-32 pb-40 md:pb-56"
             textAlignment="text-left"
             textMaxWidth="max-w-xl"
          >
-            <header className="relative">
-               <h1>About National Janitorial Services</h1>
-               <p className="mb-0">
-                  Over 5 years of experience. More than 100 accounts served, National Janitorial Services is your trusted partner in keeping your
-                  business spotless and safe. We use effective tools to ensure the best possible cleaning for your workplace, building, or facility.
-                  Our highly qualified team handles your business with the utmost professionalism and care for janitorial services you can rely on.
-               </p>
-            </header>
+            <h1>About National Janitorial Services</h1>
+            <p className="mb-0">
+               Over 5 years of experience. More than 100 accounts served, National Janitorial Services is your trusted partner in keeping your
+               business spotless and safe. We use effective tools to ensure the best possible cleaning for your workplace, building, or facility. Our
+               highly qualified team handles your business with the utmost professionalism and care for janitorial services you can rely on.
+            </p>
          </HeroFullWidth>
 
          <div className="container">

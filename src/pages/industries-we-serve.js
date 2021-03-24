@@ -20,77 +20,77 @@ const Page = ({ data }) => {
          image: data.hoa.childImageSharp.gatsbyImageData,
          heading: "HOA",
          text: "Maintain a safe and clean space for your residents. We tailor our cleaning services to your specific needs.",
-         link: "#",
+         link: "/hoa-cleaning-services/",
       },
       {
          id: 3,
          image: data.privateOffices.childImageSharp.gatsbyImageData,
          heading: "Private Offices",
          text: "Help keep your employees safe with our professional private office cleaning and sanitation services.",
-         link: "#",
+         link: "/commercial-office-cleaning/",
       },
       {
          id: 4,
          image: data.officeBuildings.childImageSharp.gatsbyImageData,
          heading: "Office Buildings",
          text: "We clean and maintain office buildings and commercial spaces of all sizes with our services.",
-         link: "#",
+         link: "/office-building-cleaning/",
       },
       {
          id: 5,
          image: data.churches.childImageSharp.gatsbyImageData,
          heading: "Churches",
          text: "Our cleaning team maintains your place of worship to help keep your sacred space and community safe.",
-         link: "#",
+         link: "/church-cleaning-services/",
       },
       {
          id: 6,
          image: data.schools.childImageSharp.gatsbyImageData,
          heading: "Schools",
          text: "Provide peace of mind for your kids, teachers, staff, and parents with our cleaning and maintenance.",
-         link: "#",
+         link: "/school-cleaning-services/",
       },
       {
          id: 7,
          image: data.carDealers.childImageSharp.gatsbyImageData,
          heading: "Car Dealerships",
          text: "From your showroom to your office and restrooms, keep your dealership looking sharp with our help.",
-         link: "#",
+         link: "/car-dealership-cleaning/",
       },
       {
          id: 8,
          image: data.movie.childImageSharp.gatsbyImageData,
          heading: "Movie Theaters",
          text: "Regardless of your theater’s size, we ensure you provide a safe and excellent viewing experience.",
-         link: "#",
+         link: "/movie-theater-cleaning/",
       },
       {
          id: 9,
          image: data.bars.childImageSharp.gatsbyImageData,
          heading: "Bars & Nightclubs",
          text: "Help keep your patrons safe with effective sanitation and disinfection, so you can keep the good times flowing.",
-         link: "#",
+         link: "/bar-cleaning-services/",
       },
       {
          id: 10,
          image: data.gyms.childImageSharp.gatsbyImageData,
          heading: "Gyms & Fitness",
          text: "We deliver deep cleaning and regular disinfecting for your gym or fitness facility, where hygiene is a priority.",
-         link: "#",
+         link: "/gym-cleaning-services/",
       },
       {
          id: 11,
          image: data.medical.childImageSharp.gatsbyImageData,
          heading: "Medical & Dental",
          text: "From the lobby to the exam rooms, we help you care for your patients with a safe and clean office.",
-         link: "#",
+         link: "/medical-dental-office-cleaning/",
       },
       {
          id: 12,
          image: data.dispensaries.childImageSharp.gatsbyImageData,
          heading: "Dispensaries",
          text: "We thoroughly clean cannabis facilities and dispensaries so customers can browse and purchase without worry.",
-         link: "#",
+         link: "/dispensary-cleaning-services/",
       },
    ];
 
@@ -106,17 +106,16 @@ const Page = ({ data }) => {
          <section className="pt-24 md:pt-36 pb-20 md:pb-26">
             <div className="container">
                <Header
-                  headingLevel="h1"
                   heading="Industries We Serve"
                   subtext="National Janitorial Services is one professional cleaning company serving many industries. We keep businesses in the following lines of work spotless and safe for staff and customers."
                   subtextSize=""
                   textAlignment=""
-                  maxWidth="max-w-4xl"
-                  margin="mb-16 md:mb-20"
+                  textMaxWidth="max-w-4xl"
+                  textMargin="mb-16 md:mb-20"
                />
 
                <CardsWithZoom
-                  columns="grid-cols-1 md:grid-cols-3"
+                  columnCount="grid-cols-1 md:grid-cols-3"
                   columnGap="gap-y-10 md:gap-y-12 gap-x-6 md:gap-x-10"
                   cards={cardContent}
                   cardHeadingLevel="h3"

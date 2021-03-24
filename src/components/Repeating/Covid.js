@@ -5,7 +5,7 @@ import { getImage } from "gatsby-plugin-image";
 import Background from "../Background/Background";
 import ButtonUnderline from "../Button/ButtonUnderline";
 
-const Covid = ({ ...props }) => {
+const Covid = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          background: file(relativePath: { eq: "repeating/covid/background.jpg" }) {
@@ -24,11 +24,11 @@ const Covid = ({ ...props }) => {
       },
    ];
 
-   const HeadingTag = props.headingLevel;
+   const HeadingTag = headingLevel;
 
    return (
       <Background
-         className={`${props.className ? props.className : ""}`}
+         className={`${className || ""}`}
          backgroundImages={backgroundImages}
          // backgroundColor=""
          // backgroundSize=""

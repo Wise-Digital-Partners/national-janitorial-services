@@ -1,18 +1,28 @@
 import React from "react";
 import { BgImage } from "gbimage-bridge";
 
-const Hero = ({ ...props }) => (
+const Hero = ({
+   className,
+   padding,
+   backgroundImages,
+   backgroundSize,
+   backgroundPosition,
+   backgroundRepeat,
+   textAlignment,
+   textMaxWidth,
+   children,
+}) => (
    <BgImage
-      className={`${props.padding} ${props.className}`}
-      image={props.backgroundImages}
+      className={`${padding} ${className}`}
+      image={backgroundImages}
       style={{
-         backgroundSize: props.backgroundSize ? props.backgroundSize : "cover",
-         backgroundPosition: props.backgroundPosition ? props.backgroundPosition : "center",
-         backgroundRepeat: props.backgroundRepeat ? props.backgroundRepeat : "no-repeat",
+         backgroundSize: backgroundSize || "cover",
+         backgroundPosition: backgroundPosition || "center",
+         backgroundRepeat: backgroundRepeat || "no-repeat",
       }}
    >
       <div className="container">
-         <header className={`${props.textAlignment} ${props.textMaxWidth}`}>{props.children}</header>
+         <header className={`${textAlignment} ${textMaxWidth}`}>{children}</header>
       </div>
    </BgImage>
 );

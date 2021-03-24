@@ -1,10 +1,11 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import PropTypes from "prop-types";
 
 import Header from "../Header/Header";
 import CardsWithZoom from "../Cards/CardsWithZoom";
 
-const Services = ({ ...props }) => {
+const Services = ({ className, headingLevel, cardHeadingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          janitorialServices: file(relativePath: { eq: "repeating/services/janitorial-services.jpg" }) {
@@ -46,68 +47,74 @@ const Services = ({ ...props }) => {
          image: data.janitorialServices.childImageSharp.gatsbyImageData,
          heading: "Janitorial Services",
          text: "Get the regular cleaning your workspace demands with the highest standards of cleanliness.",
-         link: "/janitorial-services/",
+         link: "/janitorial-cleaning-company/",
       },
       {
          id: 2,
          image: data.commercialCleaning.childImageSharp.gatsbyImageData,
          heading: "Commercial Cleaning",
          text: "From warehouses to other workspaces, we offer first-class facility cleaning and management.",
-         link: "#",
+         link: "/commercial-cleaning-company/",
       },
       {
          id: 3,
          image: data.officeCleaning.childImageSharp.gatsbyImageData,
          heading: "Office Cleaning",
          text: "Whether your office is big or small, we’ll keep your space safe for your employees.",
-         link: "#",
+         link: "/office-cleaning-services/",
       },
       {
          id: 4,
          image: data.porterServices.childImageSharp.gatsbyImageData,
          heading: "Porter Service(s)",
          text: "Perfect for HOAs, nursing homes, care providers, event spaces, hotels, and much more.",
-         link: "#",
+         link: "/day-porter-services/",
       },
       {
          id: 5,
          image: data.deepCleaning.childImageSharp.gatsbyImageData,
          heading: "Deep Cleaning",
          text: "We offer thorough, one-time cleaning efforts that we can repeat as needed throughout the year.",
-         link: "#",
+         link: "/deep-cleaning-services/",
       },
       {
          id: 6,
          image: data.disinfectatServices.childImageSharp.gatsbyImageData,
          heading: "Disinfectant Services",
          text: "Bring your workspace into cleanliness and compliance with professional disinfectant services.",
-         link: "#",
+         link: "/disinfection-services/",
       },
    ];
 
    return (
-      <section className={`${props.className ? props.className : ""}`}>
+      <section className={`${className || ""}`}>
          <div className="container">
             <Header
-               headingLevel={props.headingLevel}
+               headingLevel={headingLevel}
                heading="Other Commercial Cleaning Services"
                subtext=""
                subtextSize=""
                textAlignment="text-center mx-auto"
-               maxWidth="max-w-3xl"
-               margin="mb-12 md:mb-16"
+               textMaxWidth="max-w-3xl"
+               textMargin="mb-12 md:mb-16"
             />
 
             <CardsWithZoom
-               columns="grid-cols-1 md:grid-cols-3"
+               columnCount="grid-cols-1 md:grid-cols-3"
                columnGap="gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10"
                cards={cardContent}
-               cardHeadingLevel={props.cardHeadingLevel}
+               cardHeadingLevel={cardHeadingLevel}
                cardHeadingSize="text-3xl"
             />
          </div>
       </section>
    );
+};
+
+Services.propTypes = {
+   className: PropTypes.string,
+   headingLevel: PropTypes.string,
+   cardHeadingLevel: PropTypes.string.isRequired,
 };
 
 export default Services;

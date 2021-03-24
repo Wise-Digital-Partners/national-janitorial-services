@@ -4,7 +4,7 @@ import React, { useState, useLayoutEffect } from "react";
 // import UtilityNav from "../Header/UtilityNav";
 import MainNav from "../Navigation/MainNav";
 
-const Header = ({ ...props }) => {
+const Header = ({ headerStyle, headerLinkColor, headerHasBorder }) => {
    // determine if page has scrolled
    const [scrolled, setScrolled] = useState(false);
 
@@ -52,10 +52,10 @@ const Header = ({ ...props }) => {
             offcanvasNavigation.style.top = mainNavigation.offsetHeight + "px";
 
             // recalculate #body-content offset top on scroll
-            if (props.headerStyle === "overlap") {
+            if (headerStyle === "overlap") {
                bodyContent.style.marginTop = "0px";
                bodyContent.style.paddingTop = null;
-            } else if (props.headerStyle === "standard") {
+            } else if (headerStyle === "standard") {
                bodyContent.style.paddingTop = mainNavigation.offsetHeight + "px";
                bodyContent.style.marginTop = null;
             }
@@ -63,10 +63,10 @@ const Header = ({ ...props }) => {
             setScrolled(false);
 
             // recalculate #body-content offset top on scroll
-            if (props.headerStyle === "overlap") {
+            if (headerStyle === "overlap") {
                // bodyContent.style.marginTop = "-" + mainNavigation.offsetHeight + "px";
                bodyContent.style.paddingTop = null;
-            } else if (props.headerStyle === "standard") {
+            } else if (headerStyle === "standard") {
                bodyContent.style.paddingTop = null;
                bodyContent.style.marginTop = null;
             }
@@ -82,18 +82,13 @@ const Header = ({ ...props }) => {
          window.removeEventListener("resize", handleResize);
          window.removeEventListener("load", handleLoad);
       };
-   }, [scrolled, props.headerStyle]);
+   }, [scrolled, headerStyle]);
 
    return (
       <div id="site-navigation" className="relative z-30">
          {/* <PromoBar /> */}
          {/* <UtilityNav /> */}
-         <MainNav
-            scrolled={scrolled}
-            headerStyle={props.headerStyle}
-            headerLinkColor={props.headerLinkColor}
-            headerHasBorder={props.headerHasBorder}
-         />
+         <MainNav scrolled={scrolled} headerStyle={headerStyle} headerLinkColor={headerLinkColor} headerHasBorder={headerHasBorder} />
       </div>
    );
 };

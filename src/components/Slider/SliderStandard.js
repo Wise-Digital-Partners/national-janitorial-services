@@ -32,12 +32,12 @@ const StyledSlider = styled.div`
    } */
 `;
 
-const Slider = ({ ...props }) => {
+const Slider = ({ slideIndex, children }) => {
    const slider = useRef();
 
    useEffect(() => {
-      slider.current.slickGoTo(props.slideIndex);
-   }, [props.slideIndex]);
+      slider.current.slickGoTo(slideIndex);
+   }, [slideIndex]);
 
    function PrevArrow(props) {
       const { onClick } = props;
@@ -81,7 +81,7 @@ const Slider = ({ ...props }) => {
    return (
       <StyledSlider>
          <Slick {...sliderSettings} ref={slider}>
-            {props.children}
+            {children}
          </Slick>
       </StyledSlider>
    );

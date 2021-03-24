@@ -23,23 +23,16 @@ const Page = ({ data }) => {
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
-            // backgroundSize=""
-            // backgroundPosition=""
-            // backgroundRepeat=""
             backgroundFixed={true}
             imageMaxHeight="468px"
-            padding="pt-6 md:pt-14"
-            headingLevel="h1"
             heading="Hospital Cleaning Services"
             subtext="Thorough sanitation and disinfection for your hospital and medical facility."
-            subtextSize="text-2xl-mobile md:text-2xl"
-            // textAlignment=""
-            textMaxWidth="max-w-3xl"
+            textMaxWidth="max-w-4xl"
          />
 
          <section className="py-20 md:py-32">
             <div className="container">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-20 items-center">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
                      <h2>Keeping Long Beach Businesses Clean</h2>
                      <p className="mb-0">
@@ -71,7 +64,7 @@ const Page = ({ data }) => {
                      <ul className="styled-list">
                         <li>Glass Surfaces (partitions, doors, windows)</li>
                         <li>Kitchens & Break Rooms</li>
-                        <li>Lobbies </li>
+                        <li>Lobbies</li>
                         <li>Restrooms</li>
                      </ul>
                   </div>

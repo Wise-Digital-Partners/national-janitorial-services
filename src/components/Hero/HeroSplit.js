@@ -52,31 +52,45 @@ const StyledBackgroundImage = styled(BgImage)`
    }};
 `;
 
-const Hero = ({ ...props }) => {
+const Hero = ({
+   className,
+   padding,
+   hasContainer,
+   textWidth,
+   imageWidth,
+   imageAlignment,
+   textAlignment,
+   image,
+   imageMaxHeight,
+   backgroundSize,
+   backgroundPosition,
+   backgroundRepeat,
+   children,
+}) => {
    return (
       <StyledHero
-         className={`${props.padding} ${props.className}`}
-         hasContainer={props.hasContainer}
-         textWidth={props.textWidth}
-         imageWidth={props.imageWidth}
-         imageAlignment={props.imageAlignment}
+         className={`${padding} ${className}`}
+         hasContainer={hasContainer}
+         textWidth={textWidth}
+         imageWidth={imageWidth}
+         imageAlignment={imageAlignment}
       >
          <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-10 lg:gap-x-20 items-center">
-               <header className={`text-wrapper ${props.textAlignment}`}>{props.children}</header>
+               <header className={`text-wrapper ${textAlignment}`}>{children}</header>
                <div className="image-wrapper">
-                  {props.hasContainer ? (
-                     <GatsbyImage image={props.image} />
+                  {hasContainer ? (
+                     <GatsbyImage image={image} />
                   ) : (
                      <StyledBackgroundImage
                         className="h-75vw md:w-50vw transform"
-                        image={props.image}
-                        imageAlignment={props.imageAlignment}
-                        imageMaxHeight={props.imageMaxHeight}
+                        image={image}
+                        imageAlignment={imageAlignment}
+                        imageMaxHeight={imageMaxHeight}
                         style={{
-                           backgroundSize: props.backgroundSize ? props.backgroundSize : "cover",
-                           backgroundPosition: props.backgroundPosition ? props.backgroundPosition : "center",
-                           backgroundRepeat: props.backgroundRepeat ? props.backgroundRepeat : "no-repeat",
+                           backgroundSize: backgroundSize || "cover",
+                           backgroundPosition: backgroundPosition || "center",
+                           backgroundRepeat: backgroundRepeat || "no-repeat",
                         }}
                      />
                   )}

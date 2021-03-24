@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import ButtonUnderline from "../Button/ButtonUnderline";
 
-const Covid = ({ ...props }) => {
+const Covid = ({ className }) => {
    const data = useStaticQuery(graphql`
       {
          covideCleaning: file(relativePath: { eq: "industries/covid-cleaning.jpg" }) {
@@ -16,9 +16,9 @@ const Covid = ({ ...props }) => {
    `);
 
    return (
-      <section className={`${props.className ? props.className : ""}`}>
+      <section className={`${className || ""}`}>
          <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 lg:gap-x-20 gap-y-12 items-center">
                <div className="order-2 md:order-1">
                   <GatsbyImage image={data.covideCleaning.childImageSharp.gatsbyImageData} />
                </div>

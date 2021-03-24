@@ -17,29 +17,43 @@ const StyledBackgroundImage = styled(BgImage)`
    }
 `;
 
-const Hero = ({ ...props }) => (
-   <section className={`${props.className} ${props.padding}`}>
+const Hero = ({
+   className,
+   headingLevel,
+   heading,
+   subtext,
+   subtextSize,
+   textAlignment,
+   textMaxWidth,
+   textMargin,
+   image,
+   backgroundFixed,
+   imageMaxHeight,
+   backgroundSize,
+   backgroundPosition,
+   backgroundRepeat,
+}) => (
+   <section className={`${className || "pt-6 md:pt-14"}`}>
       <div className="container">
          <Header
-            headingLevel={props.headingLevel}
-            headingClassName={props.headingClassName}
-            heading={props.heading}
-            subtext={props.subtext}
-            subtextSize={props.subtextSize}
-            textAlignment={props.textAlignment}
-            maxWidth={props.maxWidth}
-            margin={props.margin}
+            headingLevel={headingLevel || "h1"}
+            heading={heading}
+            subtext={subtext}
+            subtextSize={subtextSize || "text-2xl-mobile md:text-2xl"}
+            textAlignment={textAlignment || "text-left"}
+            textMaxWidth={textMaxWidth || ""}
+            textMargin={textMargin || "mb-8"}
          />
       </div>
       <StyledBackgroundImage
          className="h-50vw"
-         image={props.image}
-         backgroundFixed={props.backgroundFixed}
-         imageMaxHeight={props.imageMaxHeight}
+         image={image}
+         backgroundFixed={backgroundFixed}
+         imageMaxHeight={imageMaxHeight}
          style={{
-            backgroundSize: props.backgroundSize ? props.backgroundSize : "cover",
-            backgroundPosition: props.backgroundPosition ? props.backgroundPosition : "center",
-            backgroundRepeat: props.backgroundRepeat ? props.backgroundRepeat : "no-repeat",
+            backgroundSize: backgroundSize || "cover",
+            backgroundPosition: backgroundPosition || "center",
+            backgroundRepeat: backgroundRepeat || "no-repeat",
          }}
       ></StyledBackgroundImage>
    </section>

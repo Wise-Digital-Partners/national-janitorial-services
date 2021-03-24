@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const About = ({ ...props }) => {
+const About = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          about: file(relativePath: { eq: "repeating/about/about.png" }) {
@@ -13,10 +13,10 @@ const About = ({ ...props }) => {
       }
    `);
 
-   const HeadingTag = props.headingLevel;
+   const HeadingTag = headingLevel;
 
    return (
-      <section className={`${props.className ? props.className : ""}`}>
+      <section className={`${className || ""}`}>
          <div className="container">
             <div className="grid md:grid-cols-2 gap-y-10 gap-x-18 items-center">
                <div>
@@ -33,59 +33,59 @@ const About = ({ ...props }) => {
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/hoa-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               HOA
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/dispensary-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Dispensaries
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/commercial-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Private Offices
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/office-building-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Office Buildings
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/church-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Churches
                            </a>
                         </li>
                      </ul>
                      <ul>
                         <li className="mb-3">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/school-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Schools
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/car-dealership-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Car Dealerships
                            </a>
                         </li>
-                        <li className="mb-4">
+                        {/* <li className="mb-4">
                            <a href="# " className="text-gray-700 font-bold underline uppercase">
                               Vehicle Maintenance Lots
                            </a>
-                        </li>
+                        </li> */}
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/movie-theater-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Movie Theaters
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/gym-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Gyms & Fitness
                            </a>
                         </li>
                         <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
+                           <a href="/medical-dental-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Medical & Dental
                            </a>
                         </li>

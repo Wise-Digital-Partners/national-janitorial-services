@@ -12,24 +12,24 @@ const StyledBlogPost = styled.div`
    }
 `;
 
-const Blog = ({ featuredImage, ...props }) => {
+const Blog = ({ featuredImage, title, category, date, content }) => {
    return (
       <div>
          <section className={`pt-10 md:pt-12 pb-12 md:pb-18`}>
             <div className="container">
                <header className="mb-12 md:mb-14 max-w-3xl mx-auto">
-                  <h1>{props.title}</h1>
+                  <h1>{title}</h1>
                   <div className="font-heading text-gray-700">
-                     <span className="font-bold">{props.category} /</span> <span className="text-gray-700 text-opacity-50"> {props.date}</span>
+                     <span className="font-bold">{category} /</span> <span className="text-gray-700 text-opacity-50"> {date}</span>
                   </div>
                </header>
             </div>
 
-            <GatsbyImage image={featuredImage} alt={props.title} />
+            <GatsbyImage image={featuredImage} alt={title} />
 
             <div className="container">
                <div className="max-w-3xl mx-auto mt-12 md:mt-16">
-                  <StyledBlogPost dangerouslySetInnerHTML={{ __html: props.content }} />
+                  <StyledBlogPost dangerouslySetInnerHTML={{ __html: content }} />
                </div>
             </div>
          </section>

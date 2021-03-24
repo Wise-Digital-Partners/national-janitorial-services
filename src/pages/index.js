@@ -34,21 +34,16 @@ const Page = ({ data }) => {
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}
-            // backgroundSize=""
-            // backgroundPosition=""
-            // backgroundRepeat=""
             padding="pt-48 md:pt-64 pb-12 md:pb-64"
             textAlignment="text-left"
-            textMaxWidth="max-w-3xl"
+            textMaxWidth="max-w-4xl"
          >
-            <header className="relative">
-               <p className="text-mobile-6xl md:text-6xl font-display font-black text-gray-800 uppercase mb-4">Reliable. Local. Professional.</p>
-               <p className="text-mobile-2xl md:text-2xl text-gray-900 mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
-               <div className="grid md:flex gap-y-6 md:items-center">
-                  <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
-                  <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" />
-               </div>
-            </header>
+            <p className="text-mobile-6xl md:text-6xl font-display font-black text-gray-800 uppercase mb-4">Reliable. Local. Professional.</p>
+            <p className="text-mobile-2xl md:text-2xl text-gray-900 mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
+            <div className="grid md:flex gap-y-6 md:items-center">
+               <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
+               <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" />
+            </div>
          </HeroFullWidth>
 
          <section className="py-20 md:py-32">

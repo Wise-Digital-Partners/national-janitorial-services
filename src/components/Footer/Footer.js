@@ -39,25 +39,25 @@ const Footer = () => {
 
                   <ul className="flex flex-col md:flex-row items-center">
                      <li className="mr-6">
-                        <a href="# " className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/commercial-cleaning-services/" className="font-heading text-white text-xl font-bold uppercase">
                            Services
                         </a>
                      </li>
                      <li className="mr-6">
-                        <a href="# " className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/industries-we-serve/" className="font-heading text-white text-xl font-bold uppercase">
                            Facilities
                         </a>
                      </li>
                      <li className="mr-6">
-                        <a href="# " className="font-heading text-white text-xl font-bold uppercase">
+                        <a href="/about/" className="font-heading text-white text-xl font-bold uppercase">
                            About
                         </a>
                      </li>
-                     <li className="mr-6">
+                     {/* <li className="mr-6">
                         <a href="# " className="font-heading text-white text-xl font-bold uppercase">
                            Blog
                         </a>
-                     </li>
+                     </li> */}
                      <li>
                         <ButtonSolid data="contact-modal" text="Contact Us" />
                      </li>
@@ -93,32 +93,32 @@ const Footer = () => {
                                  }`}
                               >
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/san-diego-janitorial-services/" className="hover:text-gray-800">
                                        San Diego
                                     </a>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/orange-county-janitorial-services/" className="hover:text-gray-800">
                                        Orange County
                                     </a>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/long-beach-janitorial-services/" className="hover:text-gray-800">
                                        Long Beach
                                     </a>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/los-angeles-janitorial-services/" className="hover:text-gray-800">
                                        Los Angeles
                                     </a>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/phoenix-janitorial-services/" className="hover:text-gray-800">
                                        Phoenix
                                     </a>
                                  </li>
                                  <li className="whitespace-nowrap">
-                                    <a href="# " className="hover:text-gray-800">
+                                    <a href="/denver-janitorial-services/" className="hover:text-gray-800">
                                        Denver
                                     </a>
                                  </li>
@@ -142,10 +142,20 @@ const Footer = () => {
                   </div>
 
                   <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-22 md:mb-0">
-                     <a href="# " target="_blank" rel="noopener noreferrer" className="mr-6 transition-all duration-300 ease-linear">
+                     <a
+                        href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mr-6 transition-all duration-300 ease-linear"
+                     >
                         <i className="fab fa-yelp text-2xl text-white"></i>
                      </a>
-                     <a href="# " target="_blank" rel="noopener noreferrer" className="transition-all duration-300 ease-linear">
+                     <a
+                        href="https://www.facebook.com/nationaljanitorialservices"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-all duration-300 ease-linear"
+                     >
                         <i className="fab fa-facebook-f text-2xl text-white"></i>
                      </a>
                   </div>

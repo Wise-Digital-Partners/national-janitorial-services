@@ -45,7 +45,7 @@ const StyledSlider = styled.div`
    }
 `;
 
-const Testimonial = ({ ...props }) => {
+const Testimonial = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          backgroundDesktop: file(relativePath: { eq: "repeating/testimonials/background.jpg" }) {
@@ -74,11 +74,11 @@ const Testimonial = ({ ...props }) => {
       },
    ];
 
-   const HeadingTag = props.headingLevel;
+   const HeadingTag = headingLevel;
 
    return (
       <Background
-         className={`${props.className ? props.className : ""}`}
+         className={className}
          backgroundImages={backgroundImages}
          backgroundSize=""
          backgroundPosition=""

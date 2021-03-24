@@ -22,7 +22,7 @@ const StyledBurger = styled.button`
    }
 `;
 
-const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled, ...props }) => {
+const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled }) => {
    const isExpanded = offcanvasOpen ? true : false;
    return (
       <StyledBurger
@@ -33,7 +33,6 @@ const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled, ...pro
          onClick={() => setOffcanvasOpen(!offcanvasOpen)}
          headerStyle={headerStyle}
          scrolled={scrolled}
-         {...props}
       >
          <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />
          <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />

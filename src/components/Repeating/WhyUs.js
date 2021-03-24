@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "../Header/Header";
 
-const WhyUs = ({ ...props }) => {
+const WhyUs = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          icon1: file(relativePath: { eq: "repeating/why-us/icon-experienced.svg" }) {
@@ -22,16 +22,16 @@ const WhyUs = ({ ...props }) => {
    `);
 
    return (
-      <section className={`${props.className ? props.className : ""}`}>
+      <section className={`${className || ""}`}>
          <div className="container">
             <Header
-               headingLevel={props.headingLevel}
+               headingLevel={headingLevel}
                heading="The NJS Difference"
                subtext="Find out what makes us Long Beach’s top cleaning company."
                subtextSize="text-xl md:text-2xl"
                textAlignment="md:text-center md:mx-auto"
-               maxWidth="max-w-3xl"
-               margin="mb-12 md:mb-16"
+               textMaxWidth="max-w-3xl"
+               textMargin="mb-12 md:mb-16"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24 gap-y-12 md:gap-y-16">
                <div>

@@ -5,18 +5,21 @@ import { Helmet } from "react-helmet";
 import Header from "./Navigation/Header";
 import Footer from "./Footer/Footer";
 
-const Layout = ({ ...props }) => {
+const Layout = ({ children, headerStyle, headerLinkColor, headerHasBorder }) => {
    return (
       <div>
          <Helmet></Helmet>
-         <Header headerStyle={props.headerStyle} headerLinkColor={props.headerLinkColor} headerHasBorder={props.headerHasBorder} />
-         <main id="body-content">{props.children}</main>
+         <Header headerStyle={headerStyle} headerLinkColor={headerLinkColor} headerHasBorder={headerHasBorder} />
+         <main id="body-content">{children}</main>
          <Footer />
       </div>
    );
 };
 
 Layout.propTypes = {
+   headerStyle: PropTypes.string.isRequired,
+   headerLinkColor: PropTypes.string,
+   headerHasBorder: PropTypes.bool,
    children: PropTypes.node.isRequired,
 };
 
