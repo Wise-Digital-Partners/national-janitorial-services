@@ -106,6 +106,7 @@ const Page = ({ data }) => {
          <section className="pt-24 md:pt-36 pb-20 md:pb-26">
             <div className="container">
                <Header
+                  headingLevel="h1"
                   heading="Industries We Serve"
                   subtext="National Janitorial Services is one professional cleaning company serving many industries. We keep businesses in the following lines of work spotless and safe for staff and customers."
                   subtextSize=""
