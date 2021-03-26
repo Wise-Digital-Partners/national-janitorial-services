@@ -13,7 +13,7 @@ module.exports = {
       },
       fontFamily: {
          heading: ["Barlow, sans-serif"],
-         display: ["Impact, sans-serif"],
+         // display: ["Impact, sans-serif"],
          body: ["Barlow, sans-serif"],
       },
       extend: {
