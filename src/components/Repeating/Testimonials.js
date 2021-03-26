@@ -58,9 +58,14 @@ const Testimonial = ({ className, headingLevel }) => {
                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
-         google: file(relativePath: { eq: "repeating/testimonials/google.png" }) {
+         google: file(relativePath: { eq: "repeating/testimonials/yelp.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 95, quality: 100)
+            }
+         }
+         yelp: file(relativePath: { eq: "reviews/yelp.png" }) {
+            childImageSharp {
+               gatsbyImageData(layout: FIXED, width: 70, quality: 100)
             }
          }
       }
@@ -94,14 +99,15 @@ const Testimonial = ({ className, headingLevel }) => {
                   <div>
                      <blockquote>
                         <q>
-                           Proin quis ullamcorper nulla iaculis ut mi praesent eu pharetra nullam nisl quam gravida vitae risus, magnis enim
-                           condimentum viverra dui fringilla varius tempor volutpat orci tristique ipsum varius tempor sed aliquet id faucibus sodales
-                           pellentesque sit sapien tortor sit aenean ipsum turpis sit tincidunt
+                           My law firm hired National Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with
+                           COVID. We called several businesses for pricing and availability for professional sanitation. National was the best pricing
+                           and was available that same day. They were great. Two guys arrived, both had sanitation equipment and sprayed down the
+                           entire office in less than an hour.
                         </q>
                         <footer>
                            <span>
-                              <cite>Jane Doe</cite>
-                              <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                              <cite>Hilary V.</cite>
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -109,14 +115,28 @@ const Testimonial = ({ className, headingLevel }) => {
                   <div>
                      <blockquote>
                         <q>
-                           Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat
-                           vivamus at augue eget arcu dictum varius duis at consectetur lorem donec massa sapien faucibus et molestie ac feugiat sed
-                           lectus vestibulum mattis ullamcorper velit sed ullamcorper
+                           I hired National Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety
+                           precaution for my tenants. Anthony went above and beyond my expectations from scheduling, pricing and completing the job. I
+                           highly recommend National to anyone needing these types of services, they did an excellent job!
                         </q>
                         <footer>
                            <span>
-                              <cite>Jack Doe</cite>
-                              <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                              <cite>Maggie V.</cite>
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                           </span>
+                        </footer>
+                     </blockquote>
+                  </div>
+                  <div>
+                     <blockquote>
+                        <q>
+                           National janitorial was very professional and responsive when we needed them the most. We will recommend them to anyone
+                           looking for janitorial services.
+                        </q>
+                        <footer>
+                           <span>
+                              <cite>Carlos A.</cite>
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
