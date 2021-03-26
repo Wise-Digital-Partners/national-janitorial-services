@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="Car Dealership Cleaning Services"
             subtext="Keeping your dealership fresher than a brand new car. "
             textMaxWidth="max-w-4xl"

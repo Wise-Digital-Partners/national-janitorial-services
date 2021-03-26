@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="Bar & Nightclub Cleaning Services"
             subtext="Keep the good times flowing with effective sanitation and disinfection."
             textMaxWidth="max-w-4xl"

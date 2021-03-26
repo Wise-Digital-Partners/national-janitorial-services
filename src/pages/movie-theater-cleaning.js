@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="Movie Theater Cleaning Services"
             subtext="Thorough cleaning for a better cinematic experience."
             textMaxWidth="max-w-4xl"

@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="Church Cleaning Services"
             subtext="Helping keep your sacred space and community safe."
             textMaxWidth="max-w-4xl"

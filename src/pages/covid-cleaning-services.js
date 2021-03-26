@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="COVID-19 Cleaning"
             subtext="Our COVID cleaning services help Long Beach businesses stop the spread."
             textMaxWidth="max-w-4xl"

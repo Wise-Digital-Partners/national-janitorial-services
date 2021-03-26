@@ -6,9 +6,6 @@ import tw from "twin.macro";
 import Header from "../Header/Header";
 
 const StyledBackgroundImage = styled(BgImage)`
-   max-height: ${({ imageMaxHeight }) => {
-      return imageMaxHeight;
-   }};
    @media (min-width: 1024px) {
       &:before,
       &:after {
@@ -45,17 +42,18 @@ const Hero = ({
             textMargin={textMargin || "mb-8"}
          />
       </div>
-      <StyledBackgroundImage
-         className="h-50vw"
-         image={image}
-         backgroundFixed={backgroundFixed}
-         imageMaxHeight={imageMaxHeight}
-         style={{
-            backgroundSize: backgroundSize || "cover",
-            backgroundPosition: backgroundPosition || "center",
-            backgroundRepeat: backgroundRepeat || "no-repeat",
-         }}
-      ></StyledBackgroundImage>
+      <div className={`h-50vw ${imageMaxHeight}`}>
+         <StyledBackgroundImage
+            className="h-full"
+            image={image}
+            backgroundFixed={backgroundFixed}
+            style={{
+               backgroundSize: backgroundSize || "cover",
+               backgroundPosition: backgroundPosition || "center",
+               backgroundRepeat: backgroundRepeat || "no-repeat",
+            }}
+         ></StyledBackgroundImage>
+      </div>
    </section>
 );
 

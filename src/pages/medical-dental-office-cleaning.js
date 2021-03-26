@@ -24,7 +24,7 @@ const Page = ({ data }) => {
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
-            imageMaxHeight="468px"
+            imageMaxHeight="max-h-[468px]"
             heading="Medical & Dental Office Cleaning Services"
             subtext="Critical cleaning for your healthcare facility."
             textMaxWidth="max-w-4xl"

@@ -36,7 +36,7 @@ const Covid = ({ className, headingLevel }) => {
          // backgroundRepeat=""
          padding="pt-48 md:pt-36 pb-12 md:pb-64"
       >
-         <header className="max-w-2xl">
+         <header className="max-w-xl">
             <HeadingTag className="text-white">COVID Cleaning Services</HeadingTag>
             <p className="text-white mb-12">
                Stop the spread and protect your business with our specialized COVID cleaning services. We use Multi-Clean Chlorinated Disinfecting

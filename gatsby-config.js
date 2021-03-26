@@ -83,6 +83,7 @@ module.exports = {
       {
          resolve: `gatsby-plugin-purgecss`,
          options: {
+            develop: true,
             tailwind: true,
             purgeOnly: ["node_modules/@fortawesome/fontawesome-pro/css/all.min.css"],
          },

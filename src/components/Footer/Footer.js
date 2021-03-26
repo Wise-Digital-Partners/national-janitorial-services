@@ -30,30 +30,30 @@ const Footer = () => {
 
    return (
       <div>
-         <footer className="bg-gray-800 pt-24 md:pt-40 pb-6 md:pb-6 text-center md:text-left">
+         <footer className="bg-gray-800 pt-20 md:pt-40 pb-6 text-center md:text-left">
             <div className="container">
-               <div className="md:flex md:justify-between md-24 md:mb-40 whitespace-nowrap">
-                  <div className="mb-16 md:mb-0">
-                     <img src={data.logo.publicURL} alt="Logo" width="233" className="mx-auto md:mx-0" />
+               <div className="md:flex md:justify-between mb-12 md:mb-40 whitespace-nowrap">
+                  <div className="mb-12 md:mb-0">
+                     <img src={data.logo.publicURL} alt="Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
                   </div>
 
                   <ul className="flex flex-col md:flex-row items-center">
-                     <li className="mr-6">
+                     <li className="mb-5 md:mb-0 md:mr-6">
                         <a href="/commercial-cleaning-services/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Services
                         </a>
                      </li>
-                     <li className="mr-6">
+                     <li className="mb-5 md:mb-0 md:mr-6">
                         <a href="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Facilities
                         </a>
                      </li>
-                     <li className="mr-6">
+                     <li className="mb-5 md:mb-0 md:mr-6">
                         <a href="/about/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            About
                         </a>
                      </li>
-                     {/* <li className="mr-6">
+                     {/* <li className="mb-5 md:mb-0 md:mr-6">
                         <a href="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
                         </a>
@@ -67,13 +67,13 @@ const Footer = () => {
                <div className="flex flex-wrap md:flex-nowrap flex-col md:flex-row justify-items-center md:justify-between items-center">
                   <div className="md:flex md:items-center order-2 md:order-1">
                      <ul className="flex items-center flex-col md:flex-row">
-                        <li className="text-sm text-white md:mr-6">© {getYear()} National Janitorial Services </li>
-                        <li className="text-sm md:mr-6">
+                        <li className="text-sm text-white mb-1 md:mr-6">© {getYear()} National Janitorial Services </li>
+                        <li className="text-sm mb-1 md:mr-6">
                            <a href="# " className="text-white">
                               Privacy Policy
                            </a>
                         </li>
-                        <li className="text-sm md:mr-6">
+                        <li className="text-sm mb-1 md:mr-6">
                            <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
                               <span className="text-white flex items-center justify-between">
                                  Cities
@@ -137,7 +137,7 @@ const Footer = () => {
                      </ul>
                   </div>
 
-                  <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-22 md:mb-0">
+                  <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-12 md:mb-0">
                      <a
                         href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
                         target="_blank"

@@ -83,7 +83,7 @@ const Testimonial = ({ className, headingLevel }) => {
          backgroundSize=""
          backgroundPosition=""
          backgroundRepeat=""
-         padding="pt-48 md:pt-24 pb-12 md:pb-16"
+         padding="pt-20 md:pt-24 pb-12 md:pb-16"
       >
          <StyledSlider className="relative">
             <div className="max-w-3xl mx-auto text-center">

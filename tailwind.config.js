@@ -12,9 +12,9 @@ module.exports = {
          },
       },
       fontFamily: {
-         heading: ['"Barlow", sans-serif'],
-         // 'display': [''],
-         body: ['"Barlow", sans-serif'],
+         heading: ["Barlow, sans-serif"],
+         display: ["Impact, sans-serif"],
+         body: ["Barlow, sans-serif"],
       },
       extend: {
          animation: {
@@ -53,7 +53,7 @@ module.exports = {
             "4xl": ["1.875rem", "2.25rem"],
             "5xl": ["2.25rem", "2.688rem"],
             "6xl": ["2.625rem", "3.125rem"],
-            // "7xl": "",
+            "7xl": ["3rem", "3.688rem"],
             // "8xl": "",
             "mobile-lg": ["1.125rem", "1.375rem"],
             "mobile-xl": ["1.25rem", "1.5rem"],
@@ -62,7 +62,7 @@ module.exports = {
             "mobile-4xl": ["1.875rem", "2.25rem"],
             "mobile-5xl": ["2.25rem", "2.688rem"],
             "mobile-6xl": ["2.625rem", "3.125rem"],
-            // "mobile-7xl": "",
+            "mobile-7xl": ["3rem", "3.688rem"],
             // "mobile-8xl": "",
          },
          height: {

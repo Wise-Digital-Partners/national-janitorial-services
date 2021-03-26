@@ -47,9 +47,6 @@ const StyledHero = styled.section`
 
 const StyledBackgroundImage = styled(BgImage)`
    ${({ imageAlignment }) => (imageAlignment === "left" ? tw`md:-translate-x-full md:left-full` : tw`md:translate-x-0`)};
-   max-height: ${({ imageMaxHeight }) => {
-      return imageMaxHeight;
-   }};
 `;
 
 const Hero = ({
@@ -78,12 +75,12 @@ const Hero = ({
          <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-10 lg:gap-x-20 items-center">
                <header className={`text-wrapper ${textAlignment}`}>{children}</header>
-               <div className="image-wrapper">
+               <div className={`image-wrapper h-75vw ${imageMaxHeight}`}>
                   {hasContainer ? (
                      <GatsbyImage image={image} />
                   ) : (
                      <StyledBackgroundImage
-                        className="h-75vw md:w-50vw transform"
+                        className="h-full md:w-50vw transform"
                         image={image}
                         imageAlignment={imageAlignment}
                         imageMaxHeight={imageMaxHeight}
