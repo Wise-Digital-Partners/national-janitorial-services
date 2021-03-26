@@ -6,11 +6,9 @@ import tw from "twin.macro";
 import Header from "../Header/Header";
 
 const StyledBackgroundImage = styled(BgImage)`
-   @media (min-width: 1024px) {
-      &:before,
-      &:after {
-         ${({ backgroundFixed }) => backgroundFixed && tw`bg-fixed`};
-      }
+   &:before,
+   &:after {
+      ${({ backgroundFixed }) => backgroundFixed && tw`lg:bg-fixed`};
    }
 `;
 
