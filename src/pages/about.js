@@ -66,7 +66,7 @@ const Page = ({ data }) => {
             </section>
          </div>
 
-         <section className="pb-20 md:pb-32">
+         <section className="pb-16 md:pb-32">
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-3xl mx-auto text-center">
                   <div>
@@ -86,9 +86,9 @@ const Page = ({ data }) => {
 
          <Testimonials headingLevel="h2" />
 
-         <Clients className="pt-20 md:pt-32 mb-20 md:mb-32" headingLevel="h2" />
+         <Clients className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
 
-         <WhyUs className="pb-20 md:pb-32" headingLevel="h2" />
+         <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>

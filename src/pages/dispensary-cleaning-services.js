@@ -30,7 +30,7 @@ const Page = ({ data }) => {
             textMaxWidth="max-w-4xl"
          />
 
-         <section className="py-20 md:py-32">
+         <section className="py-16 md:py-32">
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
@@ -76,13 +76,13 @@ const Page = ({ data }) => {
             </div>
          </section>
 
-         <CovidSplit className="pt-20 md:pt-32 mb-20 md:mb-32" />
+         <CovidSplit className="pt-16 md:pt-32 mb-16 md:mb-32" />
 
-         <Clients className="pb-20 md:pb-32" headingLevel="h2" />
+         <Clients className="pb-16 md:pb-32" headingLevel="h2" />
 
          <Testimonials headingLevel="h2" />
 
-         <WhyUs className="py-20 md:py-32" headingLevel="h2" />
+         <WhyUs className="py-16 md:py-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>

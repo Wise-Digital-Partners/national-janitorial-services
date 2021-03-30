@@ -39,11 +39,10 @@ const Covid = ({ headingLevel }) => {
          backgroundRepeat=""
          padding="pt-24 md:pt-44 pb-24 md:pb-44"
          textAlignment="text-center mx-auto"
-         textMaxWidth="max-w-5xl"
+         textMaxWidth="max-w-4xl"
       >
-         <HeadingTag className="font-black text-white mb-4">
-            Comprehensive Janitorial Services
-            <br className="hidden md:block" /> for Long Beach Businesses
+         <HeadingTag className="text-7xl font-display font-black uppercase text-white mb-4">
+            Comprehensive Janitorial Services for Long Beach Businesses
          </HeadingTag>
          <p className="text-mobile-xl md:text-xl leading-tight text-white mb-10">
             Experience the National Janitorial Services difference. Tell us about your cleaning needs today!

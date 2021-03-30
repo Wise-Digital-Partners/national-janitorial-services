@@ -103,7 +103,7 @@ const Page = ({ data }) => {
             // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
-         <section className="pt-24 md:pt-36 pb-20 md:pb-26">
+         <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">
                <Header
                   headingLevel="h1"

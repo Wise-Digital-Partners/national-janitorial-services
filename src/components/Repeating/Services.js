@@ -96,12 +96,12 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
                subtextSize=""
                textAlignment="text-center mx-auto"
                textMaxWidth="max-w-3xl"
-               textMargin="mb-12 md:mb-16"
+               textMargin="mb-14 md:mb-16"
             />
 
             <CardsWithZoom
                columnCount="grid-cols-1 md:grid-cols-3"
-               columnGap="gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-10"
+               columnGap="gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10"
                cards={cardContent}
                cardHeadingLevel={cardHeadingLevel}
                cardHeadingSize="text-3xl"

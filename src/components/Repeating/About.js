@@ -19,10 +19,10 @@ const About = ({ className, headingLevel }) => {
       <section className={`${className || ""}`}>
          <div className="container">
             <div className="grid md:grid-cols-2 gap-y-10 gap-x-18 items-center">
-               <div>
+               <div className="order-2 md:order-1">
                   <GatsbyImage image={data.about.childImageSharp.gatsbyImageData} alt="About" />
                </div>
-               <div>
+               <div className="order-1 md:order-2">
                   <HeadingTag>One Company, Many Industries</HeadingTag>
                   <p>No matter what industry you’re in, we have the experience and expertise to deliver. Here are some of the industries we serve.</p>
                   <div className="grid md:grid-cols-2 md:gap-x-10">

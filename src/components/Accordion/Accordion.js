@@ -23,7 +23,7 @@ const Accordion = ({ title, children }) => {
             {/* <i className={`${setIcon} text-black`} /> */}
          </button>
          <div ref={content} className="overflow-auto transition-all duration-300 ease-linear" style={{ maxHeight: `${setHeight}` }}>
-            <div className="submenu pt-7 pb-4">{children}</div>
+            <div className="submenu pt-8 pb-0">{children}</div>
          </div>
       </ul>
    );

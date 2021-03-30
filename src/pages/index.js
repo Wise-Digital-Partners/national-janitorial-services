@@ -34,23 +34,28 @@ const Page = ({ data }) => {
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}
-            padding="pt-48 md:pt-64 pb-12 md:pb-64"
+            padding="pt-40 md:pt-64 pb-18 md:pb-64 pr-6 md:mr-0"
             textAlignment="text-left"
             textMaxWidth="max-w-4xl"
          >
-            <p className="text-mobile-7xl md:text-7xl font-display font-black text-accent uppercase mb-2">Reliable. Local. Professional.</p>
-            <p className="text-mobile-3xl md:text-3xl text-accent mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
-            <div className="flex md:items-center">
+            <p className="text-mobile-7xl md:text-7xl font-display font-black text-accent uppercase mb-6 md:mb-2">
+               Reliable.
+               <br className="block md:hidden" /> Local.
+               <br className="block md:hidden" /> Professional.
+            </p>
+            <p className="text-xl md:text-3xl text-accent mb-7 md:mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
+            <div className="grid  gap-y-6 md:flex md:items-center">
                <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
-               <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" className="hidden md:inline-flex" />
+               <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" />
             </div>
          </HeroFullWidth>
 
-         <section className="py-20 md:py-32">
+         <section className="py-16 md:py-32">
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
                   <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage image={data.introDesktop.childImageSharp.gatsbyImageData} className="hidden md:block" />
+                     <GatsbyImage image={data.introMobile.childImageSharp.gatsbyImageData} className="md:hidden" />
                   </div>
                   <div className="md:col-end-13 md:col-span-7 order-1 md:order-2">
                      <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
@@ -67,15 +72,15 @@ const Page = ({ data }) => {
 
          <Covid headingLevel="h2" />
 
-         <Services className="py-20 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
+         <Services className="py-16 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
 
          <Testimonials headingLevel="h2" />
 
-         <About className="pt-20 md:pt-32 mb-20 md:mb-32" headingLevel="h2" />
+         <About className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
 
-         <Clients className="mb-20 md:mb-32" headingLevel="h2" />
+         <Clients className="mb-16 md:mb-32" headingLevel="h2" />
 
-         <WhyUs className="pb-20 md:pb-32" headingLevel="h2" />
+         <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
          <CTA headingLevel="h2" />
       </Layout>
@@ -84,17 +89,22 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
-      heroFullWidthDesktop: file(relativePath: { eq: "home/hero.jpg" }) {
+      heroFullWidthDesktop: file(relativePath: { eq: "home/1.0 Hero Desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      heroFullWidthMobile: file(relativePath: { eq: "home/hero.jpg" }) {
+      heroFullWidthMobile: file(relativePath: { eq: "home/1.0 Hero Mobile.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "home/intro.jpg" }) {
+      introDesktop: file(relativePath: { eq: "home/2.0 Intro Desktop.jpg" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      introMobile: file(relativePath: { eq: "home/2.0 Intro Mobile.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

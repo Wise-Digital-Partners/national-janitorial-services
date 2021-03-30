@@ -20,7 +20,7 @@ const Page = ({ data }) => {
             // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
-         <section className="pt-24 md:pt-36 pb-20 md:pb-26">
+         <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">
                <header className="text-center max-w-3xl mx-auto">
                   <h1>Our Commercial Cleaning Services </h1>
@@ -34,7 +34,7 @@ const Page = ({ data }) => {
 
          <Covid headingLevel="h2" />
 
-         <section className="pt-20 md:pt-32 mb-20 md:mb-32">
+         <section className="pt-16 md:pt-32 mb-16 md:mb-32">
             <div className="container">
                <h2>Payment Terms</h2>
                <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-12 lg:gap-x-20 gap-y-10">
@@ -110,7 +110,7 @@ const Page = ({ data }) => {
             </div>
          </section>
 
-         <Services className="pb-20 md:pb-32" cardHeadingLevel="h3" />
+         <Services className="pb-16 md:pb-32" cardHeadingLevel="h3" />
       </Layout>
    );
 };

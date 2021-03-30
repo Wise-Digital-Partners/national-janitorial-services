@@ -32,8 +32,8 @@ const Footer = () => {
       <div>
          <footer className="bg-gray-800 pt-20 md:pt-40 pb-6 text-center md:text-left">
             <div className="container">
-               <div className="md:flex md:justify-between mb-12 md:mb-40 whitespace-nowrap">
-                  <div className="mb-12 md:mb-0">
+               <div className="md:flex md:justify-between mb-22 md:mb-40 whitespace-nowrap">
+                  <div className="mb-22 md:mb-0">
                      <img src={data.logo.publicURL} alt="Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
                   </div>
 
@@ -67,13 +67,13 @@ const Footer = () => {
                <div className="flex flex-wrap md:flex-nowrap flex-col md:flex-row justify-items-center md:justify-between items-center">
                   <div className="md:flex md:items-center order-2 md:order-1">
                      <ul className="flex items-center flex-col md:flex-row">
-                        <li className="text-sm text-white mb-1 md:mr-6">© {getYear()} National Janitorial Services </li>
-                        <li className="text-sm mb-1 md:mr-6">
+                        <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} National Janitorial Services </li>
+                        <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <a href="# " className="text-white">
                               Privacy Policy
                            </a>
                         </li>
-                        <li className="text-sm mb-1 md:mr-6">
+                        <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
                               <span className="text-white flex items-center justify-between">
                                  Cities
@@ -137,7 +137,7 @@ const Footer = () => {
                      </ul>
                   </div>
 
-                  <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-12 md:mb-0">
+                  <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-18 md:mb-0">
                      <a
                         href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
                         target="_blank"

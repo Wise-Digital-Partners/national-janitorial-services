@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useOnClickOutside } from "../../hooks";
-
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 
@@ -107,15 +106,13 @@ const StyledMainNav = styled.nav`
    }
 
    #navigation-mobile {
-      ${tw`w-full text-center`}
       > li {
-         ${tw`relative`}
          &:not(:last-child) {
-            ${tw`mb-5`}
+            ${tw`mb-8`}
          }
          > a,
          button {
-            ${tw`font-heading text-mobile-4xl text-white font-bold no-underline transition-colors duration-300 ease-linear`}
+            ${tw`font-heading text-xl text-white font-bold uppercase no-underline text-left transition-colors duration-300 ease-linear`}
             &:hover {
                ${tw`text-primary`}
             }
@@ -123,18 +120,16 @@ const StyledMainNav = styled.nav`
                ${tw`outline-none`}
             }
          }
-         &.is-submenu-parent {
-            > a {
-               ${tw`block`}
-               /* &:after {
-                        content: '\f078';
-                        font-family: 'Font Awesome 5 Pro';
-                        ${tw`absolute top-0 right-0 font-normal text-black transition-all duration-300 ease-linear`}
-                    } */
-                    &.active {
-                  ${tw`text-primary`}/* &:after {
-                            content: '\f068';
-                        } */
+         .is-submenu-parent {
+            &:after {
+               content: "\f078";
+               font-family: "Font Awesome 5 Pro";
+               ${tw`absolute top-0 right-0 font-normal text-white transition-all duration-300 ease-linear`}
+            }
+            &.active {
+               ${tw`text-primary`}
+               &:after {
+                  content: "\f068";
                }
             }
          }
@@ -143,7 +138,7 @@ const StyledMainNav = styled.nav`
          ${tw`flex-col transition-all duration-300 ease-linear`}
          li {
             &:not(:last-child) {
-               ${tw`mb-4`}
+               ${tw`mb-1`}
             }
             a {
                ${tw`text-white`}
@@ -260,12 +255,10 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
             <div className="flex-auto flex items-center">
                <a href="/">
                   <div className="logo-initial">
-                     <img src={initialLogo} alt="National Janitorial Services Logo" width="169" className="hidden md:block" />
-                     <img src={initialLogo} alt="National Janitorial Services Logo" width="110" className="md:hidden" />
+                     <img src={initialLogo} alt="National Janitorial Services Logo" width="169" className="w-36 md:w-44" />
                   </div>
                   <div className="logo-fixed hidden">
-                     <img src={stickyLogo} alt="National Janitorial Services Logo" width="169" className="hidden md:block" />
-                     <img src={stickyLogo} alt="National Janitorial Services Logo" width="110" className="md:hidden" />
+                     <img src={stickyLogo} alt="National Janitorial Services Logo" width="169" className="w-36 md:w-44" />
                   </div>
                </a>
             </div>
@@ -360,37 +353,47 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   />
                   <OffCanvas offcanvasOpen={offcanvasOpen} id="offcanvas-navigation">
                      <ul id="navigation-mobile">
-                        <li>
-                           <Accordion title="Services">
+                        <li className="relative mb-8">
+                           <Accordion title="Services" className="is-submenu-parent">
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-services/">
                                     All Services
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/service-1/">
-                                    Service 1
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/janitorial-cleaning-company/">
+                                    Janitorial Services
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="# ">
-                                    Service 2
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-company/">
+                                    Commercial Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="# ">
-                                    Service 3
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/office-cleaning-services/">
+                                    Office Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="# ">
-                                    Service 4
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/day-porter-services/">
+                                    Porter Service(s)
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/deep-cleaning-services/">
+                                    Deep Cleaning
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/disinfection-services/">
+                                    Disinfectant Services
                                  </a>
                               </li>
                            </Accordion>
                         </li>
-                        <li>
-                           <Accordion title="Industries">
+                        <li className="relative mb-8">
+                           <Accordion title="Industries" className="is-submenu-parent">
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/industries-we-serve/">
                                     All Industries
@@ -458,12 +461,12 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                               </li>
                            </Accordion>
                         </li>
-                        <li>
+                        <li className="relative mb-8">
                            <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
                               About
                            </a>
                         </li>
-                        <li>
+                        <li className="relative">
                            <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
                               Blog
                            </a>
