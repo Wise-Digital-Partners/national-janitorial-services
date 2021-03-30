@@ -45,7 +45,7 @@ const Footer = () => {
                      </li>
                      <li className="mb-5 md:mb-0 md:mr-6">
                         <a href="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
-                           Facilities
+                           Industries
                         </a>
                      </li>
                      <li className="mb-5 md:mb-0 md:mr-6">

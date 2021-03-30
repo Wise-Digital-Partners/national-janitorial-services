@@ -256,7 +256,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                            <a href="/office-cleaning-services/">Office Cleaning</a>
                         </li>
                         <li>
-                           <a href="/day-porter-services/">Porter Service(s)</a>
+                           <a href="/day-porter-services/">Porter Services</a>
                         </li>
                         <li>
                            <a href="/deep-cleaning-services/">Deep Cleaning</a>
@@ -354,7 +354,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                               </li>
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/day-porter-services/">
-                                    Porter Service(s)
+                                    Porter Services
                                  </a>
                               </li>
                               <li>

@@ -66,7 +66,7 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
       {
          id: 4,
          image: data.porterServices.childImageSharp.gatsbyImageData,
-         heading: "Porter Service(s)",
+         heading: "Porter Services",
          text: "Perfect for HOAs, nursing homes, care providers, event spaces, hotels, and much more.",
          link: "/day-porter-services/",
       },

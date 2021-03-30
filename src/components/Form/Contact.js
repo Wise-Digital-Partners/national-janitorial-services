@@ -34,6 +34,11 @@ const StyledForm = styled.div`
    textarea {
       ${tw`w-full bg-transparent text-white px-4 py-3 border border-solid border-gray-100 rounded-sm focus:border-blue-300 focus:ring-blue-300`}
    }
+   select {
+      &:invalid {
+         ${tw`text-opacity-60`}
+      }
+   }
 `;
 
 export default class Form extends Component {
@@ -110,6 +115,9 @@ export default class Form extends Component {
                      How can we help?
                   </label>
                   <select name="service-select" id="service-select" onBlur={this.handleChange} required={true}>
+                     <option value="" disabled selected>
+                        How can we help?
+                     </option>
                      <option value="Service 1">Service 1</option>
                      <option value="Service 2">Service 2</option>
                      <option value="Service 3">Service 3</option>
