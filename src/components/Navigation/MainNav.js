@@ -317,7 +317,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   </li> */}
                </ul>
                <div className="hidden lg:inline-flex items-center">
-                  <ButtonSolid className="min-w-[160px]" data="modal-contact" text="Contact" />
+                  <ButtonSolid className="min-w-[160px]" as="button" data="modal-contact" text="Contact" />
                </div>
 
                <div className="lg:hidden" ref={node}>

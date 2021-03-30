@@ -45,7 +45,7 @@ const Page = ({ data }) => {
             </p>
             <p className="text-xl md:text-3xl text-accent mb-7 md:mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
             <div className="grid  gap-y-6 md:flex md:items-center">
-               <ButtonSolid data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
+               <ButtonSolid as="button" data="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
                <ButtonGhost href="tel:+1-123-456-7890" text="123-456-7890" />
             </div>
          </HeroFullWidth>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.city.childImageSharp.gatsbyImageData} alt="Why We Love Denver" />
+                     <GatsbyImage image={data.whyWeLove.childImageSharp.gatsbyImageData} alt="Why We Love Denver" />
                   </div>
                </div>
             </div>
@@ -128,7 +128,7 @@ export const query = graphql`
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      city: file(relativePath: { eq: "cities/placeholder.jpg" }) {
+      whyWeLove: file(relativePath: { eq: "cities/Denver.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
