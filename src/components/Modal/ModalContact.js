@@ -94,15 +94,14 @@ const Modal = () => {
                   data-modal-close
                >
                   <div
-                     className="content-wrapper bg-gray-700 w-full h-screen overflow-auto max-w-3xl ml-auto py-16 md:py-20 px-6 md:px-20"
+                     className="content-wrapper bg-gray-700 w-full h-screen overflow-auto max-w-[720px] ml-auto py-16 md:py-20 px-6 md:px-20"
                      role="dialog"
                      aria-modal="true"
                   >
                      <header className="mb-8">
-                        <p className="heading-three text-white">Contact Heading</p>
+                        <p className="heading-three text-white">Contact Us</p>
                         <p className="text-white mb-0">
-                           Interdu velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis
-                           nunc sed id semper.
+                           Experience the National Janitorial Services difference. Tell us about your cleaning needs today!
                         </p>
                      </header>
 
