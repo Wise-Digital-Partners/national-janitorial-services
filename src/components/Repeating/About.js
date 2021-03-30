@@ -20,7 +20,7 @@ const About = ({ className, headingLevel }) => {
          <div className="container">
             <div className="grid md:grid-cols-2 gap-y-10 gap-x-18 items-center">
                <div className="order-2 md:order-1">
-                  <GatsbyImage image={data.about.childImageSharp.gatsbyImageData} alt="About" />
+                  <GatsbyImage image={data.about.childImageSharp.gatsbyImageData} alt="One Company, Many Industries" />
                </div>
                <div className="order-1 md:order-2">
                   <HeadingTag>One Company, Many Industries</HeadingTag>

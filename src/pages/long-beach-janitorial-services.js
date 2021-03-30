@@ -54,8 +54,16 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
                   <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
-                     <GatsbyImage image={data.introDesktop.childImageSharp.gatsbyImageData} className="hidden md:block" />
-                     <GatsbyImage image={data.introMobile.childImageSharp.gatsbyImageData} className="md:hidden" />
+                     <GatsbyImage
+                        image={data.introDesktop.childImageSharp.gatsbyImageData}
+                        alt="A Top Commercial Janitorial Services Company in Long Beach"
+                        className="hidden md:block"
+                     />
+                     <GatsbyImage
+                        image={data.introMobile.childImageSharp.gatsbyImageData}
+                        alt="A Top Commercial Janitorial Services Company in Long Beach"
+                        className="md:hidden"
+                     />
                   </div>
                   <div className="md:col-end-13 md:col-span-7 order-1 md:order-2">
                      <h1>A Top Commercial Janitorial Services Company in Long Beach</h1>

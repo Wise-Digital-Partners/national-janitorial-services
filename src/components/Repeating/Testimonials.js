@@ -107,7 +107,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Hilary V.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -122,7 +122,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Maggie V.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -136,7 +136,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Carlos A.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>

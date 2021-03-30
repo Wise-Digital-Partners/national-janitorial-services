@@ -115,7 +115,7 @@ export default class Form extends Component {
                      How can we help?
                   </label>
                   <select name="service-select" id="service-select" onBlur={this.handleChange} required={true}>
-                     <option value="" disabled selected>
+                     <option value="" disabled defaultValue>
                         How can we help?
                      </option>
                      <option value="Service 1">Service 1</option>

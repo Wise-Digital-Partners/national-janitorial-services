@@ -68,7 +68,7 @@ const ReviewCards = ({ gridLayout }) => {
                   </div>
                </div>
                <div className="hidden md:block">
-                  <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} />
+                  <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" />
                </div>
             </div>
             <blockquote>
@@ -79,7 +79,7 @@ const ReviewCards = ({ gridLayout }) => {
                </q>
             </blockquote>
             <div className="block md:hidden">
-               <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} />
+               <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" />
             </div>
          </div>
       </StyledReviewCards>

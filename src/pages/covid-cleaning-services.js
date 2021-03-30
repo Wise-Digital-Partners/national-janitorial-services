@@ -44,7 +44,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="COVID-19 Cleaning in Long Beach" />
                   </div>
                </div>
             </div>
@@ -61,7 +61,7 @@ const Page = ({ data }) => {
                </header>
                <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-10 items-center">
                   <div className="md:col-start-1 md:col-span-3">
-                     <GatsbyImage image={data.toolGun.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage image={data.toolGun.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
                   </div>
                   <div className="md:col-start-4 md:col-span-4">
                      <p className="heading-two">The Tools</p>
@@ -70,7 +70,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div className="md:col-end-13 md:col-span-5">
-                     <GatsbyImage image={data.toolBackpack.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage image={data.toolBackpack.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
                   </div>
                </div>
             </div>

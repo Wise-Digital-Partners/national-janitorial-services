@@ -73,7 +73,7 @@ const StyledModal = styled.div`
 `;
 
 const Modal = () => {
-   if (typeof window !== `undefined`) {
+   if (typeof window !== "undefined") {
       MicroModal.init({
          openTrigger: "data-modal-open",
          closeTrigger: "data-modal-close",

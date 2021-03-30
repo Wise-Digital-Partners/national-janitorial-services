@@ -43,7 +43,10 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage
+                        image={data.intro.childImageSharp.gatsbyImageData}
+                        alt="Medical & Dental Office Cleaning, Sanitation, and Disinfection in Long Beach"
+                     />
                   </div>
                </div>
             </div>

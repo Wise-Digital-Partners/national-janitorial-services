@@ -33,13 +33,13 @@ const WhyUs = ({ className, headingLevel }) => {
             </header>
             <div className="grid md:grid-cols-3 gap-y-0 gap-x-2 md:gap-x-6 max-w-3xl mx-auto">
                <div>
-                  <GatsbyImage image={data.icon1.childImageSharp.gatsbyImageData} className="mx-auto" alt="Lorem Ipsum" />
+                  <GatsbyImage image={data.icon1.childImageSharp.gatsbyImageData} className="mx-auto" alt="ShowGrow logo" />
                </div>
                <div>
-                  <GatsbyImage image={data.icon2.childImageSharp.gatsbyImageData} className="mx-auto" alt="Lorem Ipsum" />
+                  <GatsbyImage image={data.icon2.childImageSharp.gatsbyImageData} className="mx-auto" alt="SGS logo" />
                </div>
                <div>
-                  <GatsbyImage image={data.icon3.childImageSharp.gatsbyImageData} className="mx-auto" alt="Lorem Ipsum" />
+                  <GatsbyImage image={data.icon3.childImageSharp.gatsbyImageData} className="mx-auto" alt="PDS logo" />
                </div>
             </div>
          </div>

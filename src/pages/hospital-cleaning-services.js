@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
                   </div>
                </div>
             </div>
