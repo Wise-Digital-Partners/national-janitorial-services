@@ -5,7 +5,7 @@ import { getImage } from "gatsby-plugin-image";
 import CTAFullWidth from "../CTA/CTAFullWidth";
 import ButtonSolid from "../Button/ButtonSolid";
 
-const Covid = ({ headingLevel }) => {
+const Covid = ({ heading, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          backgroundDesktop: file(relativePath: { eq: "repeating/cta/background.jpg" }) {
@@ -42,7 +42,7 @@ const Covid = ({ headingLevel }) => {
          textMaxWidth="max-w-4xl"
       >
          <HeadingTag className="text-7xl font-display font-black uppercase text-white mb-4">
-            Comprehensive Janitorial Services for Long Beach Businesses
+            {heading || "Comprehensive Janitorial Services for Long Beach Businesses"}
          </HeadingTag>
          <p className="text-mobile-xl md:text-xl leading-tight text-white mb-10">
             Experience the National Janitorial Services difference. Tell us about your cleaning needs today!

@@ -6,7 +6,7 @@ import ButtonSolid from "../components/Button/ButtonSolid";
 const ErrorPage = () => {
    return (
       <Layout>
-         <section className="md:mt-6 pt-24 pb-32 bg-gray-100">
+         <section className="py-32 bg-gray-50">
             <div className="container">
                <header className="max-w-2xl">
                   <h1>That page can’t be found.</h1>

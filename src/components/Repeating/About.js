@@ -69,11 +69,11 @@ const About = ({ className, headingLevel }) => {
                               Car Dealerships
                            </a>
                         </li>
-                        {/* <li className="mb-4">
-                           <a href="# " className="text-gray-700 font-bold underline uppercase">
-                              Vehicle Maintenance Lots
+                        <li className="mb-4">
+                           <a href="/bar-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                              Bars & Nightclubs
                            </a>
-                        </li> */}
+                        </li>
                         <li className="mb-4">
                            <a href="/movie-theater-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Movie Theaters

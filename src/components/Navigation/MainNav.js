@@ -7,7 +7,7 @@ import tw from "twin.macro";
 import Burger from "./Burger";
 import OffCanvas from "../OffCanvas/OffCanvas";
 import ButtonSolid from "../Button/ButtonSolid";
-import Accordion from "../Accordion/Accordion";
+import Accordion from "./Accordion";
 
 const StyledMainNav = styled.nav`
    ${({ headerStyle }) => (headerStyle === "hidden" ? tw`hidden` : null)};
@@ -48,8 +48,7 @@ const StyledMainNav = styled.nav`
             /* ${({ megaMenuHovering }) => (megaMenuHovering ? tw`text-gray-700` : null)}; */
             ${tw`relative font-heading font-semibold no-underline pb-8`}
             &:after {
-               content: "";
-               ${tw`absolute bottom-0 right-0 left-0 mx-auto h-1 bg-primary w-0 transform -translate-y-6 transition-all duration-300 ease-linear`}
+               ${tw`content absolute bottom-0 right-0 left-0 mx-auto h-1 bg-primary w-0 transform -translate-y-6 transition-all duration-300 ease-linear`}
             }
             &:hover {
                &:after {
@@ -63,7 +62,7 @@ const StyledMainNav = styled.nav`
             }
          }
       }
-      .is-submenu-parent {
+      .submenu-parent {
          ${tw`relative`}
          .submenu {
             ${tw`absolute flex flex-col w-auto bg-white shadow-xl pt-8 pr-14 pb-10 pl-6 opacity-0 invisible z-10 transform -translate-x-10 translate-y-12 transition-all duration-300 ease-linear`}
@@ -73,13 +72,13 @@ const StyledMainNav = styled.nav`
                   ${tw`mb-4`}
                }
                a {
-                  ${tw`relative font-heading text-gray-800 text-opacity-40 no-underline`}
+                  ${tw`relative font-heading text-gray-800 text-opacity-40 hover:text-opacity-100 no-underline`}
                   /* &:after {
                             content: '';
                             ${tw`absolute left-auto right-0 bottom-0 h-px bg-primary w-0 transition-all duration-300 ease-linear`}
                         } */
                         &:hover {
-                     ${tw`text-opacity-100`}/* &:after {
+                     /* &:after {
                                 ${tw`w-full right-auto left-0`}
                             } */
                   }
@@ -112,39 +111,17 @@ const StyledMainNav = styled.nav`
          }
          > a,
          button {
-            ${tw`font-heading text-xl text-white font-bold uppercase no-underline text-left transition-colors duration-300 ease-linear`}
-            &:hover {
-               ${tw`text-primary`}
-            }
-            &:focus {
-               ${tw`outline-none`}
-            }
-         }
-         .is-submenu-parent {
-            &:after {
-               content: "\f078";
-               font-family: "Font Awesome 5 Pro";
-               ${tw`absolute top-0 right-0 font-normal text-white transition-all duration-300 ease-linear`}
-            }
-            &.active {
-               ${tw`text-primary`}
-               &:after {
-                  content: "\f068";
-               }
-            }
+            ${tw`font-heading text-xl text-white hover:text-primary font-bold uppercase no-underline text-left focus:outline-none transition-colors duration-300 ease-linear`}
          }
       }
       .submenu {
-         ${tw`flex-col transition-all duration-300 ease-linear`}
+         ${tw`flex-col pl-4`}
          li {
             &:not(:last-child) {
-               ${tw`mb-1`}
+               ${tw`mb-2`}
             }
             a {
-               ${tw`text-white`}
-               &:hover {
-                  ${tw`text-primary`}
-               }
+               ${tw`text-white hover:text-primary`}
             }
          }
       }
@@ -264,7 +241,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
             </div>
             <div className="flex items-center justify-end flex-auto">
                <ul id="navigation-desktop" className="hidden lg:flex lg:items-center lg:justify-end lg:mr-10">
-                  <li className={`is-submenu-parent ${subMenuHovering1 ? "active" : ""}`}>
+                  <li className={`submenu-parent ${subMenuHovering1 ? "active" : ""}`}>
                      <a onMouseEnter={isHoveringSubMenu1} onMouseLeave={notHoveringSubMenu1} href="/commercial-cleaning-services/">
                         Services
                      </a>
@@ -289,7 +266,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                         </li>
                      </ul>
                   </li>
-                  <li className={`is-submenu-parent ${subMenuHovering2 ? "active" : ""}`}>
+                  <li className={`submenu-parent ${subMenuHovering2 ? "active" : ""}`}>
                      <a onMouseEnter={isHoveringSubMenu2} onMouseLeave={notHoveringSubMenu2} href="/industries-we-serve/">
                         Industries
                      </a>
@@ -354,7 +331,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   <OffCanvas offcanvasOpen={offcanvasOpen} id="offcanvas-navigation">
                      <ul id="navigation-mobile">
                         <li className="relative mb-8">
-                           <Accordion title="Services" className="is-submenu-parent">
+                           <Accordion title="Services" className="submenu-parent">
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-services/">
                                     All Services
@@ -393,7 +370,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                            </Accordion>
                         </li>
                         <li className="relative mb-8">
-                           <Accordion title="Industries" className="is-submenu-parent">
+                           <Accordion title="Industries" className="submenu-parent">
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/industries-we-serve/">
                                     All Industries
@@ -462,16 +439,29 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                            </Accordion>
                         </li>
                         <li className="relative mb-8">
-                           <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
+                           <a href="/about/" onKeyDown={clickHandler} onClick={clickHandler}>
                               About
                            </a>
                         </li>
-                        <li className="relative">
+                        {/* <li className="relative">
                            <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
                               Blog
                            </a>
-                        </li>
+                        </li> */}
                      </ul>
+                     <div className="flex mt-8">
+                        <a
+                           href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="mr-6"
+                        >
+                           <i className="fab fa-yelp text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
+                        </a>
+                        <a href="https://www.facebook.com/nationaljanitorialservices" target="_blank" rel="noopener noreferrer">
+                           <i className="fab fa-facebook-f text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
+                        </a>
+                     </div>
                   </OffCanvas>
                </div>
             </div>
