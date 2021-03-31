@@ -247,6 +247,9 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                      </a>
                      <ul className="submenu">
                         <li>
+                           <a href="/covid-cleaning-services/">COVID Cleaning</a>
+                        </li>
+                        <li>
                            <a href="/janitorial-cleaning-company/">Janitorial Services</a>
                         </li>
                         <li>
@@ -335,6 +338,11 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                               <li>
                                  <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-services/">
                                     All Services
+                                 </a>
+                              </li>
+                              <li>
+                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/covid-cleaning-services/">
+                                    COVID Cleaning
                                  </a>
                               </li>
                               <li>
