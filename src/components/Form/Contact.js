@@ -118,9 +118,13 @@ export default class Form extends Component {
                      <option value="" disabled defaultValue>
                         How can we help?
                      </option>
-                     <option value="Service 1">Service 1</option>
-                     <option value="Service 2">Service 2</option>
-                     <option value="Service 3">Service 3</option>
+                     <option value="Janitorial Services">Janitorial Services</option>
+                     <option value="Commercial Cleaning">Commercial Cleaning</option>
+                     <option value="Office Cleaning">Office Cleaning</option>
+                     <option value="Porter Services">Porter Services</option>
+                     <option value="Deep Cleaning">Deep Cleaning</option>
+                     <option value="Disinfectant Cleaning">Disinfectant Cleaning</option>
+                     <option value="COVID Cleaning Services">COVID Cleaning Services</option>
                      <option value="Other">Other</option>
                   </select>
                </div>

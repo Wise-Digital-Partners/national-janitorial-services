@@ -106,8 +106,8 @@ const Modal = () => {
                      </header>
 
                      <span className="inline-block mb-8">
-                        <a className="text-primary font-semibold flex items-center" href="tel:+1-123-456-7890">
-                           <i className="fas fa-phone-alt mr-2"></i> 123-456-7890
+                        <a className="text-primary font-semibold flex items-center" href="tel:+1-424-260-7369">
+                           <i className="fas fa-phone-alt mr-2"></i> (424) 260-7369
                         </a>
                      </span>
 
