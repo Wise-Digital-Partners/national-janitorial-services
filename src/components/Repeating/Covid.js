@@ -44,9 +44,13 @@ const Covid = ({ className, headingLevel }) => {
          <header className="max-w-xl">
             <HeadingTag className="text-white">COVID Cleaning Services</HeadingTag>
             <p className="text-white mb-16 md:mb-12">
-               Stop the spread and protect your business with our specialized COVID cleaning services. We use Multi-Clean Chlorinated Disinfecting
-               Tablets, an EPA-registered disinfectant that is effective against pathogens like Staphylococcus aureus, Norovirus, and the novel
-               coronavirus. To learn more about our chlorinated disinfecting tablets, browse the PDF below.
+               Stop the spread and protect your business with our specialized{" "}
+               <a href="/covid-cleaning-services/" className="underline hover:text-primary">
+                  COVID cleaning services
+               </a>
+               . We use Multi-Clean Chlorinated Disinfecting Tablets, an EPA-registered disinfectant that is effective against pathogens like
+               Staphylococcus aureus, Norovirus, and the novel coronavirus. To learn more about our chlorinated disinfecting tablets, browse the PDF
+               below.
             </p>
             <ButtonUnderline href="# " text="Download Fact Sheet" />
          </header>

@@ -34,16 +34,18 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Keeping Long Beach Businesses Clean</h2>
+                     <h2>Hospital Cleaning, Sanitation, and Disinfection in Long Beach</h2>
                      <p className="mb-0">
-                        Your business is unique and so should your cleaning services. Not only do we tailor our cleaning and disinfecting to your
-                        specific industry requirements, we go above and beyond. Our professional and reliable commercial cleaning experts use only
-                        EPA-registered disinfectants and provide thorough cleaning for your office, building, and more. Make great first impressions,
-                        prevent illness, and maintain a hygienic and welcoming environment with our Long Beach janitorial services.
+                        Maintaining a rigorously sanitized environment is crucial to reduce the risk of hospital-acquired infections. At National
+                        Janitorial Services, we provide thorough and medical-grade cleaning to help keep your patients and staff safe. Our
+                        professional cleaning experts capture airborne pathogens and disinfect surfaces without cross-contamination.
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
+                     <GatsbyImage
+                        image={data.intro.childImageSharp.gatsbyImageData}
+                        alt="Hospital Cleaning, Sanitation, and Disinfection in Long Beach"
+                     />
                   </div>
                </div>
             </div>
@@ -62,18 +64,18 @@ const Page = ({ data }) => {
                   </div>
                   <div>
                      <ul className="styled-list">
-                        <li>Glass Surfaces (partitions, doors, windows)</li>
-                        <li>Kitchens & Break Rooms</li>
-                        <li>Lobbies</li>
-                        <li>Restrooms</li>
+                        <li>Lobbies and waiting areas</li>
+                        <li>Patient rooms</li>
+                        <li>Exam rooms</li>
+                        <li>Offices</li>
                      </ul>
                   </div>
                   <div>
                      <ul className="styled-list">
-                        <li>Restrooms</li>
-                        <li>Floor Care</li>
+                        <li>Cafeteria and break rooms</li>
+                        <li>Bathrooms</li>
                         <li>Stairwells</li>
-                        <li>... And more!</li>
+                        <li>And more!</li>
                      </ul>
                   </div>
                </div>
