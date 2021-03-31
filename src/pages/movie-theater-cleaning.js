@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Movie Theater Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Movie Theater Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Provide the best movie viewing experience possible with efficient and thorough cleaning from National Janitorial Services.
                         From cleaning up food bits, to preventing sticky floors and sanitizing restrooms, we leave your theater even better than we
@@ -43,10 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Movie Theater Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Movie Theater Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Medical & Dental Office Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Medical & Dental Office Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         For medical professionals and care providers, a sanitized and disinfected environment is of utmost importance. At National
                         Janitorial Services, our team of cleaning experts understand your cleanliness needs and goals. We provide healthcare
@@ -45,7 +45,7 @@ const Page = ({ data }) => {
                   <div>
                      <GatsbyImage
                         image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Medical & Dental Office Cleaning, Sanitation, and Disinfection in Long Beach"
+                        alt="Top Medical & Dental Office Cleaning Services in Long Beach"
                      />
                   </div>
                </div>

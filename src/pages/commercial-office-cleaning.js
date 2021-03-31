@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Private Office Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Commercial Office Cleaning in Long Beach</h2>
                      <p className="mb-0">
                         With specialized tools and a thorough process, our commercial cleaning services help keep your private office a safe
                         environment for employees and guests alike. Our qualified and experienced cleaning experts use only EPA-approved disinfectants
@@ -44,10 +44,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Private Office Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Commercial Office Cleaning in Long Beach" />
                   </div>
                </div>
             </div>

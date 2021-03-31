@@ -25,7 +25,7 @@ const Page = ({ data }) => {
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
-            heading="Long Beach Janitorial Services"
+            heading="Long Beach Janitorial Cleaning Company"
             subtext="Working hard to keep your workspace clean so you don’t have to."
             textMaxWidth="max-w-4xl"
          />
@@ -36,10 +36,10 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Keeping Long Beach Businesses Clean</h2>
                      <p className="mb-0">
-                        Your business is unique and your cleaning services should be too. Not only do we tailor our cleaning and disinfecting to your
-                        specific industry requirements, we go above and beyond. Our professional and reliable commercial cleaning experts use only
-                        EPA-registered disinfectants and provide thorough cleaning for your office, building, and more. Make great first impressions,
-                        prevent illness, and maintain a hygienic and welcoming environment with our Long Beach janitorial services.
+                        Your business is unique and so should your cleaning services. Not only does our Long Beach janitorial cleaning company tailor
+                        our services to your specific industry requirements, we go above and beyond. Our professional and reliable commercial cleaning
+                        experts use only EPA-registered disinfectants and provide thorough cleaning for your office, building, and more. Make great
+                        first impressions, prevent illness, and maintain a hygienic & welcoming environment with our janitorial services.
                      </p>
                   </div>
                   <div>

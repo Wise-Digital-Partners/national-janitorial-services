@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Office Building Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Office Building Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Reliable and consistent janitorial services are essential for office buildings. No matter the size of your commercial space or
                         office building, our professional cleaning experts deliver a thorough clean. Boost employee productivity, make a great
@@ -44,10 +44,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Office Building Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Office Building Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

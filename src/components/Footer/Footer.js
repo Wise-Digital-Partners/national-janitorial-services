@@ -34,7 +34,9 @@ const Footer = () => {
             <div className="container">
                <div className="md:flex md:justify-between mb-22 md:mb-40 whitespace-nowrap">
                   <div className="mb-22 md:mb-0">
-                     <img src={data.logo.publicURL} alt="Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
+                     <a href="/">
+                        <img src={data.logo.publicURL} alt="National Janitorial Services Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
+                     </a>
                   </div>
 
                   <ul className="flex flex-col md:flex-row items-center">

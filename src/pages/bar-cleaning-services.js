@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Bars & Nightclub Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Bar & Nightclub Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Your bar, nightclub, or pub can get messy at the end of every night. We handle the dirty work so you can bring the energy for
                         the next shift. Thorough cleaning and sanitation for every part of your club and watering hole shouldn’t be an afterthought.
@@ -43,10 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Bars & Nightclub Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Bar & Nightclub Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

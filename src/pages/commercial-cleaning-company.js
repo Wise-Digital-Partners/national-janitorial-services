@@ -25,7 +25,7 @@ const Page = ({ data }) => {
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
-            heading="Long Beach Commercial Cleaning Services"
+            heading="Long Beach Commercial Cleaning Company"
             subtext="High-caliber cleaning for your commercial space."
             textMaxWidth="max-w-4xl"
          />
@@ -36,10 +36,10 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Commercial Cleaning for Spotless Businesses</h2>
                      <p className="mb-0">
-                        Help your business thrive with reliable commercial cleaning from National Janitorial Services. Whether you need preventative
-                        maintenance or seasonal deep cleaning, our experienced cleaning experts have you covered. Using only EPA-registered
-                        disinfectants, we help commercial spaces prevent illness and maintain a hygienic environment. No matter the size of your
-                        commercial space, we assess your cleaning requirements and deliver a thorough clean each time.
+                        Help your business thrive with our reliable Long Beach commercial cleaning company. Whether you need preventative maintenance
+                        or seasonal deep cleaning, our experienced cleaning experts have you covered. Using only EPA-registered disinfectants, we help
+                        commercial spaces prevent illness and maintain a hygienic environment. No matter the size of your commercial space, we assess
+                        your cleaning requirements and deliver a thorough clean each time.
                      </p>
                   </div>
                   <div>

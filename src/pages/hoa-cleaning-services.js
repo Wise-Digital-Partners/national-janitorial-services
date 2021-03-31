@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>HOA Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top HOA Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Keep tenants happy and attract future residents with the right cleaning services for your commercial rental property. Our HOA
                         janitorial services help keep your property pristine, from the lobby and common areas to parking structures and stairways.
@@ -42,7 +42,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="HOA Cleaning, Sanitation, and Disinfection in Long Beach" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top HOA Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

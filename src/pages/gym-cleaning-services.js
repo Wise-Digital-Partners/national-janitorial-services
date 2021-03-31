@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Gyms & Fitness Center Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Gym & Fitness Center Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         At National Janitorial Services, we meet and exceed your gym’s cleaning needs. We keep your gym, fitness center, and health
                         club in tip-top shape with daily janitorial services and deep cleaning. Sanitation should be the least of your members’
@@ -45,10 +45,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Gyms & Fitness Center Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Gym & Fitness Center Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

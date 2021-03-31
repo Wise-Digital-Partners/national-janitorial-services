@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Dispensary Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Dispensary Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         As your inventory grows, keeping your facility clean and disinfected should be the least of your worries. Let National
                         Janitorial Services provide a thorough cleaning of your dispensary and cannabis facility so your customers can browse and
@@ -42,10 +42,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Dispensary Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Dispensary Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

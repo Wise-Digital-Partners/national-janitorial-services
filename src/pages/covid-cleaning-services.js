@@ -25,7 +25,7 @@ const Page = ({ data }) => {
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
-            heading="COVID-19 Cleaning"
+            heading="COVID Cleaning Services"
             subtext="Our COVID cleaning services help Long Beach businesses stop the spread."
             textMaxWidth="max-w-4xl"
          />
@@ -40,7 +40,7 @@ const Page = ({ data }) => {
                         disinfectants, our certified cleaning experts provide thorough sanitation and disinfection at your commercial space or
                         facility. From site visit to job completion, we offer an easy process to help business owners operate fuss-free. We pay
                         attention to your goals, do the dirty work, and deliver a consistent clean so that you don’t have to. Reduce the risk of
-                        infection and provide peace of mind to your staff, clients, and guests with regular COVID cleaning.
+                        infection and provide peace of mind to your staff, clients, and guests with regular COVID cleaning services.
                      </p>
                   </div>
                   <div>

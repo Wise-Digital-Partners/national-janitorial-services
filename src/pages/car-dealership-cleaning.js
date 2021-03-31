@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Car Dealership Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Auto Dealership Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Showcase the best your dealership has to offer and increase sales with consistent cleaning services. Our reliable team of
                         cleaning experts use EPA-approved products to keep your entire dealership looking sharp. From lobbies to your offices and
@@ -43,10 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Car Dealership Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Auto Dealership Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

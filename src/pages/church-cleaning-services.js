@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-10 lg:gap-x-20 items-center">
                   <div>
-                     <h2>Church Cleaning, Sanitation, and Disinfection in Long Beach</h2>
+                     <h2>Top Church Cleaning Services in Long Beach`</h2>
                      <p className="mb-0">
                         Keep your congregation safe and your house of worship looking its best with professional janitorial services. Our expert
                         cleaning team is trained to meet your space’s specific needs and partners with you for an effective cleaning plan. We use
@@ -43,10 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage
-                        image={data.intro.childImageSharp.gatsbyImageData}
-                        alt="Church Cleaning, Sanitation, and Disinfection in Long Beach"
-                     />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Church Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>
