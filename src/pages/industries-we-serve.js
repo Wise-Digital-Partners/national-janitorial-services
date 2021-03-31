@@ -96,12 +96,7 @@ const Page = ({ data }) => {
 
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
-            title=""
-            description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-         />
+         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
 
          <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">
@@ -130,6 +125,12 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Industries_FB.jpg" }) {
+         publicURL
+      }
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Industries_TW.jpg" }) {
+         publicURL
+      }
       hospitals: file(relativePath: { eq: "industries/hub/1.0 hospitals.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)

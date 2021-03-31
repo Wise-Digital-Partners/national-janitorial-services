@@ -20,12 +20,7 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO
-            title=""
-            description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-         />
+         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}
@@ -97,6 +92,12 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/About_FB.jpg" }) {
+         publicURL
+      }
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/About_TW.jpg" }) {
+         publicURL
+      }
       heroFullWidthDesktop: file(relativePath: { eq: "about/1.0 About Hero.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)

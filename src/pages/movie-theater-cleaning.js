@@ -14,12 +14,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO
-            title=""
-            description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-         />
+         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
@@ -92,6 +87,12 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Movie Theaters_FB.jpg" }) {
+         publicURL
+      }
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Movie Theaters_TW.jpg" }) {
+         publicURL
+      }
       heroStacked: file(relativePath: { eq: "industries/movie-theatres/1.0 Movie Theaters Hero Desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)

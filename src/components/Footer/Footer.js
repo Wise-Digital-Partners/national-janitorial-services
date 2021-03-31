@@ -71,7 +71,7 @@ const Footer = () => {
                      <ul className="flex items-center flex-col md:flex-row">
                         <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} National Janitorial Services </li>
                         <li className="text-sm mb-3 md:mb-0 md:mr-6">
-                           <a href="# " className="text-white">
+                           <a href="/privacy-policy/" className="text-white">
                               Privacy Policy
                            </a>
                         </li>

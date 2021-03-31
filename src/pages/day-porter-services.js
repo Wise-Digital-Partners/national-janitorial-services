@@ -14,12 +14,7 @@ import CTA from "../components/Repeating/CTA";
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO
-            title=""
-            description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-         />
+         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
@@ -104,6 +99,12 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Porter Services_FB.jpg" }) {
+         publicURL
+      }
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Porter Services_TW.jpg" }) {
+         publicURL
+      }
       heroStacked: file(relativePath: { eq: "services/porter-services/hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)

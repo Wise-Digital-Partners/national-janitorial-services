@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Services from "../components/Repeating/Services";
 
 import Layout from "../components/Layout";
@@ -13,12 +13,7 @@ const Page = ({ data }) => {
       [accordionOpen3, setAccordionOpen3] = useState("");
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
-            title=""
-            description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-         />
+         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
 
          <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">
@@ -115,5 +110,14 @@ const Page = ({ data }) => {
    );
 };
 
-// export const query = graphql``;
+export const query = graphql`
+   {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Services_FB.jpg" }) {
+         publicURL
+      }
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Services_TW.jpg" }) {
+         publicURL
+      }
+   }
+`;
 export default Page;
