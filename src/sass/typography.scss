@@ -1,6 +1,6 @@
 @font-face {
-   font-family: "Impact, sans-serif";
-   src: url("../../static/fonts/Impact.ttf");
+   font-family: "Impact";
+   src: local("Impact"), url("../../static/fonts/Impact.ttf") format("ttf");
 }
 
 body {
