@@ -14,7 +14,12 @@ import CTA from "../components/Repeating/CTA";
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Deep Cleaning Services Long Beach | NJS"
+            description="For the deep cleaning services your business deserves, partner with National Janitorial Services. We offer Long Beach the best in deep cleaning. Learn more!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}

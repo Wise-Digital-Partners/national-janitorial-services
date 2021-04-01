@@ -14,7 +14,12 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Office Building Cleaning Services | Janitorial Company | NJS"
+            description="No matter your needs, we offer reliable office building cleaning services in Long Beach. Schedule a consultation with National Janitorial Services today!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}

@@ -25,7 +25,12 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Denver Janitorial Services | Commercial Cleaning Company"
+            description="Denver janitorial services don't get any better than National Janitorial Services. We have years of experience serving local businesses. Learn more today!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}

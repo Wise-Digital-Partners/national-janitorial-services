@@ -4,6 +4,7 @@ import { getImage } from "gatsby-plugin-image";
 
 import Background from "../Background/Background";
 import ButtonUnderline from "../Button/ButtonUnderline";
+import downloadFile from "../../images/downloads/disinfecttabletsLit2-25-20-NJS.pdf";
 
 const Covid = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
@@ -52,7 +53,7 @@ const Covid = ({ className, headingLevel }) => {
                Staphylococcus aureus, Norovirus, and the novel coronavirus. To learn more about our chlorinated disinfecting tablets, browse the PDF
                below.
             </p>
-            <ButtonUnderline href="# " text="Download Fact Sheet" />
+            <ButtonUnderline href={downloadFile} target="_blank" text="Download Fact Sheet" />
          </header>
       </Background>
    );

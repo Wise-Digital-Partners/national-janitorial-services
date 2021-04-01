@@ -8,7 +8,7 @@ const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
          <SEO
-            // title=""
+            title="Privacy Policy | NJS"
             // description=""
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}

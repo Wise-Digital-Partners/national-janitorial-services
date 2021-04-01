@@ -25,7 +25,12 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Orange County Janitorial Services | Commercial Cleaning"
+            description="For Orange County janitorial services you can depend on, choose National Janitorial Services. We offer top commercial cleaning for your business. Learn more!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}

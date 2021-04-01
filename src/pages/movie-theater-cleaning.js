@@ -14,7 +14,12 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Movie Theater Cleaning Services | Janitorial Company | NJS"
+            description="No matter your needs, we offer reliable movie theater cleaning services in Long Beach & beyond. Schedule a consultation with National Janitorial Services!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}

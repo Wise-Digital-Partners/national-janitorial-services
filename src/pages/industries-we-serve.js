@@ -96,7 +96,12 @@ const Page = ({ data }) => {
 
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Industries We Serve | Commercial Janitorial Services"
+            description="National Janitorial Services is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">

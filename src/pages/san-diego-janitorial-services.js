@@ -25,7 +25,12 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="San Diego Janitorial Cleaning Services | NJS"
+            description="National Janitorial Services offers top San Diego janitorial services for local businesses. Learn about how we excel in COVID cleaning & commercial cleaning!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}

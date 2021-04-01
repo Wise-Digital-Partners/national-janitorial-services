@@ -20,7 +20,12 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="About NJS | Commercial Janitorial Services Company"
+            description="With over 5 years and more than 100 accounts served, National Janitorial Services is your trusted partner in keeping your business spotless and safe."
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <HeroFullWidth
             backgroundImages={heroFullWidthImages}

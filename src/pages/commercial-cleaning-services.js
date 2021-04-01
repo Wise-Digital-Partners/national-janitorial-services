@@ -13,7 +13,12 @@ const Page = ({ data }) => {
       [accordionOpen3, setAccordionOpen3] = useState("");
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO title="" description="" openGraphImage={data.openGraphImage.publicURL} twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL} />
+         <SEO
+            title="Commercial Cleaning Services Long Beach | NJS"
+            description="When you need top commercial cleaning services in Long Beach, National Janitorial Services is here to help. Browse our services & get a consultation today!"
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         />
 
          <section className="pt-24 md:pt-36 pb-16 md:pb-26">
             <div className="container">
