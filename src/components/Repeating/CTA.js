@@ -41,7 +41,7 @@ const Covid = ({ heading, headingLevel }) => {
          textAlignment="text-center mx-auto"
          textMaxWidth="max-w-4xl"
       >
-         <HeadingTag className="text-7xl font-display font-black uppercase text-white mb-4">
+         <HeadingTag className="text-mobile-7xl md:text-7xl font-display font-black uppercase text-white mb-4">
             {heading || "Comprehensive Janitorial Services for Long Beach Businesses"}
          </HeadingTag>
          <p className="text-mobile-xl md:text-xl leading-tight text-white mb-10">
