@@ -61,7 +61,7 @@ const Footer = () => {
                         </a>
                      </li> */}
                      <li>
-                        <ButtonSolid as="button" data="modal-contact" text="Contact Us" />
+                        <ButtonSolid as="button" modal="modal-contact" text="Contact Us" />
                      </li>
                   </ul>
                </div>

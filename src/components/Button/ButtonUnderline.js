@@ -1,12 +1,12 @@
 import React from "react";
 
-const Button = ({ className, href, target, rel, data, onClick, as, type, text }) => (
+const Button = ({ className, href, target, rel, modal, onClick, as, type, text }) => (
    <a
       className={`group relative inline-flex font-heading text-primary font-semibold pb-1.5 focus:outline-none ${className}`}
       href={href}
       target={target}
       rel={rel}
-      data-modal-open={data}
+      data-modal-open={modal}
       onClick={onClick}
       as={as}
       type={type}

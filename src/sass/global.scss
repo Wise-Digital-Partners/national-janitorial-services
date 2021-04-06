@@ -29,10 +29,10 @@ a {
 .styled-list {
    @apply list-none;
    li {
-      @apply flex items-baseline;
-      &:not(:last-child) {
-         @apply mb-2;
-      }
+      @apply flex items-baseline mb-2;
+      // &:not(:last-child) {
+      //    @apply mb-2;
+      // }
       &:before {
          content: "\f0c8";
          font-family: "Font Awesome 5 Pro";

@@ -46,7 +46,7 @@ const StyledMainNav = styled.nav`
          > a {
             ${({ headerLinkColor }) => (headerLinkColor === "white" ? tw`text-white` : tw`text-gray-700`)};
             /* ${({ megaMenuHovering }) => (megaMenuHovering ? tw`text-gray-700` : null)}; */
-            ${tw`relative font-heading font-semibold no-underline pb-8`}
+            ${tw`relative font-heading font-bold tracking-wide uppercase no-underline pb-8`}
             &:after {
                ${tw`content absolute bottom-0 right-0 left-0 mx-auto h-1 bg-primary w-0 transform -translate-y-6 transition-all duration-300 ease-linear`}
             }
@@ -320,7 +320,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   </li> */}
                </ul>
                <div className="hidden lg:inline-flex items-center">
-                  <ButtonSolid className="min-w-[160px]" as="button" data="modal-contact" text="Contact" />
+                  <ButtonSolid className="min-w-[160px]" as="button" modal="modal-contact" text="Contact" />
                </div>
 
                <div className="lg:hidden" ref={node}>

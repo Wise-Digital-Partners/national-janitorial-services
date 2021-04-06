@@ -47,7 +47,7 @@ const Covid = ({ heading, headingLevel }) => {
          <p className="text-mobile-xl md:text-xl leading-tight text-white mb-10">
             Experience the National Janitorial Services difference. Tell us about your cleaning needs today!
          </p>
-         <ButtonSolid as="button" data="modal-contact" text="Schedule a Consultation" />
+         <ButtonSolid as="button" modal="modal-contact" text="Schedule a Consultation" />
       </CTAFullWidth>
    );
 };
