@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 // import { GatsbyImage } from "gatsby-plugin-image";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 import ModalContact from "../Modal/ModalContact";
 // import Newsletter from '../Form/Newsletter'
@@ -34,31 +35,35 @@ const Footer = () => {
             <div className="container">
                <div className="md:flex md:justify-between mb-22 md:mb-40 whitespace-nowrap">
                   <div className="mb-22 md:mb-0">
-                     <a href="/">
+                     <AniLink fade to="/">
                         <img src={data.logo.publicURL} alt="National Janitorial Services Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
-                     </a>
+                     </AniLink>
                   </div>
 
                   <ul className="flex flex-col md:flex-row items-center">
                      <li className="mb-5 md:mb-0 md:mr-6">
-                        <a href="/commercial-cleaning-services/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
+                        <AniLink
+                           fade
+                           to="/commercial-cleaning-services/"
+                           className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                        >
                            Services
-                        </a>
+                        </AniLink>
                      </li>
                      <li className="mb-5 md:mb-0 md:mr-6">
-                        <a href="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
+                        <AniLink fade to="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Industries
-                        </a>
+                        </AniLink>
                      </li>
                      <li className="mb-5 md:mb-0 md:mr-6">
-                        <a href="/about/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
+                        <AniLink fade to="/about/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            About
-                        </a>
+                        </AniLink>
                      </li>
                      {/* <li className="mb-5 md:mb-0 md:mr-6">
-                        <a href="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
+                        <AniLink fade to="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
-                        </a>
+                        </AniLink>
                      </li> */}
                      <li>
                         <ButtonSolid as="button" modal="modal-contact" text="Contact Us" />
@@ -71,9 +76,9 @@ const Footer = () => {
                      <ul className="flex items-center flex-col md:flex-row">
                         <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} National Janitorial Services </li>
                         <li className="text-sm mb-3 md:mb-0 md:mr-6">
-                           <a href="/privacy-policy/" className="text-white">
+                           <AniLink fade to="/privacy-policy/" className="text-white">
                               Privacy Policy
-                           </a>
+                           </AniLink>
                         </li>
                         <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
@@ -91,34 +96,34 @@ const Footer = () => {
                                  }`}
                               >
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="/san-diego-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/san-diego-janitorial-services/" className="hover:text-gray-800">
                                        San Diego
-                                    </a>
+                                    </AniLink>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="/orange-county-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/orange-county-janitorial-services/" className="hover:text-gray-800">
                                        Orange County
-                                    </a>
+                                    </AniLink>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="/long-beach-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/long-beach-janitorial-services/" className="hover:text-gray-800">
                                        Long Beach
-                                    </a>
+                                    </AniLink>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="/los-angeles-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/los-angeles-janitorial-services/" className="hover:text-gray-800">
                                        Los Angeles
-                                    </a>
+                                    </AniLink>
                                  </li>
                                  <li className="mb-3 whitespace-nowrap">
-                                    <a href="/phoenix-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/phoenix-janitorial-services/" className="hover:text-gray-800">
                                        Phoenix
-                                    </a>
+                                    </AniLink>
                                  </li>
                                  <li className="whitespace-nowrap">
-                                    <a href="/denver-janitorial-services/" className="hover:text-gray-800">
+                                    <AniLink fade to="/denver-janitorial-services/" className="hover:text-gray-800">
                                        Denver
-                                    </a>
+                                    </AniLink>
                                  </li>
                               </ul>
                            </button>

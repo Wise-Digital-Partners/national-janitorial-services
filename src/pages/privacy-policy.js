@@ -75,21 +75,7 @@ const Page = ({ data }) => {
                   hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet
                   protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the
                   number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for
-                  analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information. Our
-                  Privacy Policy was created with the help of the{" "}
-                  <a href="https://www.privacypolicygenerator.info" target="_blank" rel="noopener noreferrer" className="text-link">
-                     Privacy Policy Generator
-                  </a>{" "}
-                  and the{" "}
-                  <a
-                     href="https://www.privacypolicyonline.com/privacy-policy-generator/"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="text-link"
-                  >
-                     Online Privacy Policy Generator
-                  </a>
-                  .
+                  analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information .
                </p>
 
                <h3>Cookies and Web Beacons</h3>

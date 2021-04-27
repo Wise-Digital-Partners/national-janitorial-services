@@ -5,7 +5,7 @@ import tw from "twin.macro";
 
 import ReviewCards from "./ReviewCards";
 
-export const Reviews = ({ gridLayout }) => {
+const Reviews = ({ gridLayout }) => {
    const StyledReviews = styled.div`
       .masonry-grid {
          ${tw`md:-mx-3m lg:-mx-5 -mb-8 md:-mb-10 lg:-mb-12`}
