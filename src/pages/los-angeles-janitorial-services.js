@@ -118,12 +118,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Homepage_TW.jpg" }) {
          publicURL
       }
-      heroFullWidthDesktop: file(relativePath: { eq: "home/1.0 Hero Desktop.jpg" }) {
+      heroFullWidthDesktop: file(relativePath: { eq: "home/1.0-hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      heroFullWidthMobile: file(relativePath: { eq: "home/1.0 Hero Mobile.jpg" }) {
+      heroFullWidthMobile: file(relativePath: { eq: "home/1.0-hero-mobile.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
