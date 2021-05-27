@@ -44,7 +44,8 @@ const Page = ({ data }) => {
             <p className="text-xl md:text-3xl text-accent mb-7 md:mb-10">Keeping workspaces clean, employees safe, and your mind at peace.</p>
             <div className="grid  gap-y-6 md:flex md:items-center">
                <ButtonSolid as="button" modal="modal-contact" text="Get a Free Estimate" className="md:mr-6" />
-               <ButtonGhost className="text-white md:text-primary" href="tel:+1-424-260-7369" text="(424) 260-7369" />
+               <ButtonGhost className="hidden md:inline-flex" href="tel:+1-424-260-7369" text="(424) 260-7369" />
+               <ButtonGhost className="md:hidden" darkmode={true} href="tel:+1-424-260-7369" text="(424) 260-7369" />
             </div>
          </HeroFullWidth>
 
