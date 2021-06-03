@@ -20,6 +20,16 @@ const WhyUs = ({ className, headingLevel }) => {
                gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
             }
          }
+         icon4: file(relativePath: { eq: "repeating/clients/client-4.jpg" }) {
+            childImageSharp {
+               gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
+            }
+         }
+         icon5: file(relativePath: { eq: "repeating/clients/client-5.jpg" }) {
+            childImageSharp {
+               gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
+            }
+         }
       }
    `);
 
@@ -27,11 +37,11 @@ const WhyUs = ({ className, headingLevel }) => {
 
    return (
       <section className={`${className || ""}`}>
-         <div className="container max-w-5xl">
+         <div className="container">
             <header className="text-center mb-4 md:mb-18">
                <HeadingTag>Some of Our Happy Clients</HeadingTag>
             </header>
-            <div className="grid md:grid-cols-3 gap-y-0 gap-x-2 md:gap-x-6 max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-5 gap-y-0 gap-x-2 md:gap-x-6 mx-auto">
                <div>
                   <GatsbyImage image={data.icon1.childImageSharp.gatsbyImageData} className="mx-auto" alt="ShowGrow logo" />
                </div>
@@ -40,6 +50,12 @@ const WhyUs = ({ className, headingLevel }) => {
                </div>
                <div>
                   <GatsbyImage image={data.icon3.childImageSharp.gatsbyImageData} className="mx-auto" alt="PDS logo" />
+               </div>
+               <div>
+                  <GatsbyImage image={data.icon4.childImageSharp.gatsbyImageData} className="mx-auto" alt="PDS logo" />
+               </div>
+               <div>
+                  <GatsbyImage image={data.icon5.childImageSharp.gatsbyImageData} className="mx-auto" alt="PDS logo" />
                </div>
             </div>
          </div>

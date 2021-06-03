@@ -58,7 +58,7 @@ const Testimonial = ({ className, headingLevel }) => {
                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
             }
          }
-         google: file(relativePath: { eq: "repeating/testimonials/yelp.png" }) {
+         google: file(relativePath: { eq: "repeating/testimonials/google.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 95, quality: 100)
             }
@@ -96,6 +96,21 @@ const Testimonial = ({ className, headingLevel }) => {
                   <HeadingTag className="text-white">Hear from Satisfied Clients</HeadingTag>
                </header>
                <Slider>
+                  <div>
+                     <blockquote>
+                        <q>
+                           I appreciate the diligence and professionalism of Anthony and the crew member appointed to us. During these covid times
+                           they have taken the upmost care to provide the level of cleanliness and safeguarding measures needed to insure everyone's
+                           safety. The pricing is fair and we are happy with the great service!
+                        </q>
+                        <footer>
+                           <span>
+                              <cite>St. Joseph Church</cite>
+                              <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" className="mt-4 mx-auto" />
+                           </span>
+                        </footer>
+                     </blockquote>
+                  </div>
                   <div>
                      <blockquote>
                         <q>
