@@ -137,7 +137,8 @@ const Footer = () => {
                                  target="_blank"
                                  rel="noopener noreferrer"
                               >
-                                 nest <img className="ml-2" src={data.nestLogo.publicURL} alt="nest Logo" />
+                                 NEST<sup className="text-[6px] pl-[2px]">TM</sup>{" "}
+                                 <img className="ml-2" src={data.nestLogo.publicURL} alt="nest Logo" />
                               </a>
                            </div>
                         </li>
