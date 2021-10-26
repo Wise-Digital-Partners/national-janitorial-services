@@ -20,7 +20,7 @@ const WhyUs = ({ className, headingLevel }) => {
                gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
             }
          }
-         icon4: file(relativePath: { eq: "repeating/clients/client-4.jpg" }) {
+         icon4: file(relativePath: { eq: "repeating/clients/client 4.jpg" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
             }
