@@ -1,11 +1,11 @@
 module.exports = {
+   mode: "jit",
    purge: ["./src/**/*.js"],
    theme: {
       container: {
          center: true,
          padding: {
             DEFAULT: "1rem",
-            md: "1.5rem",
          },
          screens: {
             DEFAULT: "77rem",

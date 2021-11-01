@@ -1,6 +1,6 @@
 const {
    NODE_ENV,
-   URL: NETLIFY_SITE_URL = "https://nest-ui-kit.netlify.app/",
+   URL: NETLIFY_SITE_URL = "https://national-janitorial-services.netlify.app/",
    DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
    CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env;
@@ -46,16 +46,16 @@ module.exports = {
       {
          resolve: "gatsby-plugin-anchor-links",
          options: {
-            offset: -100,
+            offset: -80,
          },
       },
-      {
-         resolve: `gatsby-source-filesystem`,
-         options: {
-            path: `${__dirname}/static/images`,
-            name: `uploads`,
-         },
-      },
+      // {
+      //    resolve: `gatsby-source-filesystem`,
+      //    options: {
+      //       path: `${__dirname}/static/images`,
+      //       name: `uploads`,
+      //    },
+      // },
       {
          resolve: `gatsby-source-filesystem`,
          options: {
@@ -84,7 +84,7 @@ module.exports = {
       {
          resolve: `gatsby-plugin-purgecss`,
          options: {
-            develop: true,
+            // develop: true,
             tailwind: true,
             purgeOnly: ["node_modules/@fortawesome/fontawesome-pro/css/all.min.css"],
          },
