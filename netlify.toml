@@ -1,6 +1,5 @@
 [build]
-  base = ""
-  publish = "/web/public"
+publish = "public"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
