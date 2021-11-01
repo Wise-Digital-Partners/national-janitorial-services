@@ -3,18 +3,18 @@ import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import HeroStacked from "../components/Hero/HeroStacked";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
-import CTA from "../components/Repeating/CTA";
+import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="Office Cleaning Services Long Beach | NJS"
             description="For top office cleaning services in Long Beach, CA, see why National Janitorial Services is a trusted choice. See what we can do and schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
@@ -94,7 +94,7 @@ const Page = ({ data }) => {
 
          <WhyUs className="py-16 md:py-32" headingLevel="h2" />
 
-         <CTA headingLevel="h2" />
+         <CallToAction headingLevel="h2" />
       </Layout>
    );
 };

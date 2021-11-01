@@ -2,12 +2,12 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 
 const Page = ({ data }) => {
    return (
       <Layout headerStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="Privacy Policy | NJS"
             // description=""
             openGraphImage={data.openGraphImage.publicURL}

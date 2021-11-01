@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import Header from "../components/Header/Header";
 import CardsWithZoom from "../components/Cards/CardsWithZoom";
 
@@ -96,7 +96,7 @@ const Page = ({ data }) => {
 
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="Industries We Serve | Commercial Janitorial Services"
             description="National Janitorial Services is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."
             openGraphImage={data.openGraphImage.publicURL}

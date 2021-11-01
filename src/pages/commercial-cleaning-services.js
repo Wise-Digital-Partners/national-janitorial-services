@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Services from "../components/Repeating/Services";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import Covid from "../components/Repeating/Covid";
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemPanel, AccordionItemState } from "react-accessible-accordion";
 
@@ -13,7 +13,7 @@ const Page = ({ data }) => {
       [accordionOpen3, setAccordionOpen3] = useState("");
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="Commercial Cleaning Services Long Beach | NJS"
             description="When you need top commercial cleaning services in Long Beach, National Janitorial Services is here to help. Browse our services & get a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}

@@ -3,12 +3,12 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
 import Testimonials from "../components/Repeating/Testimonials";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
-import CTA from "../components/Repeating/CTA";
+import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    const heroFullWidthImages = [
@@ -20,7 +20,7 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="About NJS | Commercial Janitorial Services Company"
             description="With over 5 years and more than 100 accounts served, National Janitorial Services is your trusted partner in keeping your business spotless and safe."
             openGraphImage={data.openGraphImage.publicURL}
@@ -90,7 +90,7 @@ const Page = ({ data }) => {
 
          <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
-         <CTA headingLevel="h2" />
+         <CallToAction headingLevel="h2" />
       </Layout>
    );
 };

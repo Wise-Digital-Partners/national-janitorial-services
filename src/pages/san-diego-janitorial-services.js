@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
 import Covid from "../components/Repeating/Covid";
 import Services from "../components/Repeating/Services";
@@ -11,7 +11,7 @@ import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
-import CTA from "../components/Repeating/CTA";
+import CallToAction from "../components/Repeating/CTA";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
 
@@ -25,7 +25,7 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="San Diego Janitorial Cleaning Services | NJS"
             description="National Janitorial Services offers top San Diego janitorial services for local businesses. Learn about how we excel in COVID cleaning & commercial cleaning!"
             openGraphImage={data.openGraphImage.publicURL}
@@ -87,7 +87,7 @@ const Page = ({ data }) => {
 
          <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
-         <CTA headingLevel="h2" heading="Comprehensive Janitorial Services for San Diego Businesses" />
+         <CallToAction headingLevel="h2" heading="Comprehensive Janitorial Services for San Diego Businesses" />
 
          <section className="py-16 md:py-32">
             <div className="container">

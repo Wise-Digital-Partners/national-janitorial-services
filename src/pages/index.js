@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import SearchEngineOptimization from "../components/SEO";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
 import Covid from "../components/Repeating/Covid";
 import Services from "../components/Repeating/Services";
@@ -11,7 +11,7 @@ import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
-import CTA from "../components/Repeating/CTA";
+import CallToAction from "../components/Repeating/CTA";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
 
@@ -25,7 +25,7 @@ const Page = ({ data }) => {
    ];
    return (
       <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
-         <SEO
+         <SearchEngineOptimization
             title="National Janitorial Services | Commercial Cleaning Company"
             description="National Janitorial Services is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
             openGraphImage={data.openGraphImage.publicURL}
@@ -91,7 +91,7 @@ const Page = ({ data }) => {
 
          <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
-         <CTA headingLevel="h2" />
+         <CallToAction headingLevel="h2" />
       </Layout>
    );
 };
