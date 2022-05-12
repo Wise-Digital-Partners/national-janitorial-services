@@ -50,17 +50,17 @@ const ReviewCards = () => {
 
    const data = useStaticQuery(graphql`
       {
-         yelp: file(relativePath: { eq: "reviews/Yelp.png" }) {
+         yelp: file(relativePath: { eq: "reviews/yelp.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 70, placeholder: BLURRED, quality: 100)
             }
          }
-         google: file(relativePath: { eq: "reviews/Google.png" }) {
+         google: file(relativePath: { eq: "reviews/google.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 76, placeholder: BLURRED, quality: 100)
             }
          }
-         facebook: file(relativePath: { eq: "reviews/Facebook.png" }) {
+         facebook: file(relativePath: { eq: "reviews/facebook.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 95, placeholder: BLURRED, quality: 100)
             }

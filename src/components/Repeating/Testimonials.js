@@ -63,7 +63,7 @@ const Testimonial = ({ className, headingLevel }) => {
                gatsbyImageData(layout: FIXED, width: 95, quality: 100)
             }
          }
-         yelp: file(relativePath: { eq: "reviews/Yelp.png" }) {
+         yelp: file(relativePath: { eq: "reviews/yelp.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 70, quality: 100)
             }
