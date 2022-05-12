@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Dispensary Cleaning Services | Janitorial Company Long Beach"
             description="For dispensary cleaning services in the Long Beach area, see why National Janitorial Services is a top choice. Learn more & schedule a consultation!"

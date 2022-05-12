@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="San Diego Janitorial Cleaning Services | NJS"
             description="National Janitorial Services offers top San Diego janitorial services for local businesses. Learn about how we excel in COVID cleaning & commercial cleaning!"

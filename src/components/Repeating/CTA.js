@@ -5,7 +5,7 @@ import { getImage } from "gatsby-plugin-image";
 import CTAFullWidth from "../CTA/CTAFullWidth";
 import ButtonSolid from "../Button/ButtonSolid";
 
-const Covid = ({ heading, headingLevel }) => {
+const CTA = ({ heading, headingLevel }) => {
    const data = useStaticQuery(graphql`
       {
          backgroundDesktop: file(relativePath: { eq: "repeating/cta/background.jpg" }) {
@@ -52,4 +52,4 @@ const Covid = ({ heading, headingLevel }) => {
    );
 };
 
-export default Covid;
+export default CTA;

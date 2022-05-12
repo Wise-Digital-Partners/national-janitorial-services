@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Day Porter Services Long Beach | NJS"
             description="Nobody does day porter services like National Janitorial Services. We offer the cleaning you need right here in Long Beach, CA. Schedule a consultation!"

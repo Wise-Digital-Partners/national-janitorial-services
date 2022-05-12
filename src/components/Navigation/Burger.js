@@ -5,7 +5,7 @@ import tw from "twin.macro";
 
 const StyledBurger = styled.button`
    .line {
-      ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-gray-800` : tw`bg-gray-800`)};
+      ${({ navigationStyle }) => (navigationStyle === "overlap" ? tw`bg-gray-800` : tw`bg-gray-800`)};
       ${({ scrolled }) => (scrolled ? tw`bg-gray-800` : null)};
       transform-origin: 1px;
       ${({ offcanvasOpen }) => (offcanvasOpen ? tw`bg-white` : null)};
@@ -22,7 +22,7 @@ const StyledBurger = styled.button`
    }
 `;
 
-const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled }) => {
+const Burger = ({ offcanvasOpen, setOffcanvasOpen, navigationStyle, scrolled }) => {
    const isExpanded = offcanvasOpen ? true : false;
    return (
       <StyledBurger
@@ -31,7 +31,7 @@ const Burger = ({ offcanvasOpen, setOffcanvasOpen, headerStyle, scrolled }) => {
          aria-expanded={isExpanded}
          offcanvasOpen={offcanvasOpen}
          onClick={() => setOffcanvasOpen(!offcanvasOpen)}
-         headerStyle={headerStyle}
+         navigationStyle={navigationStyle}
          scrolled={scrolled}
       >
          <div className="line relative w-6 h-0.5 z-10 transition-all duration-300 ease-linear" />

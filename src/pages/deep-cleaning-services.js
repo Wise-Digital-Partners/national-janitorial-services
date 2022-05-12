@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Deep Cleaning Services Long Beach | NJS"
             description="For the deep cleaning services your business deserves, partner with National Janitorial Services. We offer Long Beach the best in deep cleaning. Learn more!"

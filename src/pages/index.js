@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="National Janitorial Services | Commercial Cleaning Company"
             description="National Janitorial Services is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
@@ -37,6 +37,7 @@ const Page = ({ data }) => {
             padding="pt-40 md:pt-64 pb-18 md:pb-64 pr-6 md:mr-0"
             textAlignment="text-left"
             textMaxWidth="max-w-4xl"
+            backgroundPosition="50% 35%"
          >
             <p className="text-mobile-7xl md:text-7xl font-display font-black text-accent uppercase mb-6 md:mb-2">
                Reliable.

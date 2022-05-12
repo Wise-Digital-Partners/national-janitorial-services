@@ -4,36 +4,32 @@ import React, { useState, useLayoutEffect } from "react";
 // import UtilityNav from "../Header/UtilityNav";
 import MainNav from "../Navigation/MainNav";
 
-const Header = ({ headerStyle, headerLinkColor, headerHasBorder }) => {
+const Header = ({ navigationStyle, headerLinkColor, headerHasBorder, setBodyOffset }) => {
    // determine if page has scrolled
    const [scrolled, setScrolled] = useState(false);
 
+   // determine offcanvas offset
+   const [offcanvasOffset, setOffcanvasOffset] = useState(0);
+
    // change state on scroll
    useLayoutEffect(() => {
-      const siteNavigation = document.querySelector("#site-navigation"),
-         promoBar = document.querySelector("#promo-bar"),
+      const promoBar = document.querySelector("#promo-bar"),
          utilityNavigation = document.querySelector("#utlity-navigation"),
-         mainNavigation = document.querySelector("#main-navigation"),
-         offcanvasNavigation = document.querySelector("#offcanvas-navigation"),
-         bodyContent = document.querySelector("#body-content");
+         mainNavigation = document.querySelector("#main-navigation");
 
-      // calculate #offcanvas-navigation menu offset top
-      offcanvasNavigation.style.top = mainNavigation.offsetHeight + "px";
+      setOffcanvasOffset(mainNavigation.offsetHeight);
 
       const handleLoad = () => {
          // calculate #offcanvas-navigation menu offset top
-         offcanvasNavigation.style.top = mainNavigation.offsetHeight + "px";
+         setOffcanvasOffset(mainNavigation.offsetHeight);
       };
 
       const handleResize = () => {
          // calculate #offcanvas-navigation offset top on resize
-         offcanvasNavigation.style.top = siteNavigation.offsetHeight + "px";
+         setOffcanvasOffset(mainNavigation.offsetHeight);
       };
 
       const handleScroll = () => {
-         // recalculate #offcanvas-navigation offset top on scroll
-         // offcanvasNavigation.style.top = (siteNavigation.offsetHeight - window.scrollY ) + 'px' ;
-
          let isScrolled;
 
          if (utilityNavigation !== null && promoBar !== null) {
@@ -49,26 +45,25 @@ const Header = ({ headerStyle, headerLinkColor, headerHasBorder }) => {
          if (isScrolled) {
             setScrolled(true);
             // recalculate #offcanvas-navigation offset top on scroll
-            offcanvasNavigation.style.top = mainNavigation.offsetHeight + "px";
+            setOffcanvasOffset(mainNavigation.offsetHeight);
 
             // recalculate #body-content offset top on scroll
-            if (headerStyle === "overlap") {
-               bodyContent.style.marginTop = "0px";
-               bodyContent.style.paddingTop = null;
-            } else if (headerStyle === "standard") {
-               bodyContent.style.paddingTop = mainNavigation.offsetHeight + "px";
-               bodyContent.style.marginTop = null;
+            if (navigationStyle === "overlap") {
+               setBodyOffset(0);
+            } else {
+               setBodyOffset(mainNavigation.offsetHeight);
             }
          } else {
             setScrolled(false);
 
+            // calculate #offcanvas-navigation menu offset top
+            setOffcanvasOffset(mainNavigation.offsetHeight);
+
             // recalculate #body-content offset top on scroll
-            if (headerStyle === "overlap") {
-               // bodyContent.style.marginTop = "-" + mainNavigation.offsetHeight + "px";
-               bodyContent.style.paddingTop = null;
-            } else if (headerStyle === "standard") {
-               bodyContent.style.paddingTop = null;
-               bodyContent.style.marginTop = null;
+            if (navigationStyle === "overlap") {
+               setBodyOffset(0);
+            } else {
+               setBodyOffset(0);
             }
          }
       };
@@ -82,13 +77,19 @@ const Header = ({ headerStyle, headerLinkColor, headerHasBorder }) => {
          window.removeEventListener("resize", handleResize);
          window.removeEventListener("load", handleLoad);
       };
-   }, [scrolled, headerStyle]);
+   }, [scrolled, navigationStyle, setBodyOffset]);
 
    return (
       <div id="site-navigation" className="relative z-30">
          {/* <PromoBar /> */}
          {/* <UtilityNav /> */}
-         <MainNav scrolled={scrolled} headerStyle={headerStyle} headerLinkColor={headerLinkColor} headerHasBorder={headerHasBorder} />
+         <MainNav
+            scrolled={scrolled}
+            navigationStyle={navigationStyle}
+            headerLinkColor={headerLinkColor}
+            headerHasBorder={headerHasBorder}
+            offcanvasOffset={offcanvasOffset}
+         />
       </div>
    );
 };

@@ -19,7 +19,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="About NJS | Commercial Janitorial Services Company"
             description="With over 5 years and more than 100 accounts served, National Janitorial Services is your trusted partner in keeping your business spotless and safe."

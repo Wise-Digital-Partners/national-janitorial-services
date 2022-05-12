@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="COVID Cleaning Services Long Beach | National Janitorial"
             description="Our COVID cleaning services help Long Beach businesses stop the spread. Learn more about our coronavirus cleaning process & schedule a consultation!"

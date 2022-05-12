@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Bar Cleaning Services | Nightclub Cleaning | Long Beach"
             description="National Janitorial Services offers top bar & nightclub cleaning services in the Long Beach area & beyond. See how we can help & schedule a consultation!"

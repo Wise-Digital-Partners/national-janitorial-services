@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Commercial Office Cleaning Services | Long Beach | NJS"
             description="National Janitorial Services offers top commercial office cleaning services in the Long Beach area & beyond. Learn more & schedule a consultation today!"

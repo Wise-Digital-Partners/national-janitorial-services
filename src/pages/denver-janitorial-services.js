@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Denver Janitorial Services | Commercial Cleaning Company"
             description="Denver janitorial services don't get any better than National Janitorial Services. We have years of experience serving local businesses. Learn more today!"

@@ -1,6 +1,6 @@
 const {
    NODE_ENV,
-   URL: NETLIFY_SITE_URL = "https://national-janitorial-services.netlify.app/",
+   URL: NETLIFY_SITE_URL = "https://www.nationaljanitorialservices.com/",
    DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
    CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env;
@@ -19,9 +19,18 @@ module.exports = {
       `gatsby-plugin-transition-link`,
       `gatsby-plugin-postcss`,
       `gatsby-plugin-image`,
-      `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-offline`,
+      {
+         resolve: `gatsby-plugin-sharp`,
+         options: {
+            defaults: {
+               placeholder: `blurred`,
+               quality: 100,
+               breakpoints: [640, 768, 1024, 1280, 1536],
+            },
+         },
+      },
       {
          resolve: "gatsby-plugin-robots-txt",
          options: {
@@ -106,10 +115,6 @@ module.exports = {
          options: {
             id: "GTM-P8S9BNM",
             includeInDevelopment: false,
-            // defaultDataLayer: { platform: "gatsby" },
-            // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
-            // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
-            // dataLayerName: "YOUR_DATA_LAYER_NAME",
          },
       },
    ],

@@ -6,7 +6,7 @@ import SearchEngineOptimization from "../components/SEO";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Privacy Policy | NJS"
             // description=""

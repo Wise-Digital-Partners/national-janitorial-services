@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Long Beach Janitorial Services | Commercial Cleaning"
             description="Long Beach janitorial services don't get any better than National Janitorial Services. We have years of experience serving local businesses. Learn more today!"

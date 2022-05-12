@@ -95,7 +95,7 @@ const Page = ({ data }) => {
    ];
 
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Industries We Serve | Commercial Janitorial Services"
             description="National Janitorial Services is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."

@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Los Angeles Janitorial Cleaning Services | NJS"
             description="National Janitorial Services is a top choice for Los Angeles janitorial cleaning services you can depend on. Learn more here & schedule a consultation today!"

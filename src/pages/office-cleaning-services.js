@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Office Cleaning Services Long Beach | NJS"
             description="For top office cleaning services in Long Beach, CA, see why National Janitorial Services is a trusted choice. See what we can do and schedule a consultation!"

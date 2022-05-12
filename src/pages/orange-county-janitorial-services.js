@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Orange County Janitorial Services | Commercial Cleaning"
             description="For Orange County janitorial services you can depend on, choose National Janitorial Services. We offer top commercial cleaning for your business. Learn more!"

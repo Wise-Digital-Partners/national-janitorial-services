@@ -24,7 +24,7 @@ const Page = ({ data }) => {
       },
    ];
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Phoenix Janitorial Services | Commercial Cleaning Company"
             description="For Phoenix janitorial services you can depend on, choose National Janitorial Services. We offer top commercial cleaning for your local business. Learn more!"

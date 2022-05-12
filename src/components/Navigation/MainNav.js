@@ -10,14 +10,14 @@ import ButtonSolid from "../Button/ButtonSolid";
 import Accordion from "./Accordion";
 
 const StyledMainNav = styled.nav`
-   ${({ headerStyle }) => (headerStyle === "hidden" ? tw`hidden` : null)};
+   ${({ navigationStyle }) => (navigationStyle === "hidden" ? tw`hidden` : null)};
    ${({ headerHasBorder }) => (headerHasBorder ? tw`border-b border-solid border-gray-700 border-opacity-10` : null)};
    /* @media (min-width: 1024px) {
         ${({ megaMenuHovering }) => (megaMenuHovering ? tw`bg-white` : null)};
     } */
    @media (max-width: 1023px) {
       ${({ offcanvasOpen }) => (offcanvasOpen ? tw`bg-gray-800` : null)};
-      /* ${({ headerStyle }) => (headerStyle === "overlap" ? tw`bg-white` : null)};  */
+      /* ${({ navigationStyle }) => (navigationStyle === "overlap" ? tw`bg-white` : null)};  */
    }
    &[data-fixed="true"] {
       ${tw`fixed top-0 left-0 w-full bg-white z-20`}
@@ -128,7 +128,7 @@ const StyledMainNav = styled.nav`
    }
 `;
 
-const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) => {
+const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, offcanvasOffset }) => {
    // determine if offcanvas is open
    const [offcanvasOpen, setOffcanvasOpen] = useState(false);
 
@@ -178,13 +178,13 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
       // stickyPhoneIcon = null,
       className = null;
 
-   if (headerStyle === "overlap") {
+   if (navigationStyle === "overlap") {
       initialLogo = data.logoDark.publicURL;
       stickyLogo = data.logoDark.publicURL;
       // initialPhoneIcon = data.phoneLight.publicURL;
       // stickyPhoneIcon = data.phoneDark.publicURL;
       className = "absolute";
-   } else if (headerStyle === "standard") {
+   } else if (navigationStyle === "standard") {
       initialLogo = data.logoDark.publicURL;
       stickyLogo = data.logoDark.publicURL;
       // initialPhoneIcon = data.phoneDark.publicURL;
@@ -210,7 +210,7 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
          role="navigation"
          aria-label="main-navigation"
          data-fixed={scrolled}
-         headerStyle={headerStyle}
+         navigationStyle={navigationStyle}
          headerHasBorder={headerHasBorder}
          headerLinkColor={headerLinkColor}
          // megaMenuHovering={megaMenuHovering}
@@ -315,6 +315,9 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   <li>
                      <a href="/about/">About</a>
                   </li>
+                  <li>
+                     <a href="/reviews/">Reviews</a>
+                  </li>
                   {/* <li>
                      <a href="# ">Blog</a>
                   </li> */}
@@ -327,51 +330,51 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                   <Burger
                      offcanvasOpen={offcanvasOpen}
                      setOffcanvasOpen={setOffcanvasOpen}
-                     headerStyle={headerStyle}
+                     navigationStyle={navigationStyle}
                      scrolled={scrolled}
                      aria-controls="offcanvas-navigation"
                   />
-                  <OffCanvas offcanvasOpen={offcanvasOpen} id="offcanvas-navigation">
+                  <OffCanvas offcanvasOpen={offcanvasOpen} offcanvasOffset={offcanvasOffset} id="offcanvas-navigation">
                      <ul id="navigation-mobile">
                         <li className="relative mb-8">
                            <Accordion title="Services" className="submenu-parent">
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-services/">
+                                 <a onClick={clickHandler} href="/commercial-cleaning-services/">
                                     All Services
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/covid-cleaning-services/">
+                                 <a onClick={clickHandler} href="/covid-cleaning-services/">
                                     COVID Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/janitorial-cleaning-company/">
+                                 <a onClick={clickHandler} href="/janitorial-cleaning-company/">
                                     Janitorial Services
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-cleaning-company/">
+                                 <a onClick={clickHandler} href="/commercial-cleaning-company/">
                                     Commercial Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/office-cleaning-services/">
+                                 <a onClick={clickHandler} href="/office-cleaning-services/">
                                     Office Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/day-porter-services/">
+                                 <a onClick={clickHandler} href="/day-porter-services/">
                                     Porter Services
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/deep-cleaning-services/">
+                                 <a onClick={clickHandler} href="/deep-cleaning-services/">
                                     Deep Cleaning
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/disinfection-services/">
+                                 <a onClick={clickHandler} href="/disinfection-services/">
                                     Disinfectant Services
                                  </a>
                               </li>
@@ -380,79 +383,84 @@ const MainNav = ({ headerStyle, headerHasBorder, headerLinkColor, scrolled }) =>
                         <li className="relative mb-8">
                            <Accordion title="Industries" className="submenu-parent">
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/industries-we-serve/">
+                                 <a onClick={clickHandler} href="/industries-we-serve/">
                                     All Industries
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/hospital-cleaning-services/">
+                                 <a onClick={clickHandler} href="/hospital-cleaning-services/">
                                     Hospitals
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/hoa-cleaning-services/">
+                                 <a onClick={clickHandler} href="/hoa-cleaning-services/">
                                     HOA
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/commercial-office-cleaning/">
+                                 <a onClick={clickHandler} href="/commercial-office-cleaning/">
                                     Private Offices
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/office-building-cleaning/">
+                                 <a onClick={clickHandler} href="/office-building-cleaning/">
                                     Office Buildings
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/church-cleaning-services/">
+                                 <a onClick={clickHandler} href="/church-cleaning-services/">
                                     Churches
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/school-cleaning-services/">
+                                 <a onClick={clickHandler} href="/school-cleaning-services/">
                                     Schools
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/car-dealership-cleaning/">
+                                 <a onClick={clickHandler} href="/car-dealership-cleaning/">
                                     Car Dealerships
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/movie-theater-cleaning/">
+                                 <a onClick={clickHandler} href="/movie-theater-cleaning/">
                                     Movie Theaters
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/bar-cleaning-services/">
+                                 <a onClick={clickHandler} href="/bar-cleaning-services/">
                                     Bars & Nightclubs
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/gym-cleaning-services/">
+                                 <a onClick={clickHandler} href="/gym-cleaning-services/">
                                     Gyms & Fitness
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/medical-dental-office-cleaning/">
+                                 <a onClick={clickHandler} href="/medical-dental-office-cleaning/">
                                     Medical & Dental
                                  </a>
                               </li>
                               <li>
-                                 <a onKeyDown={clickHandler} onClick={clickHandler} href="/dispensary-cleaning-services/">
+                                 <a onClick={clickHandler} href="/dispensary-cleaning-services/">
                                     Dispensaries
                                  </a>
                               </li>
                            </Accordion>
                         </li>
                         <li className="relative mb-8">
-                           <a href="/about/" onKeyDown={clickHandler} onClick={clickHandler}>
+                           <a href="/about/" onClick={clickHandler}>
                               About
                            </a>
                         </li>
+                        <li className="relative mb-8">
+                           <a href="/reviews/" onClick={clickHandler}>
+                              Reviews
+                           </a>
+                        </li>
                         {/* <li className="relative">
-                           <a href="# " onKeyDown={clickHandler} onClick={clickHandler}>
+                           <a href="# " onClick={clickHandler}>
                               Blog
                            </a>
                         </li> */}

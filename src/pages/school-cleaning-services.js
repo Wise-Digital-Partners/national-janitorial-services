@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="School Cleaning Services | Janitorial Company Long Beach"
             description="When you need top school cleaning services in Long Beach, National Janitorial Services is here to help. See how we can help & get a consultation today!"

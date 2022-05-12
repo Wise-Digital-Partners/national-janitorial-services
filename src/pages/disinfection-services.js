@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Disinfection Services Long Beach | NJS"
             description="Go beyond the surface with top Long Beach disinfection services courtesy of National Janitorial Services. See what we can do and schedule a consultation!"

@@ -13,7 +13,7 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Commercial Cleaning Company Long Beach | NJS"
             description="If you need a top commercial cleaning company for your Long Beach business, look no further. National Janitorial Services has the expertise you need!"

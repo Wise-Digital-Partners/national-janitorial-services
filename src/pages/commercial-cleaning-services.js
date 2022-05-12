@@ -12,7 +12,7 @@ const Page = ({ data }) => {
       [accordionOpen2, setAccordionOpen2] = useState(""),
       [accordionOpen3, setAccordionOpen3] = useState("");
    return (
-      <Layout headerStyle="overlap" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Commercial Cleaning Services Long Beach | NJS"
             description="When you need top commercial cleaning services in Long Beach, National Janitorial Services is here to help. Browse our services & get a consultation today!"

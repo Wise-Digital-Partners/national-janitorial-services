@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Gym Cleaning Services | Janitorial Company Long Beach"
             description="Keep your fitness center clean with gym cleaning services courtesy of National Janitorial Services. We serve Long Beach & surrounding areas. Learn more!"

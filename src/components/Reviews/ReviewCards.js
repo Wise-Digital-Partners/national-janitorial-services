@@ -1,88 +1,114 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import styled from "@emotion/styled";
-import tw from "twin.macro";
 
-const ReviewCards = ({ gridLayout }) => {
-   const StyledReviewCards = styled.div`
-      .masonry-item {
-         ${tw`w-full border border-solid border-gray-300 border-opacity-30 md:mx-3 lg:mx-5 mb-8 md:mb-10 p-6 md:p-10`}
-         @media (min-width: 768px) {
-            width: calc(50% - 1.5rem);
-         }
-         @media (min-width: 1024px) {
-            width: calc(50% - 2.5rem);
-         }
-      }
-   `;
+const ReviewCards = () => {
+   const reviews = [
+      {
+         name: "Calvin Williams",
+         review:
+            "National Janitorial has been cleaning our offices for more than a year. Their team is very reliable and management has always responded to and quickly resolved any issue we have had. We have recommended them to several other businesses.",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
+         name: "Carlos A.",
+         review:
+            "National janitorial was very professional and responsive when we needed them the most. And will really recommend them to anyone looking for janitorial services.",
+         profilePicture: "",
+         platform: "Yelp",
+      },
+      {
+         name: "Maggie V.",
+         review:
+            "I hired National Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety precaution for my tenants.  Anthony went above and beyond my expectations from scheduling, pricing and completing the job. I highly recommend National to anyone needing these types of services, they did an excellent job!",
+         profilePicture: "",
+         platform: "Yelp",
+      },
+      {
+         name: "Hilary V.",
+         review:
+            "My law firm hired National Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with COVID. We called several businesses for pricing and availability for professional sanitation. National was the best pricing and was available that same day. They were great. Two guys arrived, both had sanitation equipment and sprayed down the entire office in less than an hour. We had no more issues, and lucking no additional sick employees. Thank you.",
+         profilePicture: "",
+         platform: "Yelp",
+      },
+      {
+         name: "GIA El-Shaddai Long Beach Church",
+         review:
+            "I’m glad I came across National Janitorial Services. I’ve had issues in the past with cleaners but they provided a trustworthy experience and made sure the job was done up to my expectations. Thank you!",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
+         name: "St Joseph Church",
+         review:
+            "I appreciate the diligence and professionalism of Anthony and the crew member appointed to us. During these covid times they have taken the upmost care to provide the level of cleanliness and safeguarding measures needed to insure everyone's safety. The pricing is fair and we are happy with the great service!",
+         profilePicture: "",
+         platform: "Google",
+      },
+   ];
+
    const data = useStaticQuery(graphql`
       {
-         yelp: file(relativePath: { eq: "reviews/yelp.png" }) {
+         yelp: file(relativePath: { eq: "reviews/Yelp.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 70, placeholder: BLURRED, quality: 100)
             }
          }
-         google: file(relativePath: { eq: "reviews/google.png" }) {
+         google: file(relativePath: { eq: "reviews/Google.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 76, placeholder: BLURRED, quality: 100)
             }
          }
-         facebook: file(relativePath: { eq: "reviews/facebook.png" }) {
+         facebook: file(relativePath: { eq: "reviews/Facebook.png" }) {
             childImageSharp {
                gatsbyImageData(layout: FIXED, width: 95, placeholder: BLURRED, quality: 100)
             }
          }
-         houzz: file(relativePath: { eq: "reviews/houzz.png" }) {
-            childImageSharp {
-               gatsbyImageData(layout: FIXED, width: 98, placeholder: BLURRED, quality: 100)
-            }
-         }
-         thumbtack: file(relativePath: { eq: "reviews/thumbtack.png" }) {
-            childImageSharp {
-               gatsbyImageData(layout: FIXED, width: 124, placeholder: BLURRED, quality: 100)
-            }
-         }
-         headshot: file(relativePath: { eq: "reviews/User.svg" }) {
+         defaultProfilePicture: file(relativePath: { eq: "reviews/default-profile-picture.svg" }) {
             publicURL
          }
       }
    `);
 
-   let gridItemClass = null;
-
-   if (gridLayout === "masonry") {
-      gridItemClass = "masonry-item";
-   } else if (gridLayout === "standard") {
-      gridItemClass = "grid-item";
-   }
-
    return (
-      <StyledReviewCards>
-         <div className={`${gridItemClass}`}>
-            <div className="flex justify-between mb-8">
-               <div className="flex items-center">
-                  <img className="rounded-full" src={data.headshot.publicURL} alt="User Headshot" width="40" />
-                  <div className="ml-4">
-                     <span className="text-gray-700 font-heading font-bold">Patrick Dillon</span>
+      <>
+         {reviews.map((review, i) => {
+            return (
+               <div className="mb-6 w-full break-inside-avoid rounded-lg bg-white py-8 px-6 border border-gray-200 md:mb-10 md:p-8" key={i}>
+                  <div className="mb-4 flex items-center justify-between">
+                     <div className="flex items-center space-x-3">
+                        {review.profilePicture && review.profilePicture.asset ? (
+                           <div className="mb-2 inline-flex justify-center rounded-full border border-white">
+                              <GatsbyImage
+                                 image={review.profilePicture.asset.gatsbyImageData}
+                                 alt={`${review.name} profile headshot`}
+                                 loading="lazy"
+                                 width={40}
+                                 height={40}
+                                 className="z-0 rounded-full"
+                              />
+                           </div>
+                        ) : (
+                           <img src={data.defaultProfilePicture.publicURL} width="40" alt="Default profile headshot" />
+                        )}
+
+                        <div>
+                           <span className="block font-bold text-gray-800">{review.name}</span>
+                        </div>
+                     </div>
+
+                     {review.platform === "Google" && <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} loading="lazy" />}
+                     {review.platform === "Yelp" && <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} loading="lazy" />}
+                     {review.platform === "Facebook" && <GatsbyImage image={data.facebook.childImageSharp.gatsbyImageData} loading="lazy" />}
                   </div>
+                  <blockquote>
+                     <q className="mb-0 block font-normal before:hidden">{review.review}</q>
+                  </blockquote>
                </div>
-               <div className="hidden md:block">
-                  <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" />
-               </div>
-            </div>
-            <blockquote>
-               <q className="block mb-6 md:mb-0">
-                  I recently worked with Design Appruv to develop construction plans for a home addition. This company is amazing. They made the
-                  process so simple, and helped us get through the approval process very smoothly. I would recommend them, especially if you're going
-                  through this for the first time!
-               </q>
-            </blockquote>
-            <div className="block md:hidden">
-               <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" />
-            </div>
-         </div>
-      </StyledReviewCards>
+            );
+         })}
+      </>
    );
 };
 

@@ -13,7 +13,7 @@ import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
-      <Layout headerStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Medical & Dental Office Cleaning Services | Long Beach"
             description="For top medical & dental office cleaning services in the Long Beach area, see why National Janitorial Services is an excellent choice. Schedule a consultation!"
