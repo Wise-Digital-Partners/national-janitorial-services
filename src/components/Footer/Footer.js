@@ -33,11 +33,23 @@ const Footer = () => {
       <div>
          <footer className="bg-gray-800 pt-20 md:pt-40 pb-6 text-center md:text-left">
             <div className="container">
-               <div className="md:flex md:justify-between mb-22 md:mb-40 whitespace-nowrap">
-                  <div className="mb-22 md:mb-0">
+               <div className="md:flex md:justify-between items-start mb-20 md:mb-32 whitespace-nowrap">
+                  <div className="mb-20 md:mb-0">
                      <AniLink fade to="/">
-                        <img src={data.logo.publicURL} alt="National Janitorial Services Logo" width="233" className="mx-auto md:mx-0 w-44 md:w-60" />
+                        <img
+                           src={data.logo.publicURL}
+                           alt="National Janitorial Services Logo"
+                           width="233"
+                           className="mx-auto md:mx-0 mb-8 w-44 md:w-60"
+                        />
                      </AniLink>
+
+                     <address className="not-italic">
+                        <a href="https://goo.gl/maps/pwzT2hcUs7DuJvNa6" target="_blank" rel="noopener noreferrer" className="text-white">
+                           758 Gaviota Ave #3
+                           <br /> Long Beach, CA 90813
+                        </a>
+                     </address>
                   </div>
 
                   <ul className="flex flex-col md:flex-row items-center">
