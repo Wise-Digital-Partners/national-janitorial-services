@@ -45,7 +45,7 @@ const Footer = () => {
                      </AniLink>
 
                      <address className="not-italic">
-                        <a href="https://goo.gl/maps/pwzT2hcUs7DuJvNa6" target="_blank" rel="noopener noreferrer" className="text-white">
+                        <a href="https://g.page/r/CTIZfyVEcbijEAE" target="_blank" rel="noopener noreferrer" className="text-white">
                            758 Gaviota Ave #3
                            <br /> Long Beach, CA 90813
                         </a>
