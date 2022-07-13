@@ -26,7 +26,7 @@ const WhyUs = ({ className, headingLevel }) => {
          <div className="container">
             <Header
                headingLevel={headingLevel}
-               heading="The NJS Difference"
+               heading="The National Janitorial Difference"
                subtext="Find out what makes us Long Beach’s top cleaning company."
                subtextSize="text-2xl"
                textAlignment="text-center mx-auto"
