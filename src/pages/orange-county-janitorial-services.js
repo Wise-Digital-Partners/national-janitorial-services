@@ -27,7 +27,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Orange County Janitorial Services | Commercial Cleaning"
-            description="For Orange County janitorial services you can depend on, choose National Janitorial Services. We offer top commercial cleaning for your business. Learn more!"
+            description="For Orange County janitorial services you can depend on, choose Long Beach Janitorial. We offer top commercial cleaning for your business. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -68,7 +68,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in Orange County</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Orange County and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Orange County and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>
@@ -99,7 +99,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         Orange County is home to the Happiest Place on Earth, Disneyland. It’s also home to many thriving businesses, from resorts at
                         beach towns, restaurants, retail, and more. Enjoy sunny skies and the great outdoors, or roam around the urban parks and
-                        appreciate art, good food, and more. NJS is proud to offer Orange County businesses for their commercial cleaning needs.
+                        appreciate art, good food, and more. LBJ is proud to offer Orange County businesses for their commercial cleaning needs.
                      </p>
                   </div>
                   <div>

@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Bar Cleaning Services | Nightclub Cleaning | Long Beach"
-            description="National Janitorial Services offers top bar & nightclub cleaning services in the Long Beach area & beyond. See how we can help & schedule a consultation!"
+            description="Long Beach Janitorial offers top bar & nightclub cleaning services in the Long Beach area & beyond. See how we can help & schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -55,7 +55,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

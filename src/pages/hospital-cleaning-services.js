@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Hospital Cleaning Services | Janitorial Company Long Beach"
-            description="When you need top hospital cleaning services in Long Beach, National Janitorial Services is here to help. See how we can help & get a consultation today!"
+            description="When you need top hospital cleaning services in Long Beach, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,8 +36,7 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Top Hospital Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
-                        Maintaining a rigorously sanitized environment is crucial to reduce the risk of hospital-acquired infections. At National
-                        Janitorial Services, we provide thorough and medical-grade cleaning to help keep your patients and staff safe. Our
+                        Maintaining a rigorously sanitized environment is crucial to reduce the risk of hospital-acquired infections. At Long Beach Janitorial, we provide thorough and medical-grade cleaning to help keep your patients and staff safe. Our
                         professional cleaning experts capture airborne pathogens and disinfect surfaces without cross-contamination.
                      </p>
                   </div>
@@ -55,7 +54,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

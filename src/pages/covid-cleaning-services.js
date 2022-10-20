@@ -15,7 +15,7 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="COVID Cleaning Services Long Beach | National Janitorial"
+            title="COVID Cleaning Services Long Beach | Long Beach Janitorial"
             description="Our COVID cleaning services help Long Beach businesses stop the spread. Learn more about our coronavirus cleaning process & schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
@@ -55,7 +55,7 @@ const Page = ({ data }) => {
                <header className="mb-24 max-w-3xl">
                   <h2>The Process</h2>
                   <p>
-                     At NJS, we’re serious about workplace disinfection. Our disinfection & COVID cleaning teams are certified and professionally
+                     At LBJ, we’re serious about workplace disinfection. Our disinfection & COVID cleaning teams are certified and professionally
                      trained on the best practices in accordance with CDC Guidelines.
                   </p>
                </header>

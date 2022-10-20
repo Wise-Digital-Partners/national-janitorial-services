@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Disinfection Services Long Beach | NJS"
-            description="Go beyond the surface with top Long Beach disinfection services courtesy of National Janitorial Services. See what we can do and schedule a consultation!"
+            title="Disinfection Services Long Beach | LBJ"
+            description="Go beyond the surface with top Long Beach disinfection services courtesy of Long Beach Janitorial. See what we can do and schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

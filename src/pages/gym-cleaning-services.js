@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Gym Cleaning Services | Janitorial Company Long Beach"
-            description="Keep your fitness center clean with gym cleaning services courtesy of National Janitorial Services. We serve Long Beach & surrounding areas. Learn more!"
+            description="Keep your fitness center clean with gym cleaning services courtesy of Long Beach Janitorial. We serve Long Beach & surrounding areas. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,11 +36,11 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Top Gym & Fitness Center Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
-                        At National Janitorial Services, we meet and exceed your gym’s cleaning needs. We keep your gym, fitness center, and health
+                        At Long Beach Janitorial, we meet and exceed your gym’s cleaning needs. We keep your gym, fitness center, and health
                         club in tip-top shape with daily janitorial services and deep cleaning. Sanitation should be the least of your members’
                         worries when they work out. With routine janitorial services, ensure sanitized equipment, spaces, and surfaces to keep your
                         members safe as they work toward their goals. We use only EPA-approved disinfectants that are effective against germs,
-                        bacteria, and viruses. Partner with National Janitorial Services to increase member retention and satisfaction with a fresh
+                        bacteria, and viruses. Partner with Long Beach Janitorial to increase member retention and satisfaction with a fresh
                         and welcoming environment.
                      </p>
                   </div>
@@ -57,7 +57,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

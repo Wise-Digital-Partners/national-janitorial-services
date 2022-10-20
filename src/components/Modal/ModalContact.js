@@ -101,7 +101,7 @@ const Modal = () => {
                      <header className="mb-8">
                         <p className="heading-three text-white">Contact Us</p>
                         <p className="text-white mb-0">
-                           Experience the National Janitorial Services difference. Tell us about your cleaning needs today!
+                           Experience the Long Beach Janitorial difference. Tell us about your cleaning needs today!
                         </p>
                      </header>
 

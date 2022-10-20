@@ -27,7 +27,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Long Beach Janitorial Services | Commercial Cleaning"
-            description="Long Beach janitorial services don't get any better than National Janitorial Services. We have years of experience serving local businesses. Learn more today!"
+            description="Long Beach janitorial services don't get any better than Long Beach Janitorial. We have years of experience serving local businesses. Learn more today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -66,7 +66,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in Long Beach</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Long Beach and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Long Beach and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         Whether you’re visiting for business or for pleasure, Long Beach has something for everyone. Go dolphin watching at Catalina
                         Island, discover the unique neighborhoods, or try out some of the breweries and restaurants. The quintessential laid back
-                        Southern California culture runs strong in Long Beach, and local businesses thrive here. NJS is a proud local Long Beach
+                        Southern California culture runs strong in Long Beach, and local businesses thrive here. LBJ is a proud local Long Beach
                         business serving other businesses with their commercial cleaning needs.
                      </p>
                   </div>

@@ -8,7 +8,7 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Privacy Policy | NJS"
+            title="Privacy Policy | LBJ"
             // description=""
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
@@ -19,7 +19,7 @@ const Page = ({ data }) => {
                <h1>Privacy Policy</h1>
 
                <p>
-                  At National Janitorial Services, accessible from https://www.nationaljanitorialservices.com/, one of our main priorities is the
+                  At Long Beach Janitorial, accessible from https://www.nationaljanitorialservices.com/, one of our main priorities is the
                   privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by National
                   Janitorial Services and how we use it.
                </p>
@@ -28,7 +28,7 @@ const Page = ({ data }) => {
 
                <p>
                   This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information
-                  that they shared and/or collect in National Janitorial Services. This policy is not applicable to any information collected offline
+                  that they shared and/or collect in Long Beach Janitorial. This policy is not applicable to any information collected offline
                   or via channels other than this website.
                </p>
 
@@ -71,7 +71,7 @@ const Page = ({ data }) => {
                <h3>Log Files</h3>
 
                <p>
-                  National Janitorial Services follows a standard procedure of using log files. These files log visitors when they visit websites. All
+                  Long Beach Janitorial follows a standard procedure of using log files. These files log visitors when they visit websites. All
                   hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet
                   protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the
                   number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for
@@ -81,7 +81,7 @@ const Page = ({ data }) => {
                <h3>Cookies and Web Beacons</h3>
 
                <p>
-                  Like any other website, National Janitorial Services uses 'cookies'. These cookies are used to store information including visitors'
+                  Like any other website, Long Beach Janitorial uses 'cookies'. These cookies are used to store information including visitors'
                   preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users'
                   experience by customizing our web page content based on visitors' browser type and/or other information.
                </p>
@@ -105,21 +105,21 @@ const Page = ({ data }) => {
 
                <h3>Advertising Partners Privacy Policies</h3>
 
-               <p>You may consult this list to find the Privacy Policy for each of the advertising partners of National Janitorial Services.</p>
+               <p>You may consult this list to find the Privacy Policy for each of the advertising partners of Long Beach Janitorial.</p>
 
                <p>
                   Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective
-                  advertisements and links that appear on National Janitorial Services, which are sent directly to users' browser. They automatically
+                  advertisements and links that appear on Long Beach Janitorial, which are sent directly to users' browser. They automatically
                   receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns
                   and/or to personalize the advertising content that you see on websites that you visit.
                </p>
 
-               <p>Note that National Janitorial Services has no access to or control over these cookies that are used by third-party advertisers.</p>
+               <p>Note that Long Beach Janitorial has no access to or control over these cookies that are used by third-party advertisers.</p>
 
                <h3>Third Party Privacy Policies</h3>
 
                <p>
-                  National Janitorial Services's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult
+                  Long Beach Janitorial's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult
                   the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and
                   instructions about how to opt-out of certain options.{" "}
                </p>
@@ -176,7 +176,7 @@ const Page = ({ data }) => {
                </p>
 
                <p>
-                  National Janitorial Services does not knowingly collect any Personal Identifiable Information from children under the age of 13. If
+                  Long Beach Janitorial does not knowingly collect any Personal Identifiable Information from children under the age of 13. If
                   you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and
                   we will do our best efforts to promptly remove such information from our records.
                </p>

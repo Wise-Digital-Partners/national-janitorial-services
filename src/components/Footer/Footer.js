@@ -38,7 +38,7 @@ const Footer = () => {
                      <AniLink fade to="/">
                         <img
                            src={data.logo.publicURL}
-                           alt="National Janitorial Services Logo"
+                           alt="Long Beach Janitorial Logo"
                            width="233"
                            className="mx-auto md:mx-0 mb-8 w-44 md:w-60"
                         />
@@ -86,7 +86,7 @@ const Footer = () => {
                <div className="flex flex-wrap md:flex-nowrap flex-col md:flex-row justify-items-center md:justify-between items-center">
                   <div className="md:flex md:items-center order-2 md:order-1">
                      <ul className="flex items-center flex-col md:flex-row">
-                        <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} National Janitorial Services </li>
+                        <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} Long Beach Janitorial </li>
                         <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <AniLink fade to="/privacy-policy/" className="text-white">
                               Privacy Policy

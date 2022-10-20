@@ -27,7 +27,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Phoenix Janitorial Services | Commercial Cleaning Company"
-            description="For Phoenix janitorial services you can depend on, choose National Janitorial Services. We offer top commercial cleaning for your local business. Learn more!"
+            description="For Phoenix janitorial services you can depend on, choose Long Beach Janitorial. We offer top commercial cleaning for your local business. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -66,7 +66,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in Phoenix</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Phoenix and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Phoenix and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         Whether you want to bring your family to a resort or you’re traveling solo to explore the desert, Phoenix is a great place to
                         find your next adventure. Visit all that the Sonora Desert has to offer and find respite downtown. Get access to award-winning
-                        dining, check out unique and local boutiques, or experience the nightlife. NJS helps Phoenix businesses with commercial
+                        dining, check out unique and local boutiques, or experience the nightlife. LBJ helps Phoenix businesses with commercial
                         cleaning services to ensure that residents and visitors alike enjoy safe and hygienic environments.
                      </p>
                   </div>

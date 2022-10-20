@@ -26,8 +26,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="National Janitorial Services | Commercial Cleaning Company"
-            description="National Janitorial Services is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
+            title="Long Beach Janitorial | Commercial Cleaning Company"
+            description="Long Beach Janitorial is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -71,7 +71,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Long Beach and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Long Beach and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>

@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Day Porter Services Long Beach | NJS"
-            description="Nobody does day porter services like National Janitorial Services. We offer the cleaning you need right here in Long Beach, CA. Schedule a consultation!"
+            title="Day Porter Services Long Beach | LBJ"
+            description="Nobody does day porter services like Long Beach Janitorial. We offer the cleaning you need right here in Long Beach, CA. Schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,7 +36,7 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Day Porter Services You Can Rely On</h2>
                      <p className="mb-0">
-                        National Janitorial Services’ day porters perform a wide variety of services to fulfill your requirements. No matter the size
+                        Long Beach Janitorial’ day porters perform a wide variety of services to fulfill your requirements. No matter the size
                         of your facility, our cleaning experts can handle it. Keep tenants and guests safe, satisfied, and supported with cleaning
                         services that pay the utmost attention to detail. Our professional day porters help ensure that your facility runs smoothly
                         and stays clean, so you can operate worry-free.

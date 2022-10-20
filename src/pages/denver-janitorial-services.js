@@ -27,7 +27,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Denver Janitorial Services | Commercial Cleaning Company"
-            description="Denver janitorial services don't get any better than National Janitorial Services. We have years of experience serving local businesses. Learn more today!"
+            description="Denver janitorial services don't get any better than Long Beach Janitorial. We have years of experience serving local businesses. Learn more today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -66,7 +66,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in Denver</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Denver and beyond
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Denver and beyond
                         while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to us so
                         you can focus on growing your business.
                      </p>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         Take in the intersection of natural beauty and urban experiences in Mile High City. From the famed Red Rocks Park and
                         Amphitheater to the city’s culture and art, Denver offers residents and visitors everything they need to thrive. Never get
-                        bored with the variety of outdoor recreation activities and things to do in the city and throughout Colorado. At NJS, we love
+                        bored with the variety of outdoor recreation activities and things to do in the city and throughout Colorado. At LBJ, we love
                         Denver businesses and we’re here to support them with their commercial cleaning needs in a variety of industries.
                      </p>
                   </div>

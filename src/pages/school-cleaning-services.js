@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="School Cleaning Services | Janitorial Company Long Beach"
-            description="When you need top school cleaning services in Long Beach, National Janitorial Services is here to help. See how we can help & get a consultation today!"
+            description="When you need top school cleaning services in Long Beach, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -37,7 +37,7 @@ const Page = ({ data }) => {
                      <h2>Top School Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
                         Foster a better learning environment and help students & staff thrive with professional janitorial services. Provide peace of
-                        mind for everyone in your educational facility with regular cleaning from National Janitorial Services. When you partner with
+                        mind for everyone in your educational facility with regular cleaning from Long Beach Janitorial. When you partner with
                         us, we work with you to effectively clean your classrooms, restrooms, offices, hallways, and more. We clean it all.
                      </p>
                   </div>
@@ -54,7 +54,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

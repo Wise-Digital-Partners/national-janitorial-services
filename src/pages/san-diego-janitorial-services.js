@@ -26,8 +26,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="San Diego Janitorial Cleaning Services | NJS"
-            description="National Janitorial Services offers top San Diego janitorial services for local businesses. Learn about how we excel in COVID cleaning & commercial cleaning!"
+            title="San Diego Janitorial Cleaning Services | LBJ"
+            description="Long Beach Janitorial offers top San Diego janitorial services for local businesses. Learn about how we excel in COVID cleaning & commercial cleaning!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -66,7 +66,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in San Diego</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Long Beach and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Long Beach and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         With its perfect year-round weather, thriving economy, and ethnic diversity, America’s Finest City is one of the best places
                         to start your business. Stay connected to nature and hit the beaches and hiking trails, or explore what each unique
-                        neighborhood has to offer. Whatever your industry and no matter how big or small your business, NJS is committed to helping
+                        neighborhood has to offer. Whatever your industry and no matter how big or small your business, LBJ is committed to helping
                         you maintain a clean, compliant, and client-focused environment with our commercial cleaning services.
                      </p>
                   </div>

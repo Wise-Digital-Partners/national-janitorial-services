@@ -7,35 +7,35 @@ const ReviewCards = () => {
       {
          name: "Calvin Williams",
          review:
-            "National Janitorial has been cleaning our offices for more than a year. Their team is very reliable and management has always responded to and quickly resolved any issue we have had. We have recommended them to several other businesses.",
+            "Long Beach Janitorial has been cleaning our offices for more than a year. Their team is very reliable and management has always responded to and quickly resolved any issue we have had. We have recommended them to several other businesses.",
          profilePicture: "",
          platform: "Google",
       },
       {
          name: "Carlos A.",
          review:
-            "National janitorial was very professional and responsive when we needed them the most. And will really recommend them to anyone looking for janitorial services.",
+            "Long Beach Janitorial was very professional and responsive when we needed them the most. And will really recommend them to anyone looking for janitorial services.",
          profilePicture: "",
          platform: "Yelp",
       },
       {
          name: "Maggie V.",
          review:
-            "I hired National Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety precaution for my tenants.  Anthony went above and beyond my expectations from scheduling, pricing and completing the job. I highly recommend National to anyone needing these types of services, they did an excellent job!",
+            "I hired Long Beach Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety precaution for my tenants.  Anthony went above and beyond my expectations from scheduling, pricing and completing the job. I highly recommend National to anyone needing these types of services, they did an excellent job!",
          profilePicture: "",
          platform: "Yelp",
       },
       {
          name: "Hilary V.",
          review:
-            "My law firm hired National Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with COVID. We called several businesses for pricing and availability for professional sanitation. National was the best pricing and was available that same day. They were great. Two guys arrived, both had sanitation equipment and sprayed down the entire office in less than an hour. We had no more issues, and lucking no additional sick employees. Thank you.",
+            "My law firm hired Long Beach Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with COVID. We called several businesses for pricing and availability for professional sanitation. National was the best pricing and was available that same day. They were great. Two guys arrived, both had sanitation equipment and sprayed down the entire office in less than an hour. We had no more issues, and lucking no additional sick employees. Thank you.",
          profilePicture: "",
          platform: "Yelp",
       },
       {
          name: "GIA El-Shaddai Long Beach Church",
          review:
-            "I’m glad I came across National Janitorial Services. I’ve had issues in the past with cleaners but they provided a trustworthy experience and made sure the job was done up to my expectations. Thank you!",
+            "I’m glad I came across Long Beach Janitorial. I’ve had issues in the past with cleaners but they provided a trustworthy experience and made sure the job was done up to my expectations. Thank you!",
          profilePicture: "",
          platform: "Google",
       },

@@ -26,8 +26,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Los Angeles Janitorial Cleaning Services | NJS"
-            description="National Janitorial Services is a top choice for Los Angeles janitorial cleaning services you can depend on. Learn more here & schedule a consultation today!"
+            title="Los Angeles Janitorial Cleaning Services | LBJ"
+            description="Long Beach Janitorial is a top choice for Los Angeles janitorial cleaning services you can depend on. Learn more here & schedule a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -66,7 +66,7 @@ const Page = ({ data }) => {
                      <h1>A Top Commercial Janitorial Services Company in Los Angeles</h1>
                      <p className="mb-0">
                         In a COVID-19 world, professional cleaning is more important than ever before. Keep your business spotless and safe for your
-                        customers and employees with National Janitorial Services. Our commercial janitorial services company serves Los Angeles and
+                        customers and employees with Long Beach Janitorial. Our commercial janitorial services company serves Los Angeles and
                         beyond while following the highest cleaning standards your industry requires. Leave the building maintenance and sanitation to
                         us so you can focus on growing your business.
                      </p>
@@ -97,7 +97,7 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                         The City of Angels is home to Hollywood and the magic of movie-making. It’s also home to a roaring food scene, diverse
                         culture, and other iconic downtown landmarks. Explore what DTLA has to offer, from retail to museums and dining, or escape to
-                        the beaches for some serenity. At NJS, we’re proud to be a fellow Southern California business. We LA businesses with
+                        the beaches for some serenity. At LBJ, we’re proud to be a fellow Southern California business. We LA businesses with
                         commercial cleaning services to provide peace of mind for visitors and residents alike.
                      </p>
                   </div>
