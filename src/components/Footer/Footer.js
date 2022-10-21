@@ -92,7 +92,8 @@ const Footer = () => {
                               Privacy Policy
                            </AniLink>
                         </li>
-                        <li className="text-sm mb-3 md:mb-0 md:mr-6">
+                        {/* 
+                        // CITES DROPDOWN <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
                               <span className="text-white flex items-center justify-between">
                                  Cities
@@ -139,7 +140,7 @@ const Footer = () => {
                                  </li>
                               </ul>
                            </button>
-                        </li>
+                        </li> */}
                         <li className="text-sm text-white">
                            <div className="flex items-center justify-center mt-2 md:mt-0">
                               Powered by
