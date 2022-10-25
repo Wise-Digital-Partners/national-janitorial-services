@@ -23,9 +23,16 @@ const Page = ({ data }) => {
            <h1>Privacy Policy</h1>
 
            <p>
-             At Long Beach Janitorial, accessible from [LONG BEACH URL GOES
-             HERE], one of our main priorities is the privacy of our visitors.
-             This Privacy Policy document contains types of information that is
+             At Long Beach Janitorial, accessible from
+             <a
+               href="http://longbeachjanitorial.com/"
+               className="pl-[.25rem] text-primary hover:text-black animation text-link"
+               target="top"
+             >
+               wwww.longbeachjanitorial.com
+             </a>
+             , one of our main priorities is the privacy of our visitors. This
+             Privacy Policy document contains types of information that is
              collected and recorded by Long Beach Janitorial and how we use it.
            </p>
 
