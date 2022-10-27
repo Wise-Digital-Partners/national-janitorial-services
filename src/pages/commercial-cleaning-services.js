@@ -38,9 +38,7 @@ const Page = ({ data }) => {
          </div>
        </section>
 
-       <Covid headingLevel="h2" />
-
-       <section className="pt-16 md:pt-32 mb-16 md:mb-32">
+       <section className="pt-16 mb-16 md:mb-32">
          <div className="container">
            <h2>Payment Terms</h2>
            <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-12 lg:gap-x-20 gap-y-10">

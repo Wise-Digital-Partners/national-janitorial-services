@@ -9,6 +9,7 @@ import Covid from "../components/Repeating/Covid";
 import Services from "../components/Repeating/Services";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
+import Badges from "../components/Repeating/Badges";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
@@ -71,8 +72,9 @@ const Page = ({ data }) => {
            />
          </div>
        </HeroFullWidth>
-
-       <section className="py-16 md:py-32">
+       <Badges className="py-14" />
+       {/* <Clients className="py-14" headingLevel="h2" /> */}
+       <section className="py-16 md:py-8">
          <div className="container">
            <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
              <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
@@ -106,8 +108,6 @@ const Page = ({ data }) => {
          </div>
        </section>
 
-       <Covid headingLevel="h2" />
-
        <Services
          className="py-16 md:py-32"
          headingLevel="h2"
@@ -117,8 +117,6 @@ const Page = ({ data }) => {
        <Testimonials headingLevel="h2" />
 
        <About className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
-
-       <Clients className="mb-16 md:mb-32" headingLevel="h2" />
 
        <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
