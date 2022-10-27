@@ -114,7 +114,7 @@ const Testimonial = ({ className, headingLevel }) => {
                   <div>
                      <blockquote>
                         <q>
-                           My law firm hired National Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with
+                           My law firm hired Long Beach Janitorial to do some deep cleaning/disinfection after one of our staff was diagnosed with
                            COVID. We called several businesses for pricing and availability for professional sanitation. National was the best pricing
                            and was available that same day. They were great. Two guys arrived, both had sanitation equipment and sprayed down the
                            entire office in less than an hour.
@@ -130,7 +130,7 @@ const Testimonial = ({ className, headingLevel }) => {
                   <div>
                      <blockquote>
                         <q>
-                           I hired National Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety
+                           I hired Long Beach Janitorial to handle cleaning and disinfection of a triplex residential property I own as a safety
                            precaution for my tenants. Anthony went above and beyond my expectations from scheduling, pricing and completing the job. I
                            highly recommend National to anyone needing these types of services, they did an excellent job!
                         </q>
@@ -145,7 +145,7 @@ const Testimonial = ({ className, headingLevel }) => {
                   <div>
                      <blockquote>
                         <q>
-                           National janitorial was very professional and responsive when we needed them the most. We will recommend them to anyone
+                           Long Beach Janitorial was very professional and responsive when we needed them the most. We will recommend them to anyone
                            looking for janitorial services.
                         </q>
                         <footer>

@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Office Building Cleaning Services | Janitorial Company | NJS"
-            description="No matter your needs, we offer reliable office building cleaning services in Long Beach. Schedule a consultation with National Janitorial Services today!"
+            title="Office Building Cleaning Services | Janitorial Company | LBJ"
+            description="No matter your needs, we offer reliable office building cleaning services in Long Beach. Schedule a consultation with Long Beach Janitorial today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -56,7 +56,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

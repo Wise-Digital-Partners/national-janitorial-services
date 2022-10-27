@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Janitorial Cleaning Company Long Beach | NJS"
-            description="Your business is unique and so should your cleaning services. National Janitorial Services is a top janitorial cleaning company in Long Beach. Learn more!"
+            title="Janitorial Cleaning Company Long Beach | LBJ"
+            description="Your business is unique and so should your cleaning services. Long Beach Janitorial is a top janitorial cleaning company in Long Beach. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

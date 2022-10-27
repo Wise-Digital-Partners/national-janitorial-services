@@ -45,7 +45,7 @@ const CTA = ({ heading, headingLevel }) => {
             {heading || "Comprehensive Janitorial Services for Long Beach Businesses"}
          </HeadingTag>
          <p className="text-mobile-xl md:text-xl leading-tight text-white mb-10">
-            Experience the National Janitorial Services difference. Tell us about your cleaning needs today!
+            Experience the Long Beach Janitorial difference. Tell us about your cleaning needs today!
          </p>
          <ButtonSolid as="button" modal="modal-contact" text="Schedule a Consultation" />
       </CTAFullWidth>

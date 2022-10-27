@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Dispensary Cleaning Services | Janitorial Company Long Beach"
-            description="For dispensary cleaning services in the Long Beach area, see why National Janitorial Services is a top choice. Learn more & schedule a consultation!"
+            description="For dispensary cleaning services in the Long Beach area, see why Long Beach Janitorial is a top choice. Learn more & schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,8 +36,7 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Top Dispensary Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
-                        As your inventory grows, keeping your facility clean and disinfected should be the least of your worries. Let National
-                        Janitorial Services provide a thorough cleaning of your dispensary and cannabis facility so your customers can browse and
+                        As your inventory grows, keeping your facility clean and disinfected should be the least of your worries. Let Long Beach Janitorial provide a thorough cleaning of your dispensary and cannabis facility so your customers can browse and
                         purchase without worry. Our on-site services help ensure that your dispensary’s cleanliness is always a cut above the rest.
                      </p>
                   </div>
@@ -54,7 +53,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

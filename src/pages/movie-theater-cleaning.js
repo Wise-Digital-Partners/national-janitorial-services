@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Movie Theater Cleaning Services | Janitorial Company | NJS"
-            description="No matter your needs, we offer reliable movie theater cleaning services in Long Beach & beyond. Schedule a consultation with National Janitorial Services!"
+            title="Movie Theater Cleaning Services | Janitorial Company | LBJ"
+            description="No matter your needs, we offer reliable movie theater cleaning services in Long Beach & beyond. Schedule a consultation with Long Beach Janitorial!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,7 +36,7 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Top Movie Theater Cleaning Services in Long Beach</h2>
                      <p className="mb-0">
-                        Provide the best movie viewing experience possible with efficient and thorough cleaning from National Janitorial Services.
+                        Provide the best movie viewing experience possible with efficient and thorough cleaning from Long Beach Janitorial.
                         From cleaning up food bits, to preventing sticky floors and sanitizing restrooms, we leave your theater even better than we
                         found it. Our reliable and professional cleaning experts use only EPA-approved disinfectants to help keep your theater safe,
                         sanitized, and welcoming to your patrons.
@@ -55,7 +55,7 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <p className="md:mb-0">
-                        At NJS, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
+                        At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle
                         dusting, wiping, vacuuming, disinfection, and more for the following areas.
                      </p>
                   </div>

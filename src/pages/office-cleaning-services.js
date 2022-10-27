@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Office Cleaning Services Long Beach | NJS"
-            description="For top office cleaning services in Long Beach, CA, see why National Janitorial Services is a trusted choice. See what we can do and schedule a consultation!"
+            title="Office Cleaning Services Long Beach | LBJ"
+            description="For top office cleaning services in Long Beach, CA, see why Long Beach Janitorial is a trusted choice. See what we can do and schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

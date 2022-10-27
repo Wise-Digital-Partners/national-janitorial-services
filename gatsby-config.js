@@ -10,7 +10,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 module.exports = {
    siteMetadata: {
       siteUrl,
-      author: `National Janitorial Services`,
+      author: `Long Beach Janitorial`,
    },
    plugins: [
       `gatsby-plugin-netlify`,
@@ -101,13 +101,13 @@ module.exports = {
       {
          resolve: `gatsby-plugin-manifest`,
          options: {
-            name: `National Janitorial Services`,
-            short_name: `NJS`,
+            name: `Long Beach Janitorial`,
+            short_name: `LBJ`,
             start_url: `/`,
             background_color: `#53AF3B`,
             theme_color: `#53AF3B`,
             display: `standalone`,
-            icon: `static/images/favicon.png`,
+            icon: `static/images/favicon.svg`,
          },
       },
       {

@@ -98,7 +98,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Industries We Serve | Commercial Janitorial Services"
-            description="National Janitorial Services is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."
+            description="Long Beach Janitorial is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -108,7 +108,7 @@ const Page = ({ data }) => {
                <Header
                   headingLevel="h1"
                   heading="Industries We Serve"
-                  subtext="National Janitorial Services is one professional cleaning company serving many industries. We keep businesses in the following lines of work spotless and safe for staff and customers."
+                  subtext="Long Beach Janitorial is one professional cleaning company serving many industries. We keep businesses in the following lines of work spotless and safe for staff and customers."
                   subtextSize=""
                   textAlignment=""
                   textMaxWidth="max-w-4xl"

@@ -30,69 +30,89 @@ const Footer = () => {
    `);
 
    return (
-      <div>
-         <footer className="bg-gray-800 pt-20 md:pt-40 pb-6 text-center md:text-left">
-            <div className="container">
-               <div className="md:flex md:justify-between items-start mb-20 md:mb-32 whitespace-nowrap">
-                  <div className="mb-20 md:mb-0">
-                     <AniLink fade to="/">
-                        <img
-                           src={data.logo.publicURL}
-                           alt="National Janitorial Services Logo"
-                           width="233"
-                           className="mx-auto md:mx-0 mb-8 w-44 md:w-60"
-                        />
-                     </AniLink>
+     <div>
+       <footer className="bg-gray-800 pt-20 md:pt-40 pb-6 text-center md:text-left">
+         <div className="container">
+           <div className="md:flex md:justify-between items-start mb-20 md:mb-32 whitespace-nowrap">
+             <div className="mb-20 md:mb-0">
+               <AniLink fade to="/">
+                 <img
+                   src={data.logo.publicURL}
+                   alt="Long Beach Janitorial Logo"
+                   width="233"
+                   className="mx-auto md:mx-0 mb-8 w-44 md:w-60"
+                 />
+               </AniLink>
 
-                     <address className="not-italic">
-                        <a href="https://g.page/r/CTIZfyVEcbijEAE" target="_blank" rel="noopener noreferrer" className="text-white">
-                           758 Gaviota Ave #3
-                           <br /> Long Beach, CA 90813
-                        </a>
-                     </address>
-                  </div>
+               <address className="not-italic">
+                 <a
+                   href="https://g.page/r/CTIZfyVEcbijEAE"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-white"
+                 >
+                   758 Gaviota Ave #3
+                   <br /> Long Beach, CA 90813
+                 </a>
+               </address>
+             </div>
 
-                  <ul className="flex flex-col md:flex-row items-center">
-                     <li className="mb-5 md:mb-0 md:mr-6">
-                        <AniLink
-                           fade
-                           to="/commercial-cleaning-services/"
-                           className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
-                        >
-                           Services
-                        </AniLink>
-                     </li>
-                     <li className="mb-5 md:mb-0 md:mr-6">
-                        <AniLink fade to="/industries-we-serve/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
-                           Industries
-                        </AniLink>
-                     </li>
-                     <li className="mb-5 md:mb-0 md:mr-6">
-                        <AniLink fade to="/about/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
-                           About
-                        </AniLink>
-                     </li>
-                     {/* <li className="mb-5 md:mb-0 md:mr-6">
+             <ul className="flex flex-col md:flex-row items-center">
+               <li className="mb-5 md:mb-0 md:mr-6">
+                 <AniLink
+                   fade
+                   to="/commercial-cleaning-services/"
+                   className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                 >
+                   Services
+                 </AniLink>
+               </li>
+               <li className="mb-5 md:mb-0 md:mr-6">
+                 <AniLink
+                   fade
+                   to="/industries-we-serve/"
+                   className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                 >
+                   Industries
+                 </AniLink>
+               </li>
+               <li className="mb-5 md:mb-0 md:mr-6">
+                 <AniLink
+                   fade
+                   to="/about/"
+                   className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                 >
+                   About
+                 </AniLink>
+               </li>
+               {/* <li className="mb-5 md:mb-0 md:mr-6">
                         <AniLink fade to="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
                         </AniLink>
                      </li> */}
-                     <li>
-                        <ButtonSolid as="button" modal="modal-contact" text="Contact Us" />
-                     </li>
-                  </ul>
-               </div>
+               <li>
+                 <ButtonSolid
+                   as="button"
+                   modal="modal-contact"
+                   text="Contact Us"
+                 />
+               </li>
+             </ul>
+           </div>
 
-               <div className="flex flex-wrap md:flex-nowrap flex-col md:flex-row justify-items-center md:justify-between items-center">
-                  <div className="md:flex md:items-center order-2 md:order-1">
-                     <ul className="flex items-center flex-col md:flex-row">
-                        <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">© {getYear()} National Janitorial Services </li>
-                        <li className="text-sm mb-3 md:mb-0 md:mr-6">
-                           <AniLink fade to="/privacy-policy/" className="text-white">
-                              Privacy Policy
-                           </AniLink>
-                        </li>
-                        <li className="text-sm mb-3 md:mb-0 md:mr-6">
+           <div className="flex flex-wrap md:flex-nowrap flex-col md:flex-row justify-items-center md:justify-between items-center">
+             <div className="md:flex md:items-center order-2 md:order-1">
+               <ul className="flex items-center flex-col md:flex-row">
+                 <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">
+                   © {getYear()} National Janitorial Services
+                 </li>
+                 <li className="text-sm mb-3 md:mb-0 md:mr-6">
+                   <AniLink fade to="/privacy-policy/" className="text-white">
+                     Privacy Policy
+                   </AniLink>
+                 </li>
+                 {/* 
+                        // CITES DROPDOWN <li className="text-sm mb-3 md:mb-0 md:mr-6">
                            <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
                               <span className="text-white flex items-center justify-between">
                                  Cities
@@ -139,43 +159,51 @@ const Footer = () => {
                                  </li>
                               </ul>
                            </button>
-                        </li>
-                        <li className="text-sm text-white">
-                           <div className="flex items-center justify-center mt-2 md:mt-0">
-                              Powered by
-                              <a
-                                 className="group text-white flex items-center ml-1"
-                                 href="https://www.wisedigitalpartners.com/affordable-web-design/"
-                                 target="_blank"
-                                 rel="noopener noreferrer"
-                              >
-                                 NEST<sup className="text-[6px] pl-[2px]">TM</sup>{" "}
-                                 <img className="ml-2" src={data.nestLogo.publicURL} alt="nest Logo" />
-                              </a>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
-
-                  <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-18 md:mb-0">
+                        </li> */}
+                 <li className="text-sm text-white">
+                   <div className="flex items-center justify-center mt-2 md:mt-0">
+                     Powered by
                      <a
-                        href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mr-6"
+                       className="group text-white flex items-center ml-1"
+                       href="https://www.wisedigitalpartners.com/affordable-web-design/"
+                       target="_blank"
+                       rel="noopener noreferrer"
                      >
-                        <i className="fab fa-yelp text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
+                       NEST<sup className="text-[6px] pl-[2px]">TM</sup>{" "}
+                       <img
+                         className="ml-2"
+                         src={data.nestLogo.publicURL}
+                         alt="nest Logo"
+                       />
                      </a>
-                     <a href="https://www.facebook.com/nationaljanitorialservices" target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-facebook-f text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </footer>
+                   </div>
+                 </li>
+               </ul>
+             </div>
 
-         <ModalContact />
-      </div>
+             <div className="flex justify-center md:justify-items-start order-1 md:order-2 mb-18 md:mb-0">
+               <a
+                 href="https://www.yelp.com/biz/national-janitorial-services-long-beach"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="mr-6"
+               >
+                 <i className="fab fa-yelp text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
+               </a>
+               <a
+                 href="https://www.facebook.com/nationaljanitorialservices"
+                 target="_blank"
+                 rel="noopener noreferrer"
+               >
+                 <i className="fab fa-facebook-f text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
+               </a>
+             </div>
+           </div>
+         </div>
+       </footer>
+
+       <ModalContact />
+     </div>
    );
 };
 

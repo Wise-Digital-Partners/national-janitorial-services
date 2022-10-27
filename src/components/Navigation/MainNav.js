@@ -232,10 +232,10 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
             <div className="flex-auto flex items-center">
                <a href="/">
                   <div className="logo-initial">
-                     <img src={initialLogo} alt="National Janitorial Services Logo" width="169" className="w-36 md:w-44" />
+                     <img src={initialLogo} alt="Long Beach Janitorial Logo" width="169" className="w-36 md:w-44" />
                   </div>
                   <div className="logo-fixed hidden">
-                     <img src={stickyLogo} alt="National Janitorial Services Logo" width="169" className="w-36 md:w-44" />
+                     <img src={stickyLogo} alt="Long Beach Janitorial Logo" width="169" className="w-36 md:w-44" />
                   </div>
                </a>
             </div>

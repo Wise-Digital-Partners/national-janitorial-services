@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Deep Cleaning Services Long Beach | NJS"
-            description="For the deep cleaning services your business deserves, partner with National Janitorial Services. We offer Long Beach the best in deep cleaning. Learn more!"
+            title="Deep Cleaning Services Long Beach | LBJ"
+            description="For the deep cleaning services your business deserves, partner with Long Beach Janitorial. We offer Long Beach the best in deep cleaning. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -36,7 +36,7 @@ const Page = ({ data }) => {
                   <div>
                      <h2>Keeping Long Beach Businesses Clean</h2>
                      <p className="mb-0">
-                        For the deep clean your business deserves, partner with National Janitorial Services. Our local and experienced cleaning
+                        For the deep clean your business deserves, partner with Long Beach Janitorial. Our local and experienced cleaning
                         experts work with businesses to meet their cleaning needs, from daily janitorial services to deep cleaning. We use only
                         EPA-registered disinfectants and a thorough evaluation of your space to ensure we attend to every corner and surface. We deep
                         clean offices, commercial buildings, and facilities of all sizes without compromising on quality.

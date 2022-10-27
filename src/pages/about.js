@@ -21,8 +21,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="About NJS | Commercial Janitorial Services Company"
-            description="With over 5 years and more than 100 accounts served, National Janitorial Services is your trusted partner in keeping your business spotless and safe."
+            title="About LBJ | Commercial Janitorial Services Company"
+            description="With over 5 years and more than 100 accounts served, Long Beach Janitorial is your trusted partner in keeping your business spotless and safe."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -33,9 +33,9 @@ const Page = ({ data }) => {
             textAlignment="text-left"
             textMaxWidth="max-w-xl"
          >
-            <h1>About National Janitorial Services</h1>
+            <h1>About Long Beach Janitorial</h1>
             <p className="mb-0">
-               Over 5 years of experience. More than 100 accounts served, National Janitorial Services is your trusted partner in keeping your
+               Over 5 years of experience. More than 100 accounts served, Long Beach Janitorial is your trusted partner in keeping your
                business spotless and safe. We use effective tools to ensure the best possible cleaning for your workplace, building, or facility. Our
                highly qualified team handles your business with the utmost professionalism and care for janitorial services you can rely on.
             </p>
@@ -50,7 +50,7 @@ const Page = ({ data }) => {
                   <div>
                      <img src={data.integrity.publicURL} alt="Integrity" className="mx-auto mb-2" />
                      <p className="font-heading text-gray-700 text-xl uppercase font-bold mb-1">Integrity</p>
-                     <p className="mb-0">At NJS, our word is our bond. Count on our team to do what we say we will for quality you can trust.</p>
+                     <p className="mb-0">At LBJ, our word is our bond. Count on our team to do what we say we will for quality you can trust.</p>
                   </div>
                   <div>
                      <img src={data.reliability.publicURL} alt="Reliability" className="mx-auto mb-2" />
