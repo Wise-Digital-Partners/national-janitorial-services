@@ -143,28 +143,28 @@ const WhyUs = ({ className, headingLevel }) => {
             />
           </div>          <div>
             <GatsbyImage
-              image={data.icon2.childImageSharp.gatsbyImageData}
+              image={data.icon6.childImageSharp.gatsbyImageData}
               className="mx-auto"
               alt="SGS logo"
             />
           </div>
           <div>
             <GatsbyImage
-              image={data.icon3.childImageSharp.gatsbyImageData}
+              image={data.icon7.childImageSharp.gatsbyImageData}
               className="mx-auto"
               alt="PDS logo"
             />
           </div>
           <div>
             <GatsbyImage
-              image={data.icon4.childImageSharp.gatsbyImageData}
+              image={data.icon8.childImageSharp.gatsbyImageData}
               className="mx-auto"
               alt="PDS logo"
             />
           </div>
           <div>
             <GatsbyImage
-              image={data.icon5.childImageSharp.gatsbyImageData}
+              image={data.icon9.childImageSharp.gatsbyImageData}
               className="mx-auto"
               alt="PDS logo"
             />
