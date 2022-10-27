@@ -94,6 +94,16 @@ const WhyUs = ({ className, headingLevel }) => {
             quality: 100
           )
         }
+      }      
+      icon10: file(relativePath: { eq: "repeating/clients/group-17.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            layout: FIXED
+            width: 207
+            placeholder: BLURRED
+            quality: 100
+          )
+        }
       }
     }
   `);
@@ -106,7 +116,7 @@ const WhyUs = ({ className, headingLevel }) => {
         <header className="text-center mb-4 md:mb-18">
           <HeadingTag>Some of Our Happy Clients</HeadingTag>
         </header>
-        <div className="grid md:grid-cols-5 gap-y-0 gap-x-2 md:gap-x-6 mx-auto">
+        <div className="grid md:grid-cols-5 lg:gap-y-12 gap-x-2 md:gap-x-6 mx-auto">
           <div>
             <GatsbyImage
               image={data.icon1.childImageSharp.gatsbyImageData}
@@ -141,7 +151,8 @@ const WhyUs = ({ className, headingLevel }) => {
               className="mx-auto"
               alt="PDS logo"
             />
-          </div>          <div>
+          </div>{" "}
+          <div>
             <GatsbyImage
               image={data.icon6.childImageSharp.gatsbyImageData}
               className="mx-auto"
@@ -165,6 +176,13 @@ const WhyUs = ({ className, headingLevel }) => {
           <div>
             <GatsbyImage
               image={data.icon9.childImageSharp.gatsbyImageData}
+              className="mx-auto"
+              alt="PDS logo"
+            />
+          </div>          
+          <div>
+            <GatsbyImage
+              image={data.icon10.childImageSharp.gatsbyImageData}
               className="mx-auto"
               alt="PDS logo"
             />

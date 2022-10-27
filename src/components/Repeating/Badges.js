@@ -116,6 +116,16 @@ const Accolades = ({ className}) => {
             quality: 100
           )
         }
+      }      
+      icon10: file(relativePath: { eq: "repeating/clients/group-17.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            layout: CONSTRAINED
+            width: 167
+            placeholder: BLURRED
+            quality: 100
+          )
+        }
       }
     }
   `);
@@ -155,42 +165,49 @@ const Accolades = ({ className}) => {
               <GatsbyImage
                 image={data.icon4.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="PDS logo"
+                alt="NORTION LILLY logo"
               />
             </div>
             <div>
               <GatsbyImage
                 image={data.icon5.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="PDS logo"
+                alt="ST.JOSEPH CATHOLIC CHRUCH logo"
               />
             </div>
             <div>
               <GatsbyImage
                 image={data.icon6.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="SGS logo"
+                alt="URGENTMED logo"
               />
             </div>
             <div>
               <GatsbyImage
                 image={data.icon7.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="PDS logo"
+                alt="FILANC logo"
               />
             </div>
             <div>
               <GatsbyImage
                 image={data.icon8.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="PDS logo"
+                alt="TOTAL VISION logo"
               />
             </div>
             <div>
               <GatsbyImage
                 image={data.icon9.childImageSharp.gatsbyImageData}
                 className="mx-auto"
-                alt="PDS logo"
+                alt="SCHG logo"
+              />
+            </div>        
+            <div>
+              <GatsbyImage
+                image={data.icon10.childImageSharp.gatsbyImageData}
+                className="mx-auto"
+                alt="Welsh logo"
               />
             </div>
           </Slider>

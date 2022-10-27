@@ -156,7 +156,7 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
             />
 
             <CardsWithZoom
-               columnCount="grid-cols-1 md:grid-cols-3 lg:grid-cols-4"
+               columnCount="grid-cols-1 md:grid-cols-3 lg:gap-y-2 lg:grid-cols-4"
                columnGap="gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10"
                cards={cardContent}
                cardHeadingLevel={cardHeadingLevel}
