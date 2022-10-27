@@ -21,7 +21,7 @@ const StyledSlider = styled.div`
 export default class Slider extends Component {
   render() {
     const sliderSettings = {
-      speed: 3000,
+      speed: 3250,
       autoplay: true,
       autoplaySpeed: 0,
       cssEase: "linear",

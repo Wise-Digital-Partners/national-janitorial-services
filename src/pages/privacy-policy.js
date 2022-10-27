@@ -25,9 +25,9 @@ const Page = ({ data }) => {
            <p>
              At Long Beach Janitorial, accessible from
              <a
-               href="http://longbeachjanitorial.com/"
+               href="https://longbeachjanitorial.com/"
                className="pl-[.25rem] text-primary hover:text-black animation text-link"
-               target="top"
+               target="_self"
              >
                wwww.longbeachjanitorial.com
              </a>
