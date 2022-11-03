@@ -46,13 +46,13 @@ const Footer = () => {
 
                <address className="not-italic">
                  <a
-                   href="https://g.page/r/CTIZfyVEcbijEAE"
+                   href="https://goo.gl/maps/cEUm9xF1KaDviCVWA"
                    target="_blank"
                    rel="noopener noreferrer"
                    className="text-white"
                  >
-                   758 Gaviota Ave #3
-                   <br /> Long Beach, CA 90813
+                   144 W San Antonio Dr
+                   <br /> Long Beach, CA 90807
                  </a>
                </address>
              </div>
