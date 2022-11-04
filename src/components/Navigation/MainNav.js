@@ -474,7 +474,7 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
                         >
                            <i className="fab fa-yelp text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
                         </a>
-                        <a href="https://www.facebook.com/nationaljanitorialservices" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/longbeachjanitorial/" target="_blank" rel="noopener noreferrer">
                            <i className="fab fa-facebook-f text-2xl text-white hover:text-primary transition-all duration-300 ease-linear"></i>
                         </a>
                      </div>
