@@ -1,0 +1,26 @@
+/*
+  Learn more:
+  https://www.sanity.io/guides/how-to-brand-your-studio
+*/
+
+/* Custom fonts */
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+:root {
+  /* Brand colors */
+  --brand-primary: #019f44;
+  --brand-primary--inverted: #ffffff;
+  --brand-secondary: #000000;
+  --brand-secondary--inverted: #ffffff;
+
+  --card-bg-color: #e7ecf3;
+
+  /* Typography */
+  --font-family-sans-serif: "Montserrat";
+  --font-size-base: 16px;
+  --text-color: #1a1a1a;
+
+  /* Main Navigation */
+  --main-navigation-color: #000000;
+  --main-navigation-color--inverted: #ffffff;
+}
