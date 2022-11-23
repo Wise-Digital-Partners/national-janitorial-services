@@ -1,6 +1,6 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import Link from "gatsby-plugin-transition-link";
 
 const Cards = ({ className, cards, cardHeadingLevel, cardHeadingSize, columnCount, columnGap }) => {
    const CardHeadingTag = cardHeadingLevel;
@@ -19,9 +19,9 @@ const Cards = ({ className, cards, cardHeadingLevel, cardHeadingSize, columnCoun
                      </div>
                      <CardHeadingTag className={cardHeadingSize}>{card.heading}</CardHeadingTag>
                      <p className="mb-0">{card.text}</p>
-                     <AniLink fade to={card.link}>
+                     <Link fade to={card.link}>
                         <span className="link-overlay"></span>
-                     </AniLink>
+                     </Link>
                   </div>
                );
             })}

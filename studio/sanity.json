@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "8k6c96gn",
+    "projectId": "0nqyibkq",
     "dataset": "production"
   },
   "project": {
-    "name": "Ascent Roofing"
+    "name": "Long Beach Janitorial"
   },
   "plugins": [
     "@sanity/base",

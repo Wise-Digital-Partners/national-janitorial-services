@@ -1,3 +1,52 @@
+const { isFuture } = require("date-fns");
+
+async function createBlogPostPages(graphql, actions) {
+   const { createPage } = actions;
+   const result = await graphql(`
+    {
+      allSanityBlogs(
+        sort: { fields: [publishedAt], order: DESC }
+        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      ) {
+        edges {
+          node {
+            id
+            publishedAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+   if (result.errors) throw result.errors;
+
+   const postEdges = (result.data.allSanityBlogs || {}).edges || [];
+
+   postEdges
+      .filter((edge) => !isFuture(new Date(edge.node.publishedAt)))
+      .forEach((edge, index) => {
+         const { id, slug = {} } = edge.node;
+         const path = `/${slug.current}/`;
+
+         createPage({
+            path,
+            component: require.resolve("./src/templates/blog-post.js"),
+            context: {
+               id,
+               prev: index === 0 ? null : postEdges[index - 1].node,
+               next:
+                  index === postEdges.length - 1 ? null : postEdges[index + 1].node,
+            },
+         });
+      });
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+   await createBlogPostPages(graphql, actions);
+};
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
    if (stage === "build-html") {
       actions.setWebpackConfig({

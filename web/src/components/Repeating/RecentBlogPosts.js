@@ -54,11 +54,14 @@ const RecentBlogPosts = ({ node, headingLevel, className }) => {
     <>
       <section className={` ${className || "pb-20 md:pb-32"}`}>
         <div className="container">
-          <header className="mb-12 md:mb-16">
-            <HeadingTag>Roofing Tips From the Experts</HeadingTag>
-            <div className="divider"></div>
+          <header className="mb-12 text-center md:mb-16">
+            <HeadingTag>
+              {" "}
+              <h2 className="bg-secondary-900  top-10 left-0 z-10 flex w-full flex-col space-y-4 rounded-b-3xl border-none px-8 pb-4 text-4xl  md:relative md:top-0 md:mb-16 md:flex-row md:space-y-0 md:space-x-10 md:rounded-none md:bg-transparent md:p-0 md:after:absolute md:after:top-14 md:after:-bottom-4 md:after:left-0 md:after:h-1 md:after:w-14 md:after:bg-primary-900 ">
+                Blog
+              </h2>
+            </HeadingTag>
           </header>
-
           <div className="grid gap-y-10 md:grid-cols-3 md:gap-x-6 lg:gap-x-8">
             {blogNodes.length > 0 &&
               blogNodes.map((node) => (

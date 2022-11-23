@@ -1,8 +1,20 @@
+// Load variables from `.env` as soon as possible
+require("dotenv").config({
+   path: `.env.${process.env.NODE_ENV || "development"}`,
+});
+
+const clientConfig = require("./client-config");
+
+const isProd = process.env.NODE_ENV === "production";
+// const previewEnabled =
+//   (process.env.GATSBY_IS_PREVIEW || "false").toLowerCase() === "true";
+const previewEnabled = true;
+
 const {
-  NODE_ENV,
-  URL: NETLIFY_SITE_URL = "https://longbeachjanitorial.com/",
-  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = NODE_ENV,
+   NODE_ENV,
+   URL: NETLIFY_SITE_URL = "https://longbeachjanitorial.com/",
+   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+   CONTEXT: NETLIFY_ENV = NODE_ENV,
 } = process.env;
 const isNetlifyProduction = NETLIFY_ENV === "production";
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
@@ -14,13 +26,13 @@ module.exports = {
    },
    plugins: [
       `gatsby-plugin-netlify`,
-      `gatsby-plugin-react-helmet`,
       `gatsby-plugin-advanced-sitemap`,
-      `gatsby-plugin-transition-link`,
       `gatsby-plugin-postcss`,
       `gatsby-plugin-image`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-offline`,
+      `gatsby-plugin-emotion`,
+      `gatsby-plugin-transition-link`,
       {
          resolve: `gatsby-plugin-sharp`,
          options: {
@@ -55,21 +67,14 @@ module.exports = {
       {
          resolve: "gatsby-plugin-anchor-links",
          options: {
-            offset: -80,
+            offset: -100,
          },
       },
-      // {
-      //    resolve: `gatsby-source-filesystem`,
-      //    options: {
-      //       path: `${__dirname}/static/images`,
-      //       name: `uploads`,
-      //    },
-      // },
       {
          resolve: `gatsby-source-filesystem`,
          options: {
-            path: `${__dirname}/src/images`,
-            name: `images`,
+            path: `${__dirname}/static/images`,
+            name: `uploads`,
          },
       },
       {
@@ -85,17 +90,31 @@ module.exports = {
          },
       },
       {
-         resolve: `gatsby-plugin-emotion`,
-         options: {
-            // Accepts all options defined by `babel-plugin-emotion` plugin.
-         },
-      },
-      {
          resolve: `gatsby-plugin-purgecss`,
          options: {
             // develop: true,
             tailwind: true,
             purgeOnly: ["node_modules/@fortawesome/fontawesome-pro/css/all.min.css"],
+         },
+      },
+      {
+         resolve: "gatsby-source-sanity",
+         options: {
+            ...clientConfig.sanity,
+            token: process.env.SANITY_READ_TOKEN,
+            watchMode: !isProd, // watchMode only in dev mode
+            overlayDrafts: !isProd || previewEnabled, // drafts in dev & Gatsby Cloud Preview
+         },
+      },
+      {
+         resolve: "gatsby-plugin-sanity-image",
+         options: {
+            ...clientConfig.sanity,
+            defaultImageConfig: {
+               quality: 100,
+               fit: "max",
+               auto: "format",
+            },
          },
       },
       {

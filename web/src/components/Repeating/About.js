@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import Link from "gatsby-plugin-transition-link";
 
 const About = ({ className, headingLevel }) => {
    const data = useStaticQuery(graphql`
@@ -29,66 +29,66 @@ const About = ({ className, headingLevel }) => {
                   <div className="grid md:grid-cols-2 md:gap-x-10">
                      <ul>
                         <li className="mb-3">
-                           <AniLink fade to="/hospital-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/hospital-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Hospitals
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/hoa-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/hoa-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               HOA
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/dispensary-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/dispensary-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Dispensaries
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/commercial-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/commercial-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Private Offices
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/office-building-cleaning/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/office-building-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Office Buildings
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/church-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/church-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Churches
-                           </AniLink>
+                           </Link>
                         </li>
                      </ul>
                      <ul>
                         <li className="mb-3">
-                           <AniLink fade to="/school-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/school-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Schools
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/car-dealership-cleaning/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/car-dealership-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Car Dealerships
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/bar-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/bar-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Bars & Nightclubs
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/movie-theater-cleaning/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/movie-theater-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Movie Theaters
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/gym-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/gym-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
                               Gyms & Fitness
-                           </AniLink>
+                           </Link>
                         </li>
                         <li className="mb-4">
-                           <AniLink fade to="/medical-dental-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
+                           <Link fade to="/medical-dental-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
                               Medical & Dental
-                           </AniLink>
+                           </Link>
                         </li>
                      </ul>
                   </div>

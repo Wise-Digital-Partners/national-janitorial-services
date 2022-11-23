@@ -3,11 +3,8 @@ module.exports = {
       require("postcss-import"),
       require("autoprefixer"),
       require("postcss-nested"),
-      require("cssnano")({
-         preset: `default`,
-      }),
       require("postcss-preset-env")({
-         stage: 3,
+         stage: 2,
          features: {
             "color-mod-function": { unresolved: "warn" },
             "nesting-rules": true,
@@ -18,6 +15,9 @@ module.exports = {
                preserve: false,
             },
          },
+      }),
+      require("cssnano")({
+         preset: `default`,
       }),
    ],
 };

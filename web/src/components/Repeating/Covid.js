@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import Link from "gatsby-plugin-transition-link";
 
 import Background from "../Background/Background";
 import ButtonUnderline from "../Button/ButtonUnderline";
@@ -47,9 +47,9 @@ const Covid = ({ className, headingLevel }) => {
             <HeadingTag className="text-white">COVID Cleaning Services</HeadingTag>
             <p className="text-white mb-16 md:mb-12">
                Stop the spread and protect your business with our specialized{" "}
-               <AniLink fade to="/covid-cleaning-services/" className="underline hover:text-primary">
+               <Link fade to="/covid-cleaning-services/" className="underline hover:text-primary">
                   COVID cleaning services
-               </AniLink>
+               </Link>
                . We use Multi-Clean Chlorinated Disinfecting Tablets, an EPA-registered disinfectant that is effective against pathogens like
                Staphylococcus aureus, Norovirus, and the novel coronavirus. To learn more about our chlorinated disinfecting tablets, browse the PDF
                below.
