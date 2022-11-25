@@ -19,7 +19,8 @@ import {
 import PortableText from "./portableText";
 // import Newsletter from "../Form/Newsletter";
 // import BlogPostPreview from "./BlogPostPreview";
-import CallToAction from "../Repeating/CTA";
+import CallToAction from "../Repeating/CTA2";
+import RecentBlogPosts from "../Repeating/RecentBlogPosts";
 // import ButtonSolid from "../Button/ButtonSolid";
 
 const StyledContent = styled.div`
@@ -156,7 +157,7 @@ function BlogPost(props) {
                     quote={title}
                     className="no-underline"
                   >
-                    <i className="fab fa-facebook-f text-xl text-primary-500 transition-colors duration-300 ease-linear hover:text-primary-500"></i>
+                    <i className="fab fa-facebook-f text-xl text-primary transition-colors duration-300 ease-linear hover:text-primary/50"></i>
                   </FacebookShareButton>
 
                   <LinkedinShareButton
@@ -164,7 +165,7 @@ function BlogPost(props) {
                     title={title}
                     className="no-underline"
                   >
-                    <i className="fab fa-linkedin-in hover:primary-secondary-500 text-xl text-primary-500 transition-colors duration-300 ease-linear"></i>
+                    <i className="fab fa-linkedin-in hover:text-primary/50 text-xl text-primary transition-colors duration-300 ease-linear"></i>
                   </LinkedinShareButton>
 
                   <TwitterShareButton
@@ -172,7 +173,7 @@ function BlogPost(props) {
                     title={title}
                     className="no-underline"
                   >
-                    <i className="fab fa-twitter text-xl text-primary-500 transition-colors duration-300 ease-linear hover:text-primary-500"></i>
+                    <i className="fab fa-twitter text-xl text-primary transition-colors duration-300 ease-linear hover:text-primary/50"></i>
                   </TwitterShareButton>
                 </div>
               </div>
@@ -202,29 +203,7 @@ function BlogPost(props) {
                 Share
               </div> */}
               <div className="flex items-center justify-center space-x-6">
-                <FacebookShareButton
-                  url={`${siteMetadata.siteUrl}/${slug.current}/`}
-                  quote={title}
-                  className="no-underline"
-                >
-                  <i className="fab fa-facebook-f text-primary-800 bg-primary-200 !flex h-10 w-10 items-center justify-center rounded-full text-xl text-primary-500 transition-colors duration-300 ease-linear hover:bg-primary-500 hover:text-white"></i>
-                </FacebookShareButton>
 
-                <LinkedinShareButton
-                  url={`${siteMetadata.siteUrl}/${slug.current}/`}
-                  title={title}
-                  className="no-underline"
-                >
-                  <i className="fab fa-linkedin-in text-primary-800 bg-primary-200 !flex h-10 w-10 items-center justify-center rounded-full text-xl text-primary-500 transition-colors duration-300 ease-linear hover:bg-primary-500 hover:text-white"></i>
-                </LinkedinShareButton>
-
-                <TwitterShareButton
-                  url={`${siteMetadata.siteUrl}/${slug.current}/`}
-                  title={title}
-                  className="no-underline"
-                >
-                  <i className="fab fa-twitter text-primary-800 bg-primary-200 !flex h-10 w-10 items-center justify-center rounded-full text-xl text-primary-500 transition-colors duration-300 ease-linear hover:bg-primary-500 hover:text-white"></i>
-                </TwitterShareButton>
               </div>
             </div>
 
@@ -233,7 +212,7 @@ function BlogPost(props) {
                 <Link
                   
                   to={`/${prev.slug.current}/`}
-                  className="group inline-flex items-center justify-center space-x-2.5 font-bold text-primary-500 hover:text-primary-500"
+                  className="group inline-flex items-center justify-center space-x-2.5 font-bold text-primary hover:text-primary/50"
                 >
                   <i className="far fa-arrow-left relative right-0 text-xl transition-all duration-300 ease-linear group-hover:right-1.5"></i>{" "}
                   <span>Previous</span>
@@ -245,7 +224,7 @@ function BlogPost(props) {
                 <Link
                   
                   to={`/${next.slug.current}/`}
-                  className="group inline-flex items-center justify-center space-x-2.5 font-bold text-primary-500 hover:text-primary-500"
+                  className="group inline-flex items-center justify-center space-x-2.5 font-bold text-primary hover:text-primary/50"
                 >
                   <span>Next</span>
                   <i className="far fa-arrow-right relative left-0 text-xl transition-all duration-300 ease-linear group-hover:left-1.5"></i>
@@ -288,8 +267,7 @@ function BlogPost(props) {
           />
         </div>
       </section> */}
-
-      <CallToAction />
+<RecentBlogPosts/>
     </>
   );
 }

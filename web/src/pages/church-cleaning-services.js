@@ -21,12 +21,12 @@ const Page = ({ data }) => {
        <SearchEngineOptimization
          title="Church Cleaning Services | Janitorial Company Long Beach"
          description="Keep your sacred space clean with church cleaning services courtesy of Long Beach Janitorial. We serve Long Beach & surrounding areas. Learn more!"
-         openGraphImage={data.openGraphImage.publicURL}
-         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         openGraphImage={data.openGraphImage}
+         twitterOpenGraphImage={data.twitterOpenGraphImage}
        />
 
        <HeroStacked
-         image={data.heroStacked.childImageSharp.gatsbyImageData}
+         image={data.heroStacked}
          backgroundFixed={true}
          imageMaxHeight="max-h-[468px]"
          heading="Church Cleaning Services"
@@ -52,7 +52,7 @@ const Page = ({ data }) => {
              </div>
              <div>
                <GatsbyImage
-                 image={data.intro.childImageSharp.gatsbyImageData}
+                 image={data.intro}
                  alt="Top Church Cleaning Services in Long Beach"
                />
              </div>

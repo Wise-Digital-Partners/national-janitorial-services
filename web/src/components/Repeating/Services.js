@@ -91,14 +91,14 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
    const cardContent = [
      {
        id: 1,
-       image: data.janitorialServices.childImageSharp.gatsbyImageData,
+       image: data.janitorialServices,
        heading: "Janitorial Services",
        text: "Get the regular cleaning your workspace demands with the highest standards of cleanliness.",
        link: "/janitorial-cleaning-company/",
      },
      {
        id: 2,
-       image: data.covidServices.childImageSharp.gatsbyImageData,
+       image: data.covidServices,
        heading: "COVID Cleaning Services",
        text: "Stop the spread and protect your business with our specialized COVID cleaning services. ",
        link: "/covid-cleaning-services/",
@@ -106,28 +106,28 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
 
      {
        id: 3,
-       image: data.officeCleaning.childImageSharp.gatsbyImageData,
+       image: data.officeCleaning,
        heading: "Office Cleaning",
        text: "Whether your office is big or small, we’ll keep your space safe for your employees.",
        link: "/office-cleaning-services/",
      },
      {
        id: 4,
-       image: data.porterServices.childImageSharp.gatsbyImageData,
+       image: data.porterServices,
        heading: "Porter Services",
        text: "Perfect for HOAs, nursing homes, care providers, event spaces, hotels, and much more.",
        link: "/day-porter-services/",
      },
      {
        id: 5,
-       image: data.deepCleaning.childImageSharp.gatsbyImageData,
+       image: data.deepCleaning,
        heading: "Deep Cleaning",
        text: "We offer thorough, one-time cleaning efforts that we can repeat as needed throughout the year.",
        link: "/deep-cleaning-services/",
      },
      {
        id: 6,
-       image: data.commercialCleaning.childImageSharp.gatsbyImageData,
+       image: data.commercialCleaning,
        heading: "Commercial Cleaning",
        text: "From warehouses to other workspaces, we offer first-class facility cleaning and management.",
        link: "/commercial-cleaning-company/",
@@ -135,7 +135,7 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
 
      {
        id: 7,
-       image: data.disinfectatServices.childImageSharp.gatsbyImageData,
+       image: data.disinfectatServices,
        heading: "Disinfectant Services",
        text: "Bring your workspace into cleanliness and compliance with professional disinfectant services.",
        link: "/disinfection-services/",

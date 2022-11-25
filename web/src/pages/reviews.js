@@ -13,8 +13,8 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title=""
             description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            // openGraphImage={data.openGraphImage}
+            // twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
          <section className="relative overflow-hidden py-16 md:py-24">
             <div className="absolute left-0 top-0 h-full w-full ">

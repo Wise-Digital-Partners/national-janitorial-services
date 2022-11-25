@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="School Cleaning Services | Janitorial Company Long Beach"
             description="When you need top school cleaning services in Long Beach, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
-            openGraphImage={data.openGraphImage.publicURL}
-            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            openGraphImage={data.openGraphImage}
+            twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <HeroStacked
-            image={data.heroStacked.childImageSharp.gatsbyImageData}
+            image={data.heroStacked}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="School Cleaning Services"
@@ -42,7 +42,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top School Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro} alt="Top School Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

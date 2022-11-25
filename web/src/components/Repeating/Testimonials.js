@@ -72,9 +72,9 @@ const Testimonial = ({ className, headingLevel }) => {
    `);
 
    const backgroundImages = [
-      getImage(data.backgroundDesktop.childImageSharp.gatsbyImageData),
+      getImage(data.backgroundDesktop),
       {
-         ...getImage(data.backgroundMobile.childImageSharp.gatsbyImageData),
+         ...getImage(data.backgroundMobile),
          media: `(max-width: 767px)`,
       },
    ];
@@ -106,7 +106,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>St. Joseph Church</cite>
-                              <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} alt="Google logo" className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.google} alt="Google logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -122,7 +122,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Hilary V.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -137,7 +137,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Maggie V.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>
@@ -151,7 +151,7 @@ const Testimonial = ({ className, headingLevel }) => {
                         <footer>
                            <span>
                               <cite>Carlos A.</cite>
-                              <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} alt="Yelp logo" className="mt-4 mx-auto" />
+                              <GatsbyImage image={data.yelp} alt="Yelp logo" className="mt-4 mx-auto" />
                            </span>
                         </footer>
                      </blockquote>

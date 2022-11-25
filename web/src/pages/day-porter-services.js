@@ -21,12 +21,12 @@ const Page = ({ data }) => {
        <SearchEngineOptimization
          title="Day Porter Services Long Beach | LBJ"
          description="Nobody does day porter services like Long Beach Janitorial. We offer the cleaning you need right here in Long Beach, CA. Schedule a consultation!"
-         openGraphImage={data.openGraphImage.publicURL}
-         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         openGraphImage={data.openGraphImage}
+         twitterOpenGraphImage={data.twitterOpenGraphImage}
        />
 
        <HeroStacked
-         image={data.heroStacked.childImageSharp.gatsbyImageData}
+         image={data.heroStacked}
          backgroundFixed={true}
          imageMaxHeight="max-h-[468px]"
          heading="Long Beach Day Porter Services"
@@ -51,7 +51,7 @@ const Page = ({ data }) => {
              </div>
              <div>
                <GatsbyImage
-                 image={data.intro.childImageSharp.gatsbyImageData}
+                 image={data.intro}
                  alt="Day Porter Services You Can Rely On"
                />
              </div>

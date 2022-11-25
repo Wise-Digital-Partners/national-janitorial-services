@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Janitorial Cleaning Company Long Beach | LBJ"
             description="Your business is unique and so should your cleaning services. Long Beach Janitorial is a top janitorial cleaning company in Long Beach. Learn more!"
-            openGraphImage={data.openGraphImage.publicURL}
-            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            openGraphImage={data.openGraphImage}
+            twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <HeroStacked
-            image={data.heroStacked.childImageSharp.gatsbyImageData}
+            image={data.heroStacked}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Janitorial Cleaning Company"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
+                     <GatsbyImage image={data.intro} alt="Keeping Long Beach Businesses Clean" />
                   </div>
                </div>
             </div>

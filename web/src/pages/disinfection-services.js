@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Disinfection Services Long Beach | LBJ"
             description="Go beyond the surface with top Long Beach disinfection services courtesy of Long Beach Janitorial. See what we can do and schedule a consultation!"
-            openGraphImage={data.openGraphImage.publicURL}
-            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            openGraphImage={data.openGraphImage}
+            twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <HeroStacked
-            image={data.heroStacked.childImageSharp.gatsbyImageData}
+            image={data.heroStacked}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Disinfection Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
+                     <GatsbyImage image={data.intro} alt="Keeping Long Beach Businesses Clean" />
                   </div>
                </div>
             </div>

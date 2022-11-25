@@ -90,7 +90,7 @@ const ReviewCards = () => {
                               />
                            </div>
                         ) : (
-                           <img src={data.defaultProfilePicture.publicURL} width="40" alt="Default profile headshot" />
+                           <img src={data.defaultProfilePicture} width="40" alt="Default profile headshot" />
                         )}
 
                         <div>
@@ -98,9 +98,9 @@ const ReviewCards = () => {
                         </div>
                      </div>
 
-                     {review.platform === "Google" && <GatsbyImage image={data.google.childImageSharp.gatsbyImageData} loading="lazy" />}
-                     {review.platform === "Yelp" && <GatsbyImage image={data.yelp.childImageSharp.gatsbyImageData} loading="lazy" />}
-                     {review.platform === "Facebook" && <GatsbyImage image={data.facebook.childImageSharp.gatsbyImageData} loading="lazy" />}
+                     {review.platform === "Google" && <GatsbyImage image={data.google} loading="lazy" />}
+                     {review.platform === "Yelp" && <GatsbyImage image={data.yelp} loading="lazy" />}
+                     {review.platform === "Facebook" && <GatsbyImage image={data.facebook} loading="lazy" />}
                   </div>
                   <blockquote>
                      <q className="mb-0 block font-normal before:hidden">{review.review}</q>

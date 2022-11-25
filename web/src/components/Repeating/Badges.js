@@ -140,7 +140,7 @@ const Accolades = ({ className}) => {
           <Slider>
             <div>
               <GatsbyImage
-                image={data.icon1.childImageSharp.gatsbyImageData}
+                image={data.icon1}
                 className="mx-auto"
                 alt="ShowGrow logo"
               />
@@ -148,7 +148,7 @@ const Accolades = ({ className}) => {
 
             <div>
               <GatsbyImage
-                image={data.icon2.childImageSharp.gatsbyImageData}
+                image={data.icon2}
                 className="mx-auto"
                 alt="SGS logo"
               />
@@ -156,56 +156,56 @@ const Accolades = ({ className}) => {
 
             <div>
               <GatsbyImage
-                image={data.icon3.childImageSharp.gatsbyImageData}
+                image={data.icon3}
                 className="mx-auto"
                 alt="PDS logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon4.childImageSharp.gatsbyImageData}
+                image={data.icon4}
                 className="mx-auto"
                 alt="NORTION LILLY logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon5.childImageSharp.gatsbyImageData}
+                image={data.icon5}
                 className="mx-auto"
                 alt="ST.JOSEPH CATHOLIC CHRUCH logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon6.childImageSharp.gatsbyImageData}
+                image={data.icon6}
                 className="mx-auto"
                 alt="URGENTMED logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon7.childImageSharp.gatsbyImageData}
+                image={data.icon7}
                 className="mx-auto"
                 alt="FILANC logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon8.childImageSharp.gatsbyImageData}
+                image={data.icon8}
                 className="mx-auto"
                 alt="TOTAL VISION logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon9.childImageSharp.gatsbyImageData}
+                image={data.icon9}
                 className="mx-auto"
                 alt="SCHG logo"
               />
             </div>        
             <div>
               <GatsbyImage
-                image={data.icon10.childImageSharp.gatsbyImageData}
+                image={data.icon10}
                 className="mx-auto"
                 alt="Welsh logo"
               />

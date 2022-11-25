@@ -10,7 +10,7 @@ function BlogPostPreview(props) {
       className="group block font-normal text-typography-body no-underline hover:text-typography-body"
     >
       {props.featuredImage && props.featuredImage.asset && (
-        <div className="mb-6 overflow-hidden rounded-3xl">
+        <div className="mb-6 overflow-hidden">
           <GatsbyImage
             image={props.featuredImage.asset.gatsbyImageData}
             loading="lazy"

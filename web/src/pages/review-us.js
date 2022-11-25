@@ -10,8 +10,8 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title=""
             // description=""
-            // openGraphImage={data.openGraphImage.publicURL}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            // openGraphImage={data.openGraphImage}
+            // twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <section className="bg-accent/10 pt-16 pb-20 md:pb-32 md:pt-20">

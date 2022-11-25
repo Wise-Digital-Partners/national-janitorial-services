@@ -212,21 +212,21 @@ export default class Slider extends Component {
                   <Slick className="slider-nav mb-8" {...imageSliderSettings}>
                      <div>
                         <GatsbyImage
-                           image={data.slide1Mobile.childImageSharp.gatsbyImageData}
+                           image={data.slide1Mobile}
                            alt="Fully Licensed Design - Architectural, Structural & Civil"
                         />
                      </div>
                      <div>
-                        <GatsbyImage image={data.slide2Mobile.childImageSharp.gatsbyImageData} alt="Building Permits" />
+                        <GatsbyImage image={data.slide2Mobile} alt="Building Permits" />
                      </div>
                      <div>
-                        <GatsbyImage image={data.slide3Mobile.childImageSharp.gatsbyImageData} alt="Construction Administration" />
+                        <GatsbyImage image={data.slide3Mobile} alt="Construction Administration" />
                      </div>
                      <div>
-                        <GatsbyImage image={data.slide4Mobile.childImageSharp.gatsbyImageData} alt="Photorealistic Rendering" />
+                        <GatsbyImage image={data.slide4Mobile} alt="Photorealistic Rendering" />
                      </div>
                      <div>
-                        <GatsbyImage image={data.slide5Mobile.childImageSharp.gatsbyImageData} alt="Real Estate Photography" />
+                        <GatsbyImage image={data.slide5Mobile} alt="Real Estate Photography" />
                      </div>
                   </Slick>
 
@@ -245,7 +245,7 @@ export default class Slider extends Component {
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
                               <GatsbyImage
-                                 image={data.slide1Desktop.childImageSharp.gatsbyImageData}
+                                 image={data.slide1Desktop}
                                  alt="Fully Licensed Design - Architectural, Structural & Civil"
                               />
                            </div>
@@ -264,7 +264,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <GatsbyImage image={data.slide2Desktop.childImageSharp.gatsbyImageData} alt="Building Permits" />
+                              <GatsbyImage image={data.slide2Desktop} alt="Building Permits" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">02</span>
@@ -281,7 +281,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <GatsbyImage image={data.slide3Desktop.childImageSharp.gatsbyImageData} alt="Construction Administration" />
+                              <GatsbyImage image={data.slide3Desktop} alt="Construction Administration" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">03</span>
@@ -298,7 +298,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <GatsbyImage image={data.slide4Desktop.childImageSharp.gatsbyImageData} alt="Photorealistic Rendering" />
+                              <GatsbyImage image={data.slide4Desktop} alt="Photorealistic Rendering" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">04</span>
@@ -315,7 +315,7 @@ export default class Slider extends Component {
                      <div>
                         <div className="grid md:grid-cols-2 gap-y-10 md:gap-x-10 lg:gap-x-20">
                            <div className="hidden md:block">
-                              <GatsbyImage image={data.slide5Desktop.childImageSharp.gatsbyImageData} alt="Real Estate Photography" />
+                              <GatsbyImage image={data.slide5Desktop} alt="Real Estate Photography" />
                            </div>
                            <div className="md:pt-4 lg:pt-7 md:pr-10 lg:pr-20">
                               <span className="text-primary font-heading font-black text-4xl hidden md:block mb-1">05</span>

@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Car Dealership Cleaning Services | Auto Janitorial Company"
             description="Long Beach Janitorial offers top car dealership cleaning services in the Long Beach area & beyond. Learn more & schedule a consultation today!"
-            openGraphImage={data.openGraphImage.publicURL}
-            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            openGraphImage={data.openGraphImage}
+            twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <HeroStacked
-            image={data.heroStacked.childImageSharp.gatsbyImageData}
+            image={data.heroStacked}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Car Dealership Cleaning Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Auto Dealership Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro} alt="Top Auto Dealership Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

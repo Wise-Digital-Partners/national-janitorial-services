@@ -37,7 +37,7 @@ const Footer = () => {
              <div className="mb-20 md:mb-0">
                <Link fade to="/">
                  <img
-                   src={data.logo.publicURL}
+                   src={data.logo}
                    alt="Long Beach Janitorial Logo"
                    width="233"
                    className="mx-auto md:mx-0 mb-8 w-44 md:w-60"
@@ -172,7 +172,7 @@ const Footer = () => {
                        NEST<sup className="text-[6px] pl-[2px]">TM</sup>{" "}
                        <img
                          className="ml-2"
-                         src={data.nestLogo.publicURL}
+                         src={data.nestLogo}
                          alt="nest Logo"
                        />
                      </a>

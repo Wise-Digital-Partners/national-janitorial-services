@@ -19,7 +19,7 @@ const Blog = () => {
             <div className="relative overflow-hidden mb-6">
                <a href="/blog-post/">
                   <Img
-                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
+                     image={data.blogPostThumbnail}
                      className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
                      alt="Blog post thumbnail"
                   />
@@ -31,7 +31,7 @@ const Blog = () => {
             <div className="relative overflow-hidden mb-6">
                <a href="# ">
                   <GatsbyImage
-                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
+                     image={data.blogPostThumbnail}
                      className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
                      alt="Blog post thumbnail"
                   />
@@ -43,7 +43,7 @@ const Blog = () => {
             <div className="relative overflow-hidden mb-6">
                <a href="# ">
                   <Img
-                     image={data.blogPostThumbnail.childImageSharp.gatsbyImageData}
+                     image={data.blogPostThumbnail}
                      className="transform scale-100 hover:scale-110 transition-all duration-500 ease-linear mb-0"
                      alt="Blog post thumbnail"
                   />

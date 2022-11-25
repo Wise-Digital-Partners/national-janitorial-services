@@ -14,8 +14,8 @@ const Page = ({ data }) => {
        <SearchEngineOptimization
          title="Privacy Policy | LBJ"
          // description=""
-         openGraphImage={data.openGraphImage.publicURL}
-         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+         openGraphImage={data.openGraphImage}
+         twitterOpenGraphImage={data.twitterOpenGraphImage}
        />
 
        <section className="pt-10 md:pt-12 pb-22 md:pb-32">

@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Dispensary Cleaning Services | Janitorial Company Long Beach"
             description="For dispensary cleaning services in the Long Beach area, see why Long Beach Janitorial is a top choice. Learn more & schedule a consultation!"
-            openGraphImage={data.openGraphImage.publicURL}
-            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            openGraphImage={data.openGraphImage}
+            twitterOpenGraphImage={data.twitterOpenGraphImage}
          />
 
          <HeroStacked
-            image={data.heroStacked.childImageSharp.gatsbyImageData}
+            image={data.heroStacked}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Dispensary Cleaning Services"
@@ -41,7 +41,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Dispensary Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro} alt="Top Dispensary Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

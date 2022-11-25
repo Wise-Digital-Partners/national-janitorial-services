@@ -24,9 +24,9 @@ const Covid = ({ className, headingLevel }) => {
    `);
 
    const backgroundImages = [
-      getImage(data.backgroundDesktop.childImageSharp.gatsbyImageData),
+      getImage(data.backgroundDesktop),
       {
-         ...getImage(data.backgroundMobile.childImageSharp.gatsbyImageData),
+         ...getImage(data.backgroundMobile),
          media: `(max-width: 767px)`,
       },
    ];
