@@ -72,7 +72,7 @@ const StyledMainNav = styled.nav`
                   ${tw`mb-4`}
                }
                a {
-                  ${tw`relative font-heading text-gray-800  text-gray-400/90 hover:text-gray-900 no-underline`}
+                  ${tw`relative font-heading text-gray-800  text-gray-700/60 hover:text-gray-900 no-underline`}
                   /* &:after {
                             content: '';
                             ${tw`absolute left-auto right-0 bottom-0 h-px bg-primary w-0 transition-all duration-300 ease-linear`}
