@@ -64,8 +64,8 @@ export default class Form extends Component {
       })
          .then(
             () =>
-               (document.getElementById("contact-form-ajax-response").innerHTML =
-                  "Thank you for contacting us! We will get in touch with you shortly."),
+            (document.getElementById("contact-form-ajax-response").innerHTML =
+               "Thank you for contacting us! We will get in touch with you shortly."),
             form.remove(),
             (window.dataLayer = window.dataLayer || []),
             window.dataLayer.push({

@@ -4,7 +4,7 @@ import React from "react";
 import ButtonSolid from "../Button/ButtonSolid";
 import ButtonGhost from "../Button/ButtonGhost";
 
-import doubleArrows from "../../images/1.0 Homepage/double-arrows.svg";
+// import doubleArrows from "../../images/1.0 Homepage/double-arrows.svg";
 
 const CTA = ({
     heading,
@@ -21,7 +21,7 @@ const CTA = ({
                     <div>
                         <div className="absolute left-0 top-0 hidden h-full w-1/2 md:block">
                             <StaticImage
-                                src="../../images/0.0 Repeated Modules/CTA/CTA.jpg"
+                                src="../../images/repeating/cta/cta-image-new.jpg"
                                 loading="lazy"
                                 width={960}
                                 className="h-full w-full"
@@ -31,7 +31,7 @@ const CTA = ({
                     </div>
                     <div className="md:pl-16 lg:pl-28">
                         <div className="mb-3 flex items-start space-x-2 md:max-w-[334px]">
-                            <img src={doubleArrows} />
+                            {/* <img src={doubleArrows} /> */}
 
                             <HeadingTag className="heading-three">
                                 {heading || "Get in touch today for a free estimate"}

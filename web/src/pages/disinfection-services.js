@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Disinfection Services Long Beach | LBJ"
             description="Go beyond the surface with top Long Beach disinfection services courtesy of Long Beach Janitorial. See what we can do and schedule a consultation!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Disinfection Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Keeping Long Beach Businesses Clean" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
                   </div>
                </div>
             </div>
@@ -110,12 +110,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Disinfectant Services_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/disinfectant-services/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/disinfectant-services/disinfectant_services.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/disinfectant-services/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/disinfectant-services/disinfectant_services_intro.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

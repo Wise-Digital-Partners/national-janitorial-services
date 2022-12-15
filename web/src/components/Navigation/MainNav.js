@@ -179,28 +179,28 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
       className = null;
 
    if (navigationStyle === "overlap") {
-      initialLogo = data.logoDark;
-      stickyLogo = data.logoDark;
-      // initialPhoneIcon = data.phoneLight;
-      // stickyPhoneIcon = data.phoneDark;
+      initialLogo = data.logoDark.publicURL;
+      stickyLogo = data.logoDark.publicURL;
+      // initialPhoneIcon = data.phoneLight.publicURL;
+      // stickyPhoneIcon = data.phoneDark.publicURL;
       className = "absolute";
    } else if (navigationStyle === "standard") {
-      initialLogo = data.logoDark;
-      stickyLogo = data.logoDark;
-      // initialPhoneIcon = data.phoneDark;
-      // stickyPhoneIcon = data.phoneDark;
+      initialLogo = data.logoDark.publicURL;
+      stickyLogo = data.logoDark.publicURL;
+      // initialPhoneIcon = data.phoneDark.publicURL;
+      // stickyPhoneIcon = data.phoneDark.publicURL;
    }
 
    // Change logo on mega menu reveal
    // if (megaMenuHovering) {
-   //     initialLogo = data.logoDark;
+   //     initialLogo = data.logoDark.publicURL;
    // }
 
    if (offcanvasOpen) {
-      initialLogo = data.logoLight;
-      stickyLogo = data.logoLight;
-      // initialPhoneIcon = data.phoneLight;
-      // stickyPhoneIcon = data.phoneLight;
+      initialLogo = data.logoLight.publicURL;
+      stickyLogo = data.logoLight.publicURL;
+      // initialPhoneIcon = data.phoneLight.publicURL;
+      // stickyPhoneIcon = data.phoneLight.publicURL;
    }
 
    return (
@@ -318,9 +318,9 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
                   <li>
                      <a href="/reviews/">Reviews</a>
                   </li>
-                  <li>
-                     <a href="/blog">Blog</a>
-                  </li>
+                  {/* <li>
+                     <a href="# ">Blog</a>
+                  </li> */}
                </ul>
                <div className="hidden lg:inline-flex items-center">
                   <ButtonSolid className="min-w-[160px]" as="button" modal="modal-contact" text="Contact" />
@@ -459,11 +459,11 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
                               Reviews
                            </a>
                         </li>
-                        <li className="relative">
-                           <a href="/blog" onClick={clickHandler}>
+                        {/* <li className="relative">
+                           <a href="# " onClick={clickHandler}>
                               Blog
                            </a>
-                        </li>
+                        </li> */}
                      </ul>
                      <div className="flex mt-8">
                         <a

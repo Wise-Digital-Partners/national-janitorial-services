@@ -9,9 +9,9 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="dark" headerHasBorder={false}>
          <SearchEngineOptimization
             title=""
-            // description=""
-            // openGraphImage={data.openGraphImage}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage}
+         // description=""
+         // openGraphImage={data.openGraphImage.publicURL}
+         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <section className="bg-accent/10 pt-16 pb-20 md:pb-32 md:pt-20">

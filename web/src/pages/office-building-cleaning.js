@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Office Building Cleaning Services | Janitorial Company | LBJ"
             description="No matter your needs, we offer reliable office building cleaning services in Long Beach. Schedule a consultation with Long Beach Janitorial today!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Office Building Cleaning Services"
@@ -44,7 +44,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Top Office Building Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Office Building Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

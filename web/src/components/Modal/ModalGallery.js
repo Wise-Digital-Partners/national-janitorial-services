@@ -61,7 +61,7 @@ const StyledModal = styled.div`
     }
 `
 
-const Modal = ({slideIndex, children}) => {
+const Modal = ({ slideIndex, children }) => {
 
     if (typeof window !== `undefined`) {
         MicroModal.init({
@@ -71,19 +71,19 @@ const Modal = ({slideIndex, children}) => {
             disableScroll: true,
             awaitOpenAnimation: true,
             awaitCloseAnimation: true,
-        })       
+        })
     }
 
-    const slider = useRef();  
+    const slider = useRef();
 
     return (
 
         <div>
             <StyledModal>
-                <div className="modal relative hidden z-50" id="modal-gallery" aria-hidden="false"> 
+                <div className="modal relative hidden z-50" id="modal-gallery" aria-hidden="false">
                     <div className="overlay fixed flex items-center justify-center top-0 right-0 left-0 bottom-0 bg-black bg-opacity-75 outline-none" tabIndex="-1" data-modal-close>
                         <div className="content-wrapper bg-white w-full h-screen overflow-auto py-16" role="dialog" aria-modal="true">
-                            <SliderGallery slideIndex={slideIndex} children={children} ref={slider} /> 
+                            <SliderGallery slideIndex={slideIndex} children={children} ref={slider} />
                             <i className="close fal fa-times" data-modal-close></i>
                         </div>
                     </div>
@@ -94,5 +94,5 @@ const Modal = ({slideIndex, children}) => {
         </div>
     )
 }
-  
+
 export default Modal

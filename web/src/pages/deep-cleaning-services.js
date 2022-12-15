@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Deep Cleaning Services Long Beach | LBJ"
             description="For the deep cleaning services your business deserves, partner with Long Beach Janitorial. We offer Long Beach the best in deep cleaning. Learn more!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Deep Cleaning Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Keeping Long Beach Businesses Clean" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Keeping Long Beach Businesses Clean" />
                   </div>
                </div>
             </div>
@@ -110,12 +110,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Deep Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/deep-cleaning/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/deep-cleaning/deep_cleaning.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/deep-cleaning/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/deep-cleaning/deep_cleaning_intro.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

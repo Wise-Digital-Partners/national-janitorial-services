@@ -1,17 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
-import Blogs from "../components/Repeating/RecentBlogPosts";
+import Covid from "../components/Repeating/Covid";
 import Services from "../components/Repeating/Services";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Badges from "../components/Repeating/Badges";
-
-import HeroWithOverlay from "../components/Hero/HeroWithOverlay"
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
@@ -20,9 +18,9 @@ import ButtonGhost from "../components/Button/ButtonGhost";
 
 const Page = ({ data }) => {
   const heroFullWidthImages = [
-    getImage(data.heroStacked),
+    getImage(data.heroFullWidthDesktop.childImageSharp.gatsbyImageData),
     {
-      ...getImage(data.heroStacked),
+      ...getImage(data.heroFullWidthMobile.childImageSharp.gatsbyImageData),
       media: `(max-width: 767px)`,
     },
   ];
@@ -35,8 +33,8 @@ const Page = ({ data }) => {
       <SearchEngineOptimization
         title="Long Beach Janitorial | Commercial Cleaning Company"
         description="Long Beach Janitorial is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
-        // openGraphImage={data.openGraphImage}
-        // twitterOpenGraphImage={data.twitterOpenGraphImage}
+        openGraphImage={data.openGraphImage.publicURL}
+        twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
 
       <HeroFullWidth
@@ -74,7 +72,6 @@ const Page = ({ data }) => {
           />
         </div>
       </HeroFullWidth>
-
       <Badges className="py-14" />
       {/* <Clients className="py-14" headingLevel="h2" /> */}
       <section className="py-16 md:py-8">
@@ -82,12 +79,12 @@ const Page = ({ data }) => {
           <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
             <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
               <GatsbyImage
-                image={data.introDesktop}
+                image={data.introDesktop.childImageSharp.gatsbyImageData}
                 alt="A Top Commercial Janitorial Services Company In Long Beach"
                 className="hidden md:block"
               />
               <GatsbyImage
-                image={data.introMobile}
+                image={data.introMobile.childImageSharp.gatsbyImageData}
                 alt="A Top Commercial Janitorial Services Company In Long Beach"
                 className="md:hidden"
               />
@@ -122,7 +119,7 @@ const Page = ({ data }) => {
       <About className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
 
       <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
-      <Blogs />
+
       <CallToAction headingLevel="h2" />
     </Layout>
   );
@@ -130,18 +127,28 @@ const Page = ({ data }) => {
 
 export const query = graphql`
    {
-      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Office Cleaning_FB.jpg" }) {
+      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Homepage_FB.jpg" }) {
          publicURL
       }
-      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Office Cleaning_TW.jpg" }) {
+      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Homepage_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/office-cleaning/hero-desktop.jpg" }) {
+      heroFullWidthDesktop: file(relativePath: { eq: "home/1.0-hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/office-cleaning/intro.jpg" }) {
+      heroFullWidthMobile: file(relativePath: { eq: "home/1.0-hero-mobile.jpg" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      introDesktop: file(relativePath: { eq: "home/2.0 Intro Desktop.jpg" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      introMobile: file(relativePath: { eq: "home/2.0 Intro Mobile.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

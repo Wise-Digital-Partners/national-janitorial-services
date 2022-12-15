@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Bar Cleaning Services | Nightclub Cleaning | Long Beach"
             description="Long Beach Janitorial offers top bar & nightclub cleaning services in the Long Beach area & beyond. See how we can help & schedule a consultation!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Bar & Nightclub Cleaning Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Top Bar & Nightclub Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Bar & Nightclub Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

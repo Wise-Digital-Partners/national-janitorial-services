@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Commercial Cleaning Company Long Beach | LBJ"
             description="If you need a top commercial cleaning company for your Long Beach business, look no further. Long Beach Janitorial has the expertise you need!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Commercial Cleaning Company"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Commercial Cleaning for Spotless Businesses" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Commercial Cleaning for Spotless Businesses" />
                   </div>
                </div>
             </div>
@@ -110,12 +110,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Commercial Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/commercial-cleaning/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/commercial-cleaning/commercial_cleaning.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/commercial-cleaning/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/commercial-cleaning/commercial_cleaning_intro.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

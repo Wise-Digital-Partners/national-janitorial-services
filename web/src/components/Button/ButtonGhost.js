@@ -1,61 +1,23 @@
 import React from "react";
-import Link from "gatsby-plugin-transition-link";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
+import styled from "@emotion/styled";
 
-const Button = ({
-  className,
-  href,
-  outboundLink,
-  modal,
-  onClick,
-  type,
-  altStyle,
-  icon,
-  text,
-}) => {
-  const Tag = href && href.includes("#") ? AnchorLink : href ? Link : "button";
-  const target = outboundLink && "_blank";
-  const rel = outboundLink && "noopener noreferrer";
-  let link = true;
-  let anchor = false;
+const StyledButton = styled.a``;
 
-  href && (link = !href.includes("tel:") && !href.includes("mailto:"));
-
-  return (
-    <div
-      className={`inline-flex overflow-hidden rounded-xl bg-gradient-to-tr from-primary-500 to-primary-500 p-0.5 ${
-        className || ""
-      }`}
-    >
-      <Tag
-        className={`group relative inline-flex min-h-[46px] min-w-[170px] items-center justify-center rounded-5xl px-4 py-2 text-center font-body font-medium no-underline ${
-          altStyle === 2
-            ? "bg-primary-900 text-white hover:text-white"
-            : "bg-white text-typography-heading hover:text-white"
-        } ${className || ""}`}
-        {...(anchor ? { to: href } : link ? { to: href } : { href: href })}
-        target={target}
-        rel={rel}
-        data-modal-open={modal}
-        onClick={onClick}
-        type={type}
-        alt-style={altStyle}
-      >
-        <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-tr from-primary-500 to-primary-500 opacity-0 transition-opacity duration-300 ease-linear group-hover:opacity-100" />
-        <div className="relative z-10">
-          {text}
-          {icon && (
-            <i
-              className={`relative left-0 ml-2 text-lg transition-all duration-300 ease-linear group-hover:left-2 ${
-                altStyle ? "text-white" : "text-gray-900"
-              } ${icon}`}
-            ></i>
-          )}
-        </div>
-      </Tag>
-      
-    </div>
-  );
-};
+const Button = ({ className, href, target, rel, modal, onClick, as, type, darkmode, text }) => (
+  <StyledButton
+    className={`font-heading font-semibold bg-transparent hover:bg-primary hover:text-white border border-solid px-6 py-3 min-w-[185px] inline-flex items-center justify-center text-center no-underline focus:outline-none transition-colors duration-300 ease-in-out ${darkmode ? "text-white border-white hover:border-primary" : "text-primary border-primary"
+      } ${className}`}
+    href={href}
+    target={target}
+    rel={rel}
+    data-modal-open={modal}
+    onClick={onClick}
+    as={as}
+    type={type}
+    darkmode={darkmode}
+  >
+    {text}
+  </StyledButton>
+);
 
 export default Button;

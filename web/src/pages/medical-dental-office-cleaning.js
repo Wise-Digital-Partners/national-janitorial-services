@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Medical & Dental Office Cleaning Services | Long Beach"
             description="For top medical & dental office cleaning services in the Long Beach area, see why Long Beach Janitorial is an excellent choice. Schedule a consultation!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Medical & Dental Office Cleaning Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                   </div>
                   <div>
                      <GatsbyImage
-                        image={data.intro}
+                        image={data.intro.childImageSharp.gatsbyImageData}
                         alt="Top Medical & Dental Office Cleaning Services in Long Beach"
                      />
                   </div>

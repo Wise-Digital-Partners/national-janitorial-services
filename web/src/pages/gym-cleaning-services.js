@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Gym Cleaning Services | Janitorial Company Long Beach"
             description="Keep your fitness center clean with gym cleaning services courtesy of Long Beach Janitorial. We serve Long Beach & surrounding areas. Learn more!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Gym Cleaning Services"
@@ -45,7 +45,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Top Gym & Fitness Center Cleaning Services in Long Beach" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Top Gym & Fitness Center Cleaning Services in Long Beach" />
                   </div>
                </div>
             </div>

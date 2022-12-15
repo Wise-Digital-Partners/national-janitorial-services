@@ -24,7 +24,7 @@ const StyledSlider = styled.div`
   }
 `;
 
-const Accolades = ({ className}) => {
+const Accolades = ({ className }) => {
   const data = useStaticQuery(graphql`
     {
       icon1: file(relativePath: { eq: "repeating/clients/client-1.jpg" }) {
@@ -140,7 +140,7 @@ const Accolades = ({ className}) => {
           <Slider>
             <div>
               <GatsbyImage
-                image={data.icon1}
+                image={data.icon1.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="ShowGrow logo"
               />
@@ -148,7 +148,7 @@ const Accolades = ({ className}) => {
 
             <div>
               <GatsbyImage
-                image={data.icon2}
+                image={data.icon2.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="SGS logo"
               />
@@ -156,56 +156,56 @@ const Accolades = ({ className}) => {
 
             <div>
               <GatsbyImage
-                image={data.icon3}
+                image={data.icon3.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="PDS logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon4}
+                image={data.icon4.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="NORTION LILLY logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon5}
+                image={data.icon5.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="ST.JOSEPH CATHOLIC CHRUCH logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon6}
+                image={data.icon6.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="URGENTMED logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon7}
+                image={data.icon7.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="FILANC logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon8}
+                image={data.icon8.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="TOTAL VISION logo"
               />
             </div>
             <div>
               <GatsbyImage
-                image={data.icon9}
+                image={data.icon9.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="SCHG logo"
               />
-            </div>        
+            </div>
             <div>
               <GatsbyImage
-                image={data.icon10}
+                image={data.icon10.childImageSharp.gatsbyImageData}
                 className="mx-auto"
                 alt="Welsh logo"
               />

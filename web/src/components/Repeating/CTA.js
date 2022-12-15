@@ -22,9 +22,9 @@ const CTA = ({ heading, headingLevel }) => {
    `);
 
    const backgroundImages = [
-      getImage(data.backgroundDesktop),
+      getImage(data.backgroundDesktop.childImageSharp.gatsbyImageData),
       {
-         ...getImage(data.backgroundMobile),
+         ...getImage(data.backgroundMobile.childImageSharp.gatsbyImageData),
          media: `(max-width: 767px)`,
       },
    ];

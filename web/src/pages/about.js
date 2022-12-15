@@ -12,9 +12,9 @@ import CallToAction from "../components/Repeating/CTA";
 
 const Page = ({ data }) => {
    const heroFullWidthImages = [
-      getImage(data.heroFullWidthDesktop),
+      getImage(data.heroFullWidthDesktop.childImageSharp.gatsbyImageData),
       {
-         ...getImage(data.heroFullWidthMobile),
+         ...getImage(data.heroFullWidthMobile.childImageSharp.gatsbyImageData),
          media: `(max-width: 767px)`,
       },
    ];
@@ -23,8 +23,8 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="About LBJ | Commercial Janitorial Services Company"
             description="With over 5 years and more than 100 accounts served, Long Beach Janitorial is your trusted partner in keeping your business spotless and safe."
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroFullWidth
@@ -48,17 +48,17 @@ const Page = ({ data }) => {
                </header>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-10 items-center text-center">
                   <div>
-                     <img src={data.integrity} alt="Integrity" className="mx-auto mb-2" />
+                     <img src={data.integrity.publicURL} alt="Integrity" className="mx-auto mb-2" />
                      <p className="font-heading text-gray-700 text-xl uppercase font-bold mb-1">Integrity</p>
                      <p className="mb-0">At LBJ, our word is our bond. Count on our team to do what we say we will for quality you can trust.</p>
                   </div>
                   <div>
-                     <img src={data.reliability} alt="Reliability" className="mx-auto mb-2" />
+                     <img src={data.reliability.publicURL} alt="Reliability" className="mx-auto mb-2" />
                      <p className="font-heading text-gray-700 text-xl uppercase font-bold mb-1">Reliability</p>
                      <p className="mb-0">Our expert team gets the job done on time and up to the highest standards required for your industry.</p>
                   </div>
                   <div>
-                     <img src={data.exceptional} alt="Exceptional Service" className="mx-auto mb-2" />
+                     <img src={data.exceptional.publicURL} alt="Exceptional Service" className="mx-auto mb-2" />
                      <p className="font-heading text-gray-700 text-xl uppercase font-bold mb-1">Exceptional Service</p>
                      <p className="mb-0">We strive for nothing less than excellence and professionalism in everything we do.</p>
                   </div>
@@ -71,12 +71,12 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-3xl mx-auto text-center">
                   <div>
                      <h2 className="mb-10 md:mb-16">Meet the Team</h2>
-                     <GatsbyImage image={data.patrick} alt="Patrick Dillon - Partner" className="mb-5" />
+                     <GatsbyImage image={data.patrick.childImageSharp.gatsbyImageData} alt="Patrick Dillon - Partner" className="mb-5" />
                      <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Patrick Dillon</p>
                      <p className="font-heading text-gray-400 text-3xl mb-0">Partner</p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.anthony} alt="Anthony Orozco - General Manager" className="mb-5" />
+                     <GatsbyImage image={data.anthony.childImageSharp.gatsbyImageData} alt="Anthony Orozco - General Manager" className="mb-5" />
                      <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Anthony Orozco</p>
                      <p className="font-heading text-gray-400 text-3xl mb-0">General Manager</p>
                   </div>

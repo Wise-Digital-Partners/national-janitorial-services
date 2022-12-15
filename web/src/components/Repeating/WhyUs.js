@@ -35,26 +35,26 @@ const WhyUs = ({ className, headingLevel }) => {
             />
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24 gap-y-10 md:gap-y-16 text-center md:text-left">
                <div>
-                  <img src={data.experienced} alt="Experienced" className="mx-auto md:mx-0 mb-3 md:mb-4" />
+                  <img src={data.experienced.publicURL} alt="Experienced" className="mx-auto md:mx-0 mb-3 md:mb-4" />
                   <p className="font-heading text-xl text-gray-700 font-bold uppercase mb-3 md:mb-4">Experienced</p>
                   <p className="mb-0">With more than 100 businesses served, we tailor our cleaning services to your specific industry needs.</p>
                </div>
                <div>
-                  <img src={data.reliable} alt="Good Value" className="mx-auto md:mx-0 mb-3 md:mb-4" />
+                  <img src={data.reliable.publicURL} alt="Good Value" className="mx-auto md:mx-0 mb-3 md:mb-4" />
                   <p className="font-heading text-xl text-gray-700 font-bold uppercase mb-3 md:mb-4">Reliable & Local</p>
                   <p className="mb-0">
                      We’re based in the community we serve. Count on our experts to be on time, on-budget, and on-point with our services.
                   </p>
                </div>
                <div>
-                  <img src={data.value} alt="Professional" className="mx-auto md:mx-0 mb-3 md:mb-4" />
+                  <img src={data.value.publicURL} alt="Professional" className="mx-auto md:mx-0 mb-3 md:mb-4" />
                   <p className="font-heading text-xl text-gray-700 font-bold uppercase mb-3 md:mb-4">Good Value</p>
                   <p className="mb-0">
                      We deliver a quality experience using only the most advanced cleaning products and procedures at excellent prices.
                   </p>
                </div>
                <div>
-                  <img src={data.professional} alt="Reliable & Local" className="mx-auto md:mx-0 mb-3 md:mb-4" />
+                  <img src={data.professional.publicURL} alt="Reliable & Local" className="mx-auto md:mx-0 mb-3 md:mb-4" />
                   <p className="font-heading text-xl text-gray-700 font-bold uppercase mb-3 md:mb-4">Professional</p>
                   <p className="mb-0">Our experienced commercial cleaning team is fully trained, licensed and insured for your peace of mind.</p>
                </div>

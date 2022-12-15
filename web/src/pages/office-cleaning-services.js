@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="Office Cleaning Services Long Beach | LBJ"
             description="For top office cleaning services in Long Beach, CA, see why Long Beach Janitorial is a trusted choice. See what we can do and schedule a consultation!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Office Cleaning Services"
@@ -43,7 +43,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="Essential Cleaning for Offices" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Essential Cleaning for Offices" />
                   </div>
                </div>
             </div>
@@ -107,12 +107,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Office Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/office-cleaning/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/office-cleaning/office_cleaning.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/office-cleaning/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/office-cleaning/office_cleaning_intro.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

@@ -17,12 +17,12 @@ const Page = ({ data }) => {
          <SearchEngineOptimization
             title="COVID Cleaning Services Long Beach | Long Beach Janitorial"
             description="Our COVID cleaning services help Long Beach businesses stop the spread. Learn more about our coronavirus cleaning process & schedule a consultation!"
-            openGraphImage={data.openGraphImage}
-            twitterOpenGraphImage={data.twitterOpenGraphImage}
+            openGraphImage={data.openGraphImage.publicURL}
+            twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
 
          <HeroStacked
-            image={data.heroStacked}
+            image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="COVID Cleaning Services"
@@ -44,7 +44,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.intro} alt="COVID-19 Cleaning in Long Beach" />
+                     <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="COVID-19 Cleaning in Long Beach" />
                   </div>
                </div>
             </div>
@@ -61,7 +61,7 @@ const Page = ({ data }) => {
                </header>
                <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-10 items-center">
                   <div className="md:col-start-1 md:col-span-3">
-                     <GatsbyImage image={data.toolGun} alt="COVID cleaning & disinfection tool" />
+                     <GatsbyImage image={data.toolGun.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
                   </div>
                   <div className="md:col-start-4 md:col-span-4">
                      <p className="heading-two">The Tools</p>
@@ -70,7 +70,7 @@ const Page = ({ data }) => {
                      </p>
                   </div>
                   <div className="md:col-end-13 md:col-span-5">
-                     <GatsbyImage image={data.toolBackpack} alt="COVID cleaning & disinfection tool" />
+                     <GatsbyImage image={data.toolBackpack.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
                   </div>
                </div>
             </div>
@@ -131,12 +131,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/COVID Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/covid-cleaning/hero-desktop.jpg" }) {
+      heroStacked: file(relativePath: { eq: "services/covid-cleaning/covid_cleaning.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/covid-cleaning/intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/covid-cleaning/covid_cleaning_intro.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

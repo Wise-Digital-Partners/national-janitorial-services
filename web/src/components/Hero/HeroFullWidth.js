@@ -1,32 +1,20 @@
 import React from "react";
 import { BgImage } from "gbimage-bridge";
-import styled from "@emotion/styled";
-import tw from "twin.macro";
-
-const StyledHero = styled(BgImage)`
-  &:before,
-  &:after {
-    ${({ mobileRemoveBackground }) =>
-      mobileRemoveBackground && tw`!hidden md:!block`};
-  }
-`;
 
 const Hero = ({
    className,
    padding,
-   backgroundImage,
+   backgroundImages,
    backgroundSize,
    backgroundPosition,
    backgroundRepeat,
-   mobileRemoveBackground,
    textAlignment,
    textMaxWidth,
    children,
 }) => (
-   <StyledHero
+   <BgImage
       className={`${padding} ${className}`}
-      image={backgroundImage}
-      mobileRemoveBackground={mobileRemoveBackground}
+      image={backgroundImages}
       style={{
          backgroundSize: backgroundSize || "cover",
          backgroundPosition: backgroundPosition || "center",
@@ -36,7 +24,7 @@ const Hero = ({
       <div className="container">
          <header className={`${textAlignment} ${textMaxWidth}`}>{children}</header>
       </div>
-   </StyledHero>
+   </BgImage>
 );
 
 export default Hero;

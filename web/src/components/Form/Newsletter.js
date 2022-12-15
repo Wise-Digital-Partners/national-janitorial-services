@@ -56,55 +56,55 @@ export default class Form extends Component {
         ...this.state,
       }),
     })
-    .then(() =>
-      document.getElementById('newsletter-form-ajax-response').innerHTML = "Thank you for subscribing!",
-      form.remove(),
-      window.dataLayer = window.dataLayer || [],
-      window.dataLayer.push({
-        'event': 'newsletterFormSubmission'
-      })  
-    )
-    .catch(error => alert(error))  
+      .then(() =>
+        document.getElementById('newsletter-form-ajax-response').innerHTML = "Thank you for subscribing!",
+        form.remove(),
+        window.dataLayer = window.dataLayer || [],
+        window.dataLayer.push({
+          'event': 'newsletterFormSubmission'
+        })
+      )
+      .catch(error => alert(error))
 
   }
-  
-  render() { 
+
+  render() {
     return (
       <StyledForm>
         <div id="newsletter-form-ajax-response" className="ajax-response"></div>
-		<p className="text-white text-opacity-70 leading-none mb-7">Join our email list for the latest events, classes, and sales.</p>
+        <p className="text-white text-opacity-70 leading-none mb-7">Join our email list for the latest events, classes, and sales.</p>
         <form
-        name="Newsletter"
-        method="post"
-        action=""
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        onSubmit={this.handleSubmit}
+          name="Newsletter"
+          method="post"
+          action=""
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={this.handleSubmit}
         >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <input type="hidden" name="form-name" value="Newsletter" />
-        <div hidden>
+          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+          <input type="hidden" name="form-name" value="Newsletter" />
+          <div hidden>
             <label>
-            Don’t fill this out:{' '}
-            <input name="bot-field" onBlur={this.handleChange} />
+              Don’t fill this out:{' '}
+              <input name="bot-field" onBlur={this.handleChange} />
             </label>
-        </div>
-         
-        <div className="field">
+          </div>
+
+          <div className="field">
             <label className="label" htmlFor={'email'}>Email</label>
             <div className="control">
-            <input
+              <input
                 className="input"
                 type={'email'}
                 name={'email'}
                 onBlur={this.handleChange}
                 id={'email'}
                 required={true}
-            />
+              />
             </div>
-        </div>
-        {/* <ButtonSolid as="button" type="submit" text={<img src={Submit} alt="Submit" />}/> */}
-        <ButtonSolid as="button" type="submit" text="Submit" alt="Submit" />}/>
+          </div>
+          {/* <ButtonSolid as="button" type="submit" text={<img src={Submit} alt="Submit" />}/> */}
+          <ButtonSolid as="button" type="submit" text="Submit" alt="Submit" />
         </form>
       </StyledForm>
     );
