@@ -267,8 +267,8 @@ function BlogPost(props) {
           />
         </div>
       </section> */}
-<CTA />
 <RecentBlogPosts/>
+      <CTA class="pt-16 md:pt-32 mb-16 md:mb-32" />
     </>
   );
 }
