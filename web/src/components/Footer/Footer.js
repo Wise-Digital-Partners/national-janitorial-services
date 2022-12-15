@@ -85,11 +85,11 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-              {/* <li className="mb-5 md:mb-0 md:mr-6">
-                        <Link fade to="# " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
+              <li className="mb-5 md:mb-0 md:mr-6">
+                        <Link fade to="/blog " className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
                         </Link>
-                     </li> */}
+                     </li>
               <li>
                 <ButtonSolid
                   as="button"

@@ -10,7 +10,7 @@ import {
     filterOutDocsWithoutSlugs,
     mapEdgesToNodes,
 } from "../lib/helpers";
-import CallToAction from "../components/Repeating/CTA2";
+import CallToAction from "../components/Repeating/CTA";
 
 export const query = graphql`
   {
@@ -91,7 +91,6 @@ const Page = ({ data }) => {
                 </div>
             </section>
 
-            <CallToAction />
         </Layout>
     );
 };

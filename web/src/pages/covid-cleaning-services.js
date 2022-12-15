@@ -131,12 +131,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/COVID Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/covid-cleaning/covid_cleaning.png" }) {
+      heroStacked: file(relativePath: { eq: "services/covid-cleaning/hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/covid-cleaning/covid_cleaning_intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/covid-cleaning/intro.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

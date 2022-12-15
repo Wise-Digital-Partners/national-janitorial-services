@@ -19,8 +19,8 @@ import {
 import PortableText from "./portableText";
 // import Newsletter from "../Form/Newsletter";
 // import BlogPostPreview from "./BlogPostPreview";
-import CallToAction from "../Repeating/CTA2";
 import RecentBlogPosts from "../Repeating/RecentBlogPosts";
+import CTA from "../Repeating/CTA2";
 // import ButtonSolid from "../Button/ButtonSolid";
 
 const StyledContent = styled.div`
@@ -267,6 +267,7 @@ function BlogPost(props) {
           />
         </div>
       </section> */}
+<CTA />
 <RecentBlogPosts/>
     </>
   );

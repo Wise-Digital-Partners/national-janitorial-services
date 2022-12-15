@@ -110,12 +110,12 @@ export const query = graphql`
       twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Deep Cleaning_TW.jpg" }) {
          publicURL
       }
-      heroStacked: file(relativePath: { eq: "services/deep-cleaning/deep_cleaning.png" }) {
+      heroStacked: file(relativePath: { eq: "services/deep-cleaning/hero-desktop.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      intro: file(relativePath: { eq: "services/deep-cleaning/deep_cleaning_intro.jpg" }) {
+      intro: file(relativePath: { eq: "services/deep-cleaning/intro.png" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }

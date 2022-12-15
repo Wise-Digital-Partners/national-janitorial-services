@@ -4,7 +4,7 @@ import Services from "../components/Repeating/Services";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
-import Covid from "../components/Repeating/Covid";
+// import Covid from "../components/Repeating/Covid";
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemPanel, AccordionItemState } from "react-accessible-accordion";
 
 const Page = ({ data }) => {
