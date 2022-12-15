@@ -5,14 +5,12 @@ import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
 import BlogPostGrid from "../components/Blog/BlogPostGrid";
-import CTA from "../components/Repeating/CTA2";
 import {
     filterOutDocsPublishedInTheFuture,
     filterOutDocsWithoutSlugs,
     mapEdgesToNodes,
 } from "../lib/helpers";
-
-
+import CallToAction from "../components/Repeating/CTA2";
 
 export const query = graphql`
   {
@@ -92,8 +90,8 @@ const Page = ({ data }) => {
                     )}
                 </div>
             </section>
-        <CTA class="pt-16 md:pt-32 mb-16 md:mb-32" />
 
+            <CallToAction />
         </Layout>
     );
 };
