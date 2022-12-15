@@ -145,6 +145,9 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
    const isHoveringSubMenu2 = () => setSubMenuHovering2(true);
    const notHoveringSubMenu2 = () => setSubMenuHovering2(false);
 
+   const [subMenuHovering3, setSubMenuHovering3] = useState(false);
+   const isHoveringSubMenu3 = () => setSubMenuHovering3(true);
+   const notHoveringSubMenu3 = () => setSubMenuHovering3(false);
    // handle click of navigation items
    const clickHandler = () => {
       setOffcanvasOpen(!offcanvasOpen);
@@ -311,9 +314,16 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
                            <a href="/dispensary-cleaning-services/">Dispensaries</a>
                         </li>
                      </ul>
-                  </li>
-                  <li>
-                     <a href="/about/">About</a>
+                  </li>                  
+                  <li className={`submenu-parent ${subMenuHovering3 ? "active" : ""}`}>
+                     <a onMouseEnter={isHoveringSubMenu3} onMouseLeave={notHoveringSubMenu3} href="/about/">
+                        About
+                     </a>
+                     <ul className="submenu">
+                        <li>
+                           <a href="/blog/">Blog</a>
+                        </li>
+                     </ul>
                   </li>
                   <li>
                      <a href="/reviews/">Reviews</a>
@@ -452,6 +462,11 @@ const MainNav = ({ navigationStyle, headerHasBorder, headerLinkColor, scrolled, 
                         <li className="relative mb-8">
                            <a href="/about/" onClick={clickHandler}>
                               About
+                           </a>
+                        </li>                        
+                        <li className="relative mb-8">
+                           <a href="/blog/" onClick={clickHandler}>
+                              Blog
                            </a>
                         </li>
                         <li className="relative mb-8">
