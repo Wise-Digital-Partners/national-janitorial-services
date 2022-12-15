@@ -31,12 +31,12 @@ export default {
          options: {
             title: "Netlify deploys",
             sites: [
-               // {
-               //    buildHookId: "https://api.netlify.com/build_hooks/631b57803caffe134f6b12b1",
-               //    title: "Sanity Studio",
-               //    name: "ascent-roofing-cms",
-               //    apiId: "172beed9-14d0-465f-9355-b0597f20e38c",
-               // },
+               {
+                  buildHookId: "https://api.netlify.com/build_hooks/631b57803caffe134f6b12b1",
+                  title: "Sanity Studio",
+                  name: "longbeachjanitorial-cms",
+                  apiId: "9e9cadc6-e086-4425-8e89-50c45efa815a",
+               },
                {
                   buildHookId: "https://api.netlify.com/build_hooks/63811857acf33a6bb7a9c686",
                   title: "Website [staging]",

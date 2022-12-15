@@ -49,7 +49,7 @@ const BlogPostTemplate = (props) => {
   const post = data && data.post;
   const site = data && data.site;
   return (
-    <Layout>
+    <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       {errors && <SearchEngineOptimization title="GraphQL Error" />}
       {post && (
         <SearchEngineOptimization

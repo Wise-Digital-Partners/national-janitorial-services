@@ -1,26 +1,25 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
-import BlogPostGrid from "../components/Blog/BlogPostGrid";
+import BlogPostPreview from "../components/Blog/BlogPostGrid";
+import GraphQLErrorList from "../components/Blog/graphql-error-list";
 import {
-    filterOutDocsPublishedInTheFuture,
-    filterOutDocsWithoutSlugs,
-    mapEdgesToNodes,
+  filterOutDocsPublishedInTheFuture,
+  filterOutDocsWithoutSlugs,
+  mapEdgesToNodes,
 } from "../lib/helpers";
-import CallToAction from "../components/Repeating/CTA2";
 
 export const query = graphql`
   {
     openGraphImage: file(
-      relativePath: { eq: "Open Graph/Facebook/Homepage.jpg" }
+      relativePath: { eq: "open-graph/facebook/Homepage-Reviews.jpg" }
     ) {
       publicURL
     }
     twitterOpenGraphImage: file(
-      relativePath: { eq: "Open Graph/Twitter/Homepage.jpg" }
+      relativePath: { eq: "open-graph/twitter/Homepage-Reviews.jpg" }
     ) {
       publicURL
     }
@@ -51,49 +50,51 @@ export const query = graphql`
     }
   }
 `;
+const ArchivePage = (props) => {
+  const { data, errors } = props;
 
-const Page = ({ data }) => {
-    const postNodes =
-        data &&
-        data.blogs &&
-        mapEdgesToNodes(data.blogs)
-            .filter(filterOutDocsWithoutSlugs)
-            .filter(filterOutDocsPublishedInTheFuture);
-
+  if (errors) {
     return (
-        <Layout>
-            <SearchEngineOptimization
-          title="Janitorial Services Blog | NJS"
-          description="Read the National Janitorial Services blog for all kinds of tips and more. We offer top commercial cleaning for local businesses. Learn more!"
-            // openGraphImage={data.openGraphImage}
-            // twitterOpenGraphImage={data.twitterOpenGraphImage}
-            />
-
-            <section className="bg-navy py-16 md:py-20">
-                <div className="container">
-                    <div className="max-w-[617px] mx-auto text-center">
-              <h1 className="mb-4 text-primary">Straight From The Experts</h1>
-                        <div className="divider"></div>
-                        <p className="">
-                Get great cleaning tips for your local business, courtesy of a top commercial janitorial company in Long Beach!Get great cleaning tips for your local business, courtesy of a top commercial janitorial company in Long Beach!
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <section className="mb-20 md:mb-32">
-                <div className="container">
-                    {postNodes && postNodes.length > 0 && (
-                        <BlogPostGrid nodes={postNodes} />
-                    )}
-                </div>
-            </section>
-
-            <CallToAction />
-        </Layout>
+      <Layout>
+        <GraphQLErrorList errors={errors} />
+      </Layout>
     );
+  }
+
+  const postNodes = (data || {}).blogs
+    ? mapEdgesToNodes(data.blogs)
+      .filter(filterOutDocsWithoutSlugs)
+      .filter(filterOutDocsPublishedInTheFuture)
+    : [];
+
+  return (
+    <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
+      <SearchEngineOptimization
+        title="Blog | Prodigy Plumbing | Long Beach & LA County Plumber"
+        description="Read our blog for top plumbing and HVAC tips from the Prodigy Plumbing pros. Subscribe, so you never miss a post!"
+      // openGraphImage={data.openGraphImage.publicURL}
+      // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+      />
+      <section className="bg-navy py-16 md:py-20">
+        <div className="container">
+          <div className="max-w-[617px] mx-auto text-center">
+            <h1 className="mb-4 text-primary">Straight From The Experts</h1>
+            <div className="divider"></div>
+            <p className="">
+              Get great cleaning tips for your local business, courtesy of a top commercial janitorial company in Long Beach!Get great cleaning tips for your local business, courtesy of a top commercial janitorial company in Long Beach!
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="mb-20 md:mb-32">
+        <div className="container">
+          {postNodes && postNodes.length > 0 && (
+            <BlogPostPreview nodes={postNodes} />
+          )}
+        </div>
+      </section>
+    </Layout>
+  );
 };
 
-export default Page;
+export default ArchivePage;
