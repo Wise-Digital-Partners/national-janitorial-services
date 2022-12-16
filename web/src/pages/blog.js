@@ -70,8 +70,8 @@ const ArchivePage = (props) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Blog | Prodigy Plumbing | Long Beach & LA County Plumber"
-        description="Read our blog for top plumbing and HVAC tips from the Prodigy Plumbing pros. Subscribe, so you never miss a post!"
+        title="Janitorial Services Blog | NJS"
+        description="Read the National Janitorial Services blog for all kinds of tips and more. We offer top commercial cleaning for local businesses. Learn more!"
       // openGraphImage={data.openGraphImage.publicURL}
       // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
