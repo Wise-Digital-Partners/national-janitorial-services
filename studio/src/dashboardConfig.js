@@ -40,13 +40,13 @@ export default {
                {
                   buildHookId: "63811857acf33a6bb7a9c686",
                   title: "Website [staging]",
-                  name: "long-beach-janitorial [staging]",
+                  name: "long-beach-janitorial",
                   apiId: "2399dcb8-b870-4f17-8a93-087821fe1941",
                },               
                {
                   buildHookId: "637e545a5289631d434dbf7a",
                   title: "Website [production]",
-                  name: "long-beach-janitorial [production]",
+                  name: "long-beach-janitorial",
                   apiId: "42b57fd9-95bd-488b-9ce3-0ffdee090a18",
                },
             ],
