@@ -1,4 +1,4 @@
-# Prodigy Plumbing
+# Long Beach Janitorial 
 
 _Fully customizable blog template with a React.js front-end._
 
@@ -21,7 +21,7 @@ Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-i
 
 ## Enable real-time content preview on development
 
-1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/22fsvegl/settings/api) and create a token with read rights.
+1. Go to your [project’s API settings on manage.sanity.io](https://www.sanity.io/manage/personal/project/0nqyibkq/settings) and create a token with read rights.
 2. Rename `.env.development.template` to `.env.development` and paste in the token: `SANITY_READ_TOKEN="yourTokenHere"`.
 3. Restart the development server (`ctrl + C` and `npm run dev`).
 
