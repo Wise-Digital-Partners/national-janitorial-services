@@ -41,6 +41,12 @@ const StyledContent = styled.div`
   em {
     ${tw`italic`}
   }
+  a {
+    ${tw` text-primary underline `}
+  }  
+  a: {
+    ${tw` text-primary/50 underline `}
+  }
 `;
 
 function BlogPost(props) {
