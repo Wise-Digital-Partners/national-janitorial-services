@@ -7,7 +7,39 @@ import CardsWithZoom from "../Cards/CardsWithZoom";
 
 const Services = ({ className, headingLevel, cardHeadingLevel }) => {
   const data = useStaticQuery(graphql`
-     {
+     {       floorWax: file(
+         relativePath: { eq: "common/9_floorwaxing_services_hub.jpg" }
+       ) {
+         childImageSharp {
+           gatsbyImageData(
+             layout: FULL_WIDTH
+             placeholder: BLURRED
+             quality: 100
+           )
+         }
+       }
+       floorStrip: file(
+         relativePath: { eq: "common/8_floorstripping_services_hub.jpg" }
+       ) {
+         childImageSharp {
+           gatsbyImageData(
+             layout: FULL_WIDTH
+             placeholder: BLURRED
+             quality: 100
+           )
+         }
+       }       
+       windowClean: file(
+         relativePath: { eq: "common/10_windowcleaning_services_hub.jpg" }
+       ) {
+         childImageSharp {
+           gatsbyImageData(
+             layout: FULL_WIDTH
+             placeholder: BLURRED
+             quality: 100
+           )
+         }
+       }
        janitorialServices: file(
          relativePath: { eq: "repeating/services/janitorial-services.jpg" }
        ) {
@@ -96,13 +128,13 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
       text: "Get the regular cleaning your workspace demands with the highest standards of cleanliness.",
       link: "/janitorial-cleaning-company/",
     },
-    {
-      id: 2,
-      image: data.covidServices.childImageSharp.gatsbyImageData,
-      heading: "COVID Cleaning Services",
-      text: "Stop the spread and protect your business with our specialized COVID cleaning services. ",
-      link: "/covid-cleaning-services/",
-    },
+    // {
+    //   id: 2,
+    //   image: data.covidServices.childImageSharp.gatsbyImageData,
+    //   heading: "COVID Cleaning Services",
+    //   text: "Stop the spread and protect your business with our specialized COVID cleaning services. ",
+    //   link: "/covid-cleaning-services/",
+    // },
 
     {
       id: 3,
@@ -139,32 +171,58 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
       heading: "Disinfectant Services",
       text: "Bring your workspace into cleanliness and compliance with professional disinfectant services.",
       link: "/disinfection-services/",
+    },    {
+      id: 5,
+      image: data.floorWax.childImageSharp.gatsbyImageData,
+      heading: "Floor Waxing",
+      text: "We offer thorough, one-time cleaning efforts that we can repeat as needed throughout the year.",
+      link: "/floor-waxing-services/",
+    },
+    {
+      id: 6,
+      image: data.floorStrip.childImageSharp.gatsbyImageData,
+      heading: "Floor Stripping",
+      text: "From warehouses to other workspaces, we offer first-class facility cleaning and management.",
+      link: "/floor-stripping-services/",
+    },
+
+    {
+      id: 7,
+      image: data.windowClean.childImageSharp.gatsbyImageData,
+      heading: "Window Cleaning",
+      text: "Bring your workspace into cleanliness and compliance with professional disinfectant services.",
+      link: "/window-cleaning-services/",
     },
   ];
 
-  return (
-    <section className={`${className || ""}`}>
-      <div className="container">
-        <Header
-          headingLevel={headingLevel}
-          heading="Other Commercial Cleaning Services"
-          subtext=""
-          subtextSize=""
-          textAlignment="text-center mx-auto"
-          textMaxWidth="max-w-3xl"
-          textMargin="mb-14 md:mb-16"
-        />
+return (
+  <section className={`${className || ""}`}>
+    <div className="container">
+      <Header
+        headingLevel={headingLevel}
+        heading="Other Commercial Cleaning Services"
+        subtext=""
+        subtextSize=""
+        textAlignment="text-center mx-auto"
+        textMaxWidth="max-w-3xl"
+        textMargin="mb-14 md:mb-16"
+      />
 
-        <CardsWithZoom
-          columnCount="grid-cols-1 md:grid-cols-3 lg:gap-y-2 lg:grid-cols-4"
-          columnGap="gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10"
-          cards={cardContent}
-          cardHeadingLevel={cardHeadingLevel}
-          cardHeadingSize="text-3xl"
-        />
-      </div>
-    </section>
-  );
+      <CardsWithZoom
+        columnCount="grid-cols-1 md:grid-cols-3 lg:gap-y-2 lg:grid-cols-4"
+        columnGap="gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-10"
+        cards={cardContent.sort((a, b) => {
+          if (a.heading && b.heading) {
+            return a.heading.localeCompare(b.heading);
+          }
+          return 0;
+        })}
+        cardHeadingLevel={cardHeadingLevel}
+        cardHeadingSize="text-3xl"
+      />
+    </div>
+  </section>
+);
 };
 
 Services.propTypes = {
