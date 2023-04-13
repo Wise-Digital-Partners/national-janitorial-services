@@ -1,24 +1,35 @@
-import S from "@sanity/desk-tool/structure-builder";
+import S from '@sanity/desk-tool/structure-builder'
 // https://react-icons.github.io/react-icons/icons?name=fc
-import { FcDocument, FcRating, FcReading, FcList, FcGlobe, FcConferenceCall } from "react-icons/fc";
-import IframePreview from "../previews/IframePreview";
+import {
+  FcDocument,
+  FcRating,
+  FcReading,
+  FcList,
+  FcGlobe,
+  FcConferenceCall
+} from 'react-icons/fc'
+import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
-const remoteURL = "https://darkhorsecpa.gtsb.io";
-const localURL = "http://localhost:8000";
-const previewURL = window.location.hostname === "localhost" ? localURL : remoteURL;
+const remoteURL = 'https://darkhorsecpa.gtsb.io'
+const localURL = 'http://localhost:8000'
+const previewURL =
+  window.location.hostname === 'localhost' ? localURL : remoteURL
 
-export const getDefaultDocumentNode = (props) => {
-   /**
-    * Here you can define fallback views for document types without
-    * a structure definition for the document node. If you want different
-    * fallbacks for different types, or document values (e.g. if there is a slug present)
-    * you can set up that logic in here too.
-    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
-    */
+export const getDefaultDocumentNode = props => {
+  /**
+   * Here you can define fallback views for document types without
+   * a structure definition for the document node. If you want different
+   * fallbacks for different types, or document values (e.g. if there is a slug present)
+   * you can set up that logic in here too.
+   * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
+   */
 
-   return S.document().views([S.view.form(), S.view.component(IframePreview).options({ previewURL }).title("Preview")]);
-};
+  return S.document().views([
+    S.view.form(),
+    S.view.component(IframePreview).options({ previewURL }).title('Preview')
+  ])
+}
 
 /**
  * This defines how documents are grouped and listed out in the Studio.
@@ -30,18 +41,40 @@ export const getDefaultDocumentNode = (props) => {
  */
 
 export default () =>
-   S.list()
-      .title("Content")
-      .items([
-         S.listItem().title("Blogs").icon(FcDocument).schemaType("blogs").child(S.documentTypeList("blogs").title("Blogs")),
+  S.list()
+    .title('Content')
+    .items([
+      S.listItem()
+        .title('Blogs')
+        .icon(FcDocument)
+        .schemaType('blogs')
+        .child(S.documentTypeList('blogs').title('Blogs')),
 
-         S.listItem().title("Blog Authors").icon(FcReading).schemaType("blogAuthors").child(S.documentTypeList("blogAuthors").title("Blog Authors")),
+      S.listItem()
+        .title('Services')
+        .icon(FcDocument)
+        .schemaType('services')
+        .child(S.documentTypeList('services').title('Services')),
+      S.listItem()
+        .title('Category')
+        .icon(FcDocument)
+        .schemaType('category')
+        .child(S.documentTypeList('category').title('Categories')),
+      S.listItem()
+        .title('Blog Authors')
+        .icon(FcReading)
+        .schemaType('blogAuthors')
+        .child(S.documentTypeList('blogAuthors').title('Blog Authors')),
 
-         S.listItem()
-            .title("Blog Categories")
-            .icon(FcList)
-            .schemaType("blogCategories")
-            .child(S.documentTypeList("blogCategories").title("Blog Categories")),
+      S.listItem()
+        .title('Blog Categories')
+        .icon(FcList)
+        .schemaType('blogCategories')
+        .child(S.documentTypeList('blogCategories').title('Blog Categories')),
 
-         S.listItem().title("Testimonials").icon(FcRating).schemaType("testimonials").child(S.documentTypeList("testimonials").title("Testimonials")),
-      ]);
+      S.listItem()
+        .title('Testimonials')
+        .icon(FcRating)
+        .schemaType('testimonials')
+        .child(S.documentTypeList('testimonials').title('Testimonials'))
+    ])

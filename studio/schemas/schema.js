@@ -10,7 +10,7 @@ import blogAuthors from "./documents/blogAuthors";
 import blogCategories from "./documents/blogCategories";
 import testimonials from "./documents/testimonials";
 import testimonialCategories from "./documents/testimonialCategories";
-
+import services  from "./documents/services";
 // Object types
 import bodyPortableText from "./objects/bodyPortableText";
 import youtube from "./objects/youtube";
@@ -22,6 +22,7 @@ import navLinks from "./objects/navLinks";
 import list from "./objects/list";
 import link from "./objects/link";
 import coordinates from "./objects/coordinates";
+import category from "./documents/category";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,7 +38,8 @@ export default createSchema({
       blogAuthors,
       testimonials,
       testimonialCategories,
-
+      services,
+      category,
       // When added to this list, object types can be used as
       // { type: 'typename' } in other document schemas
       bodyPortableText,
