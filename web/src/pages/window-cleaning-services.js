@@ -75,44 +75,6 @@ Professional window cleaning is a must for maintaining the appearance of your bu
             </div>
          </section>
 
-         <section className="pb-16 md:pb-20">
-            <div className="container">
-               <header className="mb-24 max-w-3xl">
-                          <h2>What We Clean</h2>
-                     <StyledContent>
-<ul>
-<li>Interior</li>
-<li>Exterior</li>
-<li>Hi-Rises</li>
-<li>Hard Water Removal</li>
-<li>Emergency Cleaning</li>
-<li>Glass Doors</li>
-<li>Window Screens</li>
-<li>Skylights</li>
-<li>Mirrors</li>
-<li>And more!</li>
-</ul>
-
-
-                     </StyledContent>
-               </header>
-               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-10 items-center">
-                  <div className="md:col-start-1 md:col-span-3">
-                     <GatsbyImage image={data.toolGun.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
-                  </div>
-                  <div className="md:col-start-4 md:col-span-4">
-                     <p className="heading-two">The Tools</p>
-                     <p className="mb-0">
-                        We invest in the best new equipment and cleaning systems to keep your workplace safe and secure for anyone that enters.{" "}
-                     </p>
-                  </div>
-                  <div className="md:col-end-13 md:col-span-5">
-                     <GatsbyImage image={data.toolBackpack.childImageSharp.gatsbyImageData} alt="COVID cleaning & disinfection tool" />
-                  </div>
-               </div>
-            </div>
-         </section>
-
          <section className="bg-gray-50 py-14 md:py-18">
             <div className="container">
                <header className="md:text-center mb-6">
