@@ -1,0 +1,9 @@
+import React from 'react'
+
+function CalendarIcon({isActive}) {
+  return (
+    <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2001_3553)"><path d="M2 20.5c-.55 0-1.020998-.196-1.412998-.588-.392-.392-.587667-.8627-.587-1.412v-14c0-.55.196-1.021.588-1.413C.980002 2.695 1.45067 2.49933 2 2.5h1v-2h2v2h8v-2h2v2h1c.55 0 1.021.196 1.413.588.392.392.5877.86267.587 1.412v6h-2v-2H2v10h7v2H2zm17.125-5L17 13.375l.725-.725c.1833-.1833.4167-.275.7-.275.2833 0 .5167.0917.7.275l.725.725c.1833.1833.275.4167.275.7 0 .2833-.0917.5167-.275.7l-.725.725zM11 21.5v-2.125l5.3-5.3 2.125 2.125-5.3 5.3H11z" fill={isActive ? "#53AF3B":"#D6DFE6"}/></g><defs><clipPath id="clip0_2001_3553"><path fill="#fff" transform="translate(0 .5)" d="M0 0h20v21H0z"/></clipPath></defs></svg>
+  )
+}
+
+export default CalendarIcon
