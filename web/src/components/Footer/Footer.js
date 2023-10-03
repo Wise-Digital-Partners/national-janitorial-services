@@ -111,55 +111,57 @@ const Footer = () => {
                     Privacy Policy
                   </Link>
                 </li>
-                {/* 
-                        // CITES DROPDOWN <li className="text-sm mb-3 md:mb-0 md:mr-6">
-                           <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
-                              <span className="text-white flex items-center justify-between">
-                                 Cities
-                                 <i
-                                    className={`far fa-chevron-up ml-2 transition-all duration-300 ease-linear transform ${
-                                       cityDropdownOpen ? "rotate-180" : "rotate-0"
-                                    }`}
-                                 ></i>
-                              </span>
-                              <ul
-                                 className={`bg-white text-left absolute bottom-0 px-4 py-5 flex flex-col transform transition-all duration-300 ease-linear ${
-                                    cityDropdownOpen ? "opacity-100 -translate-y-10 visible" : "opacity-0 -translate-y-4 invisible"
-                                 }`}
-                              >
-                                 <li className="mb-3 whitespace-nowrap">
-                                    <Link fade to="/san-diego-janitorial-services/" className="hover:text-gray-800">
-                                       San Diego
-                                    </Link>
-                                 </li>
-                                 <li className="mb-3 whitespace-nowrap">
-                                    <Link fade to="/orange-county-janitorial-services/" className="hover:text-gray-800">
-                                       Orange County
-                                    </Link>
-                                 </li>
-                                 <li className="mb-3 whitespace-nowrap">
-                                    <Link fade to="/long-beach-janitorial-services/" className="hover:text-gray-800">
-                                       Long Beach
-                                    </Link>
-                                 </li>
-                                 <li className="mb-3 whitespace-nowrap">
-                                    <Link fade to="/los-angeles-janitorial-services/" className="hover:text-gray-800">
-                                       Los Angeles
-                                    </Link>
-                                 </li>
-                                 <li className="mb-3 whitespace-nowrap">
-                                    <Link fade to="/phoenix-janitorial-services/" className="hover:text-gray-800">
-                                       Phoenix
-                                    </Link>
-                                 </li>
-                                 <li className="whitespace-nowrap">
-                                    <Link fade to="/denver-janitorial-services/" className="hover:text-gray-800">
-                                       Denver
-                                    </Link>
-                                 </li>
-                              </ul>
-                           </button>
-                        </li> */}
+                <li className="text-sm mb-3 md:mb-0 md:mr-6">
+                  <button className="relative focus:outline-none" onKeyDown={citiesClickHandler} onClick={citiesClickHandler}>
+                  <span className="text-white flex items-center justify-between">
+                      Cities
+                      <i
+                        className={`far fa-chevron-up ml-2 transition-all duration-300 ease-linear transform ${
+                            cityDropdownOpen ? "rotate-180" : "rotate-0"
+                        }`}
+                      ></i>
+                    </span>
+                    <ul
+                      className={`bg-white text-left absolute bottom-0 px-4 py-5 flex flex-col transform transition-all duration-300 ease-linear ${
+                        cityDropdownOpen ? "opacity-100 -translate-y-10 visible" : "opacity-0 -translate-y-4 invisible"
+                      }`}
+                    >
+                      {
+                        activeCities.map((city, index)=> <CityLink city={city}/>)
+                      }
+                      {/* <li className="mb-3 whitespace-nowrap">
+                        <Link fade to="/san-diego-janitorial-services/" className="hover:text-gray-800">
+                            San Diego
+                        </Link>
+                      </li>
+                      <li className="mb-3 whitespace-nowrap">
+                        <Link fade to="/orange-county-janitorial-services/" className="hover:text-gray-800">
+                            Orange County
+                        </Link>
+                      </li>
+                      <li className="mb-3 whitespace-nowrap">
+                        <Link fade to="/long-beach-janitorial-services/" className="hover:text-gray-800">
+                            Long Beach
+                        </Link>
+                      </li>
+                      <li className="mb-3 whitespace-nowrap">
+                        <Link fade to="/los-angeles-janitorial-services/" className="hover:text-gray-800">
+                            Los Angeles
+                        </Link>
+                      </li>
+                      <li className="mb-3 whitespace-nowrap">
+                        <Link fade to="/phoenix-janitorial-services/" className="hover:text-gray-800">
+                            Phoenix
+                        </Link>
+                      </li>
+                      <li className="whitespace-nowrap">
+                        <Link fade to="/denver-janitorial-services/" className="hover:text-gray-800">
+                            Denver
+                        </Link>
+                      </li> */}
+                    </ul>
+                  </button>
+                </li> 
                 <li className="text-sm text-white">
                   <div className="flex items-center justify-center mt-2 md:mt-0">
                     Powered by
@@ -207,4 +209,35 @@ const Footer = () => {
   );
 };
 
+const activeCities = [
+  {
+    label: "Downey",
+    url: "/downey-janitorial-services/"
+  },
+  {
+    label: "Lakewood",
+    url: "/lakewood-janitorial-services/"
+  },
+  {
+    label: "Santa Fe Springs",
+    url: "/santa-fe-springs-janitorial-services/"
+  },
+  {
+    label: "Commerce",
+    url: "/commerce-janitorial-services/"
+  },
+  {
+    label: "Vernon",
+    url: "/vernon-janitorial-services/"
+  },
+]
+const CityLink = ({city}) => {
+  return (
+    <li className="mb-3 whitespace-nowrap">
+      <Link fade to={city.url} className="hover:text-gray-800">
+          {city.label}
+      </Link>
+    </li>
+  )
+}
 export default Footer;
