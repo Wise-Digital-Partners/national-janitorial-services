@@ -8,4 +8,6 @@ https://janitoriallongbeach.com/*  https://longbeachjanitorial.com/:splat 301!
 https://www.janitoriallongbeach.com/*  https://longbeachjanitorial.com/:splat 301!
 https://www.longbeachjanitorial.com/*  https://longbeachjanitorial.com/:splat 301!
 http://nationaljanitorialservices.com/ https://longbeachjanitorial.com/:splat 301!
+https://longbeachjanitorial.com/'* https://longbeachjanitorial.com/:splat 301!
+https://longbeachjanitorial.com/%27* https://longbeachjanitorial.com/:splat 301!
 
