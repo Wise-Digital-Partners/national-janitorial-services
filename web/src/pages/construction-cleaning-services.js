@@ -42,8 +42,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Window Cleaning Services | Long Beach Janitorial"
-        description="Long Beach Janitorial offers professional window cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
+        title="Construction Cleaning Services | Long Beach Janitorial"
+        description="Long Beach Janitorial offers professional construction cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
         // openGraphImage={data.openGraphImage.publicURL}
         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
@@ -52,8 +52,8 @@ const Page = ({ data }) => {
         image={data.heroStacked.childImageSharp.gatsbyImageData}
         backgroundFixed={true}
         imageMaxHeight="max-h-[468px]"
-        heading="Long Beach Window Cleaning Services"
-        subtext="Ensuring you always have a beautiful view."
+        heading="Long Beach Construction Cleanup Services"
+        subtext="Leave the heavy lifting to us!"
         textMaxWidth="max-w-4xl"
       />
 
@@ -61,18 +61,19 @@ const Page = ({ data }) => {
         <div className="container">
           <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-x-10 lg:gap-x-20">
             <div>
-              <h2>Keeping Long Beach Businesses Clean</h2>
+              <h2>From Dust to Debris, We Have You Covered</h2>
               <p className="mb-0">
-                Professional window cleaning is a must for maintaining the appearance of your
-                business space and enhancing it. It’s no secret that Long Beach is a city that has
-                air pollutants, and those pollutants can build up on your windows over time. So
-                don’t get stuck with a dirty view; schedule window cleaning in Long Beach today!
+                Don’t be left with a mess in a potentially dangerous site – turn to Long Beach
+                Janitorial for post-construction cleaning services. As skilled construction
+                cleaners, the Long Beach Janitorial team can safely navigate your clearing and
+                cleaning needs, leaving you with a spotless space. We’ll declutter, sanitize, and
+                prep the site so you can wrap up the project with your finishing touches!
               </p>
             </div>
             <div>
               <GatsbyImage
                 image={data.intro.childImageSharp.gatsbyImageData}
-                alt="COVID-19 Cleaning in Long Beach"
+                alt="Construction Cleaning in Long Beach"
               />
             </div>
           </div>
@@ -82,28 +83,27 @@ const Page = ({ data }) => {
       <section className="bg-gray-50 py-14 md:py-18">
         <div className="container">
           <header className="mb-6 md:text-center">
-            <h3>We Cover All Your Needs</h3>
+            <h3>Our Construction Cleaning Services Cover:</h3>
           </header>
           <div className="grid grid-cols-1 gap-x-12 md:grid-cols-3">
             <div>
               <ul className="styled-list">
-                <li>Interior</li>
-                <li>Exterior</li>
-                <li>Hi-Rises</li>
-                <li>Hard Water Removal</li>
+                <li>Cleaning walls of dust, scuff, and smudges</li>
+                <li>Pressure washing outside surfaces</li>
+                <li>Baseboard washing</li>
               </ul>
             </div>
             <div>
               <ul className="styled-list">
-                <li>Emergency Cleaning</li>
-                <li>Glass Doors</li>
-                <li>Window Screens</li>
-                <li>Skylights</li>
+                <li>Door frame polishing</li>
+                <li>Cleaning remaining fixtures</li>
+                <li>Window washing</li>
               </ul>
             </div>
             <div>
               <ul className="styled-list">
-                <li>Mirrors</li>
+                <li>Trash and debris removal</li>
+                <li>Scrubbing floors</li>
                 <li>... And more!</li>
               </ul>
             </div>
@@ -132,12 +132,12 @@ export const query = graphql`
     # twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/COVID Cleaning_TW.jpg" }) {
     #    publicURL
     # }
-    heroStacked: file(relativePath: { eq: "common/1.0 Window Cleaning Hero Desktop.jpg" }) {
+    heroStacked: file(relativePath: { eq: "services/construction-cleaning/hero-desktop.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
     }
-    intro: file(relativePath: { eq: "common/10_windowcleaning_services_intro.png" }) {
+    intro: file(relativePath: { eq: "services/construction-cleaning/intro.png" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }

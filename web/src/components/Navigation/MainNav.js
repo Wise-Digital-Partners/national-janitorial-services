@@ -51,6 +51,14 @@ const menuItems = [
         title: "Disinfectant Services",
         link: "/disinfection-services/",
       },
+      {
+        title: "Construction Cleanup",
+        link: "/construction-cleaning-services/",
+      },
+      {
+        title: "Pressure Washing",
+        link: "/pressure-washing-services/",
+      },
       // Add more submenu items here
     ],
   },
@@ -108,6 +116,10 @@ const menuItems = [
         title: "Dispensaries",
         link: "/dispensary-cleaning-services/",
       },
+      {
+        title: "Restaurant & Hospitality",
+        link: "/restaurant-cleaning-services/",
+      },
     ],
   },
   {
@@ -145,6 +157,14 @@ const services = [
   {
     title: "Disinfectant Services",
     link: "/disinfection-services/",
+  },
+  {
+    title: "Construction Cleanup",
+    link: "/construction-cleaning-services/",
+  },
+  {
+    title: "Pressure Washing",
+    link: "/pressure-washing-services/",
   },
 ];
 
@@ -421,10 +441,10 @@ const MainNav = ({
                           <a href={subMenuItem.link}>{subMenuItem.title}</a>
                         </li>
                       ))}
-                      {/*Covid element taken from services*/}
-                      <li key={services[0].id}>
-                          <a href={services[0].link}>{services[0].title}</a>
-                        </li>
+                    {/*Covid element taken from services*/}
+                    <li key={services[0].id}>
+                      <a href={services[0].link}>{services[0].title}</a>
+                    </li>
                   </ul>
                 )}
               </li>

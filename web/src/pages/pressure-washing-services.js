@@ -42,8 +42,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Window Cleaning Services | Long Beach Janitorial"
-        description="Long Beach Janitorial offers professional window cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
+        title="Pressure Washing Services | Long Beach Janitorial"
+        description="When you need professional pressure washing services, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
         // openGraphImage={data.openGraphImage.publicURL}
         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
@@ -52,8 +52,8 @@ const Page = ({ data }) => {
         image={data.heroStacked.childImageSharp.gatsbyImageData}
         backgroundFixed={true}
         imageMaxHeight="max-h-[468px]"
-        heading="Long Beach Window Cleaning Services"
-        subtext="Ensuring you always have a beautiful view."
+        heading="Pressure Washing Services in Long Beach"
+        subtext="Wash away years of grime!"
         textMaxWidth="max-w-4xl"
       />
 
@@ -61,18 +61,20 @@ const Page = ({ data }) => {
         <div className="container">
           <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-x-10 lg:gap-x-20">
             <div>
-              <h2>Keeping Long Beach Businesses Clean</h2>
+              <h2>Uncover Gorgeous Surfaces</h2>
               <p className="mb-0">
-                Professional window cleaning is a must for maintaining the appearance of your
-                business space and enhancing it. It’s no secret that Long Beach is a city that has
-                air pollutants, and those pollutants can build up on your windows over time. So
-                don’t get stuck with a dirty view; schedule window cleaning in Long Beach today!
+                What does the outside of your business say about you? A rundown, dirty facade can
+                turn away customers. Make a great first impression with help from our pressure
+                washing cleaning services! Maintaining your building’s exterior offers value beyond
+                aesthetics; a clean facility is more environmentally friendly, with reduced
+                potential safety hazards for customers and staff. Turn to Long Beach Janitorial when
+                you’re ready to put your best foot forward!
               </p>
             </div>
             <div>
               <GatsbyImage
                 image={data.intro.childImageSharp.gatsbyImageData}
-                alt="COVID-19 Cleaning in Long Beach"
+                alt="Pressure Washing in Long Beach"
               />
             </div>
           </div>
@@ -82,28 +84,25 @@ const Page = ({ data }) => {
       <section className="bg-gray-50 py-14 md:py-18">
         <div className="container">
           <header className="mb-6 md:text-center">
-            <h3>We Cover All Your Needs</h3>
+            <h3>Our Pressure Wash Services Cover:</h3>
           </header>
           <div className="grid grid-cols-1 gap-x-12 md:grid-cols-3">
             <div>
               <ul className="styled-list">
-                <li>Interior</li>
-                <li>Exterior</li>
-                <li>Hi-Rises</li>
-                <li>Hard Water Removal</li>
+                <li>Driveways</li>
+                <li>Concrete walkways</li>
+                <li>Building surfaces</li>
               </ul>
             </div>
             <div>
               <ul className="styled-list">
-                <li>Emergency Cleaning</li>
-                <li>Glass Doors</li>
-                <li>Window Screens</li>
-                <li>Skylights</li>
+                <li>Parking garages</li>
+                <li>Patio cleaning</li>
               </ul>
             </div>
             <div>
               <ul className="styled-list">
-                <li>Mirrors</li>
+                <li>Storefront washing</li>
                 <li>... And more!</li>
               </ul>
             </div>
@@ -132,12 +131,12 @@ export const query = graphql`
     # twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/COVID Cleaning_TW.jpg" }) {
     #    publicURL
     # }
-    heroStacked: file(relativePath: { eq: "common/1.0 Window Cleaning Hero Desktop.jpg" }) {
+    heroStacked: file(relativePath: { eq: "services/pressure-washing/hero-desktop.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
     }
-    intro: file(relativePath: { eq: "common/10_windowcleaning_services_intro.png" }) {
+    intro: file(relativePath: { eq: "services/pressure-washing/intro.png" }) {
       childImageSharp {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
