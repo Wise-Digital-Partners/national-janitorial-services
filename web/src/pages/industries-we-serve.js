@@ -92,6 +92,13 @@ const Page = ({ data }) => {
          text: "We thoroughly clean cannabis facilities and dispensaries so customers can browse and purchase without worry.",
          link: "/dispensary-cleaning-services/",
       },
+      {
+         id: 13,
+         image: data.restaurantsHospitality.childImageSharp.gatsbyImageData,
+         heading: "Restaurant & Hospitality",
+         text: "You keep focusing on doing what you do best – offering unparalleled customer service. We’ll handle the deep cleaning and sanitization.",
+         link: "/restaurant-cleaning-services/",
+      },
    ];
 
    return (
@@ -192,6 +199,11 @@ export const query = graphql`
          }
       }
       dispensaries: file(relativePath: { eq: "industries/hub/1.11 Dispensaries.jpg" }) {
+         childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+         }
+      }
+      restaurantsHospitality: file(relativePath: { eq: "industries/hub/1.12 Restaurant-Hospitality.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
