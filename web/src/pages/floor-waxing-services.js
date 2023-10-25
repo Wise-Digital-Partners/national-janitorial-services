@@ -53,7 +53,6 @@ const Page = ({ data }) => {
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
             heading="Long Beach Floor Waxing Services"
-            subtext="Subtext: We’ll seal in that shine!"
             textMaxWidth="max-w-4xl"
          />
 
