@@ -18,7 +18,7 @@ const Page = ({ data }) => {
       headerHasBorder={false}
     >
       <SearchEngineOptimization
-        title="Commercial Cleaning Services Long Beach | LBJ"
+        title="Commercial Cleaning Services | Long Beach Janitorial"
         description="When you need top commercial cleaning services in Long Beach, Long Beach Janitorial is here to help. Browse our services & get a consultation today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}

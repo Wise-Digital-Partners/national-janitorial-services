@@ -15,7 +15,7 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Car Dealership Cleaning Services | Auto Janitorial Company"
+            title="Car Dealership Cleaning Services | Janitorial Company | LBJ"
             description="Long Beach Janitorial offers top car dealership cleaning services in the Long Beach area & beyond. Learn more & schedule a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}

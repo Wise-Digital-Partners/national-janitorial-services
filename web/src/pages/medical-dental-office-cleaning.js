@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Medical & Dental Office Cleaning Services | Long Beach"
-            description="For top medical & dental office cleaning services in the Long Beach area, see why Long Beach Janitorial is an excellent choice. Schedule a consultation!"
+            title="Medical Office Cleaning | Dental Office Cleaning Services"
+            description="For top medical office cleaning & dental office cleaning services, see why Long Beach Janitorial is an excellent choice. Schedule a consultation today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

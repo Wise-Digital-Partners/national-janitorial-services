@@ -15,7 +15,7 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Deep Cleaning Services Long Beach | LBJ"
+            title="Deep Cleaning Services | Long Beach Janitorial"
             description="For the deep cleaning services your business deserves, partner with Long Beach Janitorial. We offer Long Beach the best in deep cleaning. Learn more!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}

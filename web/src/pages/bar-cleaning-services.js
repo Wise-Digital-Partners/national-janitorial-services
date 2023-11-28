@@ -16,7 +16,7 @@ const Page = ({ data }) => {
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
             title="Bar Cleaning Services | Nightclub Cleaning | Long Beach"
-            description="Long Beach Janitorial offers top bar & nightclub cleaning services in the Long Beach area & beyond. See how we can help & schedule a consultation!"
+            description="Long Beach Janitorial offers top nightclub cleaning & bar cleaning services throughout the area. See how we can help & schedule a consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
