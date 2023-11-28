@@ -25,7 +25,7 @@ const Page = ({ data }) => {
         image={data.heroStacked.childImageSharp.gatsbyImageData}
         backgroundFixed={true}
         imageMaxHeight="max-h-[468px]"
-        heading="Restaurant & Hospitality Cleaning Services"
+        heading="Hospitality & Restaurant Cleaning Services"
         subtext="We’ll help you keep things hospitable! Keep things clean, healthy, and safe for all!"
         textMaxWidth="max-w-4xl"
       />
