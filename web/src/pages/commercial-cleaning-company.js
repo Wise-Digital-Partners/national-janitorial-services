@@ -34,7 +34,7 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 lg:gap-x-20 gap-y-12 items-center">
                   <div>
-                     <h2>Long Beach Commercial Cleaning Company: Professional Cleaning Services for Your Business</h2>
+                     <h2>Professional Cleaning Services for Your Business</h2>
                      <p className="mb-0">
                      We are a Long Beach commercial cleaning company specializing in keeping your workplace clean and healthy. Our experienced and insured cleaners use top-notch disinfectants and cleaning products to provide high-quality services for all types of commercial spaces, from hospitals and HOAs to private offices. Whether you need regular preventative maintenance cleaning or a deep clean, we have the expertise to get the job done right. We are committed to providing our clients with a clean, healthy, and productive work environment.  We are proud to be trusted by clients in various industries such as healthcare, education, and property management.
                      </p>
