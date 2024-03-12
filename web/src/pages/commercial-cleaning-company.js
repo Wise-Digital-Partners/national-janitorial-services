@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Commercial Cleaning Company | Long Beach Janitorial"
-            description="If you need a top commercial cleaning company for your Long Beach business, look no further. Long Beach Janitorial has the expertise you need!"
+            title="Long Beach Commercial Cleaning Company | Janitorial Services"
+            description="Long Beach commercial cleaning experts. High-quality cleaning for your business, specializing in healthy workspaces. Get your free quote today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -34,12 +34,9 @@ const Page = ({ data }) => {
             <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 lg:gap-x-20 gap-y-12 items-center">
                   <div>
-                     <h2>Commercial Cleaning for Spotless Businesses</h2>
+                     <h2>Long Beach Commercial Cleaning Company: Professional Cleaning Services for Your Business</h2>
                      <p className="mb-0">
-                        Help your business thrive with our reliable Long Beach commercial cleaning company. Whether you need preventative maintenance
-                        or seasonal deep cleaning, our experienced cleaning experts have you covered. Using only EPA-registered disinfectants, we help
-                        commercial spaces prevent illness and maintain a hygienic environment. No matter the size of your commercial space, we assess
-                        your cleaning requirements and deliver a thorough clean each time.
+                     We are a Long Beach commercial cleaning company specializing in keeping your workplace clean and healthy. Our experienced and insured cleaners use top-notch disinfectants and cleaning products to provide high-quality services for all types of commercial spaces, from hospitals and HOAs to private offices. Whether you need regular preventative maintenance cleaning or a deep clean, we have the expertise to get the job done right. We are committed to providing our clients with a clean, healthy, and productive work environment.  We are proud to be trusted by clients in various industries such as healthcare, education, and property management.
                      </p>
                   </div>
                   <div>
