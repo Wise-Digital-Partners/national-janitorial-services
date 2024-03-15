@@ -49,6 +49,11 @@ export default {
                     allowRelative: true,
                   }),
               },
+              {
+                title: "Form name",
+                name: "formName",
+                type: "string",
+              },
             ],
           },
         ],
