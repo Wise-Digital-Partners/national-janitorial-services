@@ -49,10 +49,26 @@ export default {
                     allowRelative: true,
                   }),
               },
+            ],
+          },
+          {
+            title: "Form",
+            name: "form",
+            type: "object",
+            icon: () => "F",
+            fields: [
               {
-                title: "Form name",
+                title: "Form",
                 name: "formName",
                 type: "string",
+                initialValue: "Contact Us",
+                options: {
+                  list: [
+                    { title: "Contact Us", value: "Contact Us" },
+                    // {title: 'Subscribe form', value: 'Subcriber Email'},
+                    // {title: 'Subscribe for Download', value: 'Subcriber Email Download Form'},
+                  ],
+                },
               },
             ],
           },
