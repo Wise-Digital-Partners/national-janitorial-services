@@ -11,9 +11,24 @@ const serializers = {
     },
     iframe: ({ node }) => {
       const { url, height } = node;
-      return (
-        <iframe title="Irame" src={url} width="100%" height={`${height}px`} />
-      );
+      return <iframe title="Irame" src={url} width="100%" height={`${height}px`} />;
+    },
+  },
+  marks: {
+    form: ({ children, mark }) => {
+      switch (mark.formName) {
+        case "Contact Us":
+          return (
+            <span
+              data-modal-open="modal-contact"
+              className="cursor-pointer font-bold text-[#53AF3B] underline hover:text-[#469631]"
+            >
+              {children}
+            </span>
+          );
+        default:
+          return <span>{children}</span>;
+      }
     },
   },
 };
