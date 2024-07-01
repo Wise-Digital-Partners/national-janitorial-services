@@ -21,7 +21,7 @@ const serializers = {
           return (
             <span
               data-modal-open="modal-contact"
-              className="cursor-pointer font-bold text-[#53AF3B] underline hover:text-[#469631]"
+              className="cursor-pointer text-[#53AF3B] underline hover:text-[#469631]"
             >
               {children}
             </span>
