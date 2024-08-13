@@ -5,6 +5,34 @@ import { GatsbyImage } from "gatsby-plugin-image";
 const ReviewCards = () => {
    const reviews = [
       {
+         name: "Lisa Blanco",
+         review:
+            "Working with National Janitorial services has been a great experience. Professional, attentive, and dependable. Being in my field as a facilities manager and working directly with the owner has been great. I will most definitely be using their services for future projects. Thank you for all your hard work.",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
+         name: "Kevin Montes",
+         review:
+            "Best cleaning service out there, they make sure they take care of you like family. The staff is amazing, super friendly, communicates effectively and always on time. They will never disappoint. Thank you guys for the amazing service!",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
+         name: "Tarick Fouz",
+         review:
+            "Best company hands down!!! I have been getting cleaning service with this company for over 2 years now and I must say they are the best in SoCal!! I’m super happy with the efficiency and cleanliness the team provides! They do everything for such an affordable price. I had them clean my business as well as my apartment and they go above and beyond! Definitely recommended",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
+         name: "Gifted From God",
+         review:
+            "I’m glad I came across National Janitorial Services. I’ve had issues in the past with cleaners but they provided a trustworthy experience and made sure the job was done up to my expectations. Thank you!",
+         profilePicture: "",
+         platform: "Google",
+      },
+      {
          name: "Calvin Williams",
          review:
             "Long Beach Janitorial has been cleaning our offices for more than a year. Their team is very reliable and management has always responded to and quickly resolved any issue we have had. We have recommended them to several other businesses.",
