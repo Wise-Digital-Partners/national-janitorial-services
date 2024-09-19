@@ -47,6 +47,9 @@ const StyledContent = styled.div`
   a: {
     ${tw` text-primary/50 underline `}
   }
+  p {
+    ${tw`!mb-6`}
+  }
 `;
 
 function BlogPost(props) {
