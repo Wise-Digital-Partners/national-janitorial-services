@@ -119,11 +119,9 @@ const Modal = () => {
               aria-modal="true"
             >
               <div className="grid grid-cols-2 pb-[28px]">
-                <header className="self-center mb-0 heading-three text-white">
-                  Contact Us
-                </header>
+                <header className="heading-three mb-0 self-center text-white">Contact Us</header>
 
-                <div className="justify-self-end self-end">
+                <div className="self-end justify-self-end">
                   <a
                     className="flex items-center font-semibold text-primary"
                     href="tel:+1-424-260-7369"
@@ -132,7 +130,7 @@ const Modal = () => {
                   </a>
                 </div>
               </div>
-              <div className="mb-7 grid grid-cols-2 gap-x-3">
+              {/* <div className="mb-7 grid grid-cols-2 gap-x-3">
                 <TabButton
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
@@ -147,8 +145,8 @@ const Modal = () => {
                   buttonText="Send us a message"
                   buttonIcon="message"
                 />
-              </div>
-              {activeTab === 0 ? (
+              </div> */}
+              {/* {activeTab === 0 ? (
                 <div>
                   <p className="mb-0 text-white">
                     Book a complimentary 15-minute call with our Long Beach General Manager to
@@ -164,8 +162,14 @@ const Modal = () => {
                   </p>
                   <Contact />
                 </div>
-              )}
-
+              )} */}
+              <div>
+                <p className="mb-0 text-white">
+                  Experience the Long Beach Janitorial difference. Tell us about your cleaning needs
+                  today!
+                </p>
+                <Contact />
+              </div>
               <i
                 className="close fal fa-times absolute right-0 top-0 mr-8 mt-12 cursor-pointer text-2xl text-white transition-all duration-300 ease-linear hover:text-primary focus:text-primary active:text-primary md:mr-12"
                 data-modal-close
