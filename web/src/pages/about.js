@@ -71,14 +71,14 @@ const Page = ({ data }) => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-3xl mx-auto text-center">
                   <div>
                      <h2 className="mb-10 md:mb-16">Meet the Team</h2>
-                     <GatsbyImage image={data.patrick.childImageSharp.gatsbyImageData} alt="Patrick Dillon - Partner" className="mb-5" />
+                     <GatsbyImage image={data.patrick.childImageSharp.gatsbyImageData} alt="Patrick Dillon - Owner" className="mb-5" />
                      <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Patrick Dillon</p>
-                     <p className="font-heading text-gray-400 text-3xl mb-0">Partner</p>
+                     <p className="font-heading text-gray-400 text-3xl mb-0">Owner</p>
                   </div>
                   <div>
-                     <GatsbyImage image={data.anthony.childImageSharp.gatsbyImageData} alt="Anthony Orozco - General Manager" className="mb-5" />
-                     <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Anthony Orozco</p>
-                     <p className="font-heading text-gray-400 text-3xl mb-0">General Manager</p>
+                     <GatsbyImage image={data.kris.childImageSharp.gatsbyImageData} alt="Kris Villareal - Office Manager" className="mb-5" />
+                     <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Kris Villareal</p>
+                     <p className="font-heading text-gray-400 text-3xl mb-0">Office Manager</p>
                   </div>
                </div>
             </div>
@@ -127,7 +127,7 @@ export const query = graphql`
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
       }
-      anthony: file(relativePath: { eq: "about/3.1 Anthony.jpg" }) {
+      kris: file(relativePath: { eq: "about/kris.jpg" }) {
          childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
          }
