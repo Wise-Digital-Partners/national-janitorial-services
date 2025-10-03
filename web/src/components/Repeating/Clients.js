@@ -7,102 +7,52 @@ const WhyUs = ({ className, headingLevel }) => {
     {
       icon1: file(relativePath: { eq: "repeating/clients/client-1.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon2: file(relativePath: { eq: "repeating/clients/client-2.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon3: file(relativePath: { eq: "repeating/clients/client-3.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon4: file(relativePath: { eq: "repeating/clients/client 4.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon5: file(relativePath: { eq: "repeating/clients/client-5.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon6: file(relativePath: { eq: "repeating/clients/group-13.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon7: file(relativePath: { eq: "repeating/clients/group-14.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon8: file(relativePath: { eq: "repeating/clients/group-15.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
       icon9: file(relativePath: { eq: "repeating/clients/group-16.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
-      }      
+      }
       icon10: file(relativePath: { eq: "repeating/clients/group-17.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: FIXED
-            width: 207
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: FIXED, width: 207, placeholder: BLURRED, quality: 100)
         }
       }
     }
@@ -113,10 +63,10 @@ const WhyUs = ({ className, headingLevel }) => {
   return (
     <section className={`${className || ""}`}>
       <div className="container">
-        <header className="text-center mb-4 md:mb-18">
-          <HeadingTag>Some of Our Happy Clients</HeadingTag>
+        <header className="mb-4 text-center md:mb-18">
+          <p className="heading-two">Some of Our Happy Clients</p>
         </header>
-        <div className="grid md:grid-cols-5 lg:gap-y-12 gap-x-2 md:gap-x-6 mx-auto">
+        <div className="mx-auto grid gap-x-2 md:grid-cols-5 md:gap-x-6 lg:gap-y-12">
           <div>
             <GatsbyImage
               image={data.icon1.childImageSharp.gatsbyImageData}

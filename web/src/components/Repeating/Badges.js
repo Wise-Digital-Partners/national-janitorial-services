@@ -29,102 +29,52 @@ const Accolades = ({ className }) => {
     {
       icon1: file(relativePath: { eq: "repeating/clients/client-1.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon2: file(relativePath: { eq: "repeating/clients/client-2.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon3: file(relativePath: { eq: "repeating/clients/client-3.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon4: file(relativePath: { eq: "repeating/clients/client 4.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon5: file(relativePath: { eq: "repeating/clients/client-5.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon6: file(relativePath: { eq: "repeating/clients/group-13.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon7: file(relativePath: { eq: "repeating/clients/group-14.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon8: file(relativePath: { eq: "repeating/clients/group-15.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
       icon9: file(relativePath: { eq: "repeating/clients/group-16.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
-      }      
+      }
       icon10: file(relativePath: { eq: "repeating/clients/group-17.jpg" }) {
         childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 167
-            placeholder: BLURRED
-            quality: 100
-          )
+          gatsbyImageData(layout: CONSTRAINED, width: 167, placeholder: BLURRED, quality: 100)
         }
       }
     }
@@ -133,8 +83,8 @@ const Accolades = ({ className }) => {
   return (
     <section className={`overflow-x-hidden ${className || "pb-20 md:pb-32"}`}>
       <div className="container">
-        <header className="text-center mb-4 md:mb-18">
-          <h2>Some of Our Happy Clients</h2>
+        <header className="mb-4 text-center md:mb-18">
+          <p className="heading-two">Some of Our Happy Clients</p>
         </header>
         <StyledSlider className="relative">
           <Slider>
