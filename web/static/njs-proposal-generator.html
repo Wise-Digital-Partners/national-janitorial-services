@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NJS Proposal Generator</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23101820'/><text x='4' y='23' font-size='18' font-weight='900' fill='%23fff' font-family='Arial'>N<tspan fill='%2353AF3B'>J</tspan>S</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g1: #53AF3B; --g2: #007041; --bk: #101820; --gy: #BBBCBC; --red: #D32F2F;
+  --bg: #f4f5f4; --card: #fff; --border: #e0e0e0;
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html { font-size: 15px; }
+body { font-family: var(--font); color: var(--bk); background: var(--bg); min-height: 100vh; }
+input, select, textarea, button { font-family: var(--font); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g1) !important; }
+input[type=number] { -moz-appearance: textfield; }
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* Top bar */
+.topbar { background: var(--bk); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+.topbar .logo { font-size: 17px; font-weight: 900; color: #fff; letter-spacing: 1.2px; }
+.topbar .logo .a { color: var(--g1); }
+.topbar .sub { font-size: 10px; color: var(--g1); font-weight: 600; margin-left: 6px; }
+.topbar .sep { color: #444; margin: 0 8px; }
+.topbar .title { color: #999; font-size: 12px; }
+.btn { padding: 8px 18px; border-radius: 5px; border: none; cursor: pointer; font-size: 12px; font-weight: 700; transition: transform .1s, box-shadow .1s; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--g1); color: #fff; }
+.btn-primary:hover { box-shadow: 0 2px 12px rgba(83,175,59,.35); }
+.btn-ghost { background: transparent; border: 1px solid var(--gy); color: #fff; font-weight: 600; }
+
+/* Layout */
+.container { max-width: 820px; margin: 0 auto; padding: 16px 16px 60px; }
+
+/* Pricing strip */
+.price-strip { display: flex; gap: 12px; margin-bottom: 16px; padding: 10px 16px; background: var(--bk); border-radius: 6px; color: #fff; font-size: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.price-strip .total { font-size: 16px; font-weight: 800; color: var(--g1); }
+
+/* Error banner */
+.err-banner { background: #FFF0F0; border: 1px solid rgba(211,47,47,.2); border-radius: 6px; padding: 8px 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--red); font-weight: 600; animation: shake .3s ease-in-out; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+/* Tab bar */
+.tabs { display: flex; background: var(--card); border-radius: 8px 8px 0 0; border-bottom: 1px solid #eee; }
+.tab { flex: 1; padding: 13px 8px; border: none; border-bottom: 3px solid transparent; background: none; cursor: pointer; font-weight: 400; color: #999; font-size: 12px; transition: all .15s; position: relative; }
+.tab:hover { color: #666; }
+.tab.active { font-weight: 700; color: var(--bk); border-bottom-color: var(--g1); }
+.tab .badge { position: absolute; top: 4px; right: 4px; background: var(--red); color: #fff; font-size: 9px; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Card */
+.card { background: var(--card); border-radius: 0 0 8px 8px; padding: 24px; min-height: 420px; }
+
+/* Form */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-grid .span { grid-column: 1 / -1; }
+.field label { font-size: 11px; font-weight: 600; color: #555; display: block; margin-bottom: 4px; }
+.field label .req { color: var(--red); margin-left: 2px; font-weight: 700; }
+.field input, .field select { width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 8px 10px; font-size: 13px; transition: border .15s; background: #fff; }
+.field input.error, .field select.error { border-color: var(--red); background: #FFF5F5; }
+.field .err-msg { font-size: 10px; color: var(--red); margin-top: 2px; }
+.field textarea { width: 100%; border: 1px solid #ddd; border-radius: 6px; padding: 12px 14px; font-size: 13px; line-height: 1.6; resize: vertical; min-height: 280px; }
+
+/* Radio */
+.radio-group { display: flex; gap: 16px; margin-bottom: 14px; align-items: center; }
+.radio-group label { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.radio-group input { accent-color: var(--g1); }
+
+/* Toggle */
+.toggle { width: 28px; height: 16px; border-radius: 16px; border: none; cursor: pointer; position: relative; transition: background .15s; flex-shrink: 0; }
+.toggle.on { background: var(--g1); }
+.toggle.off { background: #ccc; }
+.toggle .knob { position: absolute; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: #fff; transition: left .15s; }
+.toggle.on .knob { left: 14px; }
+.toggle.off .knob { left: 2px; }
+
+/* SOW section */
+.sow-header { display: flex; justify-content: space-between; align-items: center; background: var(--bk); color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+.sow-header button { font-size: 9px; color: var(--g1); background: none; border: none; cursor: pointer; }
+.sow-item { display: flex; align-items: center; gap: 8px; padding: 5px 12px; border-bottom: 1px solid #f0f0f0; transition: background .1s; }
+.sow-item.on { background: #f7faf7; }
+.sow-item.off { background: #fafafa; }
+.sow-item.off span { color: #bbb; }
+
+/* Addon row */
+.addon-row { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-bottom: 1px solid #f0f0f0; }
+.addon-row.on { background: #f7faf7; }
+.addon-row input[type=number] { width: 65px; padding: 4px 6px; border-radius: 4px; border: 1px solid #ddd; font-size: 12px; text-align: right; }
+
+/* Pricing summary */
+.pricing-box { background: var(--bk); border-radius: 8px; padding: 20px; color: #fff; margin-top: 20px; }
+.pricing-box .label { font-size: 12px; font-weight: 800; color: var(--g1); margin-bottom: 10px; letter-spacing: .5px; }
+.pricing-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid #333; }
+.pricing-total { display: flex; justify-content: space-between; font-size: 22px; font-weight: 900; padding: 12px 0 0; }
+
+/* Cleaner calc */
+.calc-box { background: #f8f9f8; border-radius: 8px; padding: 16px; margin-top: 20px; border: 1px solid rgba(83,175,59,.13); }
+.calc-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; font-size: 13px; }
+.override-box { margin-top: 14px; padding: 10px 12px; background: #fff; border-radius: 6px; border: 1px solid #e0e0e0; }
+
+/* Info banner */
+.info-banner { margin-top: 14px; padding: 8px 12px; border-radius: 5px; font-size: 11px; }
+.info-banner.success { background: #f0faf0; border: 1px solid rgba(83,175,59,.13); color: var(--g2); }
+.info-banner.warn { background: #FFF5F0; border: 1px solid #ffccaa; color: #c66; }
+
+/* Custom item add */
+.add-area { background: #f9f9f9; border-radius: 6px; padding: 12px; }
+.add-row { display: flex; gap: 6px; align-items: center; }
+.add-row input, .add-row select { padding: 6px 8px; border-radius: 4px; border: 1px solid #ddd; font-size: 12px; }
+.add-row input { flex: 1; }
+.btn-sm { padding: 6px 12px; border-radius: 4px; border: none; background: var(--g1); color: #fff; cursor: pointer; font-size: 11px; font-weight: 700; }
+.btn-dashed { margin-top: 6px; padding: 4px 10px; border-radius: 4px; border: 1px dashed var(--g1); background: none; color: var(--g1); cursor: pointer; font-size: 10px; }
+
+/* ═══ PDF PREVIEW STYLES ═══ */
+.preview-wrap { max-width: 8.5in; margin: 20px auto; }
+.pdf-page {
+  font-family: 'DM Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--bk); font-size: 10px; line-height: 1.55;
+  width: 8.5in; min-height: 11in; padding: .75in .85in;
+  background: #fff; page-break-after: always; position: relative;
+}
+@media screen { .pdf-page { box-shadow: 0 2px 16px rgba(0,0,0,.12); margin-bottom: 20px; border-radius: 4px; } }
+
+.pdf-hdr { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 10px; border-bottom: 3px solid var(--g1); margin-bottom: 20px; }
+.pdf-hdr .logo { font-size: 24px; font-weight: 900; letter-spacing: 1.5px; }
+.pdf-hdr .logo .a { color: var(--g1); }
+.pdf-hdr .sub { font-size: 12px; color: var(--g1); font-weight: 600; margin-top: -3px; letter-spacing: .5px; }
+.pdf-hdr .addr { text-align: right; font-size: 8.5px; color: #666; line-height: 1.5; }
+
+.sow-bar { background: var(--bk); color: #fff; padding: 4px 10px; font-size: 10px; font-weight: 700; border-radius: 2px; margin-bottom: 3px; }
+.sow-check { display: flex; gap: 6px; font-size: 9.5px; padding: 2px 10px; }
+.sow-check .mark { color: var(--g1); font-weight: 700; }
+
+.price-bar { background: var(--g1); border-radius: 6px; padding: 12px 16px; color: #fff; margin-top: 10px; }
+.sig-line { border-bottom: 1px solid #888; padding-bottom: 28px; font-size: 8px; color: #888; }
+
+@media print {
+  body { margin: 0 !important; padding: 0 !important; background: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .topbar, .container, .err-banner { display: none !important; }
+  .preview-wrap { margin: 0 !important; padding: 0 !important; max-width: none !important; }
+  .pdf-page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+  @page { size: letter; margin: 0; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useRef } = React;
+
+/* ── Data ── */
+const SECTIONS = [
+  { title: "Lobby & Common Areas", items: [
+    "Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)",
+    "Empty all trash & replace liners","Sweep & mop all hard floors","Vacuum carpets & rugs",
+    "Clean glass surfaces & door windows (6ft. & lower)","Spot clean walls, doors, & light switches",
+    "Replenish hand sanitizers (if applicable)",
+  ]},
+  { title: "Offices & Conference Rooms", items: [
+    "Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)",
+    "Empty all trash & replace liners","Sweep & mop all hard floors","Vacuum carpets & rugs",
+    "Clean glass surfaces & door windows (6ft. & lower)","Spot clean walls, doors, & light switches",
+    "Replenish hand sanitizers (if applicable)",
+  ]},
+  { title: "Restrooms", items: [
+    "Clean & disinfect toilets, urinals, sinks, & counters","Wipe all mirrors and partitions",
+    "Refill soap, toilet paper, and paper towels","Mop floors",
+    "Empty all trash, including sanitary bins; replace liners",
+  ]},
+  { title: "Kitchen & Breakrooms", items: [
+    "Wipe countertops & tables","Clean exterior of appliances (microwave, fridge, etc.)",
+    "Sweep & mop floors","Empty trash & recycling",
+  ]},
+  { title: "Hallways & Stairwells", items: ["Sweep & mop floors"] },
+  { title: "Warehouse (Daily)", items: ["Empty all trash & replace liners"] },
+  { title: "Exterior Entryways (Daily)", items: ["Pick up and discard of any debris"] },
+];
+const DP_ITEMS = [
+  "Spot mop any spills, high traffic areas (as needed)","Vacuum any rugs (as needed)","Empty trash",
+  "Clean restrooms (Wipe down counters, refill any paper consumables as needed)",
+  "Exterior cleaning (pick up and discard any trash)",
+];
+const ADDON_LIB = [
+  "Clean interior of refrigerator weekly incl removal of items on Fridays",
+  "Clean microwave interior weekly","Clean out Air Filters in Restrooms (2x/month)",
+  "Window Cleaning (Interior/Exterior)","Pressure washing","Any additional floorcare",
+  "Event clean-up services","Sanitize all door handles and light switches",
+];
+const LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.
+
+Our goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.
+
+At NJS, we believe in customizing our approach to fit each client's unique requirements. We'll work closely with your team to establish procedures that ensure your expectations are not only met—but exceeded. Our reputation is backed by strong references and a commitment to excellence.
+
+Below, you'll find our company's promise to you, terms and conditions, Scope of Work (SOW) and pricing details for your review.
+
+Thank you for the opportunity to earn your business. We look forward to working together.`;
+
+const COMMIT = [
+  { h: "Dedicated Quality Control Manager (QCM)", intro: "Your account will be regularly inspected by a seasoned Quality Control Manager who ensures high facility maintenance standards by:", b: ["Conducting routine site inspections","Coordinating with on-site staff to improve efficiency","Addressing issues before they escalate"], after: "Your QCM is always accessible for routine questions or urgent matters—and committed to prompt, professional support." },
+  { h: "Daily Service Records", intro: "We maintain updated service logs using your preferred inspection sheets or our own forms. These records:", b: ["Track service quality and identify attention areas","Ensure accountability across shifts","Document and follow up on special requests"], after: "All action items are reviewed during internal meetings between QCMs, supervisors, and cleaning crews to ensure thorough execution." },
+  { h: "Security & Incident Reporting", t: "Our team adheres to strict access and safety protocols. Any incidents involving damage, plumbing or electrical issues, or potential security breaches will be reported immediately." },
+  { h: "Special Requests & Site Conditions", t: "All special requests are handled promptly by your QCM. If unusual accumulations (e.g., post-construction debris, event clean-up) require additional labor or materials, costs will be discussed and approved in advance." },
+  { h: "Your Satisfaction, Your Team", t: "While we stand behind our staff, your comfort is our priority. If any team member fails to meet expectations, you may request their immediate replacement." },
+];
+const TERMS = [
+  { n:"1",ti:"Scope of Services",t:"Services provided by National Janitorial Services (\"NJS\") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January." },
+  { n:"2",ti:"Payment Terms",b:["All invoices are due NET 15 (within 15 calendar days of the invoice date).","A 5% late fee will be applied to any invoice not paid by the due date.","Accounts with invoices more than 30 days overdue may be subject to service suspension and additional late fees.","Continued non-payment may result in service termination and referral to a collections agency."] },
+  { n:"3",ti:"Payment Methods",t:"We accept checks, credit cards, and ACH. Most clients choose a recurring payment setup via credit card or ACH for convenience. Our billing department will assist in setting up your preferred payment method.\n\nIf a scheduled cleaning is missed or skipped at your request, a prorated credit will be applied to the following billing cycle. For support, please notify your assigned Quality Control Manager (QCM) or email our billing team directly at: billing@nationaljanitorialservices.com." },
+  { n:"4",ti:"Service Guarantee",t:"We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination." },
+  { n:"5",ti:"Annual Price Adjustments",t:"NJS reviews operational costs—such as labor, insurance, supplies, and overhead—on an annual basis. If an adjustment to your monthly pricing is necessary, you will be notified in writing at least 30 days in advance. Any increase will be reasonable and reflective of market conditions." },
+  { n:"6",ti:"Access Requirements",t:"Client agrees to provide NJS with necessary access to all agreed-upon areas during scheduled cleaning times. Missed cleanings due to access restrictions may not be credited unless prior notice was given." },
+  { n:"7",ti:"Liability & Insurance",t:"NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention." },
+  { n:"8",ti:"Non-Solicitation of Personnel",t:"To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation." },
+];
+
+const fmt$ = v => "$"+(parseFloat(v)||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const today = () => new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+const REQ_FIELDS = [
+  {k:"company",l:"Company Name"},{k:"contactFirst",l:"Contact First Name"},{k:"contactLast",l:"Contact Last Name"},
+  {k:"phone",l:"Phone"},{k:"email",l:"Email"},{k:"address",l:"Company Address"},
+  {k:"sqft",l:"Facility Sq Ft"},{k:"frequency",l:"Frequency"},{k:"basePrice",l:"Base Monthly Fee"},
+];
+
+/* ── Components ── */
+function Tog({on,set}){
+  return <button type="button" className={`toggle ${on?'on':'off'}`} onClick={()=>set(!on)}><span className="knob"/></button>;
+}
+
+function PdfHeader(){
+  return <div className="pdf-hdr">
+    <div><div className="logo">N<span className="a">A</span>TIONAL</div><div className="sub">Janitorial Services</div></div>
+    <div className="addr">500 W. Harbor Dr Unit 303<br/>San Diego, CA 92101<br/>billing@nationaljanitorialservices.com</div>
+  </div>;
+}
+
+function ProposalPDF({d}){
+  const {client:c,letter,sow,dayPorter:dp,addons}=d;
+  const date=c.date||today();
+  const aAddons=addons.filter(a=>a.on);
+  const addT=aAddons.reduce((s,a)=>s+(parseFloat(a.price)||0),0);
+  const base=parseFloat(c.basePrice)||0;
+  const total=base+addT;
+  const initDisp=c.hasInitialFee==="yes"?fmt$(c.initialFeeAmount):"N/A";
+
+  return <>
+    {/* Page 1: Cover Letter */}
+    <div className="pdf-page">
+      <PdfHeader/>
+      <div style={{marginBottom:6}}><span style={{fontWeight:700,fontSize:12}}>CLIENT: </span><span style={{fontWeight:700,fontSize:12,color:'var(--g2)'}}>{c.company}</span></div>
+      <div style={{fontSize:9,color:'#777',marginBottom:20}}>{date}</div>
+      <div style={{marginBottom:16,fontSize:10.5}}>Dear {c.contactFirst},</div>
+      {letter.split("\n\n").map((p,i)=><p key={i} style={{margin:'0 0 10px',fontSize:10}}>{p}</p>)}
+      <div style={{marginTop:16,fontSize:10}}>Best regards,<br/><strong style={{fontSize:11}}>Patrick Dillon</strong><br/><span style={{fontSize:9,color:'#666'}}>Owner · patrick@nationaljanitorialservices.com · (414) 899-9975</span></div>
+    </div>
+
+    {/* Page 2: Commitment & Terms */}
+    <div className="pdf-page">
+      <PdfHeader/>
+      <div style={{fontSize:14,fontWeight:800,marginBottom:4}}>Our Commitment</div>
+      <div style={{fontSize:9,color:'#888',marginBottom:12}}>Resources, Process & Quality Assurance</div>
+      <p style={{fontSize:9.5,margin:'0 0 10px'}}>At National Janitorial Services (NJS), we take pride in a proactive, responsive approach to service and communication. Here's what you can expect from our team:</p>
+      {COMMIT.map((s,i)=><div key={i} style={{marginBottom:8}}>
+        <div style={{fontSize:10,fontWeight:700,color:'var(--g2)',marginBottom:2}}>{s.h}</div>
+        {s.intro&&<p style={{fontSize:9,margin:'0 0 3px'}}>{s.intro}</p>}
+        {s.t&&<p style={{fontSize:9,margin:0}}>{s.t}</p>}
+        {s.b&&<div style={{paddingLeft:12}}>{s.b.map((b,j)=><div key={j} style={{fontSize:9,padding:'1px 0'}}>• {b}</div>)}</div>}
+        {s.after&&<p style={{fontSize:9,margin:'3px 0 0'}}>{s.after}</p>}
+      </div>)}
+      <div style={{fontSize:14,fontWeight:800,marginTop:16,marginBottom:10,borderTop:'2px solid var(--g1)',paddingTop:12}}>Service Terms & Conditions</div>
+      {TERMS.map((s,i)=><div key={i} style={{marginBottom:8}}>
+        <div style={{fontSize:10,fontWeight:700,color:'var(--g2)'}}>{s.n}. {s.ti}</div>
+        {s.t&&s.t.split("\n\n").map((p,j)=><p key={j} style={{fontSize:9,margin:'2px 0 4px'}}>{p}</p>)}
+        {s.b&&<div style={{paddingLeft:12}}>{s.b.map((b,j)=><div key={j} style={{fontSize:9,padding:'1px 0'}}>• {b}</div>)}</div>}
+      </div>)}
+    </div>
+
+    {/* Page 3: SOW */}
+    <div className="pdf-page">
+      <PdfHeader/>
+      <div style={{background:'var(--bk)',color:'#fff',padding:'8px 14px',borderRadius:4,marginBottom:14,display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+        <span style={{fontSize:16,fontWeight:800,letterSpacing:1}}>SCOPE OF WORK</span><span style={{fontSize:9}}>SOW</span>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'3px 24px',fontSize:9.5,padding:'8px 12px',background:'#f8f9f8',borderRadius:4,border:'1px solid rgba(83,175,59,.13)',marginBottom:4}}>
+        <div><strong>Date:</strong> {date}</div><div><strong>Term:</strong> {c.term||"12 Months"}</div>
+        <div><strong>Company:</strong> {c.company}</div><div><strong>Phone:</strong> {c.phone}</div>
+        <div><strong>Address:</strong> {c.address}</div><div><strong>Email:</strong> {c.email}</div>
+        <div><strong>Contact:</strong> {c.contactFirst} {c.contactLast}</div>
+        <div><strong>Client Type:</strong> {c.isNew?"New Client":"Existing Client"}</div>
+      </div>
+      <div style={{display:'flex',justifyContent:'space-between',padding:'6px 12px',background:'var(--bk)',color:'#fff',borderRadius:4,fontSize:10,marginBottom:14}}>
+        <span>Sq Ft: <strong>{c.sqft}</strong></span><span>Frequency: <strong>{c.frequency}</strong></span>
+        <span>Initial Fee: <strong>{initDisp}</strong></span><span>Base Fee: <strong>{fmt$(c.basePrice)}</strong></span>
+      </div>
+      {sow.filter(s=>s.items.some(i=>i.on)).map((sec,si)=>{
+        const items=sec.items.filter(i=>i.on);
+        return items.length?<div key={si} style={{marginBottom:8}}>
+          <div className="sow-bar">{sec.title}</div>
+          {items.map((it,ii)=><div key={ii} className="sow-check"><span className="mark">☑</span><span>{it.text}</span></div>)}
+        </div>:null;
+      })}
+      {dp.enabled&&<div style={{marginBottom:8}}>
+        <div className="sow-bar">Day Porter Janitorial Services – {dp.hours} Hours Per Day</div>
+        {dp.items.filter(i=>i.on).map((it,ii)=><div key={ii} className="sow-check"><span className="mark">☑</span><span>{it.text}</span></div>)}
+      </div>}
+      {aAddons.length>0&&<div style={{marginBottom:8}}>
+        <div className="sow-bar">Special Requests & Add-Ons</div>
+        {aAddons.map((a,i)=><div key={i} style={{display:'flex',justifyContent:'space-between',fontSize:9.5,padding:'2px 10px'}}>
+          <div className="sow-check" style={{padding:0}}><span className="mark">☑</span><span>{a.text}</span></div>
+          {parseFloat(a.price)>0&&<span style={{fontWeight:600}}>{fmt$(a.price)}/mo</span>}
+        </div>)}
+      </div>}
+      <div className="price-bar">
+        <div style={{fontSize:11,fontWeight:800,marginBottom:6,letterSpacing:.5}}>COMPLETE PRICING</div>
+        <div style={{display:'flex',justifyContent:'space-between',fontSize:10,padding:'3px 0'}}><span>Base Monthly Rate</span><span>{fmt$(base)}</span></div>
+        {addT>0&&<div style={{display:'flex',justifyContent:'space-between',fontSize:10,padding:'3px 0'}}><span>Special Add-Ons</span><span>{fmt$(addT)}</span></div>}
+        {c.hasInitialFee==="yes"&&parseFloat(c.initialFeeAmount)>0&&<div style={{display:'flex',justifyContent:'space-between',fontSize:10,padding:'3px 0'}}><span>Initial Cleaning Fee (one-time)</span><span>{fmt$(c.initialFeeAmount)}</span></div>}
+        <div style={{display:'flex',justifyContent:'space-between',fontSize:16,fontWeight:900,padding:'8px 0 0',borderTop:'2px solid rgba(255,255,255,.4)',marginTop:6}}><span>Total Flat Monthly Fee</span><span>{fmt$(total)}</span></div>
+      </div>
+      <div style={{marginTop:20,fontSize:9}}>
+        <div style={{fontWeight:700,fontSize:10,marginBottom:10}}>Proposal Acceptance</div>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'24px 40px'}}>
+          <div className="sig-line">Company</div><div className="sig-line">Date</div>
+          <div className="sig-line">Name & Title</div><div className="sig-line">Signature</div>
+        </div>
+      </div>
+      <div style={{textAlign:'right',marginTop:16}}><span style={{borderBottom:'1px solid #888',display:'inline-block',width:100,paddingBottom:16,fontSize:8,color:'#888'}}>(Initials)</span></div>
+    </div>
+  </>;
+}
+
+/* ══ MAIN APP ══ */
+function App(){
+  const [view,setView]=useState("edit");
+  const [tab,setTab]=useState("client");
+  const [errors,setErrors]=useState({});
+  const [showErr,setShowErr]=useState(false);
+
+  const [client,setClient]=useState({
+    company:"",address:"",phone:"",email:"",contactFirst:"",contactLast:"",
+    date:today(),isNew:true,sqft:"",frequency:"2x per week",term:"12 Months",
+    hasInitialFee:"no",initialFeeAmount:"",basePrice:"",
+  });
+  const uc=(k,v)=>{setClient(p=>({...p,[k]:v}));if(showErr)setErrors(p=>{const n={...p};delete n[k];return n;});};
+
+  const [letter,setLetter]=useState(LETTER);
+  const [sow,setSow]=useState(()=>SECTIONS.map(s=>({title:s.title,items:s.items.map(text=>({text,on:true}))})));
+  const [dp,setDp]=useState({enabled:false,hours:"4",items:DP_ITEMS.map(text=>({text,on:true}))});
+  const [addons,setAddons]=useState(()=>ADDON_LIB.map(text=>({text,on:false,price:""})));
+  const [cleaner,setCleaner]=useState({name:"",marginPercent:"35",manualFee:""});
+  const ucl=(k,v)=>{setCleaner(p=>({...p,[k]:v}));if(showErr)setErrors(p=>{const n={...p};delete n["cleaner_"+k];return n;});};
+
+  const [newItem,setNewItem]=useState("");
+  const [newSec,setNewSec]=useState(0);
+  const [newAddon,setNewAddon]=useState({text:"",price:""});
+
+  const aAddons=addons.filter(a=>a.on&&parseFloat(a.price)>0);
+  const addonSum=aAddons.reduce((s,a)=>s+(parseFloat(a.price)||0),0);
+  const base=parseFloat(client.basePrice)||0;
+  const total=base+addonSum;
+  const mPct=parseFloat(cleaner.marginPercent)||0;
+  const autoFee=total*(1-mPct/100);
+  const clnFee=cleaner.manualFee!==""?(parseFloat(cleaner.manualFee)||0):autoFee;
+  const actMargin=total>0?((total-clnFee)/total*100):0;
+
+  const validate=()=>{
+    const e={};
+    REQ_FIELDS.forEach(f=>{if(!client[f.k]?.toString().trim())e[f.k]=f.l+" is required";});
+    if(client.hasInitialFee==="yes"&&!client.initialFeeAmount?.toString().trim()) e.initialFeeAmount="Initial Fee amount is required";
+    if(!cleaner.name?.trim()) e.cleaner_name="Cleaner name is required";
+    if(!cleaner.marginPercent?.toString().trim()) e.cleaner_marginPercent="Margin % is required";
+    return e;
+  };
+
+  const handlePreview=()=>{
+    const e=validate();setErrors(e);setShowErr(true);
+    if(Object.keys(e).length>0){
+      const ck=REQ_FIELDS.map(f=>f.k).concat(["initialFeeAmount"]);
+      if(ck.some(k=>e[k])){setTab("client");return;}
+      if(e.cleaner_name||e.cleaner_marginPercent){setTab("cleaner");return;}
+      return;
+    }
+    setView("preview");
+  };
+
+  const he=k=>showErr&&errors[k];
+  const cEC=showErr?REQ_FIELDS.filter(f=>errors[f.k]).length+(errors.initialFeeAmount?1:0):0;
+  const clEC=showErr?(errors.cleaner_name?1:0)+(errors.cleaner_marginPercent?1:0):0;
+  const totEC=Object.keys(errors).length;
+
+  const TABS=[
+    {id:"client",l:"Client Details",ico:"👤",ec:cEC},
+    {id:"letter",l:"Cover Letter",ico:"✉️",ec:0},
+    {id:"sow",l:"Scope of Work",ico:"📋",ec:0},
+    {id:"pricing",l:"Add-Ons & Pricing",ico:"💲",ec:0},
+    {id:"cleaner",l:"Cleaner Info",ico:"🧹",ec:clEC},
+  ];
+
+  const data={client,letter,sow,dayPorter:dp,addons,cleaner};
+
+  return <div>
+    {/* Top bar */}
+    <div className="topbar">
+      <div style={{display:'flex',alignItems:'baseline'}}>
+        <span className="logo">N<span className="a">A</span>TIONAL</span>
+        <span className="sub">Janitorial Services</span>
+        <span className="sep">|</span>
+        <span className="title">Proposal Generator</span>
+      </div>
+      <div style={{display:'flex',gap:8}}>
+        {view==="edit"?
+          <button className="btn btn-primary" onClick={handlePreview}>Preview & Print PDF →</button>
+        :<>
+          <button className="btn btn-ghost" onClick={()=>{setView("edit");setShowErr(false);}}>← Back to Editor</button>
+          <button className="btn btn-primary" onClick={()=>window.print()}>🖨 Save as PDF</button>
+        </>}
+      </div>
+    </div>
+
+    {/* Preview */}
+    {view==="preview"&&<div className="preview-wrap print-area"><ProposalPDF d={data}/></div>}
+
+    {/* Editor */}
+    {view==="edit"&&<div className="container">
+      {/* Pricing strip */}
+      <div className="price-strip">
+        <div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
+          <span style={{color:'#999'}}>Base: <strong style={{color:'#fff'}}>{fmt$(base)}</strong></span>
+          {addonSum>0&&<><span style={{color:'#555'}}>+</span><span style={{color:'#999'}}>Add-ons: <strong style={{color:'#fff'}}>{fmt$(addonSum)}</strong></span></>}
+          <span style={{color:'#555'}}>=</span>
+          <span className="total">{fmt$(total)}</span>
+          <span style={{fontSize:10,color:'#888'}}>/mo</span>
+        </div>
+        {cleaner.name&&<div style={{fontSize:10,color:'#999'}}>
+          Cleaner: <strong style={{color:'#fff'}}>{fmt$(clnFee)}</strong>
+          <span style={{color:'var(--g1)',marginLeft:6}}>({actMargin.toFixed(1)}% margin)</span>
+        </div>}
+      </div>
+
+      {/* Error banner */}
+      {showErr&&totEC>0&&<div className="err-banner">⚠️ {totEC} required field{totEC>1?"s":""} missing. Complete all required fields to generate.</div>}
+
+      {/* Tabs */}
+      <div className="tabs">
+        {TABS.map(t=><button key={t.id} className={`tab ${tab===t.id?'active':''}`} onClick={()=>setTab(t.id)}>
+          {t.ico} {t.l}
+          {t.ec>0&&<span className="badge">{t.ec}</span>}
+        </button>)}
+      </div>
+
+      <div className="card">
+
+        {/* CLIENT */}
+        {tab==="client"&&<div>
+          <div className="radio-group">
+            {[["New Client",true],["Existing Client",false]].map(([l,v])=>
+              <label key={l}><input type="radio" checked={client.isNew===v} onChange={()=>uc("isNew",v)}/> {l}</label>
+            )}
+          </div>
+          <div className="form-grid">
+            <div className="field"><label>Company Name<span className="req">*</span></label><input className={he("company")?"error":""} value={client.company} onChange={e=>uc("company",e.target.value)} placeholder="Acme Corp"/>{he("company")&&<div className="err-msg">{errors.company}</div>}</div>
+            <div className="field"><label>Proposal Date</label><input value={client.date} onChange={e=>uc("date",e.target.value)}/></div>
+            <div className="field span"><label>Company Address<span className="req">*</span></label><input className={he("address")?"error":""} value={client.address} onChange={e=>uc("address",e.target.value)} placeholder="123 Main St, City, ST 00000"/>{he("address")&&<div className="err-msg">{errors.address}</div>}</div>
+            <div className="field"><label>Contact First Name<span className="req">*</span></label><input className={he("contactFirst")?"error":""} value={client.contactFirst} onChange={e=>uc("contactFirst",e.target.value)} placeholder="Nicole"/>{he("contactFirst")&&<div className="err-msg">{errors.contactFirst}</div>}</div>
+            <div className="field"><label>Contact Last Name<span className="req">*</span></label><input className={he("contactLast")?"error":""} value={client.contactLast} onChange={e=>uc("contactLast",e.target.value)} placeholder="Smith"/>{he("contactLast")&&<div className="err-msg">{errors.contactLast}</div>}</div>
+            <div className="field"><label>Phone<span className="req">*</span></label><input className={he("phone")?"error":""} value={client.phone} onChange={e=>uc("phone",e.target.value)} placeholder="(555) 123-4567"/>{he("phone")&&<div className="err-msg">{errors.phone}</div>}</div>
+            <div className="field"><label>Email<span className="req">*</span></label><input className={he("email")?"error":""} value={client.email} onChange={e=>uc("email",e.target.value)} placeholder="contact@company.com"/>{he("email")&&<div className="err-msg">{errors.email}</div>}</div>
+            <div className="field"><label>Facility Sq Ft<span className="req">*</span></label><input className={he("sqft")?"error":""} value={client.sqft} onChange={e=>uc("sqft",e.target.value)} placeholder="1,600"/>{he("sqft")&&<div className="err-msg">{errors.sqft}</div>}</div>
+            <div className="field"><label>Frequency<span className="req">*</span></label><input className={he("frequency")?"error":""} value={client.frequency} onChange={e=>uc("frequency",e.target.value)} placeholder="2x per week"/>{he("frequency")&&<div className="err-msg">{errors.frequency}</div>}</div>
+            <div className="field"><label>Contract Term</label><input value={client.term} onChange={e=>uc("term",e.target.value)} placeholder="12 Months"/></div>
+            <div className="field"><label>Initial Cleaning Fee<span className="req">*</span></label><select value={client.hasInitialFee} onChange={e=>uc("hasInitialFee",e.target.value)}><option value="no">No</option><option value="yes">Yes</option></select></div>
+            {client.hasInitialFee==="yes"&&<div className="field"><label>Initial Fee Amount ($)<span className="req">*</span></label><input type="number" className={he("initialFeeAmount")?"error":""} value={client.initialFeeAmount} onChange={e=>uc("initialFeeAmount",e.target.value)} placeholder="500"/>{he("initialFeeAmount")&&<div className="err-msg">{errors.initialFeeAmount}</div>}</div>}
+            <div className="field"><label>Base Monthly Fee ($)<span className="req">*</span></label><input type="number" className={he("basePrice")?"error":""} value={client.basePrice} onChange={e=>uc("basePrice",e.target.value)} placeholder="765" style={{fontWeight:700,fontSize:15}}/>{he("basePrice")&&<div className="err-msg">{errors.basePrice}</div>}</div>
+          </div>
+          {client.contactFirst&&<div className="info-banner success">✓ Cover letter will read: <strong>"Dear {client.contactFirst},"</strong></div>}
+        </div>}
+
+        {/* LETTER */}
+        {tab==="letter"&&<div>
+          <div style={{fontSize:12,color:'#888',marginBottom:4}}>Customize the body of the cover letter below.</div>
+          {client.contactFirst?
+            <div className="info-banner success"><span style={{color:'#888'}}>Salutation: </span><strong>Dear {client.contactFirst},</strong><span style={{color:'#aaa',fontSize:10,marginLeft:8}}>(from Client Details)</span></div>
+          : <div className="info-banner warn">⚠ Enter Contact First Name in Client Details to auto-populate the salutation.</div>}
+          <div className="field" style={{marginTop:8}}><textarea value={letter} onChange={e=>setLetter(e.target.value)}/></div>
+          <div style={{fontSize:10,color:'#aaa',marginTop:6}}>Sign-off: "Best regards, Patrick Dillon, Owner"</div>
+        </div>}
+
+        {/* SOW */}
+        {tab==="sow"&&<div>
+          {sow.map((sec,si)=><div key={si} style={{marginBottom:14}}>
+            <div className="sow-header">{sec.title}<button onClick={()=>{const a=sec.items.every(i=>i.on);setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[si].items.forEach(i=>i.on=!a);return n;});}}>{sec.items.every(i=>i.on)?"Deselect All":"Select All"}</button></div>
+            {sec.items.map((it,ii)=><div key={ii} className={`sow-item ${it.on?'on':'off'}`}>
+              <Tog on={it.on} set={()=>setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[si].items[ii].on=!n[si].items[ii].on;return n;})}/>
+              <span style={{fontSize:12}}>{it.text}</span>
+            </div>)}
+          </div>)}
+          <div style={{marginBottom:14}}>
+            <div className="sow-header">
+              <span style={{display:'flex',alignItems:'center',gap:10}}>Day Porter Services <Tog on={dp.enabled} set={v=>setDp(p=>({...p,enabled:v}))}/>{dp.enabled&&<><input value={dp.hours} onChange={e=>setDp(p=>({...p,hours:e.target.value}))} style={{width:36,border:'none',borderRadius:3,padding:'2px 6px',fontSize:12,textAlign:'center'}}/><span style={{fontSize:9,color:'#aaa'}}>hrs/day</span></>}</span>
+              <span/>
+            </div>
+            {dp.enabled&&dp.items.map((it,ii)=><div key={ii} className={`sow-item ${it.on?'on':'off'}`}>
+              <Tog on={it.on} set={()=>setDp(p=>{const n=JSON.parse(JSON.stringify(p));n.items[ii].on=!n.items[ii].on;return n;})}/>
+              <span style={{fontSize:12}}>{it.text}</span>
+            </div>)}
+          </div>
+          <div className="add-area">
+            <div style={{fontSize:11,fontWeight:700,marginBottom:6}}>Add Custom Item</div>
+            <div className="add-row">
+              <select value={newSec} onChange={e=>setNewSec(+e.target.value)} style={{flex:'none',width:160}}>{sow.map((s,i)=><option key={i} value={i}>{s.title}</option>)}</select>
+              <input value={newItem} onChange={e=>setNewItem(e.target.value)} placeholder="Task description" onKeyDown={e=>{if(e.key==="Enter"&&newItem.trim()){setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[newSec].items.push({text:newItem.trim(),on:true});return n;});setNewItem("");}}}/>
+              <button className="btn-sm" onClick={()=>{if(!newItem.trim())return;setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[newSec].items.push({text:newItem.trim(),on:true});return n;});setNewItem("");}}>Add</button>
+            </div>
+            <button className="btn-dashed" onClick={()=>{const name=prompt("Section name:");if(name?.trim())setSow(p=>[...p,{title:name.trim(),items:[]}]);}}>+ New Section</button>
+          </div>
+        </div>}
+
+        {/* PRICING */}
+        {tab==="pricing"&&<div>
+          <div style={{fontSize:12,fontWeight:700,color:'var(--g2)',marginBottom:8}}>Special Add-On Services</div>
+          {addons.map((a,i)=><div key={i} className={`addon-row ${a.on?'on':''}`}>
+            <Tog on={a.on} set={()=>setAddons(p=>{const n=[...p];n[i]={...n[i],on:!n[i].on};return n;})}/>
+            <span style={{flex:1,fontSize:12,color:a.on?'var(--bk)':'#bbb'}}>{a.text}</span>
+            <span style={{fontSize:12,color:'#888'}}>$</span>
+            <input type="number" value={a.price} onChange={e=>setAddons(p=>{const n=[...p];n[i]={...n[i],price:e.target.value};return n;})}/>
+            <span style={{fontSize:9,color:'#aaa'}}>/mo</span>
+          </div>)}
+          <div className="add-row" style={{marginTop:10}}>
+            <input value={newAddon.text} onChange={e=>setNewAddon(p=>({...p,text:e.target.value}))} placeholder="Custom add-on service"/>
+            <input type="number" value={newAddon.price} onChange={e=>setNewAddon(p=>({...p,price:e.target.value}))} placeholder="$" style={{width:65,flex:'none',textAlign:'right'}}/>
+            <button className="btn-sm" onClick={()=>{if(!newAddon.text.trim())return;setAddons(p=>[...p,{text:newAddon.text.trim(),on:true,price:newAddon.price||""}]);setNewAddon({text:"",price:""});}}>Add</button>
+          </div>
+          <div className="pricing-box">
+            <div className="label">PRICING SUMMARY</div>
+            <div className="pricing-row"><span>Base Monthly Rate</span><span>{fmt$(base)}</span></div>
+            {addonSum>0&&<div className="pricing-row" style={{color:'#ccc'}}><span>Special Add-Ons</span><span>{fmt$(addonSum)}</span></div>}
+            {client.hasInitialFee==="yes"&&parseFloat(client.initialFeeAmount)>0&&<div className="pricing-row" style={{color:'#ccc'}}><span>Initial Cleaning Fee (one-time)</span><span>{fmt$(client.initialFeeAmount)}</span></div>}
+            <div className="pricing-total"><span>Total Monthly Fee</span><span style={{color:'var(--g1)'}}>{fmt$(total)}</span></div>
+          </div>
+        </div>}
+
+        {/* CLEANER */}
+        {tab==="cleaner"&&<div>
+          <div style={{fontSize:13,fontWeight:700,color:'var(--g2)',marginBottom:4}}>Cleaner Assignment & Fee Calculation</div>
+          <div style={{fontSize:11,color:'#888',marginBottom:16}}>Cleaning fee auto-calculates from total monthly fee minus your margin %. You can override it manually.</div>
+          <div className="form-grid">
+            <div className="field"><label>Assigned Cleaner Name<span className="req">*</span></label><input className={he("cleaner_name")?"error":""} value={cleaner.name} onChange={e=>ucl("name",e.target.value)} placeholder="Jane Doe"/>{he("cleaner_name")&&<div className="err-msg">{errors.cleaner_name}</div>}</div>
+            <div className="field"><label>Margin %<span className="req">*</span></label>
+              <div style={{display:'flex',alignItems:'center',gap:6}}>
+                <input type="number" value={cleaner.marginPercent} onChange={e=>{ucl("marginPercent",e.target.value);setCleaner(p=>({...p,manualFee:""}));}} className={he("cleaner_marginPercent")?"error":""} style={{width:80,fontWeight:700,fontSize:15,textAlign:'center'}}/>
+                <span style={{fontSize:16,fontWeight:700,color:'#888'}}>%</span>
+              </div>
+              {he("cleaner_marginPercent")&&<div className="err-msg">{errors.cleaner_marginPercent}</div>}
+            </div>
+          </div>
+          <div className="calc-box">
+            <div style={{fontSize:12,fontWeight:700,color:'var(--g2)',marginBottom:10}}>Fee Calculation</div>
+            <div className="calc-row">
+              <span style={{color:'#666'}}>Total Monthly Fee (client pays)</span><span style={{fontWeight:700,textAlign:'right'}}>{fmt$(total)}</span>
+              <span style={{color:'#666'}}>Your Margin ({mPct}%)</span><span style={{fontWeight:700,textAlign:'right',color:'var(--g2)'}}>{fmt$(total*mPct/100)}</span>
+              <div style={{gridColumn:'1/-1',borderBottom:'1px solid rgba(83,175,59,.27)',margin:'4px 0'}}/>
+              <span style={{fontWeight:700}}>Cleaner Fee (auto)</span><span style={{fontWeight:800,fontSize:16,textAlign:'right',color:'var(--g1)'}}>{fmt$(autoFee)}</span>
+            </div>
+            <div className="override-box">
+              <div style={{fontSize:11,fontWeight:600,color:'#666',marginBottom:6}}>Override Cleaner Fee (optional)</div>
+              <div style={{display:'flex',alignItems:'center',gap:8}}>
+                <span style={{fontSize:14,color:'#888'}}>$</span>
+                <input type="number" value={cleaner.manualFee} onChange={e=>ucl("manualFee",e.target.value)} placeholder={autoFee.toFixed(2)} style={{width:120,fontWeight:700,fontSize:15,textAlign:'right',border:'1px solid #ddd',borderRadius:5,padding:'7px 10px'}}/>
+                {cleaner.manualFee!==""&&<button onClick={()=>ucl("manualFee","")} style={{padding:'4px 10px',borderRadius:4,border:'1px solid rgba(211,47,47,.27)',background:'#FFF5F5',color:'var(--red)',cursor:'pointer',fontSize:10}}>Reset to auto</button>}
+              </div>
+              {cleaner.manualFee!==""&&total>0&&<div style={{fontSize:11,color:'#888',marginTop:6}}>
+                Effective margin: <strong style={{color:actMargin>=0?'var(--g2)':'var(--red)'}}>{actMargin.toFixed(1)}%</strong>
+                {actMargin<0&&<span style={{color:'var(--red)',marginLeft:6}}>⚠ Negative margin</span>}
+              </div>}
+            </div>
+          </div>
+          <div className="pricing-box" style={{marginTop:20}}>
+            <div className="label">CLEANER SUMMARY</div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr auto',gap:'8px 20px',fontSize:14}}>
+              <span style={{color:'#ccc'}}>Assigned Cleaner</span><span style={{fontWeight:700,textAlign:'right'}}>{cleaner.name||"—"}</span>
+              <span style={{color:'#ccc'}}>Total Client Fee</span><span style={{textAlign:'right'}}>{fmt$(total)}</span>
+              <span style={{color:'#ccc'}}>Cleaner Pay</span><span style={{textAlign:'right'}}>{fmt$(clnFee)}</span>
+              <span style={{color:'#ccc'}}>NJS Margin</span><span style={{textAlign:'right',color:'var(--g1)'}}>{fmt$(total-clnFee)} ({actMargin.toFixed(1)}%)</span>
+            </div>
+          </div>
+          <div style={{fontSize:10,color:'#aaa',marginTop:10}}>Cleaner info is internal only — it does not appear in the client-facing PDF.</div>
+        </div>}
+
+      </div>
+    </div>}
+  </div>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
