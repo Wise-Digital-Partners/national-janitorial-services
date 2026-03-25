@@ -12,7 +12,7 @@ const NJS_CONFIG = {
   gmail: {
     // Your Google Cloud OAuth 2.0 Client ID
     // Get this from: console.cloud.google.com → APIs & Services → Credentials
-    clientId: "705760101586-ki4m5f24mm45jatlrpdh4600s0v8h9hv",
+    clientId: "705760101586-ki4m5f24mm45jatlrpdh4600s0v8h9hv.apps.googleusercontent.com",
 
     // Scopes needed (don't change this)
     scopes: "https://www.googleapis.com/auth/gmail.send",
