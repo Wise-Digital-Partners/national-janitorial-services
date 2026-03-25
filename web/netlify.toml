@@ -1,7 +1,2 @@
 [build]
 publish = "public"
-
-[[headers]]
-  for = "/njs-proposal-generator/"
-  [headers.values]
-    Basic-Auth = "njs:635qyU4C"
