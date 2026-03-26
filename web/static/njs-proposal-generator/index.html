@@ -1,169 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NJS Proposal Generator</title>
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: "Segoe UI", -apple-system, system-ui, sans-serif;
-        color: #101820;
-        background: #f4f5f4;
-        min-height: 100vh;
-      }
-      input,
-      select,
-      textarea,
-      button {
-        font-family: inherit;
-      }
-      input:focus,
-      textarea:focus,
-      select:focus {
-        outline: none;
-      }
-      @media print {
-        body {
-          margin: 0 !important;
-          padding: 0 !important;
-          background: white !important;
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
-        .no-print {
-          display: none !important;
-        }
-        .print-only {
-          display: block !important;
-        }
-        .print-area {
-          margin: 0 !important;
-          padding: 0 !important;
-          max-width: none !important;
-        }
-        .pdf-page {
-          box-shadow: none !important;
-          margin: 0 !important;
-          border-radius: 0 !important;
-          page-break-after: always;
-        }
-        @page {
-          size: letter;
-          margin: 0;
-        }
-      }
-      @media screen {
-        .print-only {
-          display: none !important;
-        }
-        .pdf-page {
-          box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
-          margin-bottom: 20px;
-          border-radius: 4px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="config.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-    <script type="text/babel">
-      const { useState, useRef, useCallback, useEffect } = React;
-      const CFG = window.NJS_CONFIG || {};
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NJS Proposal Generator</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', -apple-system, system-ui, sans-serif; color: #101820; background: #f4f5f4; min-height: 100vh; }
+  input, select, textarea, button { font-family: inherit; }
+  input:focus, textarea:focus, select:focus { outline: none; }
+  @media print {
+    body { margin: 0 !important; padding: 0 !important; background: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .no-print { display: none !important; }
+    .print-only { display: block !important; }
+    .print-area { margin: 0 !important; padding: 0 !important; max-width: none !important; }
+    .pdf-page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; page-break-after: always; }
+    @page { size: letter; margin: 0; }
+  }
+  @media screen {
+    .print-only { display: none !important; }
+    .pdf-page { box-shadow: 0 2px 16px rgba(0,0,0,.12); margin-bottom: 20px; border-radius: 4px; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="config.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useRef, useCallback, useEffect } = React;
+const CFG = window.NJS_CONFIG || {};
 
-      const G1 = "#53AF3B",
-        G2 = "#007041",
-        BK = "#101820",
-        GY = "#BBBCBC",
-        RED = "#D32F2F";
-      const fmt$ = (v) =>
-        "$" +
-        (parseFloat(v) || 0).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        });
-      const today = () =>
-        new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-      const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+/* ── Gmail API Auto-Send Helper ── */
+let _gmailTokenClient = null;
+let _gmailAccessToken = null;
 
-      const SECTIONS = [
-        {
-          title: "Lobby & Common Areas",
-          items: [
-            "Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)",
-            "Empty all trash & replace liners",
-            "Sweep & mop all hard floors",
-            "Vacuum carpets & rugs",
-            "Clean glass surfaces & door windows (6ft. & lower)",
-            "Spot clean walls, doors, & light switches",
-            "Replenish hand sanitizers (if applicable)",
-          ],
-        },
-        {
-          title: "Offices & Conference Rooms",
-          items: [
-            "Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)",
-            "Empty all trash & replace liners",
-            "Sweep & mop all hard floors",
-            "Vacuum carpets & rugs",
-            "Clean glass surfaces & door windows (6ft. & lower)",
-            "Spot clean walls, doors, & light switches",
-            "Replenish hand sanitizers (if applicable)",
-          ],
-        },
-        {
-          title: "Restrooms",
-          items: [
-            "Clean & disinfect toilets, urinals, sinks, & counters",
-            "Wipe all mirrors and partitions",
-            "Refill soap, toilet paper, and paper towels",
-            "Mop floors",
-            "Empty all trash, including sanitary bins; replace liners",
-          ],
-        },
-        {
-          title: "Kitchen & Breakrooms",
-          items: [
-            "Wipe countertops & tables",
-            "Clean exterior of appliances (microwave, fridge, etc.)",
-            "Sweep & mop floors",
-            "Empty trash & recycling",
-          ],
-        },
-        { title: "Hallways & Stairwells", items: ["Sweep & mop floors"] },
-        { title: "Warehouse (Daily)", items: ["Empty all trash & replace liners"] },
-        { title: "Exterior Entryways (Daily)", items: ["Pick up and discard of any debris"] },
-      ];
-      const DAYPORTER_ITEMS = [
-        "Spot mop any spills, high traffic areas (as needed)",
-        "Vacuum any rugs (as needed)",
-        "Empty trash",
-        "Clean restrooms (Wipe down counters, refill any paper consumables as needed)",
-        "Exterior cleaning (pick up and discard any trash)",
-      ];
-      const ADDON_LIBRARY = [
-        "Clean interior of refrigerator weekly incl removal of items on Fridays",
-        "Clean microwave interior weekly",
-        "Clean out Air Filters in Restrooms (2x/month)",
-        "Window Cleaning (Interior/Exterior)",
-        "Pressure washing",
-        "Any additional floorcare",
-        "Event clean-up services",
-        "Sanitize all door handles and light switches",
-      ];
+function initGmailAuth() {
+  if (!CFG.gmail || !CFG.gmail.clientId || CFG.gmail.clientId.includes("YOUR_CLIENT_ID")) return;
+  try {
+    _gmailTokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CFG.gmail.clientId,
+      scope: "https://www.googleapis.com/auth/gmail.send",
+      callback: (resp) => { if (resp.access_token) _gmailAccessToken = resp.access_token; },
+    });
+  } catch(e) { console.warn("Gmail OAuth init skipped:", e); }
+}
 
-      const INTRO_LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.
+function getGmailToken() {
+  return new Promise((resolve, reject) => {
+    if (_gmailAccessToken) { resolve(_gmailAccessToken); return; }
+    if (!_gmailTokenClient) { reject(new Error("Gmail API not configured. Your dev needs to add a Client ID to config.js — see README.")); return; }
+    _gmailTokenClient.callback = (resp) => {
+      if (resp.error) { reject(new Error("Gmail auth denied: " + resp.error)); return; }
+      _gmailAccessToken = resp.access_token;
+      resolve(_gmailAccessToken);
+    };
+    _gmailTokenClient.requestAccessToken({ prompt: "" });
+  });
+}
+
+async function sendGmailDirect(to, subject, body) {
+  const token = await getGmailToken();
+  const mime = ["From: " + (CFG.senderEmail || CFG.gmail?.senderEmail || "me"), "To: " + to, "Subject: " + subject, "MIME-Version: 1.0", "Content-Type: text/plain; charset=UTF-8", "", body].join("\r\n");
+  const raw = btoa(unescape(encodeURIComponent(mime))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  const resp = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+    method: "POST",
+    headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify({ raw }),
+  });
+  if (!resp.ok) { const err = await resp.json().catch(()=>({})); throw new Error(err.error?.message || "Gmail API error " + resp.status); }
+  return resp.json();
+}
+
+const gmailApiAvailable = () => !!(CFG.gmail && CFG.gmail.clientId && !CFG.gmail.clientId.includes("YOUR_CLIENT_ID"));
+
+const G1="#53AF3B",G2="#007041",BK="#101820",GY="#BBBCBC",RED="#D32F2F";
+const fmt$=v=>"$"+(parseFloat(v)||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const today=()=>new Date().toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+
+/* Phone auto-formatter: any input → xxx-xxx-xxxx */
+function formatPhone(val) {
+  const digits = val.replace(/\D/g, "").slice(0, 10);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return digits.slice(0,3) + "-" + digits.slice(3);
+  return digits.slice(0,3) + "-" + digits.slice(3,6) + "-" + digits.slice(6);
+}
+
+const SECTIONS=[
+  {title:"Lobby & Common Areas",items:["Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)","Empty all trash & replace liners","Sweep & mop all hard floors","Vacuum carpets & rugs","Clean glass surfaces & door windows (6ft. & lower)","Spot clean walls, doors, & light switches","Replenish hand sanitizers (if applicable)"]},
+  {title:"Offices & Conference Rooms",items:["Dust all horizontal surfaces 6ft. & lower (desk, windowsills, tables)","Empty all trash & replace liners","Sweep & mop all hard floors","Vacuum carpets & rugs","Clean glass surfaces & door windows (6ft. & lower)","Spot clean walls, doors, & light switches","Replenish hand sanitizers (if applicable)"]},
+  {title:"Restrooms",items:["Clean & disinfect toilets, urinals, sinks, & counters","Wipe all mirrors and partitions","Refill soap, toilet paper, and paper towels","Mop floors","Empty all trash, including sanitary bins; replace liners"]},
+  {title:"Kitchen & Breakrooms",items:["Wipe countertops & tables","Clean exterior of appliances (microwave, fridge, etc.)","Sweep & mop floors","Empty trash & recycling"]},
+  {title:"Hallways & Stairwells",items:["Sweep & mop floors"]},
+  {title:"Warehouse (Daily)",items:["Empty all trash & replace liners"]},
+  {title:"Exterior Entryways (Daily)",items:["Pick up and discard of any debris"]},
+];
+const DAYPORTER_ITEMS=["Spot mop any spills, high traffic areas (as needed)","Vacuum any rugs (as needed)","Empty trash","Clean restrooms (Wipe down counters, refill any paper consumables as needed)","Exterior cleaning (pick up and discard any trash)"];
+const ADDON_LIBRARY=["Clean interior of refrigerator weekly incl removal of items on Fridays","Clean microwave interior weekly","Clean out Air Filters in Restrooms (2x/month)","Window Cleaning (Interior/Exterior)","Pressure washing","Any additional floorcare","Event clean-up services","Sanitize all door handles and light switches"];
+
+const INTRO_LETTER=`National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.
 
 Our goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.
 
@@ -173,94 +112,26 @@ Below, you'll find our company's promise to you, terms and conditions, Scope of 
 
 Thank you for the opportunity to earn your business. We look forward to working together.`;
 
-      const COMMITMENT = [
-        {
-          heading: "Dedicated Quality Control Manager (QCM)",
-          intro:
-            "Your account will be regularly inspected by a seasoned Quality Control Manager who ensures high facility maintenance standards by:",
-          bullets: [
-            "Conducting routine site inspections",
-            "Coordinating with on-site staff to improve efficiency",
-            "Addressing issues before they escalate",
-          ],
-          after:
-            "Your QCM is always accessible for routine questions or urgent matters—and committed to prompt, professional support.",
-        },
-        {
-          heading: "Daily Service Records",
-          intro:
-            "We maintain updated service logs using your preferred inspection sheets or our own forms. These records:",
-          bullets: [
-            "Track service quality and identify attention areas",
-            "Ensure accountability across shifts",
-            "Document and follow up on special requests",
-          ],
-          after:
-            "All action items are reviewed during internal meetings between QCMs, supervisors, and cleaning crews to ensure thorough execution.",
-        },
-        {
-          heading: "Security & Incident Reporting",
-          text: "Our team adheres to strict access and safety protocols. Any incidents involving damage, plumbing or electrical issues, or potential security breaches will be reported immediately.",
-        },
-        {
-          heading: "Special Requests & Site Conditions",
-          text: "All special requests are handled promptly by your QCM. If unusual accumulations (e.g., post-construction debris, event clean-up) require additional labor or materials, costs will be discussed and approved in advance.",
-        },
-        {
-          heading: "Your Satisfaction, Your Team",
-          text: "While we stand behind our staff, your comfort is our priority. If any team member fails to meet expectations, you may request their immediate replacement.",
-        },
-      ];
+const COMMITMENT=[
+  {heading:"Dedicated Quality Control Manager (QCM)",intro:"Your account will be regularly inspected by a seasoned Quality Control Manager who ensures high facility maintenance standards by:",bullets:["Conducting routine site inspections","Coordinating with on-site staff to improve efficiency","Addressing issues before they escalate"],after:"Your QCM is always accessible for routine questions or urgent matters—and committed to prompt, professional support."},
+  {heading:"Daily Service Records",intro:"We maintain updated service logs using your preferred inspection sheets or our own forms. These records:",bullets:["Track service quality and identify attention areas","Ensure accountability across shifts","Document and follow up on special requests"],after:"All action items are reviewed during internal meetings between QCMs, supervisors, and cleaning crews to ensure thorough execution."},
+  {heading:"Security & Incident Reporting",text:"Our team adheres to strict access and safety protocols. Any incidents involving damage, plumbing or electrical issues, or potential security breaches will be reported immediately."},
+  {heading:"Special Requests & Site Conditions",text:"All special requests are handled promptly by your QCM. If unusual accumulations (e.g., post-construction debris, event clean-up) require additional labor or materials, costs will be discussed and approved in advance."},
+  {heading:"Your Satisfaction, Your Team",text:"While we stand behind our staff, your comfort is our priority. If any team member fails to meet expectations, you may request their immediate replacement."},
+];
 
-      const TERMS = [
-        {
-          n: "1",
-          t: "Scope of Services",
-          text: 'Services provided by National Janitorial Services ("NJS") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January.',
-        },
-        {
-          n: "2",
-          t: "Payment Terms",
-          bullets: [
-            "All invoices are due NET 15 (within 15 calendar days of the invoice date).",
-            "A 5% late fee will be applied to any invoice not paid by the due date.",
-            "Accounts with invoices more than 30 days overdue may be subject to service suspension and additional late fees.",
-            "Continued non-payment may result in service termination and referral to a collections agency.",
-          ],
-        },
-        {
-          n: "3",
-          t: "Payment Methods",
-          text: "We accept checks, credit cards, and ACH. Most clients choose a recurring payment setup via credit card or ACH for convenience. Our billing department will assist in setting up your preferred payment method.\n\nIf a scheduled cleaning is missed or skipped at your request, a prorated credit will be applied to the following billing cycle. For support, please notify your assigned Quality Control Manager (QCM) or email our billing team directly at: billing@nationaljanitorialservices.com.",
-        },
-        {
-          n: "4",
-          t: "Service Guarantee",
-          text: "We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination.",
-        },
-        {
-          n: "5",
-          t: "Annual Price Adjustments",
-          text: "NJS reviews operational costs—such as labor, insurance, supplies, and overhead—on an annual basis. If an adjustment to your monthly pricing is necessary, you will be notified in writing at least 30 days in advance. Any increase will be reasonable and reflective of market conditions.",
-        },
-        {
-          n: "6",
-          t: "Access Requirements",
-          text: "Client agrees to provide NJS with necessary access to all agreed-upon areas during scheduled cleaning times. Missed cleanings due to access restrictions may not be credited unless prior notice was given.",
-        },
-        {
-          n: "7",
-          t: "Liability & Insurance",
-          text: "NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention.",
-        },
-        {
-          n: "8",
-          t: "Non-Solicitation of Personnel",
-          text: "To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation.",
-        },
-      ];
+const TERMS=[
+  {n:"1",t:"Scope of Services",text:"Services provided by National Janitorial Services (\"NJS\") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January."},
+  {n:"2",t:"Payment Terms",bullets:["All invoices are due NET 15 (within 15 calendar days of the invoice date).","A 5% late fee will be applied to any invoice not paid by the due date.","Accounts with invoices more than 30 days overdue may be subject to service suspension and additional late fees.","Continued non-payment may result in service termination and referral to a collections agency."]},
+  {n:"3",t:"Payment Methods",text:"We accept checks, credit cards, and ACH. Most clients choose a recurring payment setup via credit card or ACH for convenience. Our billing department will assist in setting up your preferred payment method.\n\nIf a scheduled cleaning is missed or skipped at your request, a prorated credit will be applied to the following billing cycle. For support, please notify your assigned Quality Control Manager (QCM) or email our billing team directly at: billing@nationaljanitorialservices.com."},
+  {n:"4",t:"Service Guarantee",text:"We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination."},
+  {n:"5",t:"Annual Price Adjustments",text:"NJS reviews operational costs—such as labor, insurance, supplies, and overhead—on an annual basis. If an adjustment to your monthly pricing is necessary, you will be notified in writing at least 30 days in advance. Any increase will be reasonable and reflective of market conditions."},
+  {n:"6",t:"Access Requirements",text:"Client agrees to provide NJS with necessary access to all agreed-upon areas during scheduled cleaning times. Missed cleanings due to access restrictions may not be credited unless prior notice was given."},
+  {n:"7",t:"Liability & Insurance",text:"NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention."},
+  {n:"8",t:"Non-Solicitation of Personnel",text:"To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation."},
+];
 
-      const defaultClientEmail = (name) => `Dear ${name},
+const defaultClientEmail=(name)=>`Dear ${name},
 
 Thank you for your interest in National Janitorial Services. Please find attached our proposal for professional cleaning services customized for your facility.
 
@@ -274,2327 +145,472 @@ Owner, National Janitorial Services
 patrick@nationaljanitorialservices.com
 (414) 899-9975`;
 
-      /* ── UI Components ── */
-      function Tog({ on, set, sm }) {
-        const h = sm ? 16 : 22,
-          w = h * 1.75;
-        return (
-          <button
-            type="button"
-            onClick={() => set(!on)}
-            style={{
-              width: w,
-              height: h,
-              borderRadius: h,
-              background: on ? G1 : "#ccc",
-              border: "none",
-              cursor: "pointer",
-              position: "relative",
-              transition: "background .15s",
-              flexShrink: 0,
-            }}
-          >
-            <span
-              style={{
-                position: "absolute",
-                top: 2,
-                left: on ? w - h + 2 : 2,
-                width: h - 4,
-                height: h - 4,
-                borderRadius: "50%",
-                background: "#fff",
-                transition: "left .15s",
-              }}
-            />
-          </button>
-        );
-      }
-      const Req = () => <span style={{ color: RED, marginLeft: 2, fontWeight: 700 }}>*</span>;
-      const Err = ({ msg }) =>
-        msg ? <div style={{ fontSize: 10, color: RED, marginTop: 2 }}>{msg}</div> : null;
-      const Inp = ({ val, set, ph, style: st, type, err }) => (
-        <div>
-          <input
-            type={type || "text"}
-            value={val}
-            onChange={(e) => set(e.target.value)}
-            placeholder={ph}
-            style={{
-              width: "100%",
-              border: `1px solid ${err ? RED : "#ddd"}`,
-              borderRadius: 5,
-              padding: "7px 10px",
-              fontFamily: "inherit",
-              fontSize: 13,
-              boxSizing: "border-box",
-              outline: "none",
-              background: err ? "#FFF5F5" : "#fff",
-              ...st,
-            }}
-            onFocus={(e) => (e.target.style.borderColor = err ? RED : G1)}
-            onBlur={(e) => (e.target.style.borderColor = err ? RED : "#ddd")}
-          />
-          <Err msg={err} />
-        </div>
-      );
-      const Field = ({ label, children, span, required }) => (
-        <div style={{ gridColumn: span ? "1 / -1" : undefined }}>
-          <label
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              color: "#555",
-              display: "block",
-              marginBottom: 3,
-            }}
-          >
-            {label}
-            {required && <Req />}
-          </label>
-          {children}
-        </div>
-      );
-      function DayChip({ day, selected, toggle }) {
-        return (
-          <button
-            type="button"
-            onClick={toggle}
-            style={{
-              padding: "6px 14px",
-              borderRadius: 20,
-              border: `2px solid ${selected ? G1 : "#ddd"}`,
-              background: selected ? G1 : "#fff",
-              color: selected ? "#fff" : BK,
-              cursor: "pointer",
-              fontSize: 12,
-              fontWeight: selected ? 700 : 400,
-              fontFamily: "inherit",
-              transition: "all .15s",
-            }}
-          >
-            {day.substring(0, 3)}
-          </button>
-        );
-      }
+/* ── UI Components ── */
+function Tog({on,set,sm}){const h=sm?16:22,w=h*1.75;return<button type="button" onClick={()=>set(!on)} style={{width:w,height:h,borderRadius:h,background:on?G1:"#ccc",border:"none",cursor:"pointer",position:"relative",transition:"background .15s",flexShrink:0}}><span style={{position:"absolute",top:2,left:on?w-h+2:2,width:h-4,height:h-4,borderRadius:"50%",background:"#fff",transition:"left .15s"}}/></button>}
+const Req=()=><span style={{color:RED,marginLeft:2,fontWeight:700}}>*</span>;
+const Err=({msg})=>msg?<div style={{fontSize:10,color:RED,marginTop:2}}>{msg}</div>:null;
+const Inp=({val,set,ph,style:st,type,err})=>(<div><input type={type||"text"} value={val} onChange={e=>set(e.target.value)} placeholder={ph} style={{width:"100%",border:`1px solid ${err?RED:"#ddd"}`,borderRadius:5,padding:"7px 10px",fontFamily:"inherit",fontSize:13,boxSizing:"border-box",outline:"none",background:err?"#FFF5F5":"#fff",...st}} onFocus={e=>e.target.style.borderColor=err?RED:G1} onBlur={e=>e.target.style.borderColor=err?RED:"#ddd"}/><Err msg={err}/></div>);
+const Field=({label,children,span,required})=>(<div style={{gridColumn:span?"1 / -1":undefined}}><label style={{fontSize:11,fontWeight:600,color:"#555",display:"block",marginBottom:3}}>{label}{required&&<Req/>}</label>{children}</div>);
+function DayChip({day,selected,toggle}){return<button type="button" onClick={toggle} style={{padding:"6px 14px",borderRadius:20,border:`2px solid ${selected?G1:"#ddd"}`,background:selected?G1:"#fff",color:selected?"#fff":BK,cursor:"pointer",fontSize:12,fontWeight:selected?700:400,fontFamily:"inherit",transition:"all .15s"}}>{day.substring(0,3)}</button>}
 
-      /* ══════════════════════════════════════
+/* ══════════════════════════════════════
    PDF PAGES (used for both preview AND print)
    ══════════════════════════════════════ */
-      function ProposalPDF({ d }) {
-        const { client: c, letter, sow, dayPorter, addons, cleaner } = d;
-        const date = c.date || today();
-        const activeSow = sow.filter((s) => s.items.some((i) => i.on));
-        const activeAddons = addons.filter((a) => a.on);
-        const addonsTotal = activeAddons.reduce((s, a) => s + (parseFloat(a.price) || 0), 0);
-        const base = parseFloat(c.basePrice) || 0;
-        const total = base + addonsTotal;
-        const initialFeeDisplay = c.hasInitialFee === "yes" ? fmt$(c.initialFeeAmount) : "N/A";
-        const selectedDays = cleaner.cleaningDays.filter((d) => d.on).map((d) => d.day);
-        const freqLabel =
-          cleaner.cleaningFrequency === "once_weekly"
-            ? "Once a Week"
-            : cleaner.cleaningFrequency === "biweekly"
-            ? "Bi-Weekly"
-            : "Monthly";
+function ProposalPDF({d}){
+  const{client:c,letter,sow,dayPorter,addons,cleaner}=d;
+  const date=c.date||today();
+  const activeSow=sow.filter(s=>s.items.some(i=>i.on));
+  const activeAddons=addons.filter(a=>a.on);
+  const addonsTotal=activeAddons.reduce((s,a)=>s+(parseFloat(a.price)||0),0);
+  const base=parseFloat(c.basePrice)||0;const total=base+addonsTotal;
+  const initialFeeDisplay=c.hasInitialFee==="yes"?fmt$(c.initialFeeAmount):"N/A";
+  const selectedDays=cleaner.cleaningDays.filter(d=>d.on).map(d=>d.day);
+  const freqLabel=cleaner.cleaningFrequency==="once_weekly"?"Weekly":cleaner.cleaningFrequency==="biweekly"?"Bi-Weekly":"Monthly";
 
-        const pg = {
-          fontFamily: "'Segoe UI','Helvetica Neue',Arial,sans-serif",
-          color: BK,
-          fontSize: 10,
-          lineHeight: 1.55,
-          width: "8.5in",
-          minHeight: "11in",
-          padding: "0.75in 0.85in",
-          background: "#fff",
-          boxSizing: "border-box",
-          pageBreakAfter: "always",
-          position: "relative",
-        };
-        const hdr = () => (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              paddingBottom: 10,
-              borderBottom: `3px solid ${G1}`,
-              marginBottom: 20,
-            }}
-          >
-            <div>
-              <div style={{ fontSize: 24, fontWeight: 900, letterSpacing: 1.5, color: BK }}>
-                N<span style={{ color: G1 }}>A</span>TIONAL
-              </div>
-              <div
-                style={{
-                  fontSize: 12,
-                  color: G1,
-                  fontWeight: 600,
-                  marginTop: -3,
-                  letterSpacing: 0.5,
-                }}
-              >
-                Janitorial Services
-              </div>
-            </div>
-            <div style={{ textAlign: "right", fontSize: 8.5, color: "#666", lineHeight: 1.5 }}>
-              500 W. Harbor Dr Unit 303
-              <br />
-              San Diego, CA 92101
-              <br />
-              billing@nationaljanitorialservices.com
-            </div>
-          </div>
-        );
+  const pg={fontFamily:"'Segoe UI','Helvetica Neue',Arial,sans-serif",color:BK,fontSize:10,lineHeight:1.55,width:"8.5in",minHeight:"11in",padding:"0.75in 0.85in",background:"#fff",boxSizing:"border-box",pageBreakAfter:"always",position:"relative"};
+  const hdr=()=>(<div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",paddingBottom:10,borderBottom:`3px solid ${G1}`,marginBottom:20}}><div><div style={{fontSize:24,fontWeight:900,letterSpacing:1.5,color:BK}}>N<span style={{color:G1}}>A</span>TIONAL</div><div style={{fontSize:12,color:G1,fontWeight:600,marginTop:-3,letterSpacing:.5}}>Janitorial Services</div></div><div style={{textAlign:"right",fontSize:8.5,color:"#666",lineHeight:1.5}}>500 W. Harbor Dr Unit 303<br/>San Diego, CA 92101<br/>billing@nationaljanitorialservices.com</div></div>);
 
-        return (
-          <>
-            {/* Page 1: Cover Letter */}
-            <div style={pg} className="pdf-page">
-              {hdr()}
-              <div style={{ marginBottom: 6 }}>
-                <span style={{ fontWeight: 700, fontSize: 12 }}>CLIENT: </span>
-                <span style={{ fontWeight: 700, fontSize: 12, color: G2 }}>{c.company}</span>
-              </div>
-              <div style={{ fontSize: 9, color: "#777", marginBottom: 20 }}>{date}</div>
-              <div style={{ marginBottom: 16, fontSize: 10.5 }}>Dear {c.contactFirst},</div>
-              {letter.split("\n\n").map((p, i) => (
-                <p key={i} style={{ margin: "0 0 10px", fontSize: 10 }}>
-                  {p}
-                </p>
-              ))}
-              <div style={{ marginTop: 16, fontSize: 10 }}>
-                Best regards,
-                <br />
-                <strong style={{ fontSize: 11 }}>Patrick Dillon</strong>
-                <br />
-                <span style={{ fontSize: 9, color: "#666" }}>
-                  Owner · patrick@nationaljanitorialservices.com · (414) 899-9975
-                </span>
-              </div>
-            </div>
-            {/* Page 2: Commitment & Terms */}
-            <div style={pg} className="pdf-page">
-              {hdr()}
-              <div style={{ fontSize: 14, fontWeight: 800, color: BK, marginBottom: 4 }}>
-                Our Commitment
-              </div>
-              <div style={{ fontSize: 9, color: "#888", marginBottom: 12 }}>
-                Resources, Process & Quality Assurance
-              </div>
-              <p style={{ fontSize: 9.5, margin: "0 0 10px" }}>
-                At National Janitorial Services (NJS), we take pride in a proactive, responsive
-                approach to service and communication. Here's what you can expect from our team:
-              </p>
-              {COMMITMENT.map((s, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: G2, marginBottom: 2 }}>
-                    {s.heading}
-                  </div>
-                  {s.intro && <p style={{ fontSize: 9, margin: "0 0 3px" }}>{s.intro}</p>}
-                  {s.text && <p style={{ fontSize: 9, margin: 0 }}>{s.text}</p>}
-                  {s.bullets && (
-                    <div style={{ paddingLeft: 12 }}>
-                      {s.bullets.map((b, j) => (
-                        <div key={j} style={{ fontSize: 9, padding: "1px 0" }}>
-                          • {b}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {s.after && <p style={{ fontSize: 9, margin: "3px 0 0" }}>{s.after}</p>}
-                </div>
-              ))}
-              <div
-                style={{
-                  fontSize: 14,
-                  fontWeight: 800,
-                  color: BK,
-                  marginTop: 16,
-                  marginBottom: 10,
-                  borderTop: `2px solid ${G1}`,
-                  paddingTop: 12,
-                }}
-              >
-                Service Terms & Conditions
-              </div>
-              {TERMS.map((t, i) => (
-                <div key={i} style={{ marginBottom: 8 }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: G2 }}>
-                    {t.n}. {t.t}
-                  </div>
-                  {t.text &&
-                    t.text.split("\n\n").map((p, j) => (
-                      <p key={j} style={{ fontSize: 9, margin: "2px 0 4px" }}>
-                        {p}
-                      </p>
-                    ))}
-                  {t.bullets && (
-                    <div style={{ paddingLeft: 12 }}>
-                      {t.bullets.map((b, j) => (
-                        <div key={j} style={{ fontSize: 9, padding: "1px 0" }}>
-                          • {b}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            {/* Page 3: SOW */}
-            <div style={pg} className="pdf-page">
-              {hdr()}
-              <div
-                style={{
-                  background: BK,
-                  color: "#fff",
-                  padding: "8px 14px",
-                  borderRadius: 4,
-                  marginBottom: 14,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: 1 }}>
-                  SCOPE OF WORK
-                </span>
-                <span style={{ fontSize: 9 }}>SOW</span>
-              </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "3px 24px",
-                  fontSize: 9.5,
-                  marginBottom: 4,
-                  padding: "8px 12px",
-                  background: "#f8f9f8",
-                  borderRadius: 4,
-                  border: `1px solid ${G1}22`,
-                }}
-              >
-                <div>
-                  <strong>Date:</strong> {date}
-                </div>
-                <div>
-                  <strong>Term:</strong> {c.term || "12 Months"}
-                </div>
-                <div>
-                  <strong>Company:</strong> {c.company}
-                </div>
-                <div>
-                  <strong>Phone:</strong> {c.phone}
-                </div>
-                <div>
-                  <strong>Address:</strong> {c.address}
-                </div>
-                <div>
-                  <strong>Email:</strong> {c.email}
-                </div>
-                <div>
-                  <strong>Contact:</strong> {c.contactFirst} {c.contactLast}
-                </div>
-                <div>
-                  <strong>Client Type:</strong> {c.isNew ? "New Client" : "Existing Client"}
-                </div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: "8px 12px",
-                  background: G2,
-                  color: "#fff",
-                  borderRadius: 4,
-                  fontSize: 10,
-                  marginBottom: 4,
-                }}
-              >
-                <span>
-                  Cleaning Days:{" "}
-                  <strong>
-                    {selectedDays.length > 0
-                      ? selectedDays.map((d) => d.substring(0, 3)).join(", ")
-                      : "—"}
-                  </strong>
-                </span>
-                <span>
-                  Cleaning Frequency: <strong>{freqLabel}</strong>
-                </span>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: "6px 12px",
-                  background: BK,
-                  color: "#fff",
-                  borderRadius: 4,
-                  fontSize: 10,
-                  marginBottom: 14,
-                }}
-              >
-                <span>
-                  Sq Ft: <strong>{c.sqft}</strong>
-                </span>
-                <span>
-                  Service Freq: <strong>{c.frequency}</strong>
-                </span>
-                <span>
-                  Initial Fee: <strong>{initialFeeDisplay}</strong>
-                </span>
-                <span>
-                  Base Fee: <strong>{fmt$(c.basePrice)}</strong>
-                </span>
-              </div>
-              {activeSow.map((sec, si) => {
-                const ai = sec.items.filter((i) => i.on);
-                if (!ai.length) return null;
-                return (
-                  <div key={si} style={{ marginBottom: 8 }}>
-                    <div
-                      style={{
-                        background: BK,
-                        color: "#fff",
-                        padding: "4px 10px",
-                        fontSize: 10,
-                        fontWeight: 700,
-                        borderRadius: 2,
-                        marginBottom: 3,
-                      }}
-                    >
-                      {sec.title}
-                    </div>
-                    {ai.map((it, ii) => (
-                      <div
-                        key={ii}
-                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" }}
-                      >
-                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
-                        <span>{it.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                );
-              })}
-              {dayPorter.enabled && (
-                <div style={{ marginBottom: 8 }}>
-                  <div
-                    style={{
-                      background: BK,
-                      color: "#fff",
-                      padding: "4px 10px",
-                      fontSize: 10,
-                      fontWeight: 700,
-                      borderRadius: 2,
-                      marginBottom: 3,
-                    }}
-                  >
-                    Day Porter Janitorial Services – {dayPorter.hours} Hours Per Day
-                  </div>
-                  {dayPorter.items
-                    .filter((i) => i.on)
-                    .map((it, ii) => (
-                      <div
-                        key={ii}
-                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" }}
-                      >
-                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
-                        <span>{it.text}</span>
-                      </div>
-                    ))}
-                </div>
-              )}
-              {activeAddons.length > 0 && (
-                <div style={{ marginBottom: 8 }}>
-                  <div
-                    style={{
-                      background: BK,
-                      color: "#fff",
-                      padding: "4px 10px",
-                      fontSize: 10,
-                      fontWeight: 700,
-                      borderRadius: 2,
-                      marginBottom: 3,
-                    }}
-                  >
-                    Special Requests & Add-Ons
-                  </div>
-                  {activeAddons.map((a, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: 9.5,
-                        padding: "2px 10px",
-                      }}
-                    >
-                      <div style={{ display: "flex", gap: 6 }}>
-                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
-                        <span>{a.text}</span>
-                      </div>
-                      {parseFloat(a.price) > 0 && (
-                        <span style={{ fontWeight: 600 }}>{fmt$(a.price)}/mo</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-              <div
-                style={{
-                  background: G1,
-                  borderRadius: 6,
-                  padding: "12px 16px",
-                  color: "#fff",
-                  marginTop: 10,
-                }}
-              >
-                <div style={{ fontSize: 11, fontWeight: 800, marginBottom: 6, letterSpacing: 0.5 }}>
-                  COMPLETE PRICING
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: 10,
-                    padding: "3px 0",
-                  }}
-                >
-                  <span>Base Monthly Rate for General Services</span>
-                  <span>{fmt$(base)}</span>
-                </div>
-                {addonsTotal > 0 && (
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: 10,
-                      padding: "3px 0",
-                    }}
-                  >
-                    <span>Special Requests & Add-Ons</span>
-                    <span>{fmt$(addonsTotal)}</span>
-                  </div>
-                )}
-                {c.hasInitialFee === "yes" && parseFloat(c.initialFeeAmount) > 0 && (
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: 10,
-                      padding: "3px 0",
-                    }}
-                  >
-                    <span>Initial Cleaning Fee (one-time)</span>
-                    <span>{fmt$(c.initialFeeAmount)}</span>
-                  </div>
-                )}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: 16,
-                    fontWeight: 900,
-                    padding: "8px 0 0",
-                    borderTop: "2px solid rgba(255,255,255,.4)",
-                    marginTop: 6,
-                  }}
-                >
-                  <span>Total Flat Monthly Fee</span>
-                  <span>{fmt$(total)}</span>
-                </div>
-              </div>
-              <div style={{ marginTop: 20, fontSize: 9 }}>
-                <div style={{ fontWeight: 700, fontSize: 10, marginBottom: 10 }}>
-                  Proposal Acceptance
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 40px" }}>
-                  {["Company", "Date", "Name & Title", "Signature"].map((l) => (
-                    <div
-                      key={l}
-                      style={{
-                        borderBottom: "1px solid #888",
-                        paddingBottom: 28,
-                        fontSize: 8,
-                        color: "#888",
-                      }}
-                    >
-                      {l}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{ textAlign: "right", marginTop: 16 }}>
-                <span
-                  style={{
-                    borderBottom: "1px solid #888",
-                    display: "inline-block",
-                    width: 100,
-                    paddingBottom: 16,
-                    fontSize: 8,
-                    color: "#888",
-                  }}
-                >
-                  (Initials)
-                </span>
-              </div>
-            </div>
-          </>
-        );
-      }
+  return(<>
+    {/* Page 1: Cover Letter */}
+    <div style={pg} className="pdf-page">{hdr()}
+      <div style={{marginBottom:6}}><span style={{fontWeight:700,fontSize:12}}>CLIENT: </span><span style={{fontWeight:700,fontSize:12,color:G2}}>{c.company}</span></div>
+      <div style={{fontSize:9,color:"#777",marginBottom:20}}>{date}</div>
+      <div style={{marginBottom:16,fontSize:10.5}}>Dear {c.contactFirst},</div>
+      {letter.split("\n\n").map((p,i)=><p key={i} style={{margin:"0 0 10px",fontSize:10}}>{p}</p>)}
+      <div style={{marginTop:16,fontSize:10}}>Best regards,<br/><strong style={{fontSize:11}}>Patrick Dillon</strong><br/><span style={{fontSize:9,color:"#666"}}>Owner · patrick@nationaljanitorialservices.com · (414) 899-9975</span></div>
+    </div>
+    {/* Page 2: Commitment & Terms */}
+    <div style={pg} className="pdf-page">{hdr()}
+      <div style={{fontSize:14,fontWeight:800,color:BK,marginBottom:4}}>Our Commitment</div>
+      <div style={{fontSize:9,color:"#888",marginBottom:12}}>Resources, Process & Quality Assurance</div>
+      <p style={{fontSize:9.5,margin:"0 0 10px"}}>At National Janitorial Services (NJS), we take pride in a proactive, responsive approach to service and communication. Here's what you can expect from our team:</p>
+      {COMMITMENT.map((s,i)=><div key={i} style={{marginBottom:8}}><div style={{fontSize:10,fontWeight:700,color:G2,marginBottom:2}}>{s.heading}</div>{s.intro&&<p style={{fontSize:9,margin:"0 0 3px"}}>{s.intro}</p>}{s.text&&<p style={{fontSize:9,margin:0}}>{s.text}</p>}{s.bullets&&<div style={{paddingLeft:12}}>{s.bullets.map((b,j)=><div key={j} style={{fontSize:9,padding:"1px 0"}}>• {b}</div>)}</div>}{s.after&&<p style={{fontSize:9,margin:"3px 0 0"}}>{s.after}</p>}</div>)}
+      <div style={{fontSize:14,fontWeight:800,color:BK,marginTop:16,marginBottom:10,borderTop:`2px solid ${G1}`,paddingTop:12}}>Service Terms & Conditions</div>
+      {TERMS.map((t,i)=><div key={i} style={{marginBottom:8}}><div style={{fontSize:10,fontWeight:700,color:G2}}>{t.n}. {t.t}</div>{t.text&&t.text.split("\n\n").map((p,j)=><p key={j} style={{fontSize:9,margin:"2px 0 4px"}}>{p}</p>)}{t.bullets&&<div style={{paddingLeft:12}}>{t.bullets.map((b,j)=><div key={j} style={{fontSize:9,padding:"1px 0"}}>• {b}</div>)}</div>}</div>)}
+    </div>
+    {/* Page 3: SOW */}
+    <div style={pg} className="pdf-page">{hdr()}
+      <div style={{background:BK,color:"#fff",padding:"8px 14px",borderRadius:4,marginBottom:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}><span style={{fontSize:16,fontWeight:800,letterSpacing:1}}>SCOPE OF WORK</span><span style={{fontSize:9}}>SOW</span></div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3px 24px",fontSize:9.5,marginBottom:4,padding:"8px 12px",background:"#f8f9f8",borderRadius:4,border:`1px solid ${G1}22`}}>
+        <div><strong>Date:</strong> {date}</div><div><strong>Term:</strong> {c.term||"12 Months"}</div>
+        <div><strong>Company:</strong> {c.company}</div><div><strong>Phone:</strong> {c.phone}</div>
+        <div><strong>Address:</strong> {c.address}</div><div><strong>Email:</strong> {c.email}</div>
+        <div><strong>Contact:</strong> {c.contactFirst} {c.contactLast}</div><div><strong>Client Type:</strong> {c.isNew?"New Client":"Existing Client"}</div>
+      </div>
+      <div style={{display:"flex",justifyContent:"space-between",padding:"8px 12px",background:G2,color:"#fff",borderRadius:4,fontSize:10,marginBottom:4}}>
+        <span>Cleaning Days: <strong>{selectedDays.length>0?selectedDays.map(d=>d.substring(0,3)).join(", "):"—"}</strong></span>
+        <span>Cleaning Frequency: <strong>{freqLabel}</strong></span>
+      </div>
+      <div style={{display:"flex",justifyContent:"space-between",padding:"6px 12px",background:BK,color:"#fff",borderRadius:4,fontSize:10,marginBottom:14}}>
+        <span>Sq Ft: <strong>{c.sqft}</strong></span><span>Service Freq: <strong>{c.frequency}</strong></span><span>Initial Fee: <strong>{initialFeeDisplay}</strong></span><span>Base Fee: <strong>{fmt$(c.basePrice)}</strong></span>
+      </div>
+      {activeSow.map((sec,si)=>{const ai=sec.items.filter(i=>i.on);if(!ai.length)return null;return(<div key={si} style={{marginBottom:8}}><div style={{background:BK,color:"#fff",padding:"4px 10px",fontSize:10,fontWeight:700,borderRadius:2,marginBottom:3}}>{sec.title}</div>{ai.map((it,ii)=><div key={ii} style={{display:"flex",gap:6,fontSize:9.5,padding:"2px 10px"}}><span style={{color:G1,fontWeight:700}}>☑</span><span>{it.text}</span></div>)}</div>);})}
+      {dayPorter.enabled&&<div style={{marginBottom:8}}><div style={{background:BK,color:"#fff",padding:"4px 10px",fontSize:10,fontWeight:700,borderRadius:2,marginBottom:3}}>Day Porter Janitorial Services – {dayPorter.hours} Hours Per Day</div>{dayPorter.items.filter(i=>i.on).map((it,ii)=><div key={ii} style={{display:"flex",gap:6,fontSize:9.5,padding:"2px 10px"}}><span style={{color:G1,fontWeight:700}}>☑</span><span>{it.text}</span></div>)}</div>}
+      {activeAddons.length>0&&<div style={{marginBottom:8}}><div style={{background:BK,color:"#fff",padding:"4px 10px",fontSize:10,fontWeight:700,borderRadius:2,marginBottom:3}}>Special Requests & Add-Ons</div>{activeAddons.map((a,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",fontSize:9.5,padding:"2px 10px"}}><div style={{display:"flex",gap:6}}><span style={{color:G1,fontWeight:700}}>☑</span><span>{a.text}</span></div>{parseFloat(a.price)>0&&<span style={{fontWeight:600}}>{fmt$(a.price)}/mo</span>}</div>)}</div>}
+      <div style={{background:G1,borderRadius:6,padding:"12px 16px",color:"#fff",marginTop:10}}>
+        <div style={{fontSize:11,fontWeight:800,marginBottom:6,letterSpacing:.5}}>COMPLETE PRICING</div>
+        <div style={{display:"flex",justifyContent:"space-between",fontSize:10,padding:"3px 0"}}><span>Base Monthly Rate for General Services</span><span>{fmt$(base)}</span></div>
+        {addonsTotal>0&&<div style={{display:"flex",justifyContent:"space-between",fontSize:10,padding:"3px 0"}}><span>Special Requests & Add-Ons</span><span>{fmt$(addonsTotal)}</span></div>}
+        {c.hasInitialFee==="yes"&&parseFloat(c.initialFeeAmount)>0&&<div style={{display:"flex",justifyContent:"space-between",fontSize:10,padding:"3px 0"}}><span>Initial Cleaning Fee (one-time)</span><span>{fmt$(c.initialFeeAmount)}</span></div>}
+        <div style={{display:"flex",justifyContent:"space-between",fontSize:16,fontWeight:900,padding:"8px 0 0",borderTop:"2px solid rgba(255,255,255,.4)",marginTop:6}}><span>Total Flat Monthly Fee</span><span>{fmt$(total)}</span></div>
+      </div>
+      <div style={{marginTop:20,fontSize:9}}>
+        <div style={{fontWeight:700,fontSize:10,marginBottom:10}}>Proposal Acceptance</div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"24px 40px"}}>
+          {["Company","Date","Name & Title","Signature"].map(l=><div key={l} style={{borderBottom:"1px solid #888",paddingBottom:28,fontSize:8,color:"#888"}}>{l}</div>)}
+        </div>
+      </div>
+      <div style={{textAlign:"right",marginTop:16}}><span style={{borderBottom:"1px solid #888",display:"inline-block",width:100,paddingBottom:16,fontSize:8,color:"#888"}}>(Initials)</span></div>
+    </div>
+  </>);
+}
 
-      /* ══════════════════════════════════════
+/* ══════════════════════════════════════
    SUBMIT PAGE
    ══════════════════════════════════════ */
-      function SubmitPage({ data, onBack, onDownloadPDF }) {
-        const { client: c, cleaner } = data;
-        const [emailMode, setEmailMode] = useState("generic");
-        const [customMessage, setCustomMessage] = useState(defaultClientEmail(c.contactFirst));
-        const [sending, setSending] = useState(false);
-        const [sent, setSent] = useState(false);
-        const [error, setError] = useState(null);
+function SubmitPage({data,onBack,onDownloadPDF}){
+  const{client:c,cleaner}=data;
+  const[emailMode,setEmailMode]=useState("generic");
+  const[customMessage,setCustomMessage]=useState(defaultClientEmail(c.contactFirst));
+  const[sending,setSending]=useState(false);
+  const[sent,setSent]=useState(false);
+  const[error,setError]=useState(null);
 
-        const totalMonthly =
-          (parseFloat(c.basePrice) || 0) +
-          data.addons
-            .filter((a) => a.on && parseFloat(a.price) > 0)
-            .reduce((s, a) => s + (parseFloat(a.price) || 0), 0);
-        const marginPct = parseFloat(cleaner.marginPercent) || 0;
-        const autoFee = totalMonthly * (1 - marginPct / 100);
-        const cleanerFee = cleaner.manualFee !== "" ? parseFloat(cleaner.manualFee) || 0 : autoFee;
-        const actualMargin =
-          totalMonthly > 0 ? ((totalMonthly - cleanerFee) / totalMonthly) * 100 : 0;
-        const selectedDays = cleaner.cleaningDays
-          .filter((d) => d.on)
-          .map((d) => d.day)
-          .join(", ");
-        const freqLabel =
-          cleaner.cleaningFrequency === "once_weekly"
-            ? "Once a Week"
-            : cleaner.cleaningFrequency === "biweekly"
-            ? "Bi-Weekly"
-            : "Monthly";
-        const clientBody =
-          emailMode === "generic" ? defaultClientEmail(c.contactFirst) : customMessage;
+  const totalMonthly=(parseFloat(c.basePrice)||0)+data.addons.filter(a=>a.on&&parseFloat(a.price)>0).reduce((s,a)=>s+(parseFloat(a.price)||0),0);
+  const marginPct=parseFloat(cleaner.marginPercent)||0;
+  const autoFee=totalMonthly*(1-marginPct/100);
+  const cleanerFee=cleaner.manualFee!==""?parseFloat(cleaner.manualFee)||0:autoFee;
+  const actualMargin=totalMonthly>0?((totalMonthly-cleanerFee)/totalMonthly*100):0;
+  const selectedDays=cleaner.cleaningDays.filter(d=>d.on).map(d=>d.day).join(", ");
+  const freqLabel=cleaner.cleaningFrequency==="once_weekly"?"Weekly":cleaner.cleaningFrequency==="biweekly"?"Bi-Weekly":"Monthly";
+  const clientBody=emailMode==="generic"?defaultClientEmail(c.contactFirst):customMessage;
 
-        const internalBody = `CLEANER INFORMATION (Internal Only)\n${"─".repeat(
-          40,
-        )}\nAssigned Cleaner: ${
-          cleaner.name
-        }\nCleaning Days: ${selectedDays}\nCleaning Frequency: ${freqLabel}\nMargin: ${marginPct}%\nCleaner Fee: ${fmt$(
-          cleanerFee,
-        )}\nNJS Margin: ${fmt$(totalMonthly - cleanerFee)} (${actualMargin.toFixed(
-          1,
-        )}%)\n\nCLIENT SUMMARY\n${"─".repeat(40)}\nCompany: ${c.company}\nContact: ${
-          c.contactFirst
-        } ${c.contactLast}\nPhone: ${c.phone}\nEmail: ${c.email}\nAddress: ${
-          c.address
-        }\nFacility Sq Ft: ${c.sqft}\nFrequency: ${c.frequency}\nTerm: ${
-          c.term
-        }\nBase Monthly Fee: ${fmt$(parseFloat(c.basePrice) || 0)}\nAdd-Ons: ${fmt$(
-          totalMonthly - (parseFloat(c.basePrice) || 0),
-        )}\nTotal Monthly Fee: ${fmt$(totalMonthly)}\nInitial Cleaning Fee: ${
-          c.hasInitialFee === "yes" ? fmt$(c.initialFeeAmount) : "N/A"
-        }`;
+  const internalBody=`CLEANER INFORMATION (Internal Only)\n${"─".repeat(40)}\nAssigned Cleaner: ${cleaner.name}\nCleaning Days: ${selectedDays}\nCleaning Frequency: ${freqLabel}\nMargin: ${marginPct}%\nCleaner Fee: ${fmt$(cleanerFee)}\nNJS Margin: ${fmt$(totalMonthly-cleanerFee)} (${actualMargin.toFixed(1)}%)\n\nCLIENT SUMMARY\n${"─".repeat(40)}\nCompany: ${c.company}\nContact: ${c.contactFirst} ${c.contactLast}\nPhone: ${c.phone}\nEmail: ${c.email}\nAddress: ${c.address}\nFacility Sq Ft: ${c.sqft}\nFrequency: ${c.frequency}\nTerm: ${c.term}\nBase Monthly Fee: ${fmt$(parseFloat(c.basePrice)||0)}\nAdd-Ons: ${fmt$(totalMonthly-(parseFloat(c.basePrice)||0))}\nTotal Monthly Fee: ${fmt$(totalMonthly)}\nInitial Cleaning Fee: ${c.hasInitialFee==="yes"?fmt$(c.initialFeeAmount):"N/A"}`;
 
-        const clientSubject = `National Janitorial Services || Proposal for ${c.company}`;
-        const internalSubject = `NJS || Proposal has been generated for ${c.company}`;
+  const clientSubject=`National Janitorial Services || Proposal for ${c.company}`;
+  const internalSubject=`NJS || Proposal has been generated for ${c.company}`;
 
-        const handleSend = async () => {
-          setSending(true);
-          setError(null);
-          try {
-            // Use mailto as a reliable fallback that works everywhere
-            const subject = encodeURIComponent(clientSubject);
-            const body = encodeURIComponent(
-              clientBody + "\n\n---\nPlease see the attached proposal PDF.",
-            );
-            window.open(
-              `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
-                c.email,
-              )}&su=${subject}&body=${body}`,
-              "_blank",
-            );
+  const[internalStatus,setInternalStatus]=useState(null); // null | "sent" | "error" | "noapi"
 
-            // Also open internal notification
-            const intSubject = encodeURIComponent(internalSubject);
-            const intBody = encodeURIComponent(internalBody);
-            setTimeout(() => {
-              window.open(
-                `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
-                  "billing@nationaljanitorialservices.com",
-                )}&su=${intSubject}&body=${intBody}`,
-                "_blank",
-              );
-            }, 1000);
+  const handleSend=async()=>{
+    setSending(true);setError(null);setInternalStatus(null);
+    try{
+      // 1. Open Gmail compose for CLIENT email (they attach PDF manually)
+      const subject=encodeURIComponent(clientSubject);
+      const body=encodeURIComponent(clientBody+"\n\n---\nPlease see the attached proposal PDF.");
+      window.open(`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(c.email)}&su=${subject}&body=${body}`,"_blank");
 
-            setSent(true);
-          } catch (e) {
-            setError(e.message || "Failed to open email");
-          }
-          setSending(false);
-        };
-
-        return (
-          <div style={{ maxWidth: 700, margin: "0 auto", padding: "30px 20px" }}>
-            <div style={{ textAlign: "center", marginBottom: 30 }}>
-              <div style={{ fontSize: 20, fontWeight: 800, color: BK, marginBottom: 4 }}>
-                Proposal Ready
-              </div>
-              <div style={{ fontSize: 13, color: "#888" }}>
-                for <strong style={{ color: G2 }}>{c.company}</strong>
-              </div>
-            </div>
-
-            {/* Download */}
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: 8,
-                padding: 20,
-                marginBottom: 16,
-                border: "1px solid #e8e8e8",
-              }}
-            >
-              <div
-                style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
-              >
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 700 }}>📄 Download PDF</div>
-                  <div style={{ fontSize: 11, color: "#888", marginTop: 2 }}>
-                    Save the proposal as a PDF file
-                  </div>
-                </div>
-                <button
-                  onClick={onDownloadPDF}
-                  style={{
-                    padding: "10px 24px",
-                    borderRadius: 6,
-                    border: "none",
-                    background: BK,
-                    color: "#fff",
-                    cursor: "pointer",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    fontFamily: "inherit",
-                  }}
-                >
-                  Download
-                </button>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: 8,
-                padding: 20,
-                marginBottom: 16,
-                border: `2px solid ${sent ? G1 : "#e8e8e8"}`,
-              }}
-            >
-              <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
-                📧 Email Proposal to Client
-              </div>
-              <div style={{ fontSize: 11, color: "#888", marginBottom: 14 }}>
-                Opens Gmail compose to <strong>{c.email}</strong> with your message pre-filled.
-                Download the PDF first, then attach it to the email. A second Gmail compose window
-                will open for the internal notification to{" "}
-                <strong>billing@nationaljanitorialservices.com</strong>.
-              </div>
-
-              {sent ? (
-                <div
-                  style={{
-                    padding: "14px 18px",
-                    background: "#f0faf0",
-                    borderRadius: 6,
-                    border: `1px solid ${G1}44`,
-                  }}
-                >
-                  <div style={{ fontSize: 14, fontWeight: 700, color: G2 }}>
-                    ✓ Gmail Compose Windows Opened
-                  </div>
-                  <div style={{ fontSize: 11, color: "#666", marginTop: 4 }}>
-                    Check your browser for the Gmail tabs. Attach the downloaded PDF and hit send.
-                  </div>
-                  <button
-                    onClick={() => setSent(false)}
-                    style={{
-                      marginTop: 8,
-                      padding: "6px 14px",
-                      borderRadius: 5,
-                      border: `1px solid ${G1}`,
-                      background: "#fff",
-                      color: G2,
-                      cursor: "pointer",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      fontFamily: "inherit",
-                    }}
-                  >
-                    Open Again
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div style={{ marginBottom: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 600, color: "#555", marginBottom: 3 }}>
-                      Subject Line
-                    </div>
-                    <div
-                      style={{
-                        background: "#f5f5f5",
-                        padding: "8px 12px",
-                        borderRadius: 5,
-                        fontSize: 12,
-                        fontFamily: "monospace",
-                        color: "#444",
-                      }}
-                    >
-                      {clientSubject}
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-                    {[
-                      ["generic", "Default Message"],
-                      ["custom", "Custom Message"],
-                    ].map(([m, l]) => (
-                      <button
-                        key={m}
-                        onClick={() => {
-                          setEmailMode(m);
-                          if (m === "custom") setCustomMessage(defaultClientEmail(c.contactFirst));
-                        }}
-                        style={{
-                          padding: "6px 16px",
-                          borderRadius: 5,
-                          border: `2px solid ${emailMode === m ? G1 : "#ddd"}`,
-                          background: emailMode === m ? G1 : "#fff",
-                          color: emailMode === m ? "#fff" : BK,
-                          cursor: "pointer",
-                          fontSize: 12,
-                          fontWeight: emailMode === m ? 700 : 400,
-                          fontFamily: "inherit",
-                        }}
-                      >
-                        {l}
-                      </button>
-                    ))}
-                  </div>
-                  {emailMode === "generic" ? (
-                    <div
-                      style={{
-                        background: "#f9f9f9",
-                        borderRadius: 6,
-                        padding: 14,
-                        fontSize: 12,
-                        lineHeight: 1.6,
-                        whiteSpace: "pre-wrap",
-                        color: "#444",
-                        maxHeight: 220,
-                        overflow: "auto",
-                        border: "1px solid #eee",
-                      }}
-                    >
-                      {defaultClientEmail(c.contactFirst)}
-                    </div>
-                  ) : (
-                    <textarea
-                      value={customMessage}
-                      onChange={(e) => setCustomMessage(e.target.value)}
-                      style={{
-                        width: "100%",
-                        border: "1px solid #ddd",
-                        borderRadius: 6,
-                        padding: 14,
-                        fontFamily: "inherit",
-                        fontSize: 12,
-                        lineHeight: 1.6,
-                        resize: "vertical",
-                        minHeight: 200,
-                        boxSizing: "border-box",
-                      }}
-                    />
-                  )}
-                  {error && (
-                    <div
-                      style={{
-                        marginTop: 8,
-                        padding: "8px 12px",
-                        background: "#FFF0F0",
-                        borderRadius: 5,
-                        fontSize: 12,
-                        color: RED,
-                      }}
-                    >
-                      ⚠ {error}
-                    </div>
-                  )}
-                  <button
-                    onClick={handleSend}
-                    disabled={sending}
-                    style={{
-                      marginTop: 14,
-                      padding: "12px 28px",
-                      borderRadius: 6,
-                      border: "none",
-                      background: G1,
-                      color: "#fff",
-                      cursor: sending ? "wait" : "pointer",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      fontFamily: "inherit",
-                      width: "100%",
-                      opacity: sending ? 0.7 : 1,
-                    }}
-                  >
-                    {sending ? "Opening Gmail..." : "Open Gmail & Send to Client"}
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* Internal preview */}
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: 8,
-                padding: 20,
-                marginBottom: 16,
-                border: "1px solid #e8e8e8",
-              }}
-            >
-              <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 2 }}>
-                📋 Internal Notification (opens automatically with client email)
-              </div>
-              <div style={{ fontSize: 10, color: "#888", marginBottom: 8 }}>
-                Subject: <span style={{ fontFamily: "monospace" }}>{internalSubject}</span>
-              </div>
-              <details style={{ fontSize: 11, color: "#666" }}>
-                <summary style={{ cursor: "pointer", color: G2, fontWeight: 600, marginBottom: 6 }}>
-                  Preview internal email body
-                </summary>
-                <pre
-                  style={{
-                    background: "#f5f5f5",
-                    padding: 10,
-                    borderRadius: 5,
-                    fontSize: 10,
-                    whiteSpace: "pre-wrap",
-                    lineHeight: 1.4,
-                    maxHeight: 200,
-                    overflow: "auto",
-                  }}
-                >
-                  {internalBody}
-                </pre>
-              </details>
-            </div>
-
-            <button
-              onClick={onBack}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: 6,
-                border: `1px solid ${GY}`,
-                background: "#fff",
-                cursor: "pointer",
-                fontSize: 12,
-                fontFamily: "inherit",
-                color: "#888",
-              }}
-            >
-              ← Back to Preview
-            </button>
-          </div>
-        );
+      // 2. Auto-send INTERNAL notification via Gmail API (no compose window)
+      if (gmailApiAvailable()) {
+        try {
+          await sendGmailDirect(
+            CFG.internalNotification || CFG.emails?.internalNotification || "billing@nationaljanitorialservices.com",
+            internalSubject,
+            internalBody
+          );
+          setInternalStatus("sent");
+        } catch(apiErr) {
+          console.error("Internal email auto-send failed:", apiErr);
+          setInternalStatus("error");
+        }
+      } else {
+        setInternalStatus("noapi");
       }
 
-      /* ══════════════════════════════════════
+      setSent(true);
+    }catch(e){setError(e.message||"Failed to open email");}
+    setSending(false);
+  };
+
+  return(
+    <div style={{maxWidth:700,margin:"0 auto",padding:"30px 20px"}}>
+      <div style={{textAlign:"center",marginBottom:30}}>
+        <div style={{fontSize:20,fontWeight:800,color:BK,marginBottom:4}}>Proposal Ready</div>
+        <div style={{fontSize:13,color:"#888"}}>for <strong style={{color:G2}}>{c.company}</strong></div>
+      </div>
+
+      {/* Download */}
+      <div style={{background:"#fff",borderRadius:8,padding:20,marginBottom:16,border:"1px solid #e8e8e8"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <div>
+            <div style={{fontSize:14,fontWeight:700}}>📄 Download PDF</div>
+            <div style={{fontSize:11,color:"#888",marginTop:2}}>Save the proposal as a PDF file</div>
+          </div>
+          <button onClick={onDownloadPDF} style={{padding:"10px 24px",borderRadius:6,border:"none",background:BK,color:"#fff",cursor:"pointer",fontSize:13,fontWeight:700,fontFamily:"inherit"}}>Download</button>
+        </div>
+      </div>
+
+      {/* Email */}
+      <div style={{background:"#fff",borderRadius:8,padding:20,marginBottom:16,border:`2px solid ${sent?G1:"#e8e8e8"}`}}>
+        <div style={{fontSize:14,fontWeight:700,marginBottom:4}}>📧 Email Proposal to Client</div>
+        <div style={{fontSize:11,color:"#888",marginBottom:14}}>
+          Opens Gmail compose to <strong>{c.email}</strong> with your message pre-filled.
+          Download the PDF first, then attach it to the email.
+          Internal notification will be sent automatically to <strong>{CFG.internalNotification || CFG.emails?.internalNotification || "billing@nationaljanitorialservices.com"}</strong>.
+        </div>
+
+        {sent?(
+          <div style={{padding:"14px 18px",background:"#f0faf0",borderRadius:6,border:`1px solid ${G1}44`}}>
+            <div style={{fontSize:14,fontWeight:700,color:G2}}>✓ Client Email Opened in Gmail</div>
+            <div style={{fontSize:11,color:"#666",marginTop:4}}>
+              Attach the downloaded PDF in the Gmail compose tab and hit send.
+            </div>
+            {internalStatus==="sent"&&<div style={{fontSize:11,color:G2,marginTop:6,fontWeight:600}}>✓ Internal notification sent automatically to {CFG.internalNotification || CFG.emails?.internalNotification || "billing@"}</div>}
+            {internalStatus==="error"&&<div style={{fontSize:11,color:RED,marginTop:6}}>⚠ Internal notification failed to auto-send. You may need to send it manually.</div>}
+            {internalStatus==="noapi"&&<div style={{fontSize:11,color:"#888",marginTop:6}}>ℹ Internal auto-send not configured. Ask your dev to add the Gmail Client ID to config.js (see README).</div>}
+            <button onClick={()=>setSent(false)} style={{marginTop:8,padding:"6px 14px",borderRadius:5,border:`1px solid ${G1}`,background:"#fff",color:G2,cursor:"pointer",fontSize:11,fontWeight:600,fontFamily:"inherit"}}>Open Again</button>
+          </div>
+        ):(
+          <>
+            <div style={{marginBottom:12}}>
+              <div style={{fontSize:11,fontWeight:600,color:"#555",marginBottom:3}}>Subject Line</div>
+              <div style={{background:"#f5f5f5",padding:"8px 12px",borderRadius:5,fontSize:12,fontFamily:"monospace",color:"#444"}}>{clientSubject}</div>
+            </div>
+            <div style={{display:"flex",gap:8,marginBottom:12}}>
+              {[["generic","Default Message"],["custom","Custom Message"]].map(([m,l])=>(
+                <button key={m} onClick={()=>{setEmailMode(m);if(m==="custom")setCustomMessage(defaultClientEmail(c.contactFirst));}} style={{
+                  padding:"6px 16px",borderRadius:5,border:`2px solid ${emailMode===m?G1:"#ddd"}`,
+                  background:emailMode===m?G1:"#fff",color:emailMode===m?"#fff":BK,cursor:"pointer",fontSize:12,fontWeight:emailMode===m?700:400,fontFamily:"inherit",
+                }}>{l}</button>
+              ))}
+            </div>
+            {emailMode==="generic"?(
+              <div style={{background:"#f9f9f9",borderRadius:6,padding:14,fontSize:12,lineHeight:1.6,whiteSpace:"pre-wrap",color:"#444",maxHeight:220,overflow:"auto",border:"1px solid #eee"}}>{defaultClientEmail(c.contactFirst)}</div>
+            ):(
+              <textarea value={customMessage} onChange={e=>setCustomMessage(e.target.value)} style={{width:"100%",border:"1px solid #ddd",borderRadius:6,padding:14,fontFamily:"inherit",fontSize:12,lineHeight:1.6,resize:"vertical",minHeight:200,boxSizing:"border-box"}}/>
+            )}
+            {error&&<div style={{marginTop:8,padding:"8px 12px",background:"#FFF0F0",borderRadius:5,fontSize:12,color:RED}}>⚠ {error}</div>}
+            <button onClick={handleSend} disabled={sending} style={{marginTop:14,padding:"12px 28px",borderRadius:6,border:"none",background:G1,color:"#fff",cursor:sending?"wait":"pointer",fontSize:14,fontWeight:700,fontFamily:"inherit",width:"100%",opacity:sending?.7:1}}>
+              {sending?"Opening Gmail...":"Open Gmail & Send to Client"}
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Internal notification info */}
+      <div style={{background:"#fff",borderRadius:8,padding:20,marginBottom:16,border:`1px solid ${internalStatus==="sent"?G1:"#e8e8e8"}`}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <div style={{fontSize:12,fontWeight:700,marginBottom:2}}>📋 Internal Notification</div>
+          {internalStatus==="sent"&&<span style={{fontSize:10,color:G2,fontWeight:700}}>✓ Sent</span>}
+          {!internalStatus&&<span style={{fontSize:10,color:"#aaa"}}>Auto-sends when you email client</span>}
+        </div>
+        <div style={{fontSize:10,color:"#888",marginBottom:8}}>
+          To: <strong>{CFG.internalNotification || CFG.emails?.internalNotification || "billing@nationaljanitorialservices.com"}</strong>
+          {" · "}Subject: <span style={{fontFamily:"monospace"}}>{internalSubject}</span>
+        </div>
+        <details style={{fontSize:11,color:"#666"}}>
+          <summary style={{cursor:"pointer",color:G2,fontWeight:600,marginBottom:6}}>Preview internal email body</summary>
+          <pre style={{background:"#f5f5f5",padding:10,borderRadius:5,fontSize:10,whiteSpace:"pre-wrap",lineHeight:1.4,maxHeight:200,overflow:"auto"}}>{internalBody}</pre>
+        </details>
+      </div>
+
+      <button onClick={onBack} style={{width:"100%",padding:"10px",borderRadius:6,border:`1px solid ${GY}`,background:"#fff",cursor:"pointer",fontSize:12,fontFamily:"inherit",color:"#888"}}>← Back to Preview</button>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
    MAIN APP
    ══════════════════════════════════════ */
-      function App() {
-        const [view, setView] = useState("edit");
-        const [tab, setTab] = useState("client");
-        const [errors, setErrors] = useState({});
-        const [showErrors, setShowErrors] = useState(false);
-        const [isPrinting, setIsPrinting] = useState(false);
+function App(){
+  const[view,setView]=useState("edit");
+  const[tab,setTab]=useState("client");
+  const[errors,setErrors]=useState({});
+  const[showErrors,setShowErrors]=useState(false);
+  const[isPrinting,setIsPrinting]=useState(false);
 
-        const [client, setClient] = useState({
-          company: "",
-          address: "",
-          phone: "",
-          email: "",
-          contactFirst: "",
-          contactLast: "",
-          date: today(),
-          isNew: true,
-          sqft: "",
-          frequency: "2x per week",
-          term: "12 Months",
-          hasInitialFee: "no",
-          initialFeeAmount: "",
-          basePrice: "",
-        });
-        const uc = (k, v) => {
-          setClient((p) => ({ ...p, [k]: v }));
-          if (showErrors)
-            setErrors((p) => {
-              const n = { ...p };
-              delete n[k];
-              return n;
-            });
-        };
-        const [letter, setLetter] = useState(INTRO_LETTER);
-        const [sow, setSow] = useState(() =>
-          SECTIONS.map((s) => ({
-            title: s.title,
-            items: s.items.map((text) => ({ text, on: true })),
-          })),
-        );
-        const [dayPorter, setDayPorter] = useState({
-          enabled: false,
-          hours: "4",
-          items: DAYPORTER_ITEMS.map((text) => ({ text, on: true })),
-        });
-        const [addons, setAddons] = useState(() =>
-          ADDON_LIBRARY.map((text) => ({ text, on: false, price: "" })),
-        );
-        const [cleaner, setCleaner] = useState({
-          name: "",
-          marginPercent: "35",
-          manualFee: "",
-          cleaningDays: DAYS.map((day) => ({ day, on: false })),
-          cleaningFrequency: "once_weekly",
-          frequencyConfirmed: false,
-        });
-        const ucl = (k, v) => {
-          setCleaner((p) => ({ ...p, [k]: v }));
-          if (showErrors)
-            setErrors((p) => {
-              const n = { ...p };
-              delete n[`cleaner_${k}`];
-              return n;
-            });
-        };
-        const [newItem, setNewItem] = useState("");
-        const [newSec, setNewSec] = useState(0);
-        const [newAddon, setNewAddon] = useState({ text: "", price: "" });
+  const[client,setClient]=useState({company:"",address:"",phone:"",email:"",contactFirst:"",contactLast:"",date:today(),isNew:true,sqft:"",frequency:"2x per week",term:"12 Months",hasInitialFee:"no",initialFeeAmount:"",basePrice:""});
+  const uc=(k,v)=>{setClient(p=>({...p,[k]:v}));if(showErrors)setErrors(p=>{const n={...p};delete n[k];return n;});};
+  const[letter,setLetter]=useState(INTRO_LETTER);
+  const[sow,setSow]=useState(()=>SECTIONS.map(s=>({title:s.title,items:s.items.map(text=>({text,on:true}))})));
+  const[dayPorter,setDayPorter]=useState({enabled:false,hours:"4",items:DAYPORTER_ITEMS.map(text=>({text,on:true}))});
+  const[addons,setAddons]=useState(()=>ADDON_LIBRARY.map(text=>({text,on:false,price:""})));
+  const[cleaner,setCleaner]=useState({name:"",marginPercent:"35",manualFee:"",cleaningDays:DAYS.map(day=>({day,on:false})),cleaningFrequency:"once_weekly",frequencyConfirmed:false});
+  const ucl=(k,v)=>{setCleaner(p=>({...p,[k]:v}));if(showErrors)setErrors(p=>{const n={...p};delete n[`cleaner_${k}`];return n;});};
+  const[newItem,setNewItem]=useState("");const[newSec,setNewSec]=useState(0);const[newAddon,setNewAddon]=useState({text:"",price:""});
 
-        const activeAddons = addons.filter((a) => a.on && parseFloat(a.price) > 0);
-        const addonSum = activeAddons.reduce((s, a) => s + (parseFloat(a.price) || 0), 0);
-        const base = parseFloat(client.basePrice) || 0;
-        const totalMonthly = base + addonSum;
-        const marginPct = parseFloat(cleaner.marginPercent) || 0;
-        const autoCleanerFee = totalMonthly * (1 - marginPct / 100);
-        const cleanerFee =
-          cleaner.manualFee !== "" ? parseFloat(cleaner.manualFee) || 0 : autoCleanerFee;
-        const actualMargin =
-          totalMonthly > 0 ? ((totalMonthly - cleanerFee) / totalMonthly) * 100 : 0;
+  const activeAddons=addons.filter(a=>a.on&&parseFloat(a.price)>0);
+  const addonSum=activeAddons.reduce((s,a)=>s+(parseFloat(a.price)||0),0);
+  const base=parseFloat(client.basePrice)||0;const totalMonthly=base+addonSum;
+  const marginPct=parseFloat(cleaner.marginPercent)||0;
+  const autoCleanerFee=totalMonthly*(1-marginPct/100);
+  const cleanerFee=cleaner.manualFee!==""?parseFloat(cleaner.manualFee)||0:autoCleanerFee;
+  const actualMargin=totalMonthly>0?((totalMonthly-cleanerFee)/totalMonthly*100):0;
 
-        const REQUIRED_CLIENT = [
-          { key: "company", label: "Company Name" },
-          { key: "contactFirst", label: "Contact First Name" },
-          { key: "contactLast", label: "Contact Last Name" },
-          { key: "phone", label: "Phone" },
-          { key: "email", label: "Email" },
-          { key: "address", label: "Company Address" },
-          { key: "sqft", label: "Facility Sq Ft" },
-          { key: "frequency", label: "Frequency" },
-          { key: "basePrice", label: "Base Monthly Fee" },
-        ];
+  const REQUIRED_CLIENT=[{key:"company",label:"Company Name"},{key:"contactFirst",label:"Contact First Name"},{key:"contactLast",label:"Contact Last Name"},{key:"phone",label:"Phone"},{key:"email",label:"Email"},{key:"address",label:"Company Address"},{key:"sqft",label:"Facility Sq Ft"},{key:"frequency",label:"Frequency"},{key:"basePrice",label:"Base Monthly Fee"}];
 
-        const validate = () => {
-          const e = {};
-          REQUIRED_CLIENT.forEach((f) => {
-            if (!client[f.key]?.toString().trim()) e[f.key] = `${f.label} is required`;
-          });
-          if (client.hasInitialFee === "yes" && !client.initialFeeAmount?.toString().trim())
-            e.initialFeeAmount = "Required when Yes";
-          if (!cleaner.name?.trim()) e.cleaner_name = "Required";
-          if (!cleaner.marginPercent?.toString().trim()) e.cleaner_marginPercent = "Required";
-          if (!cleaner.cleaningDays.some((d) => d.on))
-            e.cleaner_cleaningDays = "Select at least one day";
-          if (!cleaner.frequencyConfirmed) e.cleaner_frequencyConfirmed = "Please confirm";
-          return e;
-        };
+  const validate=()=>{const e={};REQUIRED_CLIENT.forEach(f=>{if(!client[f.key]?.toString().trim())e[f.key]=`${f.label} is required`;});if(client.hasInitialFee==="yes"&&!client.initialFeeAmount?.toString().trim())e.initialFeeAmount="Required when Yes";if(!cleaner.name?.trim())e.cleaner_name="Required";if(!cleaner.marginPercent?.toString().trim())e.cleaner_marginPercent="Required";if(!cleaner.cleaningDays.some(d=>d.on))e.cleaner_cleaningDays="Select at least one day";if(!cleaner.frequencyConfirmed)e.cleaner_frequencyConfirmed="Please confirm";return e;};
 
-        const handlePreview = () => {
-          const e = validate();
-          setErrors(e);
-          setShowErrors(true);
-          if (Object.keys(e).length > 0) {
-            const ck = REQUIRED_CLIENT.map((f) => f.key).concat(["initialFeeAmount"]);
-            if (ck.some((k) => e[k])) {
-              setTab("client");
-              return;
-            }
-            setTab("cleaner");
-            return;
-          }
-          setView("preview");
-        };
+  const handlePreview=()=>{const e=validate();setErrors(e);setShowErrors(true);if(Object.keys(e).length>0){const ck=REQUIRED_CLIENT.map(f=>f.key).concat(["initialFeeAmount"]);if(ck.some(k=>e[k])){setTab("client");return;}setTab("cleaner");return;}setView("preview");};
 
-        // FIX: Download PDF shows the proposal pages, not the submit page
-        const handleDownloadPDF = useCallback(() => {
-          setIsPrinting(true);
-          // Small delay to let React render the print-area before triggering print
-          setTimeout(() => {
-            window.print();
-            // Reset after print dialog closes
-            setTimeout(() => setIsPrinting(false), 500);
-          }, 100);
-        }, []);
+  // FIX: Download PDF shows the proposal pages, not the submit page
+  const handleDownloadPDF=useCallback(()=>{
+    setIsPrinting(true);
+    // Small delay to let React render the print-area before triggering print
+    setTimeout(()=>{
+      window.print();
+      // Reset after print dialog closes
+      setTimeout(()=>setIsPrinting(false),500);
+    },100);
+  },[]);
 
-        const hasError = (k) => showErrors && errors[k];
-        const clientErrCount = showErrors
-          ? REQUIRED_CLIENT.filter((f) => errors[f.key]).length + (errors.initialFeeAmount ? 1 : 0)
-          : 0;
-        const cleanerErrCount = showErrors
-          ? [
-              "cleaner_name",
-              "cleaner_marginPercent",
-              "cleaner_cleaningDays",
-              "cleaner_frequencyConfirmed",
-            ].filter((k) => errors[k]).length
-          : 0;
-        const totalErrCount = Object.keys(errors).length;
-        const data = { client, letter, sow, dayPorter, addons, cleaner };
+  const hasError=k=>showErrors&&errors[k];
+  const clientErrCount=showErrors?REQUIRED_CLIENT.filter(f=>errors[f.key]).length+(errors.initialFeeAmount?1:0):0;
+  const cleanerErrCount=showErrors?["cleaner_name","cleaner_marginPercent","cleaner_cleaningDays","cleaner_frequencyConfirmed"].filter(k=>errors[k]).length:0;
+  const totalErrCount=Object.keys(errors).length;
+  const data={client,letter,sow,dayPorter,addons,cleaner};
 
-        const TABS = [
-          { id: "client", label: "Client Details", ico: "👤", errCt: clientErrCount },
-          { id: "letter", label: "Cover Letter", ico: "✉️", errCt: 0 },
-          { id: "sow", label: "Scope of Work", ico: "📋", errCt: 0 },
-          { id: "pricing", label: "Add-Ons & Pricing", ico: "💲", errCt: 0 },
-          { id: "cleaner", label: "Cleaner Info", ico: "🧹", errCt: cleanerErrCount },
-        ];
+  const TABS=[
+    {id:"client",label:"Client Details",ico:"👤",errCt:clientErrCount},
+    {id:"letter",label:"Cover Letter",ico:"✉️",errCt:0},
+    {id:"sow",label:"Scope of Work",ico:"📋",errCt:0},
+    {id:"pricing",label:"Add-Ons & Pricing",ico:"💲",errCt:0},
+    {id:"cleaner",label:"Cleaner Info",ico:"🧹",errCt:cleanerErrCount},
+  ];
 
-        return (
-          <div
-            style={{
-              fontFamily: "'Segoe UI',-apple-system,sans-serif",
-              color: BK,
-              minHeight: "100vh",
-              background: view === "edit" ? "#f4f5f4" : "#e8e8e8",
-            }}
-          >
-            {/* 
+  return(
+    <div style={{fontFamily:"'Segoe UI',-apple-system,sans-serif",color:BK,minHeight:"100vh",background:view==="edit"?"#f4f5f4":"#e8e8e8"}}>
+
+      {/* 
         HIDDEN PRINT AREA: Always rendered but hidden on screen.
         This is what gets printed when Download PDF is clicked from ANY page.
       */}
-            <div className="print-only" style={{ display: "none" }}>
-              <div className="print-area">
-                <ProposalPDF d={data} />
-              </div>
+      <div className="print-only" style={{display:"none"}}>
+        <div className="print-area">
+          <ProposalPDF d={data}/>
+        </div>
+      </div>
+
+      {/* TOP BAR */}
+      <div className="no-print" style={{background:BK,padding:"12px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",position:"sticky",top:0,zIndex:100}}>
+        <div style={{display:"flex",alignItems:"baseline",gap:10}}>
+          <span style={{fontSize:17,fontWeight:900,color:"#fff",letterSpacing:1.2}}>N<span style={{color:G1}}>A</span>TIONAL</span>
+          <span style={{fontSize:10,color:G1,fontWeight:600}}>Janitorial Services</span>
+          <span style={{color:"#444",margin:"0 6px"}}>|</span>
+          <span style={{color:"#999",fontSize:12}}>Proposal Generator</span>
+        </div>
+        <div style={{display:"flex",gap:8}}>
+          {view==="edit"&&<button onClick={handlePreview} style={{padding:"8px 18px",borderRadius:5,border:"none",background:G1,color:"#fff",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"inherit"}}>Preview Proposal →</button>}
+          {view==="preview"&&<>
+            <button onClick={()=>{setView("edit");setShowErrors(false);}} style={{padding:"8px 18px",borderRadius:5,border:`1px solid ${GY}`,background:"transparent",color:"#fff",cursor:"pointer",fontSize:12,fontWeight:600,fontFamily:"inherit"}}>← Edit</button>
+            <button onClick={()=>setView("submit")} style={{padding:"8px 18px",borderRadius:5,border:"none",background:G1,color:"#fff",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"inherit"}}>Continue to Submit →</button>
+          </>}
+          {view==="submit"&&<>
+            <button onClick={()=>setView("preview")} style={{padding:"8px 18px",borderRadius:5,border:`1px solid ${GY}`,background:"transparent",color:"#fff",cursor:"pointer",fontSize:12,fontWeight:600,fontFamily:"inherit"}}>← Preview</button>
+          </>}
+        </div>
+      </div>
+
+      {/* PREVIEW (visible on screen) */}
+      {view==="preview"&&(
+        <div className="no-print" style={{maxWidth:"8.5in",margin:"20px auto"}}>
+          <ProposalPDF d={data}/>
+        </div>
+      )}
+
+      {/* SUBMIT */}
+      {view==="submit"&&<div className="no-print"><SubmitPage data={data} onBack={()=>setView("preview")} onDownloadPDF={handleDownloadPDF}/></div>}
+
+      {/* EDIT */}
+      {view==="edit"&&(
+        <div className="no-print" style={{maxWidth:800,margin:"0 auto",padding:"16px 16px 60px"}}>
+          <div style={{display:"flex",gap:12,marginBottom:16,padding:"10px 16px",background:BK,borderRadius:6,color:"#fff",fontSize:12,alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{display:"flex",gap:12,alignItems:"center"}}>
+              <span style={{color:"#999"}}>Base: <strong style={{color:"#fff"}}>{fmt$(base)}</strong></span>
+              {addonSum>0&&<><span style={{color:"#555"}}>+</span><span style={{color:"#999"}}>Add-ons: <strong style={{color:"#fff"}}>{fmt$(addonSum)}</strong></span></>}
+              <span style={{color:"#555"}}>=</span>
+              <span style={{fontSize:16,fontWeight:800,color:G1}}>{fmt$(totalMonthly)}</span><span style={{fontSize:10,color:"#888"}}>/mo</span>
             </div>
+            {cleaner.name&&<div style={{fontSize:10,color:"#999"}}>Cleaner: <strong style={{color:"#fff"}}>{fmt$(cleanerFee)}</strong><span style={{color:G1,marginLeft:6}}>({actualMargin.toFixed(1)}%)</span></div>}
+          </div>
 
-            {/* TOP BAR */}
-            <div
-              className="no-print"
-              style={{
-                background: BK,
-                padding: "12px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                position: "sticky",
-                top: 0,
-                zIndex: 100,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-                <span style={{ fontSize: 17, fontWeight: 900, color: "#fff", letterSpacing: 1.2 }}>
-                  N<span style={{ color: G1 }}>A</span>TIONAL
-                </span>
-                <span style={{ fontSize: 10, color: G1, fontWeight: 600 }}>
-                  Janitorial Services
-                </span>
-                <span style={{ color: "#444", margin: "0 6px" }}>|</span>
-                <span style={{ color: "#999", fontSize: 12 }}>Proposal Generator</span>
-              </div>
-              <div style={{ display: "flex", gap: 8 }}>
-                {view === "edit" && (
-                  <button
-                    onClick={handlePreview}
-                    style={{
-                      padding: "8px 18px",
-                      borderRadius: 5,
-                      border: "none",
-                      background: G1,
-                      color: "#fff",
-                      cursor: "pointer",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      fontFamily: "inherit",
-                    }}
-                  >
-                    Preview Proposal →
-                  </button>
-                )}
-                {view === "preview" && (
-                  <>
-                    <button
-                      onClick={() => {
-                        setView("edit");
-                        setShowErrors(false);
-                      }}
-                      style={{
-                        padding: "8px 18px",
-                        borderRadius: 5,
-                        border: `1px solid ${GY}`,
-                        background: "transparent",
-                        color: "#fff",
-                        cursor: "pointer",
-                        fontSize: 12,
-                        fontWeight: 600,
-                        fontFamily: "inherit",
-                      }}
-                    >
-                      ← Edit
-                    </button>
-                    <button
-                      onClick={() => setView("submit")}
-                      style={{
-                        padding: "8px 18px",
-                        borderRadius: 5,
-                        border: "none",
-                        background: G1,
-                        color: "#fff",
-                        cursor: "pointer",
-                        fontSize: 12,
-                        fontWeight: 700,
-                        fontFamily: "inherit",
-                      }}
-                    >
-                      Continue to Submit →
-                    </button>
-                  </>
-                )}
-                {view === "submit" && (
-                  <>
-                    <button
-                      onClick={() => setView("preview")}
-                      style={{
-                        padding: "8px 18px",
-                        borderRadius: 5,
-                        border: `1px solid ${GY}`,
-                        background: "transparent",
-                        color: "#fff",
-                        cursor: "pointer",
-                        fontSize: 12,
-                        fontWeight: 600,
-                        fontFamily: "inherit",
-                      }}
-                    >
-                      ← Preview
-                    </button>
-                  </>
-                )}
-              </div>
-            </div>
+          {showErrors&&totalErrCount>0&&<div style={{background:"#FFF0F0",border:`1px solid ${RED}33`,borderRadius:6,padding:"8px 14px",marginBottom:12,display:"flex",alignItems:"center",gap:8}}><span>⚠️</span><span style={{fontSize:12,color:RED,fontWeight:600}}>{totalErrCount} required field{totalErrCount>1?"s":""} missing.</span></div>}
 
-            {/* PREVIEW (visible on screen) */}
-            {view === "preview" && (
-              <div className="no-print" style={{ maxWidth: "8.5in", margin: "20px auto" }}>
-                <ProposalPDF d={data} />
-              </div>
-            )}
+          <div style={{display:"flex",background:"#fff",borderRadius:"8px 8px 0 0",borderBottom:"1px solid #eee"}}>
+            {TABS.map(t=><button key={t.id} onClick={()=>setTab(t.id)} style={{flex:1,padding:"12px 8px",border:"none",borderBottom:tab===t.id?`3px solid ${G1}`:"3px solid transparent",background:"none",cursor:"pointer",fontWeight:tab===t.id?700:400,color:tab===t.id?BK:"#999",fontSize:12,fontFamily:"inherit",position:"relative"}}>{t.ico} {t.label}{t.errCt>0&&<span style={{position:"absolute",top:4,right:4,background:RED,color:"#fff",fontSize:9,fontWeight:800,width:16,height:16,borderRadius:"50%",display:"inline-flex",alignItems:"center",justifyContent:"center"}}>{t.errCt}</span>}</button>)}
+          </div>
 
-            {/* SUBMIT */}
-            {view === "submit" && (
-              <div className="no-print">
-                <SubmitPage
-                  data={data}
-                  onBack={() => setView("preview")}
-                  onDownloadPDF={handleDownloadPDF}
-                />
-              </div>
-            )}
+          <div style={{background:"#fff",borderRadius:"0 0 8px 8px",padding:20,minHeight:400}}>
 
-            {/* EDIT */}
-            {view === "edit" && (
-              <div
-                className="no-print"
-                style={{ maxWidth: 800, margin: "0 auto", padding: "16px 16px 60px" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    gap: 12,
-                    marginBottom: 16,
-                    padding: "10px 16px",
-                    background: BK,
-                    borderRadius: 6,
-                    color: "#fff",
-                    fontSize: 12,
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                    <span style={{ color: "#999" }}>
-                      Base: <strong style={{ color: "#fff" }}>{fmt$(base)}</strong>
-                    </span>
-                    {addonSum > 0 && (
-                      <>
-                        <span style={{ color: "#555" }}>+</span>
-                        <span style={{ color: "#999" }}>
-                          Add-ons: <strong style={{ color: "#fff" }}>{fmt$(addonSum)}</strong>
-                        </span>
-                      </>
-                    )}
-                    <span style={{ color: "#555" }}>=</span>
-                    <span style={{ fontSize: 16, fontWeight: 800, color: G1 }}>
-                      {fmt$(totalMonthly)}
-                    </span>
-                    <span style={{ fontSize: 10, color: "#888" }}>/mo</span>
+            {tab==="client"&&<div>
+              <div style={{display:"flex",gap:16,marginBottom:14}}>{[["New Client",true],["Existing Client",false]].map(([l,v])=><label key={l} style={{fontSize:12,fontWeight:600,display:"flex",alignItems:"center",gap:5,cursor:"pointer"}}><input type="radio" checked={client.isNew===v} onChange={()=>uc("isNew",v)} style={{accentColor:G1}}/> {l}</label>)}</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+                <Field label="Company Name" required><Inp val={client.company} set={v=>uc("company",v)} ph="Acme Corp" err={hasError("company")}/></Field>
+                <Field label="Proposal Date"><Inp val={client.date} set={v=>uc("date",v)}/></Field>
+                <Field label="Company Address" span required><Inp val={client.address} set={v=>uc("address",v)} ph="123 Main St" err={hasError("address")}/></Field>
+                <Field label="Contact First Name" required><Inp val={client.contactFirst} set={v=>uc("contactFirst",v)} ph="Nicole" err={hasError("contactFirst")}/></Field>
+                <Field label="Contact Last Name" required><Inp val={client.contactLast} set={v=>uc("contactLast",v)} ph="Smith" err={hasError("contactLast")}/></Field>
+                <Field label="Phone" required><Inp val={client.phone} set={v=>uc("phone",formatPhone(v))} ph="555-123-4567" err={hasError("phone")}/></Field>
+                <Field label="Email" required><Inp val={client.email} set={v=>uc("email",v)} ph="contact@company.com" err={hasError("email")}/></Field>
+                <Field label="Facility Sq Ft" required><Inp val={client.sqft} set={v=>uc("sqft",v)} ph="1,600" err={hasError("sqft")}/></Field>
+                <Field label="Frequency" required><Inp val={client.frequency} set={v=>uc("frequency",v)} ph="2x per week" err={hasError("frequency")}/></Field>
+                <Field label="Contract Term"><Inp val={client.term} set={v=>uc("term",v)} ph="12 Months"/></Field>
+                <Field label="Initial Cleaning Fee" required>
+                  <select value={client.hasInitialFee} onChange={e=>uc("hasInitialFee",e.target.value)} style={{width:"100%",border:"1px solid #ddd",borderRadius:5,padding:"7px 10px",fontFamily:"inherit",fontSize:13,background:"#fff",cursor:"pointer"}}><option value="no">No</option><option value="yes">Yes</option></select>
+                </Field>
+                {client.hasInitialFee==="yes"&&<Field label="Initial Fee Amount ($)" required><Inp val={client.initialFeeAmount} set={v=>uc("initialFeeAmount",v)} ph="500" type="number" err={hasError("initialFeeAmount")}/></Field>}
+                <Field label="Base Monthly Fee ($)" required><Inp val={client.basePrice} set={v=>uc("basePrice",v)} ph="765" type="number" err={hasError("basePrice")} style={{fontWeight:700,fontSize:15}}/></Field>
+              </div>
+              {client.contactFirst&&<div style={{marginTop:14,padding:"8px 12px",background:"#f0faf0",borderRadius:5,border:`1px solid ${G1}22`,fontSize:11,color:G2}}>✓ Cover letter: <strong>"Dear {client.contactFirst},"</strong> · Client email: <strong>{client.email||"—"}</strong></div>}
+            </div>}
+
+            {tab==="letter"&&<div>
+              <div style={{fontSize:12,color:"#888",marginBottom:4}}>Customize the cover letter body.</div>
+              {client.contactFirst?<div style={{fontSize:12,marginBottom:10,padding:"6px 10px",background:"#f0faf0",borderRadius:5,border:`1px solid ${G1}22`}}>Salutation: <strong style={{color:G2}}>Dear {client.contactFirst},</strong></div>:<div style={{fontSize:12,marginBottom:10,padding:"6px 10px",background:"#FFF5F0",borderRadius:5,border:"1px solid #ffccaa"}}><span style={{color:"#c66"}}>⚠ Enter Contact First Name first.</span></div>}
+              <textarea value={letter} onChange={e=>setLetter(e.target.value)} style={{width:"100%",border:"1px solid #ddd",borderRadius:6,padding:"12px 14px",fontFamily:"inherit",fontSize:13,lineHeight:1.6,resize:"vertical",minHeight:280,boxSizing:"border-box"}}/>
+            </div>}
+
+            {tab==="sow"&&<div>
+              {sow.map((sec,si)=><div key={si} style={{marginBottom:14}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",background:BK,color:"#fff",padding:"6px 12px",borderRadius:4,fontSize:11,fontWeight:700}}>{sec.title}<button onClick={()=>{const a=sec.items.every(i=>i.on);setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[si].items.forEach(i=>i.on=!a);return n;});}} style={{fontSize:9,color:G1,background:"none",border:"none",cursor:"pointer",fontFamily:"inherit"}}>{sec.items.every(i=>i.on)?"Deselect All":"Select All"}</button></div>
+                {sec.items.map((it,ii)=><div key={ii} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 12px",background:it.on?"#f7faf7":"#fafafa",borderBottom:"1px solid #f0f0f0"}}><Tog on={it.on} set={()=>{setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[si].items[ii].on=!n[si].items[ii].on;return n;});}} sm/><span style={{fontSize:12,color:it.on?BK:"#bbb"}}>{it.text}</span></div>)}
+              </div>)}
+              <div style={{marginBottom:14}}>
+                <div style={{display:"flex",alignItems:"center",gap:10,background:BK,color:"#fff",padding:"6px 12px",borderRadius:4,fontSize:11,fontWeight:700}}><span>Day Porter</span><Tog on={dayPorter.enabled} set={v=>setDayPorter(p=>({...p,enabled:v}))} sm/>{dayPorter.enabled&&<><input value={dayPorter.hours} onChange={e=>setDayPorter(p=>({...p,hours:e.target.value}))} style={{width:36,border:"none",borderRadius:3,padding:"2px 6px",fontSize:12,textAlign:"center",fontFamily:"inherit"}}/><span style={{fontSize:9,color:"#aaa"}}>hrs/day</span></>}</div>
+                {dayPorter.enabled&&dayPorter.items.map((it,ii)=><div key={ii} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 12px",background:it.on?"#f7faf7":"#fafafa",borderBottom:"1px solid #f0f0f0"}}><Tog on={it.on} set={()=>{setDayPorter(p=>{const n=JSON.parse(JSON.stringify(p));n.items[ii].on=!n.items[ii].on;return n;});}} sm/><span style={{fontSize:12,color:it.on?BK:"#bbb"}}>{it.text}</span></div>)}
+              </div>
+              <div style={{background:"#f9f9f9",borderRadius:6,padding:12}}>
+                <div style={{fontSize:11,fontWeight:700,marginBottom:6}}>Add Custom Item</div>
+                <div style={{display:"flex",gap:6,alignItems:"center"}}>
+                  <select value={newSec} onChange={e=>setNewSec(+e.target.value)} style={{padding:6,borderRadius:4,border:"1px solid #ddd",fontSize:11,fontFamily:"inherit"}}>{sow.map((s,i)=><option key={i} value={i}>{s.title}</option>)}</select>
+                  <input value={newItem} onChange={e=>setNewItem(e.target.value)} placeholder="Task" style={{flex:1,padding:"6px 8px",borderRadius:4,border:"1px solid #ddd",fontSize:12,fontFamily:"inherit"}} onKeyDown={e=>{if(e.key==="Enter"&&newItem.trim()){setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[newSec].items.push({text:newItem.trim(),on:true});return n;});setNewItem("");}}}/>
+                  <button onClick={()=>{if(!newItem.trim())return;setSow(p=>{const n=JSON.parse(JSON.stringify(p));n[newSec].items.push({text:newItem.trim(),on:true});return n;});setNewItem("");}} style={{padding:"6px 12px",borderRadius:4,border:"none",background:G1,color:"#fff",cursor:"pointer",fontSize:11,fontWeight:700,fontFamily:"inherit"}}>Add</button>
+                </div>
+                <button onClick={()=>{const name=prompt("Section name:");if(name?.trim())setSow(p=>[...p,{title:name.trim(),items:[]}]);}} style={{marginTop:6,padding:"4px 10px",borderRadius:4,border:`1px dashed ${G1}`,background:"none",color:G1,cursor:"pointer",fontSize:10,fontFamily:"inherit"}}>+ New Section</button>
+              </div>
+            </div>}
+
+            {tab==="pricing"&&<div>
+              <div style={{fontSize:12,fontWeight:700,color:G2,marginBottom:8}}>Special Add-On Services</div>
+              {addons.map((a,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"6px 8px",background:a.on?"#f7faf7":"#fafafa",borderBottom:"1px solid #f0f0f0"}}><Tog on={a.on} set={()=>{setAddons(p=>{const n=[...p];n[i]={...n[i],on:!n[i].on};return n;});}} sm/><span style={{flex:1,fontSize:12,color:a.on?BK:"#bbb"}}>{a.text}</span><span style={{fontSize:12,color:"#888"}}>$</span><input type="number" value={a.price} onChange={e=>{setAddons(p=>{const n=[...p];n[i]={...n[i],price:e.target.value};return n;});}} style={{width:65,padding:"4px 6px",borderRadius:4,border:"1px solid #ddd",fontSize:12,textAlign:"right",fontFamily:"inherit"}}/><span style={{fontSize:9,color:"#aaa"}}>/mo</span></div>)}
+              <div style={{display:"flex",gap:6,alignItems:"center",marginTop:10}}>
+                <input value={newAddon.text} onChange={e=>setNewAddon(p=>({...p,text:e.target.value}))} placeholder="Custom add-on" style={{flex:1,padding:"6px 8px",borderRadius:4,border:"1px solid #ddd",fontSize:12,fontFamily:"inherit"}}/>
+                <input type="number" value={newAddon.price} onChange={e=>setNewAddon(p=>({...p,price:e.target.value}))} placeholder="$" style={{width:65,padding:6,borderRadius:4,border:"1px solid #ddd",fontSize:12,textAlign:"right",fontFamily:"inherit"}}/>
+                <button onClick={()=>{if(!newAddon.text.trim())return;setAddons(p=>[...p,{text:newAddon.text.trim(),on:true,price:newAddon.price||""}]);setNewAddon({text:"",price:""});}} style={{padding:"6px 12px",borderRadius:4,border:"none",background:G1,color:"#fff",cursor:"pointer",fontSize:11,fontWeight:700,fontFamily:"inherit"}}>Add</button>
+              </div>
+              <div style={{background:BK,borderRadius:8,padding:20,color:"#fff",marginTop:20}}>
+                <div style={{fontSize:12,fontWeight:800,color:G1,marginBottom:10}}>PRICING SUMMARY</div>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:14,padding:"6px 0",borderBottom:"1px solid #333"}}><span>Base Monthly Rate</span><span>{fmt$(base)}</span></div>
+                {addonSum>0&&<div style={{display:"flex",justifyContent:"space-between",fontSize:14,padding:"6px 0",borderBottom:"1px solid #333",color:"#ccc"}}><span>Special Add-Ons</span><span>{fmt$(addonSum)}</span></div>}
+                {client.hasInitialFee==="yes"&&parseFloat(client.initialFeeAmount)>0&&<div style={{display:"flex",justifyContent:"space-between",fontSize:14,padding:"6px 0",borderBottom:"1px solid #333",color:"#ccc"}}><span>Initial Fee (one-time)</span><span>{fmt$(client.initialFeeAmount)}</span></div>}
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:22,fontWeight:900,padding:"12px 0 0"}}><span>Total Monthly</span><span style={{color:G1}}>{fmt$(totalMonthly)}</span></div>
+              </div>
+            </div>}
+
+            {tab==="cleaner"&&<div>
+              <div style={{fontSize:13,fontWeight:700,color:G2,marginBottom:4}}>Cleaner Assignment & Schedule</div>
+              <div style={{fontSize:11,color:"#888",marginBottom:16}}>Internal only — cleaning days & frequency show on SOW, rest stays internal.</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
+                <Field label="Assigned Cleaner Name" required><Inp val={cleaner.name} set={v=>ucl("name",v)} ph="Jane Doe" err={hasError("cleaner_name")}/></Field>
+                <Field label="Margin %" required><div style={{display:"flex",alignItems:"center",gap:6}}><input type="number" value={cleaner.marginPercent} onChange={e=>{ucl("marginPercent",e.target.value);setCleaner(p=>({...p,manualFee:""}));}} style={{width:80,border:`1px solid ${hasError("cleaner_marginPercent")?RED:"#ddd"}`,borderRadius:5,padding:"7px 10px",fontFamily:"inherit",fontSize:15,fontWeight:700,textAlign:"center",outline:"none",background:hasError("cleaner_marginPercent")?"#FFF5F5":"#fff"}}/><span style={{fontSize:16,fontWeight:700,color:"#888"}}>%</span></div><Err msg={hasError("cleaner_marginPercent")}/></Field>
+              </div>
+              <div style={{marginTop:20}}>
+                <div style={{fontSize:12,fontWeight:700,color:G2,marginBottom:8}}>Cleaning Days<Req/></div>
+                <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{cleaner.cleaningDays.map((d,i)=><DayChip key={d.day} day={d.day} selected={d.on} toggle={()=>{setCleaner(p=>{const n={...p,cleaningDays:[...p.cleaningDays]};n.cleaningDays[i]={...n.cleaningDays[i],on:!n.cleaningDays[i].on};return n;});if(showErrors)setErrors(p=>{const n={...p};delete n.cleaner_cleaningDays;return n;});}}/>)}</div>
+                <Err msg={hasError("cleaner_cleaningDays")}/>
+              </div>
+              <div style={{marginTop:16}}>
+                <div style={{fontSize:12,fontWeight:700,color:G2,marginBottom:8}}>Cleaning Frequency<Req/></div>
+                <div style={{display:"flex",gap:8}}>{[{val:"once_weekly",label:"Weekly"},{val:"biweekly",label:"Bi-Weekly"},{val:"monthly",label:"Monthly"}].map(f=><button key={f.val} type="button" onClick={()=>ucl("cleaningFrequency",f.val)} style={{padding:"8px 18px",borderRadius:6,border:`2px solid ${cleaner.cleaningFrequency===f.val?G1:"#ddd"}`,background:cleaner.cleaningFrequency===f.val?G1:"#fff",color:cleaner.cleaningFrequency===f.val?"#fff":BK,cursor:"pointer",fontSize:12,fontWeight:cleaner.cleaningFrequency===f.val?700:400,fontFamily:"inherit"}}>{f.label}</button>)}</div>
+              </div>
+              <div style={{marginTop:16,padding:"12px 14px",background:hasError("cleaner_frequencyConfirmed")?"#FFF5F5":"#f8f9f8",borderRadius:6,border:`1px solid ${hasError("cleaner_frequencyConfirmed")?RED:G1+"22"}`}}>
+                <label style={{display:"flex",alignItems:"flex-start",gap:10,cursor:"pointer"}}>
+                  <input type="checkbox" checked={cleaner.frequencyConfirmed} onChange={e=>ucl("frequencyConfirmed",e.target.checked)} style={{accentColor:G1,marginTop:2,width:18,height:18,flexShrink:0}}/>
+                  <div><div style={{fontSize:12,fontWeight:700}}>I confirm the cleaning frequency: <span style={{color:G2}}>{cleaner.cleaningFrequency==="once_weekly"?"Weekly":cleaner.cleaningFrequency==="biweekly"?"Bi-Weekly":"Monthly"}</span></div><div style={{fontSize:10,color:"#888",marginTop:2}}>Matches client schedule of "{client.frequency||"—"}"</div></div>
+                </label>
+                <Err msg={hasError("cleaner_frequencyConfirmed")}/>
+              </div>
+              <div style={{background:"#f8f9f8",borderRadius:8,padding:16,marginTop:20,border:`1px solid ${G1}22`}}>
+                <div style={{fontSize:12,fontWeight:700,color:G2,marginBottom:10}}>Fee Calculation</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr auto",gap:"6px 20px",fontSize:13}}>
+                  <span style={{color:"#666"}}>Client Fee</span><span style={{fontWeight:700,textAlign:"right"}}>{fmt$(totalMonthly)}</span>
+                  <span style={{color:"#666"}}>Margin ({marginPct}%)</span><span style={{fontWeight:700,textAlign:"right",color:G2}}>{fmt$(totalMonthly*marginPct/100)}</span>
+                  <div style={{gridColumn:"1 / -1",borderBottom:`1px solid ${G1}44`,margin:"4px 0"}}/>
+                  <span style={{fontWeight:700}}>Cleaner Fee</span><span style={{fontWeight:800,fontSize:16,textAlign:"right",color:G1}}>{fmt$(autoCleanerFee)}</span>
+                </div>
+                <div style={{marginTop:14,padding:"10px 12px",background:"#fff",borderRadius:6,border:"1px solid #e0e0e0"}}>
+                  <div style={{fontSize:11,fontWeight:600,color:"#666",marginBottom:6}}>Override (optional)</div>
+                  <div style={{display:"flex",alignItems:"center",gap:8}}>
+                    <span style={{fontSize:14,color:"#888"}}>$</span>
+                    <input type="number" value={cleaner.manualFee} onChange={e=>ucl("manualFee",e.target.value)} placeholder={autoCleanerFee.toFixed(2)} style={{width:120,border:"1px solid #ddd",borderRadius:5,padding:"7px 10px",fontFamily:"inherit",fontSize:15,fontWeight:700,textAlign:"right",outline:"none"}}/>
+                    {cleaner.manualFee!==""&&<button onClick={()=>ucl("manualFee","")} style={{padding:"4px 10px",borderRadius:4,border:`1px solid ${RED}44`,background:"#FFF5F5",color:RED,cursor:"pointer",fontSize:10,fontFamily:"inherit"}}>Reset</button>}
                   </div>
-                  {cleaner.name && (
-                    <div style={{ fontSize: 10, color: "#999" }}>
-                      Cleaner: <strong style={{ color: "#fff" }}>{fmt$(cleanerFee)}</strong>
-                      <span style={{ color: G1, marginLeft: 6 }}>({actualMargin.toFixed(1)}%)</span>
-                    </div>
-                  )}
-                </div>
-
-                {showErrors && totalErrCount > 0 && (
-                  <div
-                    style={{
-                      background: "#FFF0F0",
-                      border: `1px solid ${RED}33`,
-                      borderRadius: 6,
-                      padding: "8px 14px",
-                      marginBottom: 12,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                    }}
-                  >
-                    <span>⚠️</span>
-                    <span style={{ fontSize: 12, color: RED, fontWeight: 600 }}>
-                      {totalErrCount} required field{totalErrCount > 1 ? "s" : ""} missing.
-                    </span>
-                  </div>
-                )}
-
-                <div
-                  style={{
-                    display: "flex",
-                    background: "#fff",
-                    borderRadius: "8px 8px 0 0",
-                    borderBottom: "1px solid #eee",
-                  }}
-                >
-                  {TABS.map((t) => (
-                    <button
-                      key={t.id}
-                      onClick={() => setTab(t.id)}
-                      style={{
-                        flex: 1,
-                        padding: "12px 8px",
-                        border: "none",
-                        borderBottom: tab === t.id ? `3px solid ${G1}` : "3px solid transparent",
-                        background: "none",
-                        cursor: "pointer",
-                        fontWeight: tab === t.id ? 700 : 400,
-                        color: tab === t.id ? BK : "#999",
-                        fontSize: 12,
-                        fontFamily: "inherit",
-                        position: "relative",
-                      }}
-                    >
-                      {t.ico} {t.label}
-                      {t.errCt > 0 && (
-                        <span
-                          style={{
-                            position: "absolute",
-                            top: 4,
-                            right: 4,
-                            background: RED,
-                            color: "#fff",
-                            fontSize: 9,
-                            fontWeight: 800,
-                            width: 16,
-                            height: 16,
-                            borderRadius: "50%",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {t.errCt}
-                        </span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-
-                <div
-                  style={{
-                    background: "#fff",
-                    borderRadius: "0 0 8px 8px",
-                    padding: 20,
-                    minHeight: 400,
-                  }}
-                >
-                  {tab === "client" && (
-                    <div>
-                      <div style={{ display: "flex", gap: 16, marginBottom: 14 }}>
-                        {[
-                          ["New Client", true],
-                          ["Existing Client", false],
-                        ].map(([l, v]) => (
-                          <label
-                            key={l}
-                            style={{
-                              fontSize: 12,
-                              fontWeight: 600,
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 5,
-                              cursor: "pointer",
-                            }}
-                          >
-                            <input
-                              type="radio"
-                              checked={client.isNew === v}
-                              onChange={() => uc("isNew", v)}
-                              style={{ accentColor: G1 }}
-                            />{" "}
-                            {l}
-                          </label>
-                        ))}
-                      </div>
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                        <Field label="Company Name" required>
-                          <Inp
-                            val={client.company}
-                            set={(v) => uc("company", v)}
-                            ph="Acme Corp"
-                            err={hasError("company")}
-                          />
-                        </Field>
-                        <Field label="Proposal Date">
-                          <Inp val={client.date} set={(v) => uc("date", v)} />
-                        </Field>
-                        <Field label="Company Address" span required>
-                          <Inp
-                            val={client.address}
-                            set={(v) => uc("address", v)}
-                            ph="123 Main St"
-                            err={hasError("address")}
-                          />
-                        </Field>
-                        <Field label="Contact First Name" required>
-                          <Inp
-                            val={client.contactFirst}
-                            set={(v) => uc("contactFirst", v)}
-                            ph="Nicole"
-                            err={hasError("contactFirst")}
-                          />
-                        </Field>
-                        <Field label="Contact Last Name" required>
-                          <Inp
-                            val={client.contactLast}
-                            set={(v) => uc("contactLast", v)}
-                            ph="Smith"
-                            err={hasError("contactLast")}
-                          />
-                        </Field>
-                        <Field label="Phone" required>
-                          <Inp
-                            val={client.phone}
-                            set={(v) => uc("phone", v)}
-                            ph="(555) 123-4567"
-                            err={hasError("phone")}
-                          />
-                        </Field>
-                        <Field label="Email" required>
-                          <Inp
-                            val={client.email}
-                            set={(v) => uc("email", v)}
-                            ph="contact@company.com"
-                            err={hasError("email")}
-                          />
-                        </Field>
-                        <Field label="Facility Sq Ft" required>
-                          <Inp
-                            val={client.sqft}
-                            set={(v) => uc("sqft", v)}
-                            ph="1,600"
-                            err={hasError("sqft")}
-                          />
-                        </Field>
-                        <Field label="Frequency" required>
-                          <Inp
-                            val={client.frequency}
-                            set={(v) => uc("frequency", v)}
-                            ph="2x per week"
-                            err={hasError("frequency")}
-                          />
-                        </Field>
-                        <Field label="Contract Term">
-                          <Inp val={client.term} set={(v) => uc("term", v)} ph="12 Months" />
-                        </Field>
-                        <Field label="Initial Cleaning Fee" required>
-                          <select
-                            value={client.hasInitialFee}
-                            onChange={(e) => uc("hasInitialFee", e.target.value)}
-                            style={{
-                              width: "100%",
-                              border: "1px solid #ddd",
-                              borderRadius: 5,
-                              padding: "7px 10px",
-                              fontFamily: "inherit",
-                              fontSize: 13,
-                              background: "#fff",
-                              cursor: "pointer",
-                            }}
-                          >
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                          </select>
-                        </Field>
-                        {client.hasInitialFee === "yes" && (
-                          <Field label="Initial Fee Amount ($)" required>
-                            <Inp
-                              val={client.initialFeeAmount}
-                              set={(v) => uc("initialFeeAmount", v)}
-                              ph="500"
-                              type="number"
-                              err={hasError("initialFeeAmount")}
-                            />
-                          </Field>
-                        )}
-                        <Field label="Base Monthly Fee ($)" required>
-                          <Inp
-                            val={client.basePrice}
-                            set={(v) => uc("basePrice", v)}
-                            ph="765"
-                            type="number"
-                            err={hasError("basePrice")}
-                            style={{ fontWeight: 700, fontSize: 15 }}
-                          />
-                        </Field>
-                      </div>
-                      {client.contactFirst && (
-                        <div
-                          style={{
-                            marginTop: 14,
-                            padding: "8px 12px",
-                            background: "#f0faf0",
-                            borderRadius: 5,
-                            border: `1px solid ${G1}22`,
-                            fontSize: 11,
-                            color: G2,
-                          }}
-                        >
-                          ✓ Cover letter: <strong>"Dear {client.contactFirst},"</strong> · Client
-                          email: <strong>{client.email || "—"}</strong>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {tab === "letter" && (
-                    <div>
-                      <div style={{ fontSize: 12, color: "#888", marginBottom: 4 }}>
-                        Customize the cover letter body.
-                      </div>
-                      {client.contactFirst ? (
-                        <div
-                          style={{
-                            fontSize: 12,
-                            marginBottom: 10,
-                            padding: "6px 10px",
-                            background: "#f0faf0",
-                            borderRadius: 5,
-                            border: `1px solid ${G1}22`,
-                          }}
-                        >
-                          Salutation:{" "}
-                          <strong style={{ color: G2 }}>Dear {client.contactFirst},</strong>
-                        </div>
-                      ) : (
-                        <div
-                          style={{
-                            fontSize: 12,
-                            marginBottom: 10,
-                            padding: "6px 10px",
-                            background: "#FFF5F0",
-                            borderRadius: 5,
-                            border: "1px solid #ffccaa",
-                          }}
-                        >
-                          <span style={{ color: "#c66" }}>⚠ Enter Contact First Name first.</span>
-                        </div>
-                      )}
-                      <textarea
-                        value={letter}
-                        onChange={(e) => setLetter(e.target.value)}
-                        style={{
-                          width: "100%",
-                          border: "1px solid #ddd",
-                          borderRadius: 6,
-                          padding: "12px 14px",
-                          fontFamily: "inherit",
-                          fontSize: 13,
-                          lineHeight: 1.6,
-                          resize: "vertical",
-                          minHeight: 280,
-                          boxSizing: "border-box",
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  {tab === "sow" && (
-                    <div>
-                      {sow.map((sec, si) => (
-                        <div key={si} style={{ marginBottom: 14 }}>
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              alignItems: "center",
-                              background: BK,
-                              color: "#fff",
-                              padding: "6px 12px",
-                              borderRadius: 4,
-                              fontSize: 11,
-                              fontWeight: 700,
-                            }}
-                          >
-                            {sec.title}
-                            <button
-                              onClick={() => {
-                                const a = sec.items.every((i) => i.on);
-                                setSow((p) => {
-                                  const n = JSON.parse(JSON.stringify(p));
-                                  n[si].items.forEach((i) => (i.on = !a));
-                                  return n;
-                                });
-                              }}
-                              style={{
-                                fontSize: 9,
-                                color: G1,
-                                background: "none",
-                                border: "none",
-                                cursor: "pointer",
-                                fontFamily: "inherit",
-                              }}
-                            >
-                              {sec.items.every((i) => i.on) ? "Deselect All" : "Select All"}
-                            </button>
-                          </div>
-                          {sec.items.map((it, ii) => (
-                            <div
-                              key={ii}
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 8,
-                                padding: "5px 12px",
-                                background: it.on ? "#f7faf7" : "#fafafa",
-                                borderBottom: "1px solid #f0f0f0",
-                              }}
-                            >
-                              <Tog
-                                on={it.on}
-                                set={() => {
-                                  setSow((p) => {
-                                    const n = JSON.parse(JSON.stringify(p));
-                                    n[si].items[ii].on = !n[si].items[ii].on;
-                                    return n;
-                                  });
-                                }}
-                                sm
-                              />
-                              <span style={{ fontSize: 12, color: it.on ? BK : "#bbb" }}>
-                                {it.text}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      ))}
-                      <div style={{ marginBottom: 14 }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 10,
-                            background: BK,
-                            color: "#fff",
-                            padding: "6px 12px",
-                            borderRadius: 4,
-                            fontSize: 11,
-                            fontWeight: 700,
-                          }}
-                        >
-                          <span>Day Porter</span>
-                          <Tog
-                            on={dayPorter.enabled}
-                            set={(v) => setDayPorter((p) => ({ ...p, enabled: v }))}
-                            sm
-                          />
-                          {dayPorter.enabled && (
-                            <>
-                              <input
-                                value={dayPorter.hours}
-                                onChange={(e) =>
-                                  setDayPorter((p) => ({ ...p, hours: e.target.value }))
-                                }
-                                style={{
-                                  width: 36,
-                                  border: "none",
-                                  borderRadius: 3,
-                                  padding: "2px 6px",
-                                  fontSize: 12,
-                                  textAlign: "center",
-                                  fontFamily: "inherit",
-                                }}
-                              />
-                              <span style={{ fontSize: 9, color: "#aaa" }}>hrs/day</span>
-                            </>
-                          )}
-                        </div>
-                        {dayPorter.enabled &&
-                          dayPorter.items.map((it, ii) => (
-                            <div
-                              key={ii}
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 8,
-                                padding: "5px 12px",
-                                background: it.on ? "#f7faf7" : "#fafafa",
-                                borderBottom: "1px solid #f0f0f0",
-                              }}
-                            >
-                              <Tog
-                                on={it.on}
-                                set={() => {
-                                  setDayPorter((p) => {
-                                    const n = JSON.parse(JSON.stringify(p));
-                                    n.items[ii].on = !n.items[ii].on;
-                                    return n;
-                                  });
-                                }}
-                                sm
-                              />
-                              <span style={{ fontSize: 12, color: it.on ? BK : "#bbb" }}>
-                                {it.text}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-                      <div style={{ background: "#f9f9f9", borderRadius: 6, padding: 12 }}>
-                        <div style={{ fontSize: 11, fontWeight: 700, marginBottom: 6 }}>
-                          Add Custom Item
-                        </div>
-                        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                          <select
-                            value={newSec}
-                            onChange={(e) => setNewSec(+e.target.value)}
-                            style={{
-                              padding: 6,
-                              borderRadius: 4,
-                              border: "1px solid #ddd",
-                              fontSize: 11,
-                              fontFamily: "inherit",
-                            }}
-                          >
-                            {sow.map((s, i) => (
-                              <option key={i} value={i}>
-                                {s.title}
-                              </option>
-                            ))}
-                          </select>
-                          <input
-                            value={newItem}
-                            onChange={(e) => setNewItem(e.target.value)}
-                            placeholder="Task"
-                            style={{
-                              flex: 1,
-                              padding: "6px 8px",
-                              borderRadius: 4,
-                              border: "1px solid #ddd",
-                              fontSize: 12,
-                              fontFamily: "inherit",
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && newItem.trim()) {
-                                setSow((p) => {
-                                  const n = JSON.parse(JSON.stringify(p));
-                                  n[newSec].items.push({ text: newItem.trim(), on: true });
-                                  return n;
-                                });
-                                setNewItem("");
-                              }
-                            }}
-                          />
-                          <button
-                            onClick={() => {
-                              if (!newItem.trim()) return;
-                              setSow((p) => {
-                                const n = JSON.parse(JSON.stringify(p));
-                                n[newSec].items.push({ text: newItem.trim(), on: true });
-                                return n;
-                              });
-                              setNewItem("");
-                            }}
-                            style={{
-                              padding: "6px 12px",
-                              borderRadius: 4,
-                              border: "none",
-                              background: G1,
-                              color: "#fff",
-                              cursor: "pointer",
-                              fontSize: 11,
-                              fontWeight: 700,
-                              fontFamily: "inherit",
-                            }}
-                          >
-                            Add
-                          </button>
-                        </div>
-                        <button
-                          onClick={() => {
-                            const name = prompt("Section name:");
-                            if (name?.trim())
-                              setSow((p) => [...p, { title: name.trim(), items: [] }]);
-                          }}
-                          style={{
-                            marginTop: 6,
-                            padding: "4px 10px",
-                            borderRadius: 4,
-                            border: `1px dashed ${G1}`,
-                            background: "none",
-                            color: G1,
-                            cursor: "pointer",
-                            fontSize: 10,
-                            fontFamily: "inherit",
-                          }}
-                        >
-                          + New Section
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
-                  {tab === "pricing" && (
-                    <div>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
-                        Special Add-On Services
-                      </div>
-                      {addons.map((a, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 10,
-                            padding: "6px 8px",
-                            background: a.on ? "#f7faf7" : "#fafafa",
-                            borderBottom: "1px solid #f0f0f0",
-                          }}
-                        >
-                          <Tog
-                            on={a.on}
-                            set={() => {
-                              setAddons((p) => {
-                                const n = [...p];
-                                n[i] = { ...n[i], on: !n[i].on };
-                                return n;
-                              });
-                            }}
-                            sm
-                          />
-                          <span style={{ flex: 1, fontSize: 12, color: a.on ? BK : "#bbb" }}>
-                            {a.text}
-                          </span>
-                          <span style={{ fontSize: 12, color: "#888" }}>$</span>
-                          <input
-                            type="number"
-                            value={a.price}
-                            onChange={(e) => {
-                              setAddons((p) => {
-                                const n = [...p];
-                                n[i] = { ...n[i], price: e.target.value };
-                                return n;
-                              });
-                            }}
-                            style={{
-                              width: 65,
-                              padding: "4px 6px",
-                              borderRadius: 4,
-                              border: "1px solid #ddd",
-                              fontSize: 12,
-                              textAlign: "right",
-                              fontFamily: "inherit",
-                            }}
-                          />
-                          <span style={{ fontSize: 9, color: "#aaa" }}>/mo</span>
-                        </div>
-                      ))}
-                      <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 10 }}>
-                        <input
-                          value={newAddon.text}
-                          onChange={(e) => setNewAddon((p) => ({ ...p, text: e.target.value }))}
-                          placeholder="Custom add-on"
-                          style={{
-                            flex: 1,
-                            padding: "6px 8px",
-                            borderRadius: 4,
-                            border: "1px solid #ddd",
-                            fontSize: 12,
-                            fontFamily: "inherit",
-                          }}
-                        />
-                        <input
-                          type="number"
-                          value={newAddon.price}
-                          onChange={(e) => setNewAddon((p) => ({ ...p, price: e.target.value }))}
-                          placeholder="$"
-                          style={{
-                            width: 65,
-                            padding: 6,
-                            borderRadius: 4,
-                            border: "1px solid #ddd",
-                            fontSize: 12,
-                            textAlign: "right",
-                            fontFamily: "inherit",
-                          }}
-                        />
-                        <button
-                          onClick={() => {
-                            if (!newAddon.text.trim()) return;
-                            setAddons((p) => [
-                              ...p,
-                              { text: newAddon.text.trim(), on: true, price: newAddon.price || "" },
-                            ]);
-                            setNewAddon({ text: "", price: "" });
-                          }}
-                          style={{
-                            padding: "6px 12px",
-                            borderRadius: 4,
-                            border: "none",
-                            background: G1,
-                            color: "#fff",
-                            cursor: "pointer",
-                            fontSize: 11,
-                            fontWeight: 700,
-                            fontFamily: "inherit",
-                          }}
-                        >
-                          Add
-                        </button>
-                      </div>
-                      <div
-                        style={{
-                          background: BK,
-                          borderRadius: 8,
-                          padding: 20,
-                          color: "#fff",
-                          marginTop: 20,
-                        }}
-                      >
-                        <div style={{ fontSize: 12, fontWeight: 800, color: G1, marginBottom: 10 }}>
-                          PRICING SUMMARY
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            fontSize: 14,
-                            padding: "6px 0",
-                            borderBottom: "1px solid #333",
-                          }}
-                        >
-                          <span>Base Monthly Rate</span>
-                          <span>{fmt$(base)}</span>
-                        </div>
-                        {addonSum > 0 && (
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              fontSize: 14,
-                              padding: "6px 0",
-                              borderBottom: "1px solid #333",
-                              color: "#ccc",
-                            }}
-                          >
-                            <span>Special Add-Ons</span>
-                            <span>{fmt$(addonSum)}</span>
-                          </div>
-                        )}
-                        {client.hasInitialFee === "yes" &&
-                          parseFloat(client.initialFeeAmount) > 0 && (
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                fontSize: 14,
-                                padding: "6px 0",
-                                borderBottom: "1px solid #333",
-                                color: "#ccc",
-                              }}
-                            >
-                              <span>Initial Fee (one-time)</span>
-                              <span>{fmt$(client.initialFeeAmount)}</span>
-                            </div>
-                          )}
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            fontSize: 22,
-                            fontWeight: 900,
-                            padding: "12px 0 0",
-                          }}
-                        >
-                          <span>Total Monthly</span>
-                          <span style={{ color: G1 }}>{fmt$(totalMonthly)}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {tab === "cleaner" && (
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: G2, marginBottom: 4 }}>
-                        Cleaner Assignment & Schedule
-                      </div>
-                      <div style={{ fontSize: 11, color: "#888", marginBottom: 16 }}>
-                        Internal only — cleaning days & frequency show on SOW, rest stays internal.
-                      </div>
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                        <Field label="Assigned Cleaner Name" required>
-                          <Inp
-                            val={cleaner.name}
-                            set={(v) => ucl("name", v)}
-                            ph="Jane Doe"
-                            err={hasError("cleaner_name")}
-                          />
-                        </Field>
-                        <Field label="Margin %" required>
-                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                            <input
-                              type="number"
-                              value={cleaner.marginPercent}
-                              onChange={(e) => {
-                                ucl("marginPercent", e.target.value);
-                                setCleaner((p) => ({ ...p, manualFee: "" }));
-                              }}
-                              style={{
-                                width: 80,
-                                border: `1px solid ${
-                                  hasError("cleaner_marginPercent") ? RED : "#ddd"
-                                }`,
-                                borderRadius: 5,
-                                padding: "7px 10px",
-                                fontFamily: "inherit",
-                                fontSize: 15,
-                                fontWeight: 700,
-                                textAlign: "center",
-                                outline: "none",
-                                background: hasError("cleaner_marginPercent") ? "#FFF5F5" : "#fff",
-                              }}
-                            />
-                            <span style={{ fontSize: 16, fontWeight: 700, color: "#888" }}>%</span>
-                          </div>
-                          <Err msg={hasError("cleaner_marginPercent")} />
-                        </Field>
-                      </div>
-                      <div style={{ marginTop: 20 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
-                          Cleaning Days
-                          <Req />
-                        </div>
-                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                          {cleaner.cleaningDays.map((d, i) => (
-                            <DayChip
-                              key={d.day}
-                              day={d.day}
-                              selected={d.on}
-                              toggle={() => {
-                                setCleaner((p) => {
-                                  const n = { ...p, cleaningDays: [...p.cleaningDays] };
-                                  n.cleaningDays[i] = {
-                                    ...n.cleaningDays[i],
-                                    on: !n.cleaningDays[i].on,
-                                  };
-                                  return n;
-                                });
-                                if (showErrors)
-                                  setErrors((p) => {
-                                    const n = { ...p };
-                                    delete n.cleaner_cleaningDays;
-                                    return n;
-                                  });
-                              }}
-                            />
-                          ))}
-                        </div>
-                        <Err msg={hasError("cleaner_cleaningDays")} />
-                      </div>
-                      <div style={{ marginTop: 16 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
-                          Cleaning Frequency
-                          <Req />
-                        </div>
-                        <div style={{ display: "flex", gap: 8 }}>
-                          {[
-                            { val: "once_weekly", label: "Once a Week" },
-                            { val: "biweekly", label: "Bi-Weekly" },
-                            { val: "monthly", label: "Monthly" },
-                          ].map((f) => (
-                            <button
-                              key={f.val}
-                              type="button"
-                              onClick={() => ucl("cleaningFrequency", f.val)}
-                              style={{
-                                padding: "8px 18px",
-                                borderRadius: 6,
-                                border: `2px solid ${
-                                  cleaner.cleaningFrequency === f.val ? G1 : "#ddd"
-                                }`,
-                                background: cleaner.cleaningFrequency === f.val ? G1 : "#fff",
-                                color: cleaner.cleaningFrequency === f.val ? "#fff" : BK,
-                                cursor: "pointer",
-                                fontSize: 12,
-                                fontWeight: cleaner.cleaningFrequency === f.val ? 700 : 400,
-                                fontFamily: "inherit",
-                              }}
-                            >
-                              {f.label}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div
-                        style={{
-                          marginTop: 16,
-                          padding: "12px 14px",
-                          background: hasError("cleaner_frequencyConfirmed")
-                            ? "#FFF5F5"
-                            : "#f8f9f8",
-                          borderRadius: 6,
-                          border: `1px solid ${
-                            hasError("cleaner_frequencyConfirmed") ? RED : G1 + "22"
-                          }`,
-                        }}
-                      >
-                        <label
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: 10,
-                            cursor: "pointer",
-                          }}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={cleaner.frequencyConfirmed}
-                            onChange={(e) => ucl("frequencyConfirmed", e.target.checked)}
-                            style={{
-                              accentColor: G1,
-                              marginTop: 2,
-                              width: 18,
-                              height: 18,
-                              flexShrink: 0,
-                            }}
-                          />
-                          <div>
-                            <div style={{ fontSize: 12, fontWeight: 700 }}>
-                              I confirm the cleaning frequency:{" "}
-                              <span style={{ color: G2 }}>
-                                {cleaner.cleaningFrequency === "once_weekly"
-                                  ? "Once a Week"
-                                  : cleaner.cleaningFrequency === "biweekly"
-                                  ? "Bi-Weekly"
-                                  : "Monthly"}
-                              </span>
-                            </div>
-                            <div style={{ fontSize: 10, color: "#888", marginTop: 2 }}>
-                              Matches client schedule of "{client.frequency || "—"}"
-                            </div>
-                          </div>
-                        </label>
-                        <Err msg={hasError("cleaner_frequencyConfirmed")} />
-                      </div>
-                      <div
-                        style={{
-                          background: "#f8f9f8",
-                          borderRadius: 8,
-                          padding: 16,
-                          marginTop: 20,
-                          border: `1px solid ${G1}22`,
-                        }}
-                      >
-                        <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 10 }}>
-                          Fee Calculation
-                        </div>
-                        <div
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr auto",
-                            gap: "6px 20px",
-                            fontSize: 13,
-                          }}
-                        >
-                          <span style={{ color: "#666" }}>Client Fee</span>
-                          <span style={{ fontWeight: 700, textAlign: "right" }}>
-                            {fmt$(totalMonthly)}
-                          </span>
-                          <span style={{ color: "#666" }}>Margin ({marginPct}%)</span>
-                          <span style={{ fontWeight: 700, textAlign: "right", color: G2 }}>
-                            {fmt$((totalMonthly * marginPct) / 100)}
-                          </span>
-                          <div
-                            style={{
-                              gridColumn: "1 / -1",
-                              borderBottom: `1px solid ${G1}44`,
-                              margin: "4px 0",
-                            }}
-                          />
-                          <span style={{ fontWeight: 700 }}>Cleaner Fee</span>
-                          <span
-                            style={{ fontWeight: 800, fontSize: 16, textAlign: "right", color: G1 }}
-                          >
-                            {fmt$(autoCleanerFee)}
-                          </span>
-                        </div>
-                        <div
-                          style={{
-                            marginTop: 14,
-                            padding: "10px 12px",
-                            background: "#fff",
-                            borderRadius: 6,
-                            border: "1px solid #e0e0e0",
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontSize: 11,
-                              fontWeight: 600,
-                              color: "#666",
-                              marginBottom: 6,
-                            }}
-                          >
-                            Override (optional)
-                          </div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontSize: 14, color: "#888" }}>$</span>
-                            <input
-                              type="number"
-                              value={cleaner.manualFee}
-                              onChange={(e) => ucl("manualFee", e.target.value)}
-                              placeholder={autoCleanerFee.toFixed(2)}
-                              style={{
-                                width: 120,
-                                border: "1px solid #ddd",
-                                borderRadius: 5,
-                                padding: "7px 10px",
-                                fontFamily: "inherit",
-                                fontSize: 15,
-                                fontWeight: 700,
-                                textAlign: "right",
-                                outline: "none",
-                              }}
-                            />
-                            {cleaner.manualFee !== "" && (
-                              <button
-                                onClick={() => ucl("manualFee", "")}
-                                style={{
-                                  padding: "4px 10px",
-                                  borderRadius: 4,
-                                  border: `1px solid ${RED}44`,
-                                  background: "#FFF5F5",
-                                  color: RED,
-                                  cursor: "pointer",
-                                  fontSize: 10,
-                                  fontFamily: "inherit",
-                                }}
-                              >
-                                Reset
-                              </button>
-                            )}
-                          </div>
-                          {cleaner.manualFee !== "" && totalMonthly > 0 && (
-                            <div style={{ fontSize: 11, color: "#888", marginTop: 6 }}>
-                              Effective margin:{" "}
-                              <strong style={{ color: actualMargin >= 0 ? G2 : RED }}>
-                                {actualMargin.toFixed(1)}%
-                              </strong>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        style={{
-                          background: BK,
-                          borderRadius: 8,
-                          padding: 20,
-                          color: "#fff",
-                          marginTop: 20,
-                        }}
-                      >
-                        <div style={{ fontSize: 12, fontWeight: 800, color: G1, marginBottom: 10 }}>
-                          CLEANER SUMMARY
-                        </div>
-                        <div
-                          style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr auto",
-                            gap: "8px 20px",
-                            fontSize: 14,
-                          }}
-                        >
-                          {[
-                            ["Cleaner", cleaner.name || "—"],
-                            [
-                              "Days",
-                              cleaner.cleaningDays
-                                .filter((d) => d.on)
-                                .map((d) => d.day.substring(0, 3))
-                                .join(", ") || "—",
-                            ],
-                            [
-                              "Frequency",
-                              cleaner.cleaningFrequency === "once_weekly"
-                                ? "Weekly"
-                                : cleaner.cleaningFrequency === "biweekly"
-                                ? "Bi-Weekly"
-                                : "Monthly",
-                            ],
-                            ["Client Fee", fmt$(totalMonthly)],
-                            ["Cleaner Pay", fmt$(cleanerFee)],
-                          ].map(([l, v]) => (
-                            <React.Fragment key={l}>
-                              <span style={{ color: "#ccc" }}>{l}</span>
-                              <span style={{ fontWeight: 700, textAlign: "right" }}>{v}</span>
-                            </React.Fragment>
-                          ))}
-                          <span style={{ color: "#ccc" }}>NJS Margin</span>
-                          <span style={{ textAlign: "right", color: G1 }}>
-                            {fmt$(totalMonthly - cleanerFee)} ({actualMargin.toFixed(1)}%)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  {cleaner.manualFee!==""&&totalMonthly>0&&<div style={{fontSize:11,color:"#888",marginTop:6}}>Effective margin: <strong style={{color:actualMargin>=0?G2:RED}}>{actualMargin.toFixed(1)}%</strong></div>}
                 </div>
               </div>
-            )}
+              <div style={{background:BK,borderRadius:8,padding:20,color:"#fff",marginTop:20}}>
+                <div style={{fontSize:12,fontWeight:800,color:G1,marginBottom:10}}>CLEANER SUMMARY</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr auto",gap:"8px 20px",fontSize:14}}>
+                  {[["Cleaner",cleaner.name||"—"],["Days",cleaner.cleaningDays.filter(d=>d.on).map(d=>d.day.substring(0,3)).join(", ")||"—"],["Frequency",cleaner.cleaningFrequency==="once_weekly"?"Weekly":cleaner.cleaningFrequency==="biweekly"?"Bi-Weekly":"Monthly"],["Client Fee",fmt$(totalMonthly)],["Cleaner Pay",fmt$(cleanerFee)]].map(([l,v])=><React.Fragment key={l}><span style={{color:"#ccc"}}>{l}</span><span style={{fontWeight:700,textAlign:"right"}}>{v}</span></React.Fragment>)}
+                  <span style={{color:"#ccc"}}>NJS Margin</span><span style={{textAlign:"right",color:G1}}>{fmt$(totalMonthly-cleanerFee)} ({actualMargin.toFixed(1)}%)</span>
+                </div>
+              </div>
+            </div>}
+          </div>
+        </div>
+      )}
 
-            <style>{`
+      <style>{`
         @media print {
           body { margin:0!important; padding:0!important; background:white!important; -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
           .no-print { display:none!important; }
@@ -2608,11 +624,12 @@ patrick@nationaljanitorialservices.com
           .pdf-page { box-shadow:0 2px 16px rgba(0,0,0,.12); margin-bottom:20px; border-radius:4px; }
         }
       `}</style>
-          </div>
-        );
-      }
+    </div>
+  );
+}
 
-      ReactDOM.render(React.createElement(App), document.getElementById("app"));
-    </script>
-  </body>
+ReactDOM.render(React.createElement(App), document.getElementById("app"));
+try { setTimeout(initGmailAuth, 1000); } catch(e) {}
+</script>
+</body>
 </html>
