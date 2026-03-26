@@ -1,42 +1,22 @@
 /*
  * NJS Proposal Generator — Configuration
- *
+ * 
  * INSTRUCTIONS:
- * 1. Follow the Gmail API setup in README.md
- * 2. Replace the placeholder values below
- * 3. Upload this file alongside index.html
+ * 1. Update the email addresses below as needed
+ * 2. Upload this file alongside index.html to your web host
+ * 3. No API keys needed — emails open directly in Gmail
  */
 
 const NJS_CONFIG = {
-  // ─── Gmail API ───────────────────────────────────────────
-  gmail: {
-    // Your Google Cloud OAuth 2.0 Client ID
-    // Get this from: console.cloud.google.com → APIs & Services → Credentials
-    clientId: "934270660551-4r1ooejfom3nioda2u2k7pshpninnq1u.apps.googleusercontent.com",
+  // Email sent FROM (must be logged into this Google account in the browser)
+  senderEmail: "billing@nationaljanitorialservices.com",
 
-    // Scopes needed (don't change this)
-    scopes: "https://www.googleapis.com/auth/gmail.send",
+  // Internal notification recipient (auto-sent when client email is triggered)
+  internalNotification: "billing@nationaljanitorialservices.com",
 
-    // The "From" address for all outgoing emails
-    // Must be the authenticated Gmail account or a configured send-as alias
-    senderEmail: "billing@nationaljanitorialservices.com",
-  },
-
-  // ─── Email Recipients ────────────────────────────────────
-  emails: {
-    // Internal team notification recipient
-    // Receives cleaner details whenever a proposal is emailed to a client
-    internalNotification: "billing@nationaljanitorialservices.com",
-  },
-
-  // ─── Email Subject Lines ─────────────────────────────────
+  // Subject line templates ({company} gets replaced with client company name)
   subjects: {
-    // Subject for the email sent TO THE CLIENT
-    // {company} will be replaced with the client's company name
     client: "National Janitorial Services || Proposal for {company}",
-
-    // Subject for the INTERNAL notification email
-    // {company} will be replaced with the client's company name
     internal: "NJS || Proposal has been generated for {company}",
   },
 };

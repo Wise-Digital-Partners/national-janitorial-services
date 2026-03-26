@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" />
-    .
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NJS Proposal Generator</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
       *,
       *::before,
@@ -15,16 +13,9 @@
         margin: 0;
         padding: 0;
       }
-      :root {
-        --g1: #53af3b;
-        --g2: #007041;
-        --bk: #101820;
-        --gy: #bbbcbc;
-        --red: #d32f2f;
-      }
       body {
         font-family: "Segoe UI", -apple-system, system-ui, sans-serif;
-        color: var(--bk);
+        color: #101820;
         background: #f4f5f4;
         min-height: 100vh;
       }
@@ -39,8 +30,6 @@
       select:focus {
         outline: none;
       }
-
-      /* Print styles */
       @media print {
         body {
           margin: 0 !important;
@@ -51,6 +40,9 @@
         }
         .no-print {
           display: none !important;
+        }
+        .print-only {
+          display: block !important;
         }
         .print-area {
           margin: 0 !important;
@@ -69,6 +61,9 @@
         }
       }
       @media screen {
+        .print-only {
+          display: none !important;
+        }
         .pdf-page {
           box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
           margin-bottom: 20px;
@@ -85,9 +80,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
     <script type="text/babel">
       const { useState, useRef, useCallback, useEffect } = React;
+      const CFG = window.NJS_CONFIG || {};
 
-      /* ── Config (from config.js) ── */
-      const CFG = window.NJS_CONFIG || { gmail: {}, emails: {}, subjects: {} };
       const G1 = "#53AF3B",
         G2 = "#007041",
         BK = "#101820",
@@ -103,81 +97,6 @@
         new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
       const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-      /* ── Gmail API Helper ── */
-      let gTokenClient = null;
-      let gAccessToken = null;
-
-      function initGmail() {
-        if (!CFG.gmail.clientId || CFG.gmail.clientId.includes("YOUR_CLIENT_ID")) {
-          console.warn("Gmail API not configured. Edit config.js with your credentials.");
-          return;
-        }
-        try {
-          gTokenClient = google.accounts.oauth2.initTokenClient({
-            client_id: CFG.gmail.clientId,
-            scope: CFG.gmail.scopes,
-            callback: (resp) => {
-              if (resp.access_token) gAccessToken = resp.access_token;
-            },
-          });
-        } catch (e) {
-          console.warn("Gmail init failed:", e);
-        }
-      }
-
-      async function getGmailToken() {
-        if (gAccessToken) return gAccessToken;
-        return new Promise((resolve, reject) => {
-          if (!gTokenClient) {
-            reject(
-              new Error("Gmail not configured. Update config.js with your Google Cloud Client ID."),
-            );
-            return;
-          }
-          gTokenClient.callback = (resp) => {
-            if (resp.error) {
-              reject(new Error(resp.error));
-              return;
-            }
-            gAccessToken = resp.access_token;
-            resolve(gAccessToken);
-          };
-          gTokenClient.requestAccessToken({ prompt: "" });
-        });
-      }
-
-      function buildMimeEmail(to, subject, body, from) {
-        const mime = [
-          `From: ${from || CFG.gmail.senderEmail}`,
-          `To: ${to}`,
-          `Subject: ${subject}`,
-          `MIME-Version: 1.0`,
-          `Content-Type: text/plain; charset=UTF-8`,
-          ``,
-          body,
-        ].join("\r\n");
-        return btoa(unescape(encodeURIComponent(mime)))
-          .replace(/\+/g, "-")
-          .replace(/\//g, "_")
-          .replace(/=+$/, "");
-      }
-
-      async function sendGmailMessage(to, subject, body) {
-        const token = await getGmailToken();
-        const raw = buildMimeEmail(to, subject, body);
-        const resp = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ raw }),
-        });
-        if (!resp.ok) {
-          const err = await resp.json().catch(() => ({}));
-          throw new Error(err.error?.message || `Gmail API error ${resp.status}`);
-        }
-        return resp.json();
-      }
-
-      /* ── SOW Data ── */
       const SECTIONS = [
         {
           title: "Lobby & Common Areas",
@@ -244,7 +163,15 @@
         "Sanitize all door handles and light switches",
       ];
 
-      const INTRO_LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.\n\nOur goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.\n\nAt NJS, we believe in customizing our approach to fit each client's unique requirements. We'll work closely with your team to establish procedures that ensure your expectations are not only met—but exceeded. Our reputation is backed by strong references and a commitment to excellence.\n\nBelow, you'll find our company's promise to you, terms and conditions, Scope of Work (SOW) and pricing details for your review.\n\nThank you for the opportunity to earn your business. We look forward to working together.`;
+      const INTRO_LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.
+
+Our goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.
+
+At NJS, we believe in customizing our approach to fit each client's unique requirements. We'll work closely with your team to establish procedures that ensure your expectations are not only met—but exceeded. Our reputation is backed by strong references and a commitment to excellence.
+
+Below, you'll find our company's promise to you, terms and conditions, Scope of Work (SOW) and pricing details for your review.
+
+Thank you for the opportunity to earn your business. We look forward to working together.`;
 
       const COMMITMENT = [
         {
@@ -289,7 +216,7 @@
         {
           n: "1",
           t: "Scope of Services",
-          text: `Services provided by National Janitorial Services ("NJS") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January.`,
+          text: 'Services provided by National Janitorial Services ("NJS") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January.',
         },
         {
           n: "2",
@@ -304,12 +231,12 @@
         {
           n: "3",
           t: "Payment Methods",
-          text: `We accept checks, credit cards, and ACH. Most clients choose a recurring payment setup via credit card or ACH for convenience. Our billing department will assist in setting up your preferred payment method.\n\nIf a scheduled cleaning is missed or skipped at your request, a prorated credit will be applied to the following billing cycle. For support, please notify your assigned Quality Control Manager (QCM) or email our billing team directly at: billing@nationaljanitorialservices.com.`,
+          text: "We accept checks, credit cards, and ACH. Most clients choose a recurring payment setup via credit card or ACH for convenience. Our billing department will assist in setting up your preferred payment method.\n\nIf a scheduled cleaning is missed or skipped at your request, a prorated credit will be applied to the following billing cycle. For support, please notify your assigned Quality Control Manager (QCM) or email our billing team directly at: billing@nationaljanitorialservices.com.",
         },
         {
           n: "4",
           t: "Service Guarantee",
-          text: `We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination.`,
+          text: "We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination.",
         },
         {
           n: "5",
@@ -324,28 +251,38 @@
         {
           n: "7",
           t: "Liability & Insurance",
-          text: `NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention.`,
+          text: "NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention.",
         },
         {
           n: "8",
           t: "Non-Solicitation of Personnel",
-          text: `To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation.`,
+          text: "To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation.",
         },
       ];
 
-      const defaultClientEmail = (name) =>
-        `Dear ${name},\n\nThank you for your interest in National Janitorial Services. Please find attached our proposal for professional cleaning services customized for your facility.\n\nWe've outlined the scope of work, pricing, and terms for your review. If you have any questions or would like to discuss any aspect of the proposal, please don't hesitate to reach out.\n\nWe look forward to the opportunity to serve you.\n\nBest regards,\nPatrick Dillon\nOwner, National Janitorial Services\npatrick@nationaljanitorialservices.com\n(414) 899-9975`;
+      const defaultClientEmail = (name) => `Dear ${name},
+
+Thank you for your interest in National Janitorial Services. Please find attached our proposal for professional cleaning services customized for your facility.
+
+We've outlined the scope of work, pricing, and terms for your review. If you have any questions or would like to discuss any aspect of the proposal, please don't hesitate to reach out.
+
+We look forward to the opportunity to serve you.
+
+Best regards,
+Patrick Dillon
+Owner, National Janitorial Services
+patrick@nationaljanitorialservices.com
+(414) 899-9975`;
 
       /* ── UI Components ── */
       function Tog({ on, set, sm }) {
         const h = sm ? 16 : 22,
           w = h * 1.75;
-        return React.createElement(
-          "button",
-          {
-            type: "button",
-            onClick: () => set(!on),
-            style: {
+        return (
+          <button
+            type="button"
+            onClick={() => set(!on)}
+            style={{
               width: w,
               height: h,
               borderRadius: h,
@@ -355,83 +292,74 @@
               position: "relative",
               transition: "background .15s",
               flexShrink: 0,
-            },
-          },
-          React.createElement("span", {
-            style: {
-              position: "absolute",
-              top: 2,
-              left: on ? w - h + 2 : 2,
-              width: h - 4,
-              height: h - 4,
-              borderRadius: "50%",
-              background: "#fff",
-              transition: "left .15s",
-            },
-          }),
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                top: 2,
+                left: on ? w - h + 2 : 2,
+                width: h - 4,
+                height: h - 4,
+                borderRadius: "50%",
+                background: "#fff",
+                transition: "left .15s",
+              }}
+            />
+          </button>
         );
       }
-      const Req = () =>
-        React.createElement("span", { style: { color: RED, marginLeft: 2, fontWeight: 700 } }, "*");
+      const Req = () => <span style={{ color: RED, marginLeft: 2, fontWeight: 700 }}>*</span>;
       const Err = ({ msg }) =>
-        msg
-          ? React.createElement("div", { style: { fontSize: 10, color: RED, marginTop: 2 } }, msg)
-          : null;
-
-      function Inp({ val, set, ph, style: st, type, err }) {
-        return React.createElement(
-          "div",
-          null,
-          React.createElement("input", {
-            type: type || "text",
-            value: val,
-            onChange: (e) => set(e.target.value),
-            placeholder: ph,
-            style: {
+        msg ? <div style={{ fontSize: 10, color: RED, marginTop: 2 }}>{msg}</div> : null;
+      const Inp = ({ val, set, ph, style: st, type, err }) => (
+        <div>
+          <input
+            type={type || "text"}
+            value={val}
+            onChange={(e) => set(e.target.value)}
+            placeholder={ph}
+            style={{
               width: "100%",
               border: `1px solid ${err ? RED : "#ddd"}`,
               borderRadius: 5,
               padding: "7px 10px",
+              fontFamily: "inherit",
               fontSize: 13,
               boxSizing: "border-box",
               outline: "none",
               background: err ? "#FFF5F5" : "#fff",
               ...st,
-            },
-          }),
-          React.createElement(Err, { msg: err }),
-        );
-      }
-
-      function Field({ label, children, span, required }) {
-        return React.createElement(
-          "div",
-          { style: { gridColumn: span ? "1 / -1" : undefined } },
-          React.createElement(
-            "label",
-            {
-              style: {
-                fontSize: 11,
-                fontWeight: 600,
-                color: "#555",
-                display: "block",
-                marginBottom: 3,
-              },
-            },
-            label,
-            required && React.createElement(Req),
-          ),
-          children,
-        );
-      }
-
+            }}
+            onFocus={(e) => (e.target.style.borderColor = err ? RED : G1)}
+            onBlur={(e) => (e.target.style.borderColor = err ? RED : "#ddd")}
+          />
+          <Err msg={err} />
+        </div>
+      );
+      const Field = ({ label, children, span, required }) => (
+        <div style={{ gridColumn: span ? "1 / -1" : undefined }}>
+          <label
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: "#555",
+              display: "block",
+              marginBottom: 3,
+            }}
+          >
+            {label}
+            {required && <Req />}
+          </label>
+          {children}
+        </div>
+      );
       function DayChip({ day, selected, toggle }) {
-        return React.createElement(
-          "button",
-          {
-            type: "button",
-            onClick: toggle,
-            style: {
+        return (
+          <button
+            type="button"
+            onClick={toggle}
+            style={{
               padding: "6px 14px",
               borderRadius: 20,
               border: `2px solid ${selected ? G1 : "#ddd"}`,
@@ -440,14 +368,18 @@
               cursor: "pointer",
               fontSize: 12,
               fontWeight: selected ? 700 : 400,
+              fontFamily: "inherit",
               transition: "all .15s",
-            },
-          },
-          day.substring(0, 3),
+            }}
+          >
+            {day.substring(0, 3)}
+          </button>
         );
       }
 
-      /* ── PDF Pages Component ── */
+      /* ══════════════════════════════════════
+   PDF PAGES (used for both preview AND print)
+   ══════════════════════════════════════ */
       function ProposalPDF({ d }) {
         const { client: c, letter, sow, dayPorter, addons, cleaner } = d;
         const date = c.date || today();
@@ -478,162 +410,103 @@
           pageBreakAfter: "always",
           position: "relative",
         };
+        const hdr = () => (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              paddingBottom: 10,
+              borderBottom: `3px solid ${G1}`,
+              marginBottom: 20,
+            }}
+          >
+            <div>
+              <div style={{ fontSize: 24, fontWeight: 900, letterSpacing: 1.5, color: BK }}>
+                N<span style={{ color: G1 }}>A</span>TIONAL
+              </div>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: G1,
+                  fontWeight: 600,
+                  marginTop: -3,
+                  letterSpacing: 0.5,
+                }}
+              >
+                Janitorial Services
+              </div>
+            </div>
+            <div style={{ textAlign: "right", fontSize: 8.5, color: "#666", lineHeight: 1.5 }}>
+              500 W. Harbor Dr Unit 303
+              <br />
+              San Diego, CA 92101
+              <br />
+              billing@nationaljanitorialservices.com
+            </div>
+          </div>
+        );
 
-        const Hdr = () =>
-          React.createElement(
-            "div",
-            {
-              style: {
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-                paddingBottom: 10,
-                borderBottom: `3px solid ${G1}`,
-                marginBottom: 20,
-              },
-            },
-            React.createElement(
-              "div",
-              null,
-              React.createElement(
-                "div",
-                { style: { fontSize: 24, fontWeight: 900, letterSpacing: 1.5, color: BK } },
-                "N",
-                React.createElement("span", { style: { color: G1 } }, "A"),
-                "TIONAL",
-              ),
-              React.createElement(
-                "div",
-                {
-                  style: {
-                    fontSize: 12,
-                    color: G1,
-                    fontWeight: 600,
-                    marginTop: -3,
-                    letterSpacing: 0.5,
-                  },
-                },
-                "Janitorial Services",
-              ),
-            ),
-            React.createElement(
-              "div",
-              { style: { textAlign: "right", fontSize: 8.5, color: "#666", lineHeight: 1.5 } },
-              "500 W. Harbor Dr Unit 303",
-              React.createElement("br"),
-              "San Diego, CA 92101",
-              React.createElement("br"),
-              "billing@nationaljanitorialservices.com",
-            ),
-          );
-
-        return React.createElement(
-          React.Fragment,
-          null,
-          // Page 1: Cover Letter
-          React.createElement(
-            "div",
-            { style: pg, className: "pdf-page" },
-            React.createElement(Hdr),
-            React.createElement(
-              "div",
-              { style: { marginBottom: 6 } },
-              React.createElement("span", { style: { fontWeight: 700, fontSize: 12 } }, "CLIENT: "),
-              React.createElement(
-                "span",
-                { style: { fontWeight: 700, fontSize: 12, color: G2 } },
-                c.company,
-              ),
-            ),
-            React.createElement(
-              "div",
-              { style: { fontSize: 9, color: "#777", marginBottom: 20 } },
-              date,
-            ),
-            React.createElement(
-              "div",
-              { style: { marginBottom: 16, fontSize: 10.5 } },
-              "Dear ",
-              c.contactFirst,
-              ",",
-            ),
-            ...letter
-              .split("\n\n")
-              .map((p, i) =>
-                React.createElement(
-                  "p",
-                  { key: i, style: { margin: "0 0 10px", fontSize: 10 } },
-                  p,
-                ),
-              ),
-            React.createElement(
-              "div",
-              { style: { marginTop: 16, fontSize: 10 } },
-              "Best regards,",
-              React.createElement("br"),
-              React.createElement("strong", { style: { fontSize: 11 } }, "Patrick Dillon"),
-              React.createElement("br"),
-              React.createElement(
-                "span",
-                { style: { fontSize: 9, color: "#666" } },
-                "Owner · patrick@nationaljanitorialservices.com · (414) 899-9975",
-              ),
-            ),
-          ),
-
-          // Page 2: Commitment & Terms
-          React.createElement(
-            "div",
-            { style: pg, className: "pdf-page" },
-            React.createElement(Hdr),
-            React.createElement(
-              "div",
-              { style: { fontSize: 14, fontWeight: 800, color: BK, marginBottom: 4 } },
-              "Our Commitment",
-            ),
-            React.createElement(
-              "div",
-              { style: { fontSize: 9, color: "#888", marginBottom: 12 } },
-              "Resources, Process & Quality Assurance",
-            ),
-            React.createElement(
-              "p",
-              { style: { fontSize: 9.5, margin: "0 0 10px" } },
-              "At National Janitorial Services (NJS), we take pride in a proactive, responsive approach to service and communication. Here's what you can expect from our team:",
-            ),
-            ...COMMITMENT.map((s, i) =>
-              React.createElement(
-                "div",
-                { key: i, style: { marginBottom: 8 } },
-                React.createElement(
-                  "div",
-                  { style: { fontSize: 10, fontWeight: 700, color: G2, marginBottom: 2 } },
-                  s.heading,
-                ),
-                s.intro &&
-                  React.createElement("p", { style: { fontSize: 9, margin: "0 0 3px" } }, s.intro),
-                s.text && React.createElement("p", { style: { fontSize: 9, margin: 0 } }, s.text),
-                s.bullets &&
-                  React.createElement(
-                    "div",
-                    { style: { paddingLeft: 12 } },
-                    ...s.bullets.map((b, j) =>
-                      React.createElement(
-                        "div",
-                        { key: j, style: { fontSize: 9, padding: "1px 0" } },
-                        "• ",
-                        b,
-                      ),
-                    ),
-                  ),
-                s.after &&
-                  React.createElement("p", { style: { fontSize: 9, margin: "3px 0 0" } }, s.after),
-              ),
-            ),
-            React.createElement(
-              "div",
-              {
-                style: {
+        return (
+          <>
+            {/* Page 1: Cover Letter */}
+            <div style={pg} className="pdf-page">
+              {hdr()}
+              <div style={{ marginBottom: 6 }}>
+                <span style={{ fontWeight: 700, fontSize: 12 }}>CLIENT: </span>
+                <span style={{ fontWeight: 700, fontSize: 12, color: G2 }}>{c.company}</span>
+              </div>
+              <div style={{ fontSize: 9, color: "#777", marginBottom: 20 }}>{date}</div>
+              <div style={{ marginBottom: 16, fontSize: 10.5 }}>Dear {c.contactFirst},</div>
+              {letter.split("\n\n").map((p, i) => (
+                <p key={i} style={{ margin: "0 0 10px", fontSize: 10 }}>
+                  {p}
+                </p>
+              ))}
+              <div style={{ marginTop: 16, fontSize: 10 }}>
+                Best regards,
+                <br />
+                <strong style={{ fontSize: 11 }}>Patrick Dillon</strong>
+                <br />
+                <span style={{ fontSize: 9, color: "#666" }}>
+                  Owner · patrick@nationaljanitorialservices.com · (414) 899-9975
+                </span>
+              </div>
+            </div>
+            {/* Page 2: Commitment & Terms */}
+            <div style={pg} className="pdf-page">
+              {hdr()}
+              <div style={{ fontSize: 14, fontWeight: 800, color: BK, marginBottom: 4 }}>
+                Our Commitment
+              </div>
+              <div style={{ fontSize: 9, color: "#888", marginBottom: 12 }}>
+                Resources, Process & Quality Assurance
+              </div>
+              <p style={{ fontSize: 9.5, margin: "0 0 10px" }}>
+                At National Janitorial Services (NJS), we take pride in a proactive, responsive
+                approach to service and communication. Here's what you can expect from our team:
+              </p>
+              {COMMITMENT.map((s, i) => (
+                <div key={i} style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: G2, marginBottom: 2 }}>
+                    {s.heading}
+                  </div>
+                  {s.intro && <p style={{ fontSize: 9, margin: "0 0 3px" }}>{s.intro}</p>}
+                  {s.text && <p style={{ fontSize: 9, margin: 0 }}>{s.text}</p>}
+                  {s.bullets && (
+                    <div style={{ paddingLeft: 12 }}>
+                      {s.bullets.map((b, j) => (
+                        <div key={j} style={{ fontSize: 9, padding: "1px 0" }}>
+                          • {b}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {s.after && <p style={{ fontSize: 9, margin: "3px 0 0" }}>{s.after}</p>}
+                </div>
+              ))}
+              <div
+                style={{
                   fontSize: 14,
                   fontWeight: 800,
                   color: BK,
@@ -641,57 +514,38 @@
                   marginBottom: 10,
                   borderTop: `2px solid ${G1}`,
                   paddingTop: 12,
-                },
-              },
-              "Service Terms & Conditions",
-            ),
-            ...TERMS.map((t, i) =>
-              React.createElement(
-                "div",
-                { key: i, style: { marginBottom: 8 } },
-                React.createElement(
-                  "div",
-                  { style: { fontSize: 10, fontWeight: 700, color: G2 } },
-                  t.n,
-                  ". ",
-                  t.t,
-                ),
-                t.text &&
-                  t.text
-                    .split("\n\n")
-                    .map((p, j) =>
-                      React.createElement(
-                        "p",
-                        { key: j, style: { fontSize: 9, margin: "2px 0 4px" } },
-                        p,
-                      ),
-                    ),
-                t.bullets &&
-                  React.createElement(
-                    "div",
-                    { style: { paddingLeft: 12 } },
-                    ...t.bullets.map((b, j) =>
-                      React.createElement(
-                        "div",
-                        { key: j, style: { fontSize: 9, padding: "1px 0" } },
-                        "• ",
-                        b,
-                      ),
-                    ),
-                  ),
-              ),
-            ),
-          ),
-
-          // Page 3: SOW
-          React.createElement(
-            "div",
-            { style: pg, className: "pdf-page" },
-            React.createElement(Hdr),
-            React.createElement(
-              "div",
-              {
-                style: {
+                }}
+              >
+                Service Terms & Conditions
+              </div>
+              {TERMS.map((t, i) => (
+                <div key={i} style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: G2 }}>
+                    {t.n}. {t.t}
+                  </div>
+                  {t.text &&
+                    t.text.split("\n\n").map((p, j) => (
+                      <p key={j} style={{ fontSize: 9, margin: "2px 0 4px" }}>
+                        {p}
+                      </p>
+                    ))}
+                  {t.bullets && (
+                    <div style={{ paddingLeft: 12 }}>
+                      {t.bullets.map((b, j) => (
+                        <div key={j} style={{ fontSize: 9, padding: "1px 0" }}>
+                          • {b}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Page 3: SOW */}
+            <div style={pg} className="pdf-page">
+              {hdr()}
+              <div
+                style={{
                   background: BK,
                   color: "#fff",
                   padding: "8px 14px",
@@ -700,19 +554,15 @@
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                },
-              },
-              React.createElement(
-                "span",
-                { style: { fontSize: 16, fontWeight: 800, letterSpacing: 1 } },
-                "SCOPE OF WORK",
-              ),
-              React.createElement("span", { style: { fontSize: 9 } }, "SOW"),
-            ),
-            React.createElement(
-              "div",
-              {
-                style: {
+                }}
+              >
+                <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: 1 }}>
+                  SCOPE OF WORK
+                </span>
+                <span style={{ fontSize: 9 }}>SOW</span>
+              </div>
+              <div
+                style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
                   gap: "3px 24px",
@@ -722,31 +572,35 @@
                   background: "#f8f9f8",
                   borderRadius: 4,
                   border: `1px solid ${G1}22`,
-                },
-              },
-              ...[
-                "Date: " + date,
-                "Term: " + (c.term || "12 Months"),
-                "Company: " + c.company,
-                "Phone: " + c.phone,
-                "Address: " + c.address,
-                "Email: " + c.email,
-                "Contact: " + c.contactFirst + " " + c.contactLast,
-                "Client Type: " + (c.isNew ? "New Client" : "Existing Client"),
-              ].map((t, i) => {
-                const [l, v] = t.split(": ");
-                return React.createElement(
-                  "div",
-                  { key: i },
-                  React.createElement("strong", null, l + ": "),
-                  v,
-                );
-              }),
-            ),
-            React.createElement(
-              "div",
-              {
-                style: {
+                }}
+              >
+                <div>
+                  <strong>Date:</strong> {date}
+                </div>
+                <div>
+                  <strong>Term:</strong> {c.term || "12 Months"}
+                </div>
+                <div>
+                  <strong>Company:</strong> {c.company}
+                </div>
+                <div>
+                  <strong>Phone:</strong> {c.phone}
+                </div>
+                <div>
+                  <strong>Address:</strong> {c.address}
+                </div>
+                <div>
+                  <strong>Email:</strong> {c.email}
+                </div>
+                <div>
+                  <strong>Contact:</strong> {c.contactFirst} {c.contactLast}
+                </div>
+                <div>
+                  <strong>Client Type:</strong> {c.isNew ? "New Client" : "Existing Client"}
+                </div>
+              </div>
+              <div
+                style={{
                   display: "flex",
                   justifyContent: "space-between",
                   padding: "8px 12px",
@@ -755,31 +609,22 @@
                   borderRadius: 4,
                   fontSize: 10,
                   marginBottom: 4,
-                },
-              },
-              React.createElement(
-                "span",
-                null,
-                "Cleaning Days: ",
-                React.createElement(
-                  "strong",
-                  null,
-                  selectedDays.length > 0
-                    ? selectedDays.map((d) => d.substring(0, 3)).join(", ")
-                    : "—",
-                ),
-              ),
-              React.createElement(
-                "span",
-                null,
-                "Cleaning Frequency: ",
-                React.createElement("strong", null, freqLabel),
-              ),
-            ),
-            React.createElement(
-              "div",
-              {
-                style: {
+                }}
+              >
+                <span>
+                  Cleaning Days:{" "}
+                  <strong>
+                    {selectedDays.length > 0
+                      ? selectedDays.map((d) => d.substring(0, 3)).join(", ")
+                      : "—"}
+                  </strong>
+                </span>
+                <span>
+                  Cleaning Frequency: <strong>{freqLabel}</strong>
+                </span>
+              </div>
+              <div
+                style={{
                   display: "flex",
                   justifyContent: "space-between",
                   padding: "6px 12px",
@@ -788,44 +633,55 @@
                   borderRadius: 4,
                   fontSize: 10,
                   marginBottom: 14,
-                },
-              },
-              React.createElement(
-                "span",
-                null,
-                "Sq Ft: ",
-                React.createElement("strong", null, c.sqft),
-              ),
-              React.createElement(
-                "span",
-                null,
-                "Service Freq: ",
-                React.createElement("strong", null, c.frequency),
-              ),
-              React.createElement(
-                "span",
-                null,
-                "Initial Fee: ",
-                React.createElement("strong", null, initialFeeDisplay),
-              ),
-              React.createElement(
-                "span",
-                null,
-                "Base Fee: ",
-                React.createElement("strong", null, fmt$(c.basePrice)),
-              ),
-            ),
-
-            ...activeSow.map((sec, si) => {
-              const ai = sec.items.filter((i) => i.on);
-              if (!ai.length) return null;
-              return React.createElement(
-                "div",
-                { key: si, style: { marginBottom: 8 } },
-                React.createElement(
-                  "div",
-                  {
-                    style: {
+                }}
+              >
+                <span>
+                  Sq Ft: <strong>{c.sqft}</strong>
+                </span>
+                <span>
+                  Service Freq: <strong>{c.frequency}</strong>
+                </span>
+                <span>
+                  Initial Fee: <strong>{initialFeeDisplay}</strong>
+                </span>
+                <span>
+                  Base Fee: <strong>{fmt$(c.basePrice)}</strong>
+                </span>
+              </div>
+              {activeSow.map((sec, si) => {
+                const ai = sec.items.filter((i) => i.on);
+                if (!ai.length) return null;
+                return (
+                  <div key={si} style={{ marginBottom: 8 }}>
+                    <div
+                      style={{
+                        background: BK,
+                        color: "#fff",
+                        padding: "4px 10px",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        borderRadius: 2,
+                        marginBottom: 3,
+                      }}
+                    >
+                      {sec.title}
+                    </div>
+                    {ai.map((it, ii) => (
+                      <div
+                        key={ii}
+                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" }}
+                      >
+                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
+                        <span>{it.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+              {dayPorter.enabled && (
+                <div style={{ marginBottom: 8 }}>
+                  <div
+                    style={{
                       background: BK,
                       color: "#fff",
                       padding: "4px 10px",
@@ -833,32 +689,27 @@
                       fontWeight: 700,
                       borderRadius: 2,
                       marginBottom: 3,
-                    },
-                  },
-                  sec.title,
-                ),
-                ...ai.map((it, ii) =>
-                  React.createElement(
-                    "div",
-                    {
-                      key: ii,
-                      style: { display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" },
-                    },
-                    React.createElement("span", { style: { color: G1, fontWeight: 700 } }, "☑"),
-                    React.createElement("span", null, it.text),
-                  ),
-                ),
-              );
-            }),
-
-            dayPorter.enabled &&
-              React.createElement(
-                "div",
-                { style: { marginBottom: 8 } },
-                React.createElement(
-                  "div",
-                  {
-                    style: {
+                    }}
+                  >
+                    Day Porter Janitorial Services – {dayPorter.hours} Hours Per Day
+                  </div>
+                  {dayPorter.items
+                    .filter((i) => i.on)
+                    .map((it, ii) => (
+                      <div
+                        key={ii}
+                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" }}
+                      >
+                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
+                        <span>{it.text}</span>
+                      </div>
+                    ))}
+                </div>
+              )}
+              {activeAddons.length > 0 && (
+                <div style={{ marginBottom: 8 }}>
+                  <div
+                    style={{
                       background: BK,
                       color: "#fff",
                       padding: "4px 10px",
@@ -866,137 +717,82 @@
                       fontWeight: 700,
                       borderRadius: 2,
                       marginBottom: 3,
-                    },
-                  },
-                  "Day Porter Janitorial Services – ",
-                  dayPorter.hours,
-                  " Hours Per Day",
-                ),
-                ...dayPorter.items
-                  .filter((i) => i.on)
-                  .map((it, ii) =>
-                    React.createElement(
-                      "div",
-                      {
-                        key: ii,
-                        style: { display: "flex", gap: 6, fontSize: 9.5, padding: "2px 10px" },
-                      },
-                      React.createElement("span", { style: { color: G1, fontWeight: 700 } }, "☑"),
-                      React.createElement("span", null, it.text),
-                    ),
-                  ),
-              ),
-
-            activeAddons.length > 0 &&
-              React.createElement(
-                "div",
-                { style: { marginBottom: 8 } },
-                React.createElement(
-                  "div",
-                  {
-                    style: {
-                      background: BK,
-                      color: "#fff",
-                      padding: "4px 10px",
-                      fontSize: 10,
-                      fontWeight: 700,
-                      borderRadius: 2,
-                      marginBottom: 3,
-                    },
-                  },
-                  "Special Requests & Add-Ons",
-                ),
-                ...activeAddons.map((a, i) =>
-                  React.createElement(
-                    "div",
-                    {
-                      key: i,
-                      style: {
+                    }}
+                  >
+                    Special Requests & Add-Ons
+                  </div>
+                  {activeAddons.map((a, i) => (
+                    <div
+                      key={i}
+                      style={{
                         display: "flex",
                         justifyContent: "space-between",
                         fontSize: 9.5,
                         padding: "2px 10px",
-                      },
-                    },
-                    React.createElement(
-                      "div",
-                      { style: { display: "flex", gap: 6 } },
-                      React.createElement("span", { style: { color: G1, fontWeight: 700 } }, "☑"),
-                      React.createElement("span", null, a.text),
-                    ),
-                    parseFloat(a.price) > 0 &&
-                      React.createElement(
-                        "span",
-                        { style: { fontWeight: 600 } },
-                        fmt$(a.price),
-                        "/mo",
-                      ),
-                  ),
-                ),
-              ),
-
-            React.createElement(
-              "div",
-              {
-                style: {
+                      }}
+                    >
+                      <div style={{ display: "flex", gap: 6 }}>
+                        <span style={{ color: G1, fontWeight: 700 }}>☑</span>
+                        <span>{a.text}</span>
+                      </div>
+                      {parseFloat(a.price) > 0 && (
+                        <span style={{ fontWeight: 600 }}>{fmt$(a.price)}/mo</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div
+                style={{
                   background: G1,
                   borderRadius: 6,
                   padding: "12px 16px",
                   color: "#fff",
                   marginTop: 10,
-                },
-              },
-              React.createElement(
-                "div",
-                { style: { fontSize: 11, fontWeight: 800, marginBottom: 6, letterSpacing: 0.5 } },
-                "COMPLETE PRICING",
-              ),
-              React.createElement(
-                "div",
-                {
-                  style: {
+                }}
+              >
+                <div style={{ fontSize: 11, fontWeight: 800, marginBottom: 6, letterSpacing: 0.5 }}>
+                  COMPLETE PRICING
+                </div>
+                <div
+                  style={{
                     display: "flex",
                     justifyContent: "space-between",
                     fontSize: 10,
                     padding: "3px 0",
-                  },
-                },
-                "Base Monthly Rate for General Services",
-                React.createElement("span", null, fmt$(base)),
-              ),
-              addonsTotal > 0 &&
-                React.createElement(
-                  "div",
-                  {
-                    style: {
+                  }}
+                >
+                  <span>Base Monthly Rate for General Services</span>
+                  <span>{fmt$(base)}</span>
+                </div>
+                {addonsTotal > 0 && (
+                  <div
+                    style={{
                       display: "flex",
                       justifyContent: "space-between",
                       fontSize: 10,
                       padding: "3px 0",
-                    },
-                  },
-                  "Special Requests & Add-Ons",
-                  React.createElement("span", null, fmt$(addonsTotal)),
-                ),
-              c.hasInitialFee === "yes" &&
-                parseFloat(c.initialFeeAmount) > 0 &&
-                React.createElement(
-                  "div",
-                  {
-                    style: {
+                    }}
+                  >
+                    <span>Special Requests & Add-Ons</span>
+                    <span>{fmt$(addonsTotal)}</span>
+                  </div>
+                )}
+                {c.hasInitialFee === "yes" && parseFloat(c.initialFeeAmount) > 0 && (
+                  <div
+                    style={{
                       display: "flex",
                       justifyContent: "space-between",
                       fontSize: 10,
                       padding: "3px 0",
-                    },
-                  },
-                  "Initial Cleaning Fee (one-time)",
-                  React.createElement("span", null, fmt$(c.initialFeeAmount)),
-                ),
-              React.createElement(
-                "div",
-                {
-                  style: {
+                    }}
+                  >
+                    <span>Initial Cleaning Fee (one-time)</span>
+                    <span>{fmt$(c.initialFeeAmount)}</span>
+                  </div>
+                )}
+                <div
+                  style={{
                     display: "flex",
                     justifyContent: "space-between",
                     fontSize: 16,
@@ -1004,86 +800,55 @@
                     padding: "8px 0 0",
                     borderTop: "2px solid rgba(255,255,255,.4)",
                     marginTop: 6,
-                  },
-                },
-                "Total Flat Monthly Fee",
-                React.createElement("span", null, fmt$(total)),
-              ),
-            ),
-
-            React.createElement(
-              "div",
-              { style: { marginTop: 20, fontSize: 9 } },
-              React.createElement(
-                "div",
-                { style: { fontWeight: 700, fontSize: 10, marginBottom: 10 } },
-                "Proposal Acceptance",
-              ),
-              React.createElement(
-                "div",
-                { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 40px" } },
-                ...["Company", "Date", "Name & Title", "Signature"].map((l) =>
-                  React.createElement(
-                    "div",
-                    {
-                      key: l,
-                      style: {
+                  }}
+                >
+                  <span>Total Flat Monthly Fee</span>
+                  <span>{fmt$(total)}</span>
+                </div>
+              </div>
+              <div style={{ marginTop: 20, fontSize: 9 }}>
+                <div style={{ fontWeight: 700, fontSize: 10, marginBottom: 10 }}>
+                  Proposal Acceptance
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 40px" }}>
+                  {["Company", "Date", "Name & Title", "Signature"].map((l) => (
+                    <div
+                      key={l}
+                      style={{
                         borderBottom: "1px solid #888",
                         paddingBottom: 28,
                         fontSize: 8,
                         color: "#888",
-                      },
-                    },
-                    l,
-                  ),
-                ),
-              ),
-            ),
-            React.createElement(
-              "div",
-              { style: { textAlign: "right", marginTop: 16 } },
-              React.createElement(
-                "span",
-                {
-                  style: {
+                      }}
+                    >
+                      {l}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ textAlign: "right", marginTop: 16 }}>
+                <span
+                  style={{
                     borderBottom: "1px solid #888",
                     display: "inline-block",
                     width: 100,
                     paddingBottom: 16,
                     fontSize: 8,
                     color: "#888",
-                  },
-                },
-                "(Initials)",
-              ),
-            ),
-          ),
+                  }}
+                >
+                  (Initials)
+                </span>
+              </div>
+            </div>
+          </>
         );
       }
 
-      /*
-  NOTE: The full edit form, submit page, and main App component follow the same
-  logic as the JSX version. Due to the length, this HTML version uses the same
-  React.createElement pattern. The app is fully functional — all 5 tabs, validation,
-  preview, and the submit page with Gmail integration work identically.
-
-  For brevity in this demo, I'm including a simplified bootstrapper that loads
-  the JSX version via Babel transform. In production, you'd want to pre-compile this.
-*/
-
-      /* ── Since we have Babel loaded, we can use JSX directly ── */
-    </script>
-
-    <!-- JSX App Code (compiled by Babel in-browser) -->
-    <script type="text/babel">
-      /* ── Re-export helpers into JSX scope ── */
-      const _G1 = G1,
-        _G2 = G2,
-        _BK = BK,
-        _GY = GY,
-        _RED = RED;
-
-      function SubmitPage({ data, onBack }) {
+      /* ══════════════════════════════════════
+   SUBMIT PAGE
+   ══════════════════════════════════════ */
+      function SubmitPage({ data, onBack, onDownloadPDF }) {
         const { client: c, cleaner } = data;
         const [emailMode, setEmailMode] = useState("generic");
         const [customMessage, setCustomMessage] = useState(defaultClientEmail(c.contactFirst));
@@ -1113,8 +878,6 @@
             : "Monthly";
         const clientBody =
           emailMode === "generic" ? defaultClientEmail(c.contactFirst) : customMessage;
-        const internalRecipient =
-          CFG.emails?.internalNotification || "billing@nationaljanitorialservices.com";
 
         const internalBody = `CLEANER INFORMATION (Internal Only)\n${"─".repeat(
           40,
@@ -1136,22 +899,40 @@
           c.hasInitialFee === "yes" ? fmt$(c.initialFeeAmount) : "N/A"
         }`;
 
-        const clientSubject = (
-          CFG.subjects?.client || "National Janitorial Services || Proposal for {company}"
-        ).replace("{company}", c.company);
-        const internalSubject = (
-          CFG.subjects?.internal || "NJS || Proposal has been generated for {company}"
-        ).replace("{company}", c.company);
+        const clientSubject = `National Janitorial Services || Proposal for ${c.company}`;
+        const internalSubject = `NJS || Proposal has been generated for ${c.company}`;
 
         const handleSend = async () => {
           setSending(true);
           setError(null);
           try {
-            await sendGmailMessage(c.email, clientSubject, clientBody);
-            await sendGmailMessage(internalRecipient, internalSubject, internalBody);
+            // Use mailto as a reliable fallback that works everywhere
+            const subject = encodeURIComponent(clientSubject);
+            const body = encodeURIComponent(
+              clientBody + "\n\n---\nPlease see the attached proposal PDF.",
+            );
+            window.open(
+              `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
+                c.email,
+              )}&su=${subject}&body=${body}`,
+              "_blank",
+            );
+
+            // Also open internal notification
+            const intSubject = encodeURIComponent(internalSubject);
+            const intBody = encodeURIComponent(internalBody);
+            setTimeout(() => {
+              window.open(
+                `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
+                  "billing@nationaljanitorialservices.com",
+                )}&su=${intSubject}&body=${intBody}`,
+                "_blank",
+              );
+            }, 1000);
+
             setSent(true);
           } catch (e) {
-            setError(e.message || "Failed to send");
+            setError(e.message || "Failed to open email");
           }
           setSending(false);
         };
@@ -1183,11 +964,11 @@
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700 }}>📄 Download PDF</div>
                   <div style={{ fontSize: 11, color: "#888", marginTop: 2 }}>
-                    Save the proposal to your computer
+                    Save the proposal as a PDF file
                   </div>
                 </div>
                 <button
-                  onClick={() => window.print()}
+                  onClick={onDownloadPDF}
                   style={{
                     padding: "10px 24px",
                     borderRadius: 6,
@@ -1197,6 +978,7 @@
                     cursor: "pointer",
                     fontSize: 13,
                     fontWeight: 700,
+                    fontFamily: "inherit",
                   }}
                 >
                   Download
@@ -1218,9 +1000,10 @@
                 📧 Email Proposal to Client
               </div>
               <div style={{ fontSize: 11, color: "#888", marginBottom: 14 }}>
-                Sends from <strong>{CFG.gmail?.senderEmail || "billing@"}</strong> to{" "}
-                <strong>{c.email}</strong>. Internal notification auto-sent to{" "}
-                <strong>{internalRecipient}</strong>.
+                Opens Gmail compose to <strong>{c.email}</strong> with your message pre-filled.
+                Download the PDF first, then attach it to the email. A second Gmail compose window
+                will open for the internal notification to{" "}
+                <strong>billing@nationaljanitorialservices.com</strong>.
               </div>
 
               {sent ? (
@@ -1233,12 +1016,28 @@
                   }}
                 >
                   <div style={{ fontSize: 14, fontWeight: 700, color: G2 }}>
-                    ✓ Proposal Sent Successfully
+                    ✓ Gmail Compose Windows Opened
                   </div>
                   <div style={{ fontSize: 11, color: "#666", marginTop: 4 }}>
-                    Client: <strong>{c.email}</strong> · Internal:{" "}
-                    <strong>{internalRecipient}</strong>
+                    Check your browser for the Gmail tabs. Attach the downloaded PDF and hit send.
                   </div>
+                  <button
+                    onClick={() => setSent(false)}
+                    style={{
+                      marginTop: 8,
+                      padding: "6px 14px",
+                      borderRadius: 5,
+                      border: `1px solid ${G1}`,
+                      background: "#fff",
+                      color: G2,
+                      cursor: "pointer",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      fontFamily: "inherit",
+                    }}
+                  >
+                    Open Again
+                  </button>
                 </div>
               ) : (
                 <>
@@ -1279,6 +1078,7 @@
                           cursor: "pointer",
                           fontSize: 12,
                           fontWeight: emailMode === m ? 700 : 400,
+                          fontFamily: "inherit",
                         }}
                       >
                         {l}
@@ -1311,6 +1111,7 @@
                         border: "1px solid #ddd",
                         borderRadius: 6,
                         padding: 14,
+                        fontFamily: "inherit",
                         fontSize: 12,
                         lineHeight: 1.6,
                         resize: "vertical",
@@ -1346,15 +1147,13 @@
                       cursor: sending ? "wait" : "pointer",
                       fontSize: 14,
                       fontWeight: 700,
+                      fontFamily: "inherit",
                       width: "100%",
                       opacity: sending ? 0.7 : 1,
                     }}
                   >
-                    {sending ? "Sending..." : "Send Proposal to Client"}
+                    {sending ? "Opening Gmail..." : "Open Gmail & Send to Client"}
                   </button>
-                  <div style={{ fontSize: 10, color: "#aaa", marginTop: 6, textAlign: "center" }}>
-                    Note: Download the PDF first and attach it manually to the email thread for now.
-                  </div>
                 </>
               )}
             </div>
@@ -1370,7 +1169,7 @@
               }}
             >
               <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 2 }}>
-                📋 Internal Notification (auto-sent with client email)
+                📋 Internal Notification (opens automatically with client email)
               </div>
               <div style={{ fontSize: 10, color: "#888", marginBottom: 8 }}>
                 Subject: <span style={{ fontFamily: "monospace" }}>{internalSubject}</span>
@@ -1406,6 +1205,7 @@
                 background: "#fff",
                 cursor: "pointer",
                 fontSize: 12,
+                fontFamily: "inherit",
                 color: "#888",
               }}
             >
@@ -1416,17 +1216,14 @@
       }
 
       /* ══════════════════════════════════════
-   MAIN APP - Edit Mode
+   MAIN APP
    ══════════════════════════════════════ */
       function App() {
         const [view, setView] = useState("edit");
         const [tab, setTab] = useState("client");
         const [errors, setErrors] = useState({});
         const [showErrors, setShowErrors] = useState(false);
-
-        useEffect(() => {
-          setTimeout(initGmail, 1000);
-        }, []);
+        const [isPrinting, setIsPrinting] = useState(false);
 
         const [client, setClient] = useState({
           company: "",
@@ -1543,6 +1340,17 @@
           setView("preview");
         };
 
+        // FIX: Download PDF shows the proposal pages, not the submit page
+        const handleDownloadPDF = useCallback(() => {
+          setIsPrinting(true);
+          // Small delay to let React render the print-area before triggering print
+          setTimeout(() => {
+            window.print();
+            // Reset after print dialog closes
+            setTimeout(() => setIsPrinting(false), 500);
+          }, 100);
+        }, []);
+
         const hasError = (k) => showErrors && errors[k];
         const clientErrCount = showErrors
           ? REQUIRED_CLIENT.filter((f) => errors[f.key]).length + (errors.initialFeeAmount ? 1 : 0)
@@ -1567,8 +1375,25 @@
         ];
 
         return (
-          <div style={{ minHeight: "100vh", background: view === "edit" ? "#f4f5f4" : "#e8e8e8" }}>
-            {/* Top Bar */}
+          <div
+            style={{
+              fontFamily: "'Segoe UI',-apple-system,sans-serif",
+              color: BK,
+              minHeight: "100vh",
+              background: view === "edit" ? "#f4f5f4" : "#e8e8e8",
+            }}
+          >
+            {/* 
+        HIDDEN PRINT AREA: Always rendered but hidden on screen.
+        This is what gets printed when Download PDF is clicked from ANY page.
+      */}
+            <div className="print-only" style={{ display: "none" }}>
+              <div className="print-area">
+                <ProposalPDF d={data} />
+              </div>
+            </div>
+
+            {/* TOP BAR */}
             <div
               className="no-print"
               style={{
@@ -1605,6 +1430,7 @@
                       cursor: "pointer",
                       fontSize: 12,
                       fontWeight: 700,
+                      fontFamily: "inherit",
                     }}
                   >
                     Preview Proposal →
@@ -1626,6 +1452,7 @@
                         cursor: "pointer",
                         fontSize: 12,
                         fontWeight: 600,
+                        fontFamily: "inherit",
                       }}
                     >
                       ← Edit
@@ -1641,6 +1468,7 @@
                         cursor: "pointer",
                         fontSize: 12,
                         fontWeight: 700,
+                        fontFamily: "inherit",
                       }}
                     >
                       Continue to Submit →
@@ -1648,38 +1476,52 @@
                   </>
                 )}
                 {view === "submit" && (
-                  <button
-                    onClick={() => setView("preview")}
-                    style={{
-                      padding: "8px 18px",
-                      borderRadius: 5,
-                      border: `1px solid ${GY}`,
-                      background: "transparent",
-                      color: "#fff",
-                      cursor: "pointer",
-                      fontSize: 12,
-                      fontWeight: 600,
-                    }}
-                  >
-                    ← Preview
-                  </button>
+                  <>
+                    <button
+                      onClick={() => setView("preview")}
+                      style={{
+                        padding: "8px 18px",
+                        borderRadius: 5,
+                        border: `1px solid ${GY}`,
+                        background: "transparent",
+                        color: "#fff",
+                        cursor: "pointer",
+                        fontSize: 12,
+                        fontWeight: 600,
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      ← Preview
+                    </button>
+                  </>
                 )}
               </div>
             </div>
 
+            {/* PREVIEW (visible on screen) */}
             {view === "preview" && (
-              <div className="print-area" style={{ maxWidth: "8.5in", margin: "20px auto" }}>
+              <div className="no-print" style={{ maxWidth: "8.5in", margin: "20px auto" }}>
                 <ProposalPDF d={data} />
               </div>
             )}
-            {view === "submit" && <SubmitPage data={data} onBack={() => setView("preview")} />}
 
+            {/* SUBMIT */}
+            {view === "submit" && (
+              <div className="no-print">
+                <SubmitPage
+                  data={data}
+                  onBack={() => setView("preview")}
+                  onDownloadPDF={handleDownloadPDF}
+                />
+              </div>
+            )}
+
+            {/* EDIT */}
             {view === "edit" && (
               <div
                 className="no-print"
                 style={{ maxWidth: 800, margin: "0 auto", padding: "16px 16px 60px" }}
               >
-                {/* Pricing strip */}
                 <div
                   style={{
                     display: "flex",
@@ -1740,7 +1582,6 @@
                   </div>
                 )}
 
-                {/* Tabs */}
                 <div
                   style={{
                     display: "flex",
@@ -1763,6 +1604,7 @@
                         fontWeight: tab === t.id ? 700 : 400,
                         color: tab === t.id ? BK : "#999",
                         fontSize: 12,
+                        fontFamily: "inherit",
                         position: "relative",
                       }}
                     >
@@ -1800,7 +1642,6 @@
                     minHeight: 400,
                   }}
                 >
-                  {/* CLIENT TAB */}
                   {tab === "client" && (
                     <div>
                       <div style={{ display: "flex", gap: 16, marginBottom: 14 }}>
@@ -1909,6 +1750,7 @@
                               border: "1px solid #ddd",
                               borderRadius: 5,
                               padding: "7px 10px",
+                              fontFamily: "inherit",
                               fontSize: 13,
                               background: "#fff",
                               cursor: "pointer",
@@ -1959,7 +1801,6 @@
                     </div>
                   )}
 
-                  {/* LETTER TAB */}
                   {tab === "letter" && (
                     <div>
                       <div style={{ fontSize: 12, color: "#888", marginBottom: 4 }}>
@@ -2001,6 +1842,7 @@
                           border: "1px solid #ddd",
                           borderRadius: 6,
                           padding: "12px 14px",
+                          fontFamily: "inherit",
                           fontSize: 13,
                           lineHeight: 1.6,
                           resize: "vertical",
@@ -2011,7 +1853,6 @@
                     </div>
                   )}
 
-                  {/* SOW TAB */}
                   {tab === "sow" && (
                     <div>
                       {sow.map((sec, si) => (
@@ -2045,6 +1886,7 @@
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
+                                fontFamily: "inherit",
                               }}
                             >
                               {sec.items.every((i) => i.on) ? "Deselect All" : "Select All"}
@@ -2114,6 +1956,7 @@
                                   padding: "2px 6px",
                                   fontSize: 12,
                                   textAlign: "center",
+                                  fontFamily: "inherit",
                                 }}
                               />
                               <span style={{ fontSize: 9, color: "#aaa" }}>hrs/day</span>
@@ -2163,6 +2006,7 @@
                               borderRadius: 4,
                               border: "1px solid #ddd",
                               fontSize: 11,
+                              fontFamily: "inherit",
                             }}
                           >
                             {sow.map((s, i) => (
@@ -2181,6 +2025,7 @@
                               borderRadius: 4,
                               border: "1px solid #ddd",
                               fontSize: 12,
+                              fontFamily: "inherit",
                             }}
                             onKeyDown={(e) => {
                               if (e.key === "Enter" && newItem.trim()) {
@@ -2212,6 +2057,7 @@
                               cursor: "pointer",
                               fontSize: 11,
                               fontWeight: 700,
+                              fontFamily: "inherit",
                             }}
                           >
                             Add
@@ -2232,6 +2078,7 @@
                             color: G1,
                             cursor: "pointer",
                             fontSize: 10,
+                            fontFamily: "inherit",
                           }}
                         >
                           + New Section
@@ -2240,7 +2087,6 @@
                     </div>
                   )}
 
-                  {/* PRICING TAB */}
                   {tab === "pricing" && (
                     <div>
                       <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
@@ -2290,6 +2136,7 @@
                               border: "1px solid #ddd",
                               fontSize: 12,
                               textAlign: "right",
+                              fontFamily: "inherit",
                             }}
                           />
                           <span style={{ fontSize: 9, color: "#aaa" }}>/mo</span>
@@ -2306,6 +2153,7 @@
                             borderRadius: 4,
                             border: "1px solid #ddd",
                             fontSize: 12,
+                            fontFamily: "inherit",
                           }}
                         />
                         <input
@@ -2320,6 +2168,7 @@
                             border: "1px solid #ddd",
                             fontSize: 12,
                             textAlign: "right",
+                            fontFamily: "inherit",
                           }}
                         />
                         <button
@@ -2340,6 +2189,7 @@
                             cursor: "pointer",
                             fontSize: 11,
                             fontWeight: 700,
+                            fontFamily: "inherit",
                           }}
                         >
                           Add
@@ -2416,7 +2266,6 @@
                     </div>
                   )}
 
-                  {/* CLEANER TAB */}
                   {tab === "cleaner" && (
                     <div>
                       <div style={{ fontSize: 13, fontWeight: 700, color: G2, marginBottom: 4 }}>
@@ -2450,9 +2299,11 @@
                                 }`,
                                 borderRadius: 5,
                                 padding: "7px 10px",
+                                fontFamily: "inherit",
                                 fontSize: 15,
                                 fontWeight: 700,
                                 textAlign: "center",
+                                outline: "none",
                                 background: hasError("cleaner_marginPercent") ? "#FFF5F5" : "#fff",
                               }}
                             />
@@ -2461,7 +2312,6 @@
                           <Err msg={hasError("cleaner_marginPercent")} />
                         </Field>
                       </div>
-
                       <div style={{ marginTop: 20 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
                           Cleaning Days
@@ -2494,7 +2344,6 @@
                         </div>
                         <Err msg={hasError("cleaner_cleaningDays")} />
                       </div>
-
                       <div style={{ marginTop: 16 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: G2, marginBottom: 8 }}>
                           Cleaning Frequency
@@ -2521,6 +2370,7 @@
                                 cursor: "pointer",
                                 fontSize: 12,
                                 fontWeight: cleaner.cleaningFrequency === f.val ? 700 : 400,
+                                fontFamily: "inherit",
                               }}
                             >
                               {f.label}
@@ -2528,7 +2378,6 @@
                           ))}
                         </div>
                       </div>
-
                       <div
                         style={{
                           marginTop: 16,
@@ -2580,7 +2429,6 @@
                         </label>
                         <Err msg={hasError("cleaner_frequencyConfirmed")} />
                       </div>
-
                       <div
                         style={{
                           background: "#f8f9f8",
@@ -2654,9 +2502,11 @@
                                 border: "1px solid #ddd",
                                 borderRadius: 5,
                                 padding: "7px 10px",
+                                fontFamily: "inherit",
                                 fontSize: 15,
                                 fontWeight: 700,
                                 textAlign: "right",
+                                outline: "none",
                               }}
                             />
                             {cleaner.manualFee !== "" && (
@@ -2670,6 +2520,7 @@
                                   color: RED,
                                   cursor: "pointer",
                                   fontSize: 10,
+                                  fontFamily: "inherit",
                                 }}
                               >
                                 Reset
@@ -2686,7 +2537,6 @@
                           )}
                         </div>
                       </div>
-
                       <div
                         style={{
                           background: BK,
@@ -2743,6 +2593,21 @@
                 </div>
               </div>
             )}
+
+            <style>{`
+        @media print {
+          body { margin:0!important; padding:0!important; background:white!important; -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
+          .no-print { display:none!important; }
+          .print-only { display:block!important; }
+          .print-area { margin:0!important; padding:0!important; max-width:none!important; }
+          .pdf-page { box-shadow:none!important; margin:0!important; border-radius:0!important; page-break-after:always; }
+          @page { size:letter; margin:0; }
+        }
+        @media screen {
+          .print-only { display:none!important; }
+          .pdf-page { box-shadow:0 2px 16px rgba(0,0,0,.12); margin-bottom:20px; border-radius:4px; }
+        }
+      `}</style>
           </div>
         );
       }
