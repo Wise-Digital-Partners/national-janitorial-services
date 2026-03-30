@@ -79,9 +79,17 @@
         .pdf-page:last-child {
           page-break-after: auto !important;
         }
+        .pdf-page-flow {
+          overflow: visible !important;
+          page-break-inside: auto !important;
+        }
         @page {
           size: letter;
-          margin: 0;
+          margin: 0.5in 0.75in;
+        }
+        /* Reduce pdf-page padding in print since @page margin handles outer spacing */
+        .pdf-page {
+          padding: 0.15in 0 !important;
         }
       }
       @media screen {
@@ -490,8 +498,8 @@
         );
       }
 
-      /* ── PDF Page Wrapper ── */
-      function PdfPage({ children, isLast }) {
+      /* ── PDF Page Wrapper (fixed content, one physical page) ── */
+      function PdfPage({ children }) {
         return (
           <div
             className="pdf-page"
@@ -506,7 +514,7 @@
               background: "#fff",
               boxSizing: "border-box",
               position: "relative",
-              pageBreakAfter: isLast ? "auto" : "always",
+              pageBreakAfter: "always",
               pageBreakInside: "avoid",
               overflow: "hidden",
             }}
@@ -517,11 +525,37 @@
         );
       }
 
+      /* ── PDF Flow Page (content can overflow to additional pages with top padding) ── */
+      function PdfFlowPage({ children }) {
+        return (
+          <div
+            className="pdf-page pdf-page-flow"
+            style={{
+              fontFamily: "'Segoe UI','Helvetica Neue',Arial,sans-serif",
+              color: BK,
+              fontSize: 10,
+              lineHeight: 1.55,
+              width: "8.5in",
+              minHeight: "11in",
+              padding: "0.65in 0.75in",
+              background: "#fff",
+              boxSizing: "border-box",
+              position: "relative",
+              pageBreakAfter: "always",
+            }}
+          >
+            <PdfHeader />
+            {children}
+          </div>
+        );
+      }
+
       /* ══════════════════════════════════════
    PDF PAGES COMPONENT
-   Page 1: Cover Letter
-   Page 2: Commitment + Full Terms (NO acceptance here)
-   Page 3: SOW + Pricing + Acceptance at the very bottom
+   Page 1: Cover Letter (with header)
+   Page 2: Our Commitment (with header)
+   Page 3: Service Terms & Conditions (with header)
+   Page 4: SOW + Pricing + Acceptance (flows naturally, proper top margin on continuation)
    ══════════════════════════════════════ */
       function ProposalPDF({ d }) {
         const { client: c, letter, sow, dayPorter, addons, cleaner } = d;
@@ -571,7 +605,7 @@
               </div>
             </PdfPage>
 
-            {/* ═══ PAGE 2: Commitment + Full Terms (NO acceptance block) ═══ */}
+            {/* ═══ PAGE 2: Our Commitment (own page with header) ═══ */}
             <PdfPage>
               <div style={{ fontSize: 14, fontWeight: 800, color: BK, marginBottom: 4 }}>
                 Our Commitment
@@ -607,18 +641,11 @@
                   )}
                 </div>
               ))}
+            </PdfPage>
 
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  color: BK,
-                  marginTop: 16,
-                  marginBottom: 10,
-                  borderTop: `2px solid ${G1}`,
-                  paddingTop: 12,
-                }}
-              >
+            {/* ═══ PAGE 3: Service Terms & Conditions (own page with header) ═══ */}
+            <PdfPage>
+              <div style={{ fontSize: 14, fontWeight: 800, color: BK, marginBottom: 10 }}>
                 Service Terms & Conditions
               </div>
 
@@ -646,8 +673,8 @@
               ))}
             </PdfPage>
 
-            {/* ═══ PAGE 3: SOW + Pricing + Proposal Acceptance at the BOTTOM ═══ */}
-            <PdfPage isLast>
+            {/* ═══ PAGE 4: SOW + Pricing + Proposal Acceptance (flows to additional pages with top padding) ═══ */}
+            <PdfFlowPage>
               <div
                 style={{
                   background: BK,
@@ -942,7 +969,7 @@
                   (Initials)
                 </span>
               </div>
-            </PdfPage>
+            </PdfFlowPage>
           </>
         );
       }
