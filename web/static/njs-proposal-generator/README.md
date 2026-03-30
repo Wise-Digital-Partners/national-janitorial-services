@@ -1,11 +1,7 @@
-# NJS Proposal Generator v2
+# NJS Proposal Generator v3
 
 ## Overview
-A self-contained React web app that generates branded client proposals for National Janitorial Services. Fill out client details, scope of work, and pricing — then download a print-ready PDF and send pre-populated emails.
-
-## What's New in v2
-- **Fixed PDF formatting**: Proper page breaks with consistent margins/padding on every page. No more dead space, content cutoff, or wallpaper-style printing.
-- **Simplified email workflow**: No more Gmail API setup required. The app now opens pre-populated emails in your default email client (Outlook, Gmail web, Apple Mail, etc.) with a guided 3-step submit flow.
+A self-contained React web app that generates branded client proposals for National Janitorial Services. Fill out client details, scope of work, and pricing — then download a print-ready PDF and send a pre-populated email to billing.
 
 ## Files
 - `index.html` — The complete app (single file, no build step needed)
@@ -13,33 +9,41 @@ A self-contained React web app that generates branded client proposals for Natio
 
 ## How to Deploy
 1. Upload `index.html` to your web server
-2. Open in any modern browser
-3. That's it — no API keys, no configuration needed
+2. Open in any modern browser (Chrome recommended for PDF output)
+3. That's it — no API keys, no configuration, no dependencies to install
 
-## How It Works
+## What's in This Version
 
-### Creating a Proposal
-1. **Client Details** tab — Enter company info, contact, pricing
-2. **Cover Letter** tab — Customize the letter body (salutation auto-fills)
-3. **Scope of Work** tab — Toggle tasks on/off, add custom items/sections
-4. **Add-Ons & Pricing** tab — Enable add-on services with pricing
-5. **Cleaner Info** tab — Assign cleaner, set margin, select days/frequency
-
-### Submitting a Proposal
-Click **Preview Proposal →** to review the 3-page PDF, then **Continue to Submit →** for the guided workflow:
-
-1. **Step 1: Download PDF** — Saves the proposal to your computer via print dialog (choose "Save as PDF")
-2. **Step 2: Client Email** — Opens a new email pre-filled with the client's address, subject line, and proposal message. Attach the PDF before sending.
-3. **Step 3: Internal Email** — Opens a new email to billing@ with cleaner assignment details and client summary.
+### All Fixes Applied
+1. **Phone auto-formatting** — Phone number field auto-formats as you type to `xxx-xxx-xxxx`
+2. **PDF download prints the proposal** — Download button renders the 3-page proposal into a hidden print target, so the print dialog captures only the proposal pages (not the app UI)
+3. **Full proposal text preserved** — Complete "Our Commitment" section (all 5 subsections) and all 8 Terms & Conditions with full original language — nothing condensed
+4. **Corrected email workflow** — Single email to `billing@nationaljanitorialservices.com` containing: client-facing proposal message at the top, internal cleaner info at the bottom. User attaches PDF and sends from billing.
+5. **SOW tab fully expanded** — No scroll truncation on the Scope of Work tab; entire list is visible
+6. **Frequency labels** — "Weekly", "Bi-Weekly", "Monthly" (not "Once a Week")
 
 ### PDF Output (3 pages)
-- **Page 1**: Cover letter with NJS branding
-- **Page 2**: Our Commitment + Service Terms & Conditions
-- **Page 3**: Scope of Work with pricing summary and signature block
+- **Page 1**: Cover letter with proper spacing (fills the page)
+- **Page 2**: Our Commitment + Service Terms & Conditions (no acceptance block here)
+- **Page 3**: Scope of Work, pricing summary, and Proposal Acceptance at the very bottom
+
+### Submit Workflow (2 steps)
+1. **Step 1**: Download PDF via print dialog (Save as PDF)
+2. **Step 2**: Opens pre-populated email draft to billing with client message + internal cleaner details
+
+### Features
+- 5-tab editor: Client Details, Cover Letter, Scope of Work, Add-Ons & Pricing, Cleaner Info
+- Mandatory field validation with error counts per tab
+- Auto-populated salutation from contact first name
+- Conditional initial cleaning fee field
+- Cleaner margin/fee calculator with manual override
+- Day-of-week chip selector for cleaning schedule
+- Custom SOW items and sections
+- Custom add-on services with pricing
 
 ## Technical Notes
 - Built with React 18 + Babel (CDN-loaded, no build step)
 - All styling is inline — no external CSS dependencies
-- Print styles use `@media print` with proper `@page` rules for letter-size output
+- Print uses a hidden render target so only proposal pages print
 - Email uses `mailto:` links — works with any email client
 - Single HTML file, fully self-contained

@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" />
-    .
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NJS Proposal Generator</title>
     <style>
@@ -53,6 +52,7 @@
           display: none !important;
         }
         .print-area {
+          display: block !important;
           margin: 0 !important;
           padding: 0 !important;
           max-width: none !important;
@@ -84,18 +84,23 @@
           margin-bottom: 24px;
           border-radius: 4px;
         }
+        .print-area-hidden {
+          display: none;
+        }
       }
     </style>
   </head>
   <body>
     <div id="app"></div>
+    <!-- Hidden print container: proposal pages render here for printing -->
+    <div id="print-target" class="print-area print-area-hidden"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
     <script type="text/babel">
-      const { useState, useRef, useCallback, useEffect } = React;
+      const { useState, useEffect, useCallback } = React;
 
-      /* ── Constants ── */
       const G1 = "#53AF3B",
         G2 = "#007041",
         BK = "#101820",
@@ -110,6 +115,14 @@
       const today = () =>
         new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
       const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+      /* Phone auto-format: xxx-xxx-xxxx */
+      function formatPhone(val) {
+        const d = val.replace(/\D/g, "").slice(0, 10);
+        if (d.length <= 3) return d;
+        if (d.length <= 6) return d.slice(0, 3) + "-" + d.slice(3);
+        return d.slice(0, 3) + "-" + d.slice(3, 6) + "-" + d.slice(6);
+      }
 
       /* ── SOW Data ── */
       const SECTIONS = [
@@ -178,7 +191,7 @@
         "Sanitize all door handles and light switches",
       ];
 
-      const INTRO_LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility's needs.\n\nOur goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.\n\nAt NJS, we believe in customizing our approach to fit each client's unique requirements. We'll work closely with your team to establish procedures that ensure your expectations are not only met—but exceeded. Our reputation is backed by strong references and a commitment to excellence.\n\nBelow, you'll find our company's promise to you, terms and conditions, Scope of Work (SOW) and pricing details for your review.\n\nThank you for the opportunity to earn your business. We look forward to working together.`;
+      const INTRO_LETTER = `National Janitorial Services (NJS) is pleased to present this proposal for professional cleaning services tailored to your facility\u2019s needs.\n\nOur goal is to provide your company with dependable, worry-free service delivered by a skilled workforce and supported by an experienced management team. We take pride in offering consistent, high-quality janitorial solutions at a competitive price.\n\nAt NJS, we believe in customizing our approach to fit each client\u2019s unique requirements. We\u2019ll work closely with your team to establish procedures that ensure your expectations are not only met\u2014but exceeded. Our reputation is backed by strong references and a commitment to excellence.\n\nBelow, you\u2019ll find our company\u2019s promise to you, terms and conditions, Scope of Work (SOW) and pricing details for your review.\n\nThank you for the opportunity to earn your business. We look forward to working together.`;
 
       const COMMITMENT = [
         {
@@ -191,7 +204,7 @@
             "Addressing issues before they escalate",
           ],
           after:
-            "Your QCM is always accessible for routine questions or urgent matters—and committed to prompt, professional support.",
+            "Your QCM is always accessible for routine questions or urgent matters\u2014and committed to prompt, professional support.",
         },
         {
           heading: "Daily Service Records",
@@ -223,7 +236,7 @@
         {
           n: "1",
           t: "Scope of Services",
-          text: `Services provided by National Janitorial Services ("NJS") are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January.`,
+          text: `Services provided by National Janitorial Services (\u201cNJS\u201d) are customized to meet the specific needs of your facility, as detailed in the Scope of Work (SOW). Should there be any changes to the agreed-upon task list or cleaning schedule after the commencement of services, NJS reserves the right to adjust pricing accordingly to reflect the updated service level.\n\nInvoices are issued in advance of each monthly cleaning cycle. Example: If service begins on January 1, the invoice dated January 1 will cover all services scheduled for January.`,
         },
         {
           n: "2",
@@ -243,12 +256,12 @@
         {
           n: "4",
           t: "Service Guarantee",
-          text: `We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days' written notice. Any outstanding balances will be due in full at the time of termination.`,
+          text: `We stand behind the quality of our work. All services provided by NJS are backed by a 100% satisfaction guarantee. If any aspect of our service does not meet your expectations, please notify us within 24 hours, and we will make every effort to resolve the issue promptly.\n\nIf we are unable to resolve the matter to your satisfaction, you may terminate the agreement with 30 days\u2019 written notice. Any outstanding balances will be due in full at the time of termination.`,
         },
         {
           n: "5",
           t: "Annual Price Adjustments",
-          text: "NJS reviews operational costs—such as labor, insurance, supplies, and overhead—on an annual basis. If an adjustment to your monthly pricing is necessary, you will be notified in writing at least 30 days in advance. Any increase will be reasonable and reflective of market conditions.",
+          text: "NJS reviews operational costs\u2014such as labor, insurance, supplies, and overhead\u2014on an annual basis. If an adjustment to your monthly pricing is necessary, you will be notified in writing at least 30 days in advance. Any increase will be reasonable and reflective of market conditions.",
         },
         {
           n: "6",
@@ -258,17 +271,17 @@
         {
           n: "7",
           t: "Liability & Insurance",
-          text: `NJS maintains general liability, workers' compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention.`,
+          text: `NJS maintains general liability, workers\u2019 compensation, and bonding insurance coverage. Proof of insurance can be provided upon request.\n\nNJS is not responsible for pre-existing damage, wear and tear, or unsecured valuables. Please notify us in advance of any sensitive areas or items requiring special attention.`,
         },
         {
           n: "8",
           t: "Non-Solicitation of Personnel",
-          text: `To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract—directly or indirectly—with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual's estimated compensation.`,
+          text: `To protect the integrity of our workforce, the client agrees not to solicit, hire, engage, or otherwise contract\u2014directly or indirectly\u2014with any current or former employee, contractor, or representative of National Janitorial Services (NJS) for janitorial or related services during the term of this agreement and for a period of one (1) year following its termination.\n\nThis restriction includes but is not limited to direct employment, subcontracting, or engagement through another vendor. Violation of this provision may result in legal action and/or a fee equivalent to 6 months of the individual\u2019s estimated compensation.`,
         },
       ];
 
-      const defaultClientEmail = (name, company) =>
-        `Dear ${name},\n\nThank you for your interest in National Janitorial Services. Please find attached our proposal for professional cleaning services customized for your facility.\n\nWe've outlined the scope of work, pricing, and terms for your review. If you have any questions or would like to discuss any aspect of the proposal, please don't hesitate to reach out.\n\nWe look forward to the opportunity to serve you.\n\nBest regards,\nPatrick Dillon\nOwner, National Janitorial Services\npatrick@nationaljanitorialservices.com\n(414) 899-9975`;
+      const defaultClientEmail = (name) =>
+        `Dear ${name},\n\nThank you for your interest in National Janitorial Services. Please find attached our proposal for professional cleaning services customized for your facility.\n\nWe\u2019ve outlined the scope of work, pricing, and terms for your review. If you have any questions or would like to discuss any aspect of the proposal, please don\u2019t hesitate to reach out.\n\nWe look forward to the opportunity to serve you.\n\nBest regards,\nPatrick Dillon\nOwner, National Janitorial Services\npatrick@nationaljanitorialservices.com\n(414) 899-9975`;
 
       /* ── UI Components ── */
       function Tog({ on, set, sm }) {
@@ -334,6 +347,30 @@
         );
       }
 
+      function PhoneInp({ val, set, err }) {
+        return (
+          <div>
+            <input
+              type="tel"
+              value={val}
+              onChange={(e) => set(formatPhone(e.target.value))}
+              placeholder="555-123-4567"
+              style={{
+                width: "100%",
+                border: `1px solid ${err ? RED : "#ddd"}`,
+                borderRadius: 5,
+                padding: "7px 10px",
+                fontSize: 13,
+                boxSizing: "border-box",
+                outline: "none",
+                background: err ? "#FFF5F5" : "#fff",
+              }}
+            />
+            <Err msg={err} />
+          </div>
+        );
+      }
+
       function Field({ label, children, span, required }) {
         return (
           <div style={{ gridColumn: span ? "1 / -1" : undefined }}>
@@ -376,7 +413,7 @@
         );
       }
 
-      /* ── PDF Header Component ── */
+      /* ── PDF Header ── */
       function PdfHeader() {
         return (
           <div
@@ -443,7 +480,12 @@
         );
       }
 
-      /* ── PDF Pages Component ── */
+      /* ══════════════════════════════════════
+   PDF PAGES COMPONENT
+   Page 1: Cover Letter
+   Page 2: Commitment + Full Terms (NO acceptance here)
+   Page 3: SOW + Pricing + Acceptance at the very bottom
+   ══════════════════════════════════════ */
       function ProposalPDF({ d }) {
         const { client: c, letter, sow, dayPorter, addons, cleaner } = d;
         const date = c.date || today();
@@ -455,39 +497,44 @@
         const initialFeeDisplay = c.hasInitialFee === "yes" ? fmt$(c.initialFeeAmount) : "N/A";
         const selectedDays = cleaner.cleaningDays.filter((d) => d.on).map((d) => d.day);
         const freqLabel =
-          cleaner.cleaningFrequency === "once_weekly"
-            ? "Once a Week"
+          cleaner.cleaningFrequency === "weekly"
+            ? "Weekly"
             : cleaner.cleaningFrequency === "biweekly"
             ? "Bi-Weekly"
             : "Monthly";
 
         return (
           <>
-            {/* ═══ PAGE 1: Cover Letter ═══ */}
+            {/* ═══ PAGE 1: Cover Letter (proper spacing to fill page) ═══ */}
             <PdfPage>
-              <div style={{ marginBottom: 6 }}>
+              <div style={{ marginBottom: 8 }}>
                 <span style={{ fontWeight: 700, fontSize: 12 }}>CLIENT: </span>
                 <span style={{ fontWeight: 700, fontSize: 12, color: G2 }}>{c.company}</span>
               </div>
-              <div style={{ fontSize: 9, color: "#777", marginBottom: 20 }}>{date}</div>
-              <div style={{ marginBottom: 16, fontSize: 10.5 }}>Dear {c.contactFirst},</div>
+              <div style={{ fontSize: 9, color: "#777", marginBottom: 30 }}>{date}</div>
+              <div style={{ marginBottom: 20, fontSize: 11 }}>Dear {c.contactFirst},</div>
               {letter.split("\n\n").map((p, i) => (
-                <p key={i} style={{ margin: "0 0 10px", fontSize: 10 }}>
+                <p key={i} style={{ margin: "0 0 14px", fontSize: 10.5, lineHeight: 1.7 }}>
                   {p}
                 </p>
               ))}
-              <div style={{ marginTop: 16, fontSize: 10 }}>
+              <div style={{ marginTop: 36, fontSize: 10.5, lineHeight: 1.8 }}>
                 Best regards,
                 <br />
-                <strong style={{ fontSize: 11 }}>Patrick Dillon</strong>
                 <br />
-                <span style={{ fontSize: 9, color: "#666" }}>
-                  Owner · patrick@nationaljanitorialservices.com · (414) 899-9975
+                <strong style={{ fontSize: 11.5 }}>Patrick Dillon</strong>
+                <br />
+                <span style={{ fontSize: 10, color: "#555" }}>Owner</span>
+                <br />
+                <span style={{ fontSize: 9.5, color: "#666" }}>
+                  patrick@nationaljanitorialservices.com
                 </span>
+                <br />
+                <span style={{ fontSize: 9.5, color: "#666" }}>(414) 899-9975</span>
               </div>
             </PdfPage>
 
-            {/* ═══ PAGE 2: Commitment & Terms ═══ */}
+            {/* ═══ PAGE 2: Commitment + Full Terms (NO acceptance block) ═══ */}
             <PdfPage>
               <div style={{ fontSize: 14, fontWeight: 800, color: BK, marginBottom: 4 }}>
                 Our Commitment
@@ -495,57 +542,64 @@
               <div style={{ fontSize: 9, color: "#888", marginBottom: 10 }}>
                 Resources, Process & Quality Assurance
               </div>
-              <p style={{ fontSize: 9, margin: "0 0 8px" }}>
+              <p style={{ fontSize: 9.5, margin: "0 0 10px", lineHeight: 1.55 }}>
                 At National Janitorial Services (NJS), we take pride in a proactive, responsive
                 approach to service and communication. Here's what you can expect from our team:
               </p>
+
               {COMMITMENT.map((s, i) => (
-                <div key={i} style={{ marginBottom: 6 }}>
-                  <div style={{ fontSize: 9.5, fontWeight: 700, color: G2, marginBottom: 1 }}>
+                <div key={i} style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: G2, marginBottom: 2 }}>
                     {s.heading}
                   </div>
-                  {s.intro && <p style={{ fontSize: 8.5, margin: "0 0 2px" }}>{s.intro}</p>}
-                  {s.text && <p style={{ fontSize: 8.5, margin: 0 }}>{s.text}</p>}
+                  {s.intro && (
+                    <p style={{ fontSize: 9, margin: "0 0 3px", lineHeight: 1.5 }}>{s.intro}</p>
+                  )}
+                  {s.text && <p style={{ fontSize: 9, margin: 0, lineHeight: 1.5 }}>{s.text}</p>}
                   {s.bullets && (
-                    <div style={{ paddingLeft: 12 }}>
+                    <div style={{ paddingLeft: 14, margin: "3px 0" }}>
                       {s.bullets.map((b, j) => (
-                        <div key={j} style={{ fontSize: 8.5, padding: "0.5px 0" }}>
+                        <div key={j} style={{ fontSize: 9, padding: "1px 0", lineHeight: 1.5 }}>
                           • {b}
                         </div>
                       ))}
                     </div>
                   )}
-                  {s.after && <p style={{ fontSize: 8.5, margin: "2px 0 0" }}>{s.after}</p>}
+                  {s.after && (
+                    <p style={{ fontSize: 9, margin: "3px 0 0", lineHeight: 1.5 }}>{s.after}</p>
+                  )}
                 </div>
               ))}
+
               <div
                 style={{
                   fontSize: 13,
                   fontWeight: 800,
                   color: BK,
-                  marginTop: 12,
-                  marginBottom: 8,
+                  marginTop: 16,
+                  marginBottom: 10,
                   borderTop: `2px solid ${G1}`,
-                  paddingTop: 10,
+                  paddingTop: 12,
                 }}
               >
                 Service Terms & Conditions
               </div>
+
               {TERMS.map((t, i) => (
-                <div key={i} style={{ marginBottom: 5 }}>
-                  <div style={{ fontSize: 9.5, fontWeight: 700, color: G2 }}>
+                <div key={i} style={{ marginBottom: 7 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: G2, marginBottom: 1 }}>
                     {t.n}. {t.t}
                   </div>
                   {t.text &&
                     t.text.split("\n\n").map((p, j) => (
-                      <p key={j} style={{ fontSize: 8.5, margin: "1px 0 3px" }}>
+                      <p key={j} style={{ fontSize: 9, margin: "2px 0 5px", lineHeight: 1.5 }}>
                         {p}
                       </p>
                     ))}
                   {t.bullets && (
-                    <div style={{ paddingLeft: 12 }}>
+                    <div style={{ paddingLeft: 14, margin: "2px 0" }}>
                       {t.bullets.map((b, j) => (
-                        <div key={j} style={{ fontSize: 8.5, padding: "0.5px 0" }}>
+                        <div key={j} style={{ fontSize: 9, padding: "1px 0", lineHeight: 1.5 }}>
                           • {b}
                         </div>
                       ))}
@@ -555,7 +609,7 @@
               ))}
             </PdfPage>
 
-            {/* ═══ PAGE 3: Scope of Work ═══ */}
+            {/* ═══ PAGE 3: SOW + Pricing + Proposal Acceptance at the BOTTOM ═══ */}
             <PdfPage isLast>
               <div
                 style={{
@@ -575,15 +629,14 @@
                 <span style={{ fontSize: 9 }}>SOW</span>
               </div>
 
-              {/* Client info grid */}
               <div
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
-                  gap: "2px 20px",
-                  fontSize: 9,
-                  marginBottom: 4,
-                  padding: "6px 10px",
+                  gap: "3px 20px",
+                  fontSize: 9.5,
+                  marginBottom: 5,
+                  padding: "7px 12px",
                   background: "#f8f9f8",
                   borderRadius: 4,
                   border: `1px solid ${G1}22`,
@@ -599,8 +652,7 @@
                   `Contact: ${c.contactFirst} ${c.contactLast}`,
                   `Client Type: ${c.isNew ? "New Client" : "Existing Client"}`,
                 ].map((t, i) => {
-                  const [l, ...rest] = t.split(": ");
-                  const v = rest.join(": ");
+                  const [l, v] = t.split(": ");
                   return (
                     <div key={i}>
                       <strong>{l}: </strong>
@@ -610,16 +662,15 @@
                 })}
               </div>
 
-              {/* Schedule bar */}
               <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  padding: "6px 10px",
+                  padding: "6px 12px",
                   background: G2,
                   color: "#fff",
                   borderRadius: 4,
-                  fontSize: 9.5,
+                  fontSize: 10,
                   marginBottom: 4,
                 }}
               >
@@ -636,17 +687,16 @@
                 </span>
               </div>
 
-              {/* Pricing bar */}
               <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  padding: "5px 10px",
+                  padding: "6px 12px",
                   background: BK,
                   color: "#fff",
                   borderRadius: 4,
-                  fontSize: 9.5,
-                  marginBottom: 10,
+                  fontSize: 10,
+                  marginBottom: 14,
                 }}
               >
                 <span>
@@ -663,18 +713,17 @@
                 </span>
               </div>
 
-              {/* SOW sections */}
               {activeSow.map((sec, si) => {
                 const ai = sec.items.filter((i) => i.on);
                 if (!ai.length) return null;
                 return (
-                  <div key={si} style={{ marginBottom: 5, pageBreakInside: "avoid" }}>
+                  <div key={si} style={{ marginBottom: 6, pageBreakInside: "avoid" }}>
                     <div
                       style={{
                         background: BK,
                         color: "#fff",
-                        padding: "3px 10px",
-                        fontSize: 9.5,
+                        padding: "4px 12px",
+                        fontSize: 10,
                         fontWeight: 700,
                         borderRadius: 2,
                         marginBottom: 2,
@@ -685,7 +734,7 @@
                     {ai.map((it, ii) => (
                       <div
                         key={ii}
-                        style={{ display: "flex", gap: 5, fontSize: 9, padding: "1.5px 10px" }}
+                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 12px" }}
                       >
                         <span style={{ color: G1, fontWeight: 700 }}>☑</span>
                         <span>{it.text}</span>
@@ -695,15 +744,14 @@
                 );
               })}
 
-              {/* Day Porter */}
               {dayPorter.enabled && (
-                <div style={{ marginBottom: 5, pageBreakInside: "avoid" }}>
+                <div style={{ marginBottom: 6, pageBreakInside: "avoid" }}>
                   <div
                     style={{
                       background: BK,
                       color: "#fff",
-                      padding: "3px 10px",
-                      fontSize: 9.5,
+                      padding: "4px 12px",
+                      fontSize: 10,
                       fontWeight: 700,
                       borderRadius: 2,
                       marginBottom: 2,
@@ -716,7 +764,7 @@
                     .map((it, ii) => (
                       <div
                         key={ii}
-                        style={{ display: "flex", gap: 5, fontSize: 9, padding: "1.5px 10px" }}
+                        style={{ display: "flex", gap: 6, fontSize: 9.5, padding: "2px 12px" }}
                       >
                         <span style={{ color: G1, fontWeight: 700 }}>☑</span>
                         <span>{it.text}</span>
@@ -725,15 +773,14 @@
                 </div>
               )}
 
-              {/* Add-ons */}
               {activeAddons.length > 0 && (
-                <div style={{ marginBottom: 5, pageBreakInside: "avoid" }}>
+                <div style={{ marginBottom: 6, pageBreakInside: "avoid" }}>
                   <div
                     style={{
                       background: BK,
                       color: "#fff",
-                      padding: "3px 10px",
-                      fontSize: 9.5,
+                      padding: "4px 12px",
+                      fontSize: 10,
                       fontWeight: 700,
                       borderRadius: 2,
                       marginBottom: 2,
@@ -747,11 +794,11 @@
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
-                        fontSize: 9,
-                        padding: "1.5px 10px",
+                        fontSize: 9.5,
+                        padding: "2px 12px",
                       }}
                     >
-                      <div style={{ display: "flex", gap: 5 }}>
+                      <div style={{ display: "flex", gap: 6 }}>
                         <span style={{ color: G1, fontWeight: 700 }}>☑</span>
                         <span>{a.text}</span>
                       </div>
@@ -763,26 +810,26 @@
                 </div>
               )}
 
-              {/* Pricing summary */}
+              {/* Complete Pricing */}
               <div
                 style={{
                   background: G1,
                   borderRadius: 6,
-                  padding: "10px 14px",
+                  padding: "12px 16px",
                   color: "#fff",
-                  marginTop: 8,
+                  marginTop: 10,
                   pageBreakInside: "avoid",
                 }}
               >
-                <div style={{ fontSize: 10, fontWeight: 800, marginBottom: 4, letterSpacing: 0.5 }}>
+                <div style={{ fontSize: 11, fontWeight: 800, marginBottom: 6, letterSpacing: 0.5 }}>
                   COMPLETE PRICING
                 </div>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    fontSize: 9.5,
-                    padding: "2px 0",
+                    fontSize: 10,
+                    padding: "3px 0",
                   }}
                 >
                   Base Monthly Rate for General Services<span>{fmt$(base)}</span>
@@ -792,8 +839,8 @@
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
-                      fontSize: 9.5,
-                      padding: "2px 0",
+                      fontSize: 10,
+                      padding: "3px 0",
                     }}
                   >
                     Special Requests & Add-Ons<span>{fmt$(addonsTotal)}</span>
@@ -804,8 +851,8 @@
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
-                      fontSize: 9.5,
-                      padding: "2px 0",
+                      fontSize: 10,
+                      padding: "3px 0",
                     }}
                   >
                     Initial Cleaning Fee (one-time)<span>{fmt$(c.initialFeeAmount)}</span>
@@ -815,29 +862,29 @@
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: 900,
-                    padding: "6px 0 0",
+                    padding: "8px 0 0",
                     borderTop: "2px solid rgba(255,255,255,.4)",
-                    marginTop: 4,
+                    marginTop: 6,
                   }}
                 >
                   Total Flat Monthly Fee<span>{fmt$(total)}</span>
                 </div>
               </div>
 
-              {/* Signature block */}
-              <div style={{ marginTop: 14, fontSize: 8.5, pageBreakInside: "avoid" }}>
-                <div style={{ fontWeight: 700, fontSize: 9.5, marginBottom: 8 }}>
+              {/* Proposal Acceptance — at the very bottom */}
+              <div style={{ marginTop: 20, pageBreakInside: "avoid" }}>
+                <div style={{ fontWeight: 700, fontSize: 10, marginBottom: 10 }}>
                   Proposal Acceptance
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px 40px" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 40px" }}>
                   {["Company", "Date", "Name & Title", "Signature"].map((l) => (
                     <div
                       key={l}
                       style={{
                         borderBottom: "1px solid #888",
-                        paddingBottom: 22,
+                        paddingBottom: 28,
                         fontSize: 8,
                         color: "#888",
                       }}
@@ -847,13 +894,13 @@
                   ))}
                 </div>
               </div>
-              <div style={{ textAlign: "right", marginTop: 12 }}>
+              <div style={{ textAlign: "right", marginTop: 16 }}>
                 <span
                   style={{
                     borderBottom: "1px solid #888",
                     display: "inline-block",
                     width: 100,
-                    paddingBottom: 14,
+                    paddingBottom: 16,
                     fontSize: 8,
                     color: "#888",
                   }}
@@ -867,9 +914,9 @@
       }
 
       /* ══════════════════════════════════════
-   SUBMIT PAGE — Opens emails in client
+   SUBMIT PAGE — 2 Steps: Download + Single Email to Billing
    ══════════════════════════════════════ */
-      function SubmitPage({ data, onBack }) {
+      function SubmitPage({ data, onBack, onPrint }) {
         const { client: c, cleaner } = data;
         const totalMonthly =
           (parseFloat(c.basePrice) || 0) +
@@ -886,22 +933,20 @@
           .map((d) => d.day)
           .join(", ");
         const freqLabel =
-          cleaner.cleaningFrequency === "once_weekly"
-            ? "Once a Week"
+          cleaner.cleaningFrequency === "weekly"
+            ? "Weekly"
             : cleaner.cleaningFrequency === "biweekly"
             ? "Bi-Weekly"
             : "Monthly";
 
-        const senderEmail = "billing@nationaljanitorialservices.com";
-        const internalRecipient = "billing@nationaljanitorialservices.com";
+        const billingEmail = "billing@nationaljanitorialservices.com";
+        const subject = `National Janitorial Services || Proposal for ${c.company}`;
 
-        const clientSubject = `National Janitorial Services || Proposal for ${c.company}`;
-        const clientBody = defaultClientEmail(c.contactFirst, c.company);
-
-        const internalSubject = `NJS || Proposal has been generated for ${c.company}`;
-        const internalBody = `CLEANER INFORMATION (Internal Only)\n${"─".repeat(
-          40,
-        )}\nAssigned Cleaner: ${
+        const emailBody = `${defaultClientEmail(c.contactFirst)}\n\n${"═".repeat(
+          50,
+        )}\nINTERNAL — CLEANER INFORMATION (Do Not Forward)\n${"═".repeat(
+          50,
+        )}\n\nAssigned Cleaner: ${
           cleaner.name
         }\nCleaning Days: ${selectedDays}\nCleaning Frequency: ${freqLabel}\nMargin: ${marginPct}%\nCleaner Fee: ${fmt$(
           cleanerFee,
@@ -919,27 +964,15 @@
           c.hasInitialFee === "yes" ? fmt$(c.initialFeeAmount) : "N/A"
         }`;
 
-        const openClientEmail = () => {
-          const mailto = `mailto:${encodeURIComponent(c.email)}?subject=${encodeURIComponent(
-            clientSubject,
-          )}&body=${encodeURIComponent(clientBody)}`;
+        const openEmail = () => {
+          const mailto = `mailto:${encodeURIComponent(billingEmail)}?subject=${encodeURIComponent(
+            subject,
+          )}&body=${encodeURIComponent(emailBody)}`;
           window.open(mailto, "_blank");
-        };
-
-        const openInternalEmail = () => {
-          const mailto = `mailto:${encodeURIComponent(
-            internalRecipient,
-          )}?subject=${encodeURIComponent(internalSubject)}&body=${encodeURIComponent(
-            internalBody,
-          )}`;
-          window.open(mailto, "_blank");
-        };
-
-        const handleDownloadPDF = () => {
-          window.print();
         };
 
         const [step, setStep] = useState(0);
+        const [showPreview, setShowPreview] = useState(false);
 
         return (
           <div style={{ maxWidth: 700, margin: "0 auto", padding: "30px 20px" }}>
@@ -989,12 +1022,12 @@
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700 }}>📄 Download Proposal PDF</div>
                   <div style={{ fontSize: 11, color: "#888", marginTop: 2 }}>
-                    Save to your computer — you'll attach this to the client email
+                    Save to your computer — you'll attach this to the email
                   </div>
                 </div>
                 <button
                   onClick={() => {
-                    handleDownloadPDF();
+                    onPrint();
                     setStep((s) => Math.max(s, 1));
                   }}
                   style={{
@@ -1013,12 +1046,12 @@
               </div>
               {step >= 1 && (
                 <div style={{ marginTop: 8, fontSize: 11, color: G2, fontWeight: 600 }}>
-                  ✓ PDF dialog opened — save the file, then continue below
+                  ✓ PDF dialog opened — save the file, then continue to Step 2
                 </div>
               )}
             </div>
 
-            {/* Step 2: Client Email */}
+            {/* Step 2: Single Email to Billing */}
             <div
               style={{
                 background: "#fff",
@@ -1048,13 +1081,29 @@
               </div>
               <div style={{ marginTop: 4 }}>
                 <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
-                  📧 Client Proposal Email
+                  📧 Email to Billing
                 </div>
                 <div style={{ fontSize: 11, color: "#888", marginBottom: 10 }}>
-                  Opens a new email to <strong>{c.email}</strong> with the proposal message
-                  pre-filled.
-                  <br />
-                  Attach the PDF you just downloaded before sending.
+                  Opens a draft email to <strong>{billingEmail}</strong> containing the client
+                  proposal message at the top and internal cleaner details at the bottom. Attach the
+                  downloaded PDF, then send from billing.
+                </div>
+                <div style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: "#888", marginBottom: 3 }}>
+                    To:
+                  </div>
+                  <div
+                    style={{
+                      background: "#f5f5f5",
+                      padding: "6px 10px",
+                      borderRadius: 5,
+                      fontSize: 11,
+                      fontFamily: "monospace",
+                      color: "#444",
+                    }}
+                  >
+                    {billingEmail}
+                  </div>
                 </div>
                 <div style={{ marginBottom: 10 }}>
                   <div style={{ fontSize: 10, fontWeight: 600, color: "#888", marginBottom: 3 }}>
@@ -1070,35 +1119,34 @@
                       color: "#444",
                     }}
                   >
-                    {clientSubject}
+                    {subject}
                   </div>
                 </div>
                 <details style={{ fontSize: 11, color: "#666", marginBottom: 12 }}>
                   <summary
                     style={{ cursor: "pointer", color: G2, fontWeight: 600, marginBottom: 6 }}
                   >
-                    Preview email body
+                    Preview full email content
                   </summary>
-                  <div
+                  <pre
                     style={{
                       background: "#f9f9f9",
                       borderRadius: 6,
                       padding: 12,
-                      fontSize: 11,
-                      lineHeight: 1.6,
+                      fontSize: 10,
                       whiteSpace: "pre-wrap",
-                      color: "#444",
-                      maxHeight: 180,
+                      lineHeight: 1.4,
+                      maxHeight: 250,
                       overflow: "auto",
                       border: "1px solid #eee",
                     }}
                   >
-                    {clientBody}
-                  </div>
+                    {emailBody}
+                  </pre>
                 </details>
                 <button
                   onClick={() => {
-                    openClientEmail();
+                    openEmail();
                     setStep((s) => Math.max(s, 2));
                   }}
                   style={{
@@ -1113,102 +1161,17 @@
                     width: "100%",
                   }}
                 >
-                  Open Client Email →
+                  Open Email Draft →
                 </button>
                 {step >= 2 && (
                   <div style={{ marginTop: 8, fontSize: 11, color: G2, fontWeight: 600 }}>
-                    ✓ Email opened — remember to attach the PDF before sending!
+                    ✓ Email draft opened — attach the PDF and send from billing!
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Step 3: Internal Email */}
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: 8,
-                padding: 20,
-                marginBottom: 16,
-                border: `2px solid ${step >= 3 ? G1 : "#e8e8e8"}`,
-                opacity: step >= 2 ? 1 : 0.5,
-                pointerEvents: step >= 2 ? "auto" : "none",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: -12,
-                  left: 16,
-                  background: step >= 3 ? G1 : BK,
-                  color: "#fff",
-                  padding: "2px 12px",
-                  borderRadius: 12,
-                  fontSize: 11,
-                  fontWeight: 700,
-                }}
-              >
-                Step 3
-              </div>
-              <div style={{ marginTop: 4 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
-                  📋 Internal Notification Email
-                </div>
-                <div style={{ fontSize: 11, color: "#888", marginBottom: 10 }}>
-                  Opens a new email to <strong>{internalRecipient}</strong> with cleaner assignment
-                  details.
-                </div>
-                <details style={{ fontSize: 11, color: "#666", marginBottom: 12 }}>
-                  <summary
-                    style={{ cursor: "pointer", color: G2, fontWeight: 600, marginBottom: 6 }}
-                  >
-                    Preview internal email body
-                  </summary>
-                  <pre
-                    style={{
-                      background: "#f5f5f5",
-                      padding: 10,
-                      borderRadius: 5,
-                      fontSize: 10,
-                      whiteSpace: "pre-wrap",
-                      lineHeight: 1.4,
-                      maxHeight: 180,
-                      overflow: "auto",
-                    }}
-                  >
-                    {internalBody}
-                  </pre>
-                </details>
-                <button
-                  onClick={() => {
-                    openInternalEmail();
-                    setStep((s) => Math.max(s, 3));
-                  }}
-                  style={{
-                    padding: "10px 24px",
-                    borderRadius: 6,
-                    border: "none",
-                    background: BK,
-                    color: "#fff",
-                    cursor: "pointer",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    width: "100%",
-                  }}
-                >
-                  Open Internal Email →
-                </button>
-                {step >= 3 && (
-                  <div style={{ marginTop: 8, fontSize: 11, color: G2, fontWeight: 600 }}>
-                    ✓ Internal notification opened
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Done */}
-            {step >= 3 && (
+            {step >= 2 && (
               <div
                 style={{
                   background: "#f0faf0",
@@ -1220,10 +1183,11 @@
                 }}
               >
                 <div style={{ fontSize: 18, fontWeight: 800, color: G2, marginBottom: 4 }}>
-                  ✓ All Steps Complete
+                  ✓ All Done
                 </div>
                 <div style={{ fontSize: 12, color: "#666" }}>
-                  Don't forget to attach the PDF to both emails before sending them!
+                  Attach the PDF to the email. Before forwarding to the client, remove the internal
+                  cleaner section at the bottom. Send from billing.
                 </div>
               </div>
             )}
@@ -1301,7 +1265,7 @@
           marginPercent: "35",
           manualFee: "",
           cleaningDays: DAYS.map((day) => ({ day, on: false })),
-          cleaningFrequency: "once_weekly",
+          cleaningFrequency: "weekly",
           frequencyConfirmed: false,
         });
         const ucl = (k, v) => {
@@ -1351,7 +1315,8 @@
           if (!cleaner.marginPercent?.toString().trim()) e.cleaner_marginPercent = "Required";
           if (!cleaner.cleaningDays.some((d) => d.on))
             e.cleaner_cleaningDays = "Select at least one day";
-          if (!cleaner.frequencyConfirmed) e.cleaner_frequencyConfirmed = "Please confirm";
+          if (!cleaner.frequencyConfirmed)
+            e.cleaner_frequencyConfirmed = "Please confirm the frequency";
           return e;
         };
 
@@ -1385,6 +1350,27 @@
           : 0;
         const totalErrCount = Object.keys(errors).length;
         const data = { client, letter, sow, dayPorter, addons, cleaner };
+
+        /* Print handler: render PDF pages into print target, then print */
+        const handlePrint = useCallback(() => {
+          const target = document.getElementById("print-target");
+          target.classList.remove("print-area-hidden");
+          ReactDOM.render(<ProposalPDF d={data} />, target, () => {
+            setTimeout(() => {
+              window.print();
+            }, 200);
+          });
+        }, [data]);
+
+        /* After print, hide the target again */
+        useEffect(() => {
+          const handler = () => {
+            const target = document.getElementById("print-target");
+            if (target) target.classList.add("print-area-hidden");
+          };
+          window.addEventListener("afterprint", handler);
+          return () => window.removeEventListener("afterprint", handler);
+        }, []);
 
         const TABS = [
           { id: "client", label: "Client Details", ico: "👤", errCt: clientErrCount },
@@ -1496,11 +1482,13 @@
             </div>
 
             {view === "preview" && (
-              <div className="print-area" style={{ maxWidth: "8.5in", margin: "20px auto" }}>
+              <div className="no-print" style={{ maxWidth: "8.5in", margin: "20px auto" }}>
                 <ProposalPDF d={data} />
               </div>
             )}
-            {view === "submit" && <SubmitPage data={data} onBack={() => setView("preview")} />}
+            {view === "submit" && (
+              <SubmitPage data={data} onBack={() => setView("preview")} onPrint={handlePrint} />
+            )}
 
             {view === "edit" && (
               <div
@@ -1673,7 +1661,7 @@
                           <Inp
                             val={client.address}
                             set={(v) => uc("address", v)}
-                            ph="123 Main St"
+                            ph="123 Main St, City, ST 12345"
                             err={hasError("address")}
                           />
                         </Field>
@@ -1694,10 +1682,9 @@
                           />
                         </Field>
                         <Field label="Phone" required>
-                          <Inp
+                          <PhoneInp
                             val={client.phone}
                             set={(v) => uc("phone", v)}
-                            ph="(555) 123-4567"
                             err={hasError("phone")}
                           />
                         </Field>
@@ -1780,8 +1767,8 @@
                             color: G2,
                           }}
                         >
-                          ✓ Cover letter: <strong>"Dear {client.contactFirst},"</strong> · Client
-                          email: <strong>{client.email || "—"}</strong>
+                          ✓ Cover letter salutation: <strong>"Dear {client.contactFirst},"</strong>{" "}
+                          · Client email: <strong>{client.email || "—"}</strong>
                         </div>
                       )}
                     </div>
@@ -1791,7 +1778,8 @@
                   {tab === "letter" && (
                     <div>
                       <div style={{ fontSize: 12, color: "#888", marginBottom: 4 }}>
-                        Customize the cover letter body.
+                        Customize the cover letter body. The salutation and sign-off are
+                        auto-generated.
                       </div>
                       {client.contactFirst ? (
                         <div
@@ -1818,7 +1806,9 @@
                             border: "1px solid #ffccaa",
                           }}
                         >
-                          <span style={{ color: "#c66" }}>⚠ Enter Contact First Name first.</span>
+                          <span style={{ color: "#c66" }}>
+                            ⚠ Enter Contact First Name in Client Details first.
+                          </span>
                         </div>
                       )}
                       <textarea
@@ -1839,7 +1829,7 @@
                     </div>
                   )}
 
-                  {/* SOW TAB */}
+                  {/* SOW TAB — fully expanded, no scroll container */}
                   {tab === "sow" && (
                     <div>
                       {sow.map((sec, si) => (
@@ -2002,7 +1992,7 @@
                           <input
                             value={newItem}
                             onChange={(e) => setNewItem(e.target.value)}
-                            placeholder="Task"
+                            placeholder="Task description"
                             style={{
                               flex: 1,
                               padding: "6px 8px",
@@ -2127,7 +2117,7 @@
                         <input
                           value={newAddon.text}
                           onChange={(e) => setNewAddon((p) => ({ ...p, text: e.target.value }))}
-                          placeholder="Custom add-on"
+                          placeholder="Custom add-on description"
                           style={{
                             flex: 1,
                             padding: "6px 8px",
@@ -2251,7 +2241,8 @@
                         Cleaner Assignment & Schedule
                       </div>
                       <div style={{ fontSize: 11, color: "#888", marginBottom: 16 }}>
-                        Internal only — cleaning days & frequency show on SOW, rest stays internal.
+                        Internal only — cleaning days & frequency show on the SOW, everything else
+                        stays internal.
                       </div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                         <Field label="Assigned Cleaner Name" required>
@@ -2330,7 +2321,7 @@
                         </div>
                         <div style={{ display: "flex", gap: 8 }}>
                           {[
-                            { val: "once_weekly", label: "Once a Week" },
+                            { val: "weekly", label: "Weekly" },
                             { val: "biweekly", label: "Bi-Weekly" },
                             { val: "monthly", label: "Monthly" },
                           ].map((f) => (
@@ -2394,8 +2385,8 @@
                             <div style={{ fontSize: 12, fontWeight: 700 }}>
                               I confirm the cleaning frequency:{" "}
                               <span style={{ color: G2 }}>
-                                {cleaner.cleaningFrequency === "once_weekly"
-                                  ? "Once a Week"
+                                {cleaner.cleaningFrequency === "weekly"
+                                  ? "Weekly"
                                   : cleaner.cleaningFrequency === "biweekly"
                                   ? "Bi-Weekly"
                                   : "Monthly"}
@@ -2468,7 +2459,7 @@
                               marginBottom: 6,
                             }}
                           >
-                            Override (optional)
+                            Manual Override (optional)
                           </div>
                           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                             <span style={{ fontSize: 14, color: "#888" }}>$</span>
@@ -2546,7 +2537,7 @@
                             ],
                             [
                               "Frequency",
-                              cleaner.cleaningFrequency === "once_weekly"
+                              cleaner.cleaningFrequency === "weekly"
                                 ? "Weekly"
                                 : cleaner.cleaningFrequency === "biweekly"
                                 ? "Bi-Weekly"
