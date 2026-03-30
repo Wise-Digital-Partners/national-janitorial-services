@@ -48,6 +48,9 @@
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
+        #app {
+          display: none !important;
+        }
         .no-print {
           display: none !important;
         }
@@ -56,6 +59,9 @@
           margin: 0 !important;
           padding: 0 !important;
           max-width: none !important;
+        }
+        .print-area-hidden {
+          display: block !important;
         }
         .pdf-page {
           box-shadow: none !important;
@@ -122,6 +128,13 @@
         if (d.length <= 3) return d;
         if (d.length <= 6) return d.slice(0, 3) + "-" + d.slice(3);
         return d.slice(0, 3) + "-" + d.slice(3, 6) + "-" + d.slice(6);
+      }
+
+      /* Sq Ft auto-format: x,xxx */
+      function formatSqft(val) {
+        const d = val.replace(/\D/g, "");
+        if (!d) return "";
+        return parseInt(d, 10).toLocaleString("en-US");
       }
 
       /* ── SOW Data ── */
@@ -355,6 +368,30 @@
               value={val}
               onChange={(e) => set(formatPhone(e.target.value))}
               placeholder="555-123-4567"
+              style={{
+                width: "100%",
+                border: `1px solid ${err ? RED : "#ddd"}`,
+                borderRadius: 5,
+                padding: "7px 10px",
+                fontSize: 13,
+                boxSizing: "border-box",
+                outline: "none",
+                background: err ? "#FFF5F5" : "#fff",
+              }}
+            />
+            <Err msg={err} />
+          </div>
+        );
+      }
+
+      function SqftInp({ val, set, err }) {
+        return (
+          <div>
+            <input
+              type="text"
+              value={val}
+              onChange={(e) => set(formatSqft(e.target.value))}
+              placeholder="2,600"
               style={{
                 width: "100%",
                 border: `1px solid ${err ? RED : "#ddd"}`,
@@ -618,15 +655,12 @@
                   padding: "8px 14px",
                   borderRadius: 4,
                   marginBottom: 12,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  textAlign: "center",
                 }}
               >
                 <span style={{ fontSize: 16, fontWeight: 800, letterSpacing: 1 }}>
                   SCOPE OF WORK
                 </span>
-                <span style={{ fontSize: 9 }}>SOW</span>
               </div>
 
               <div
@@ -965,10 +999,10 @@
         }`;
 
         const openEmail = () => {
-          const mailto = `mailto:${encodeURIComponent(billingEmail)}?subject=${encodeURIComponent(
-            subject,
-          )}&body=${encodeURIComponent(emailBody)}`;
-          window.open(mailto, "_blank");
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
+            billingEmail,
+          )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+          window.open(gmailUrl, "_blank");
         };
 
         const [step, setStep] = useState(0);
@@ -1351,26 +1385,16 @@
         const totalErrCount = Object.keys(errors).length;
         const data = { client, letter, sow, dayPorter, addons, cleaner };
 
-        /* Print handler: render PDF pages into print target, then print */
+        /* Print handler: render PDF pages into hidden print target, then print.
+     CSS @media print hides #app and shows #print-target automatically. */
         const handlePrint = useCallback(() => {
           const target = document.getElementById("print-target");
-          target.classList.remove("print-area-hidden");
           ReactDOM.render(<ProposalPDF d={data} />, target, () => {
             setTimeout(() => {
               window.print();
-            }, 200);
+            }, 300);
           });
         }, [data]);
-
-        /* After print, hide the target again */
-        useEffect(() => {
-          const handler = () => {
-            const target = document.getElementById("print-target");
-            if (target) target.classList.add("print-area-hidden");
-          };
-          window.addEventListener("afterprint", handler);
-          return () => window.removeEventListener("afterprint", handler);
-        }, []);
 
         const TABS = [
           { id: "client", label: "Client Details", ico: "👤", errCt: clientErrCount },
@@ -1697,10 +1721,9 @@
                           />
                         </Field>
                         <Field label="Facility Sq Ft" required>
-                          <Inp
+                          <SqftInp
                             val={client.sqft}
                             set={(v) => uc("sqft", v)}
-                            ph="1,600"
                             err={hasError("sqft")}
                           />
                         </Field>
