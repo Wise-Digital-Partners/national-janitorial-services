@@ -63,14 +63,19 @@
         .print-area-hidden {
           display: block !important;
         }
+        /* @page handles margins on EVERY physical page, including overflow continuations */
+        @page {
+          size: letter;
+          margin: 0.65in 0.75in;
+        }
         .pdf-page {
           box-shadow: none !important;
           margin: 0 !important;
           border-radius: 0 !important;
-          width: 8.5in !important;
-          min-height: 10.85in !important;
+          width: auto !important;
+          min-height: auto !important;
           height: auto !important;
-          padding: 0.65in 0.75in !important;
+          padding: 0 !important;
           page-break-after: always !important;
           page-break-inside: avoid !important;
           overflow: hidden !important;
@@ -82,14 +87,6 @@
         .pdf-page-flow {
           overflow: visible !important;
           page-break-inside: auto !important;
-        }
-        @page {
-          size: letter;
-          margin: 0.5in 0.75in;
-        }
-        /* Reduce pdf-page padding in print since @page margin handles outer spacing */
-        .pdf-page {
-          padding: 0.15in 0 !important;
         }
       }
       @media screen {
