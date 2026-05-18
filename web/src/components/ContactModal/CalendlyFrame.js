@@ -42,7 +42,7 @@ export const CalendlyFrame = () => {
           {/* <GatsbyImage image={data.profilePicture.childImageSharp.gatsbyImageData} width={88} height={88} className="w-[88px] h-[88px]"/>
           <div className="text-lg font-bold ">Anthony Orozco</div>
           <div className="text-sm font-normal">Partner/General Manager</div> */}
-          <div className="text-lg font-bold ">30 Minute Conversation</div>
+          <div className="text-lg font-bold ">30 Minute Site Consultation</div>
           <div className="text-sm font-normal">
             Ready to get started? We will meet you on site to discuss your specific janitorial
             needs.

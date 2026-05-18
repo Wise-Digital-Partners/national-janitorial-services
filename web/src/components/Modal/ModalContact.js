@@ -156,7 +156,7 @@ const Modal = () => {
                 {activeTab === 0 ? (
                   <div>
                     <p className="mb-0 text-white">
-                      Let our highly qualified team handle your business with the ulmost
+                      Let our highly qualified team handle your business with the utmost
                       professionalism and care for janitorial services you can rely on.
                     </p>
                     <CalendlyFrame />
