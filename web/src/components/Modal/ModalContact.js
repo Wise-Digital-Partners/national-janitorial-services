@@ -114,70 +114,91 @@ const Modal = () => {
             data-modal-close
           >
             <div
-              className="content-wrapper ml-auto h-screen w-full max-w-[720px] overflow-auto bg-gray-700 px-6 py-16 md:px-20 md:py-20"
+              className="content-wrapper ml-auto h-screen w-full max-w-[720px] overflow-auto bg-gray-700 "
               role="dialog"
               aria-modal="true"
+              //px-6 py-16 md:px-20 md:py-20
             >
-              <div className="grid grid-cols-2 pb-[28px]">
-                <header className="heading-three mb-0 self-center text-white">Contact Us</header>
-
-                <div className="self-end justify-self-end">
-                  <a
-                    className="flex items-center font-semibold text-primary"
-                    href="tel:+1-424-260-7369"
-                  >
-                    <i className="fas fa-phone-alt mr-2"></i> (424) 260-7369
-                  </a>
-                </div>
+              <div className="flex w-full items-center justify-between bg-primary px-6 py-4">
+                <a
+                  className="flex items-center font-semibold text-white"
+                  href="tel:+1-424-260-7369"
+                >
+                  <i className="fas fa-phone-alt mr-2"></i> (424) 260-7369
+                </a>
+                <i
+                  className="close fal fa-times   cursor-pointer text-2xl text-white transition-all duration-300 ease-linear hover:text-primary focus:text-primary active:text-primary"
+                  data-modal-close
+                ></i>
               </div>
-              {/* <div className="mb-7 grid grid-cols-2 gap-x-3">
-                <TabButton
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-                  tabIndex={0}
-                  buttonText="Book a meeting"
-                  buttonIcon="calendar"
-                />
-                <TabButton
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-                  tabIndex={1}
-                  buttonText="Send us a message"
-                  buttonIcon="message"
-                />
-              </div> */}
-              {/* {activeTab === 0 ? (
-                <div>
-                  <p className="mb-0 text-white">
-                    Book a complimentary 15-minute call with our Long Beach General Manager to
-                    discuss your commercial cleaning needs.
-                  </p>
-                  <CalendlyFrame />
+              <div className="p-10">
+                <div className="pb-[28px]">
+                  <header className="heading-three mb-0 self-center text-white">
+                    Contact Long Beach Janitorial
+                  </header>
                 </div>
-              ) : (
-                <div>
+                <div className="mb-7 grid grid-cols-2 gap-x-0">
+                  <SimpleTabButton
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    tabIndex={0}
+                    buttonText="Site Visit"
+                    buttonIcon="calendar"
+                  />
+                  <SimpleTabButton
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    tabIndex={1}
+                    buttonText="Send us a message"
+                    buttonIcon="message"
+                  />
+                </div>
+                {activeTab === 0 ? (
+                  <div>
+                    <p className="mb-0 text-white">
+                      Let our highly qualified team handle your business with the ulmost
+                      professionalism and care for janitorial services you can rely on.
+                    </p>
+                    <CalendlyFrame />
+                  </div>
+                ) : (
+                  <div>
+                    <p className="mb-6 text-white">
+                      Experience the Long Beach Janitorial difference. Tell us about your cleaning
+                      needs today!
+                    </p>
+                    <Contact />
+                  </div>
+                )}
+                {/* <div>
                   <p className="mb-0 text-white">
                     Experience the Long Beach Janitorial difference. Tell us about your cleaning
                     needs today!
                   </p>
                   <Contact />
-                </div>
-              )} */}
-              <div>
-                <p className="mb-0 text-white">
-                  Experience the Long Beach Janitorial difference. Tell us about your cleaning needs
-                  today!
-                </p>
-                <Contact />
+                </div> */}
               </div>
-              <i
-                className="close fal fa-times absolute right-0 top-0 mr-8 mt-12 cursor-pointer text-2xl text-white transition-all duration-300 ease-linear hover:text-primary focus:text-primary active:text-primary md:mr-12"
-                data-modal-close
-              ></i>
             </div>
           </div>
         </div>
       </StyledModal>
+    </div>
+  );
+};
+
+const SimpleTabButton = ({ activeTab, setActiveTab, tabIndex, buttonText, buttonIcon }) => {
+  const handleClick = () => {
+    setActiveTab(tabIndex);
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className={`${
+        activeTab === tabIndex ? " border-primary text-primary" : " border-white text-white"
+      } flex cursor-pointer items-center justify-center gap-x-[16px] border-b-[1px]  px-[40px] py-[11px]  !font-semibold`}
+    >
+      {buttonText}
     </div>
   );
 };
