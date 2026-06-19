@@ -10,7 +10,7 @@ import Services from "../components/Repeating/Services";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Badges from "../components/Repeating/Badges";
-// import Clients from "../components/Repeating/Clients"; 
+// import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
 import ButtonSolid from "../components/Button/ButtonSolid";
@@ -25,13 +25,9 @@ const Page = ({ data }) => {
     },
   ];
   return (
-    <Layout
-      navigationStyle="overlap"
-      headerLinkColor=""
-      headerHasBorder={false}
-    >
+    <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Long Beach Janitorial | Commercial Cleaning Company"
+        title="Commercial Cleaning & Janitorial Services in Long Beach, CA | Long Beach Janitorial"
         description="Long Beach Janitorial is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
@@ -44,12 +40,12 @@ const Page = ({ data }) => {
         textMaxWidth="max-w-4xl"
         backgroundPosition="50% 35%"
       >
-        <p className="text-mobile-7xl md:text-7xl font-display font-black text-accent uppercase mb-6 md:mb-2">
+        <p className="mb-6 font-display text-mobile-7xl font-black uppercase text-accent md:mb-2 md:text-7xl">
           Reliable.
           <br className="block md:hidden" /> Local.
           <br className="block md:hidden" /> Professional.
         </p>
-        <p className="text-xl md:text-3xl text-accent mb-7 md:mb-10">
+        <p className="mb-7 text-xl text-accent md:mb-10 md:text-3xl">
           Keeping workspaces clean, employees safe, and your mind at peace.
         </p>
         <div className="grid  gap-y-6 md:flex md:items-center">
@@ -76,8 +72,8 @@ const Page = ({ data }) => {
       {/* <Clients className="py-14" headingLevel="h2" /> */}
       <section className="py-16 md:py-8">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-10 lg:gap-x-20 gap-y-10 items-center">
-            <div className="md:col-start-1 md:col-span-5 order-2 md:order-1">
+          <div className="grid grid-cols-1 items-center gap-y-10 md:grid-cols-12 md:gap-x-10 lg:gap-x-20">
+            <div className="order-2 md:order-1 md:col-span-5 md:col-start-1">
               <GatsbyImage
                 image={data.introDesktop.childImageSharp.gatsbyImageData}
                 alt="A Top Commercial Janitorial Services Company In Long Beach"
@@ -89,34 +85,26 @@ const Page = ({ data }) => {
                 className="md:hidden"
               />
             </div>
-            <div className="md:col-end-13 md:col-span-7 order-1 md:order-2">
-              <h1>
-                A Top Commercial Janitorial Services Company In Long Beach
-              </h1>
+            <div className="order-1 md:order-2 md:col-span-7 md:col-end-13">
+              <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
               <p className="mb-0">
-                In a COVID-19 world, professional cleaning is more important
-                than ever before. Keep your business spotless and safe for your
-                customers and employees with Long Beach Janitorial (formerly
-                National Janitorial Services). Our commercial janitorial
-                services company serves Long Beach, CA and surrounding regions
-                while following the highest cleaning standards your industry
-                requires. Leave the building maintenance and sanitation to us
-                so you can focus on growing your business.
+                In a COVID-19 world, professional cleaning is more important than ever before. Keep
+                your business spotless and safe for your customers and employees with Long Beach
+                Janitorial (formerly National Janitorial Services). Our commercial janitorial
+                services company serves Long Beach, CA and surrounding regions while following the
+                highest cleaning standards your industry requires. Leave the building maintenance
+                and sanitation to us so you can focus on growing your business.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <Services
-        className="py-16 md:py-32"
-        headingLevel="h2"
-        cardHeadingLevel="h3"
-      />
+      <Services className="py-16 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
 
       <Testimonials headingLevel="h2" />
 
-      <About className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
+      <About className="mb-16 pt-16 md:mb-32 md:pt-32" headingLevel="h2" />
 
       <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
@@ -126,33 +114,33 @@ const Page = ({ data }) => {
 };
 
 export const query = graphql`
-   {
-      openGraphImage: file(relativePath: { eq: "open-graph/facebook/Homepage_FB.jpg" }) {
-         publicURL
+  {
+    openGraphImage: file(relativePath: { eq: "open-graph/facebook/Homepage_FB.jpg" }) {
+      publicURL
+    }
+    twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Homepage_TW.jpg" }) {
+      publicURL
+    }
+    heroFullWidthDesktop: file(relativePath: { eq: "home/1.0-hero-desktop.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
-      twitterOpenGraphImage: file(relativePath: { eq: "open-graph/twitter/Homepage_TW.jpg" }) {
-         publicURL
+    }
+    heroFullWidthMobile: file(relativePath: { eq: "home/1.0-hero-mobile.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
-      heroFullWidthDesktop: file(relativePath: { eq: "home/1.0-hero-desktop.jpg" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
-         }
+    }
+    introDesktop: file(relativePath: { eq: "home/2.0 Intro Desktop.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
-      heroFullWidthMobile: file(relativePath: { eq: "home/1.0-hero-mobile.jpg" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
-         }
+    }
+    introMobile: file(relativePath: { eq: "home/2.0 Intro Mobile.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
       }
-      introDesktop: file(relativePath: { eq: "home/2.0 Intro Desktop.jpg" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
-         }
-      }
-      introMobile: file(relativePath: { eq: "home/2.0 Intro Mobile.png" }) {
-         childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
-         }
-      }
-   }
+    }
+  }
 `;
 export default Page;
