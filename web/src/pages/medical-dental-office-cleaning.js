@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Medical Office Cleaning | Dental Office Cleaning Services"
-            description="For top medical office cleaning & dental office cleaning services, see why Long Beach Janitorial is an excellent choice. Schedule a consultation today!"
+            title="Medical & Dental Office Cleaning Long Beach | EPA-Registered | LBJ"
+            description="Long Beach Janitorial provides HIPAA-conscious medical and dental office cleaning in Long Beach. We maintain sterile, welcoming environments every day."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

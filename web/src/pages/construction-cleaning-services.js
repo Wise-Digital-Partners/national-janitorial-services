@@ -42,8 +42,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Construction Cleaning Services | Long Beach Janitorial"
-        description="Long Beach Janitorial offers professional construction cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
+        title="Construction Cleaning Services | Long Beach & LA County | LBJ"
+        description="Long Beach Janitorial provides professional post-construction cleaning in Long Beach and Southern CA. We clear debris and leave every site spotless."
         // openGraphImage={data.openGraphImage.publicURL}
         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

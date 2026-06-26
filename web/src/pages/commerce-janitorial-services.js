@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Commerce Janitorial Services | Commercial Cleaning Company"
-        description="Commerce janitorial services don't get any better than Long Beach Janitorial. We have years of experience serving local businesses. Learn more today!"
+        title="Commerce, CA Janitorial Services | Licensed & Insured | LBJ"
+        description="Need reliable janitorial services in Commerce, CA? Long Beach Janitorial delivers quality commercial cleaning for local businesses. Get a quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

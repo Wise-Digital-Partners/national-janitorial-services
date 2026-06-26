@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Gym Cleaning Services | Janitorial Company Long Beach"
-            description="Keep your fitness center clean with gym cleaning services courtesy of Long Beach Janitorial. We serve Long Beach & surrounding areas. Learn more!"
+            title="Gym Cleaning Services Long Beach | Licensed & Insured | LBJ"
+            description="Keep your gym clean and members healthy with gym cleaning from Long Beach Janitorial. We sanitize equipment, locker rooms, and floors. Schedule today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

@@ -19,8 +19,8 @@ const Page = ({ data }) => {
       headerHasBorder={false}
     >
       <SearchEngineOptimization
-        title="Church Cleaning Services | Janitorial Company Long Beach"
-        description="Keep your sacred space clean with church cleaning services courtesy of Long Beach Janitorial. We serve Long Beach & surrounding areas. Learn more!"
+        title="Church Cleaning Services Long Beach | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial offers respectful and thorough church cleaning in Long Beach and nearby communities. A pristine sacred space starts here. Learn more!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

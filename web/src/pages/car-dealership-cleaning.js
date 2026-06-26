@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Car Dealership Cleaning Services | Janitorial Company | LBJ"
-            description="Long Beach Janitorial offers top car dealership cleaning services in the Long Beach area & beyond. Learn more & schedule a consultation today!"
+            title="Car Dealership Cleaning Services | Long Beach & LA County | LBJ"
+            description="Keep your showroom spotless with car dealership cleaning from Long Beach Janitorial. Serving dealerships across Long Beach and the surrounding area."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

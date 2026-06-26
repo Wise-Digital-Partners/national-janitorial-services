@@ -27,8 +27,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Commercial Cleaning & Janitorial Services in Long Beach, CA | Long Beach Janitorial"
-        description="Long Beach Janitorial is a top commercial cleaning company based in Long Beach. See why we're better than competitors for COVID cleaning & much more!"
+        title="Commercial Cleaning Long Beach, CA | Licensed & Insured | LBJ"
+        description="Top-rated commercial cleaning & office cleaning in Long Beach, CA. Long Beach Janitorial serves businesses of all sizes. Get a free quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

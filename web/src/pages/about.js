@@ -21,8 +21,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="About LBJ | Commercial Janitorial Services Company"
-            description="With over 5 years and more than 100 accounts served, Long Beach Janitorial is your trusted partner in keeping your business spotless and safe."
+            title="About Long Beach Janitorial | Licensed & Insured | LBJ"
+            description="Learn about Long Beach Janitorial: 5+ years of experience and 100+ accounts served across Long Beach and Southern California. Meet our team today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Long Beach Commercial Cleaning Company | Janitorial Services"
-            description="Long Beach commercial cleaning experts. High-quality cleaning for your business, specializing in healthy workspaces. Get your free quote today!"
+            title="Commercial Cleaning Company Long Beach | Licensed & Insured | LBJ"
+            description="Long Beach Janitorial is a trusted commercial cleaning company delivering healthy, spotless workspaces for businesses across Long Beach, CA. Call now!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

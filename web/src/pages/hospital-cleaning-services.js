@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Hospital Cleaning Services | Janitorial Company Long Beach"
-            description="When you need top hospital cleaning services in Long Beach, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
+            title="Hospital Cleaning Services in Long Beach, CA | EPA-Registered | LBJ"
+            description="Long Beach Janitorial delivers compliant hospital cleaning built for healthcare environments. Sterile, reliable, and professional. Schedule a consult today!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

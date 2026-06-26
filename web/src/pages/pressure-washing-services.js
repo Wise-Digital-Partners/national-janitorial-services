@@ -42,8 +42,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Pressure Washing Services | Long Beach Janitorial"
-        description="When you need professional pressure washing services, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
+        title="Pressure Washing Services | Long Beach & LA County | LBJ"
+        description="Long Beach Janitorial's pressure washing blasts away dirt and buildup from commercial properties across Long Beach and nearby Southern California areas."
         // openGraphImage={data.openGraphImage.publicURL}
         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Downey Janitorial Services | Commercial Cleaning Company"
-        description="For Downey janitorial services you can depend on, choose Long Beach Janitorial. We offer top commercial cleaning for your local business. Learn more!"
+        title="Downey Janitorial Services | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial delivers dependable janitorial services in Downey, CA. Expert commercial cleaning for offices, retail, and more. Get a quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

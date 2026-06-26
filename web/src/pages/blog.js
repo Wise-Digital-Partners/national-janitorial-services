@@ -70,8 +70,8 @@ const ArchivePage = (props) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Janitorial Services Blog | NJS"
-        description="Read the National Janitorial Services blog for all kinds of tips and more. We offer top commercial cleaning for local businesses. Learn more!"
+        title="Janitorial Tips & Cleaning Blog | Long Beach Janitorial"
+        description="Explore the Long Beach Janitorial blog for janitorial tips, cleaning best practices, and business hygiene advice for Southern California businesses."
       // openGraphImage={data.openGraphImage.publicURL}
       // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

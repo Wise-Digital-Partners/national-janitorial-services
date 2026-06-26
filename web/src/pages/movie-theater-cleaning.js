@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Movie Theater Cleaning Services | Janitorial Company | LBJ"
-            description="No matter your needs, we offer reliable movie theater cleaning services in Long Beach & beyond. Schedule a consultation with Long Beach Janitorial!"
+            title="Movie Theater Cleaning Services Long Beach | Licensed & Insured | LBJ"
+            description="Professional movie theater cleaning services for lobbies, auditoriums & restrooms. Long Beach Janitorial delivers reliable results. Get a free quote!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

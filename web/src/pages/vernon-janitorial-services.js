@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Vernon Janitorial Services | Commercial Cleaning Company"
-        description="For Vernon janitorial services you can depend on, choose Long Beach Janitorial. We offer top commercial cleaning for your local business. Learn more!"
+        title="Vernon Janitorial Services | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial delivers reliable janitorial services in Vernon, CA for commercial and industrial facilities. Professional results. Get a quote!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

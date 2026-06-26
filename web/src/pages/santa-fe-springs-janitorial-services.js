@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Janitorial Cleaning Services | Santa Fe Springs | LBJ"
-        description="For Santa Fe Springs janitorial services you can depend on, choose Long Beach Janitorial. We offer top commercial cleaning for your local business. Learn more!"
+        title="Santa Fe Springs Janitorial Services | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial delivers dependable janitorial services in Santa Fe Springs, CA. Expert commercial cleaning for businesses of all sizes. Get a quote!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

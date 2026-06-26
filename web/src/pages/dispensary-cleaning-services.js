@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Dispensary Cleaning Services | Janitorial Company Long Beach"
-            description="For dispensary cleaning services in the Long Beach area, see why Long Beach Janitorial is a top choice. Learn more & schedule a consultation!"
+            title="Dispensary Cleaning Services Long Beach | Licensed & Compliant | LBJ"
+            description="Compliant dispensary cleaning services from Long Beach Janitorial. We meet strict hygiene standards for cannabis facilities in Long Beach and beyond."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

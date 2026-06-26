@@ -42,8 +42,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Floor Stripping Services | Long Beach Janitorial"
-            description="When you need professional floor stripping services, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
+            title="Floor Stripping Services Long Beach | Bonded & Insured | LBJ"
+            description="Long Beach Janitorial's floor stripping services prep floors for a fresh coat of wax. Professional results for commercial spaces throughout Long Beach."
             // openGraphImage={data.openGraphImage.publicURL}
             // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

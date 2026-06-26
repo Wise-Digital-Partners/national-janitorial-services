@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Office Building Cleaning Services | Janitorial Company | LBJ"
-            description="No matter your needs, we offer reliable office building cleaning services in Long Beach. Schedule a consultation with Long Beach Janitorial today!"
+            title="Office Building Cleaning Long Beach | Licensed & Insured | LBJ"
+            description="Long Beach Janitorial offers dependable office building cleaning across Long Beach. We handle multi-tenant spaces, lobbies, and common areas with ease."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

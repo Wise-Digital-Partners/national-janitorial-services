@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Lakewood Janitorial Services | Commercial Cleaning Company"
-        description="Lakewood janitorial services don't get any better than Long Beach Janitorial. We have years of experience serving local businesses. Learn more today!"
+        title="Lakewood Janitorial Services | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial provides expert janitorial services in Lakewood, CA. From office cleaning to deep cleans, we keep your business spotless daily."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

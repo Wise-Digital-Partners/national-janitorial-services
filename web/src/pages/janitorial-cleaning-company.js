@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Janitorial Cleaning Company | Long Beach Janitorial"
-            description="Your business is unique and so should your cleaning services. Long Beach Janitorial is a top janitorial cleaning company in Long Beach. Learn more!"
+            title="Janitorial Cleaning Company Long Beach | Licensed & Insured | LBJ"
+            description="Long Beach Janitorial is a trusted janitorial cleaning company tailored to your needs. Serving businesses across Long Beach and Southern California."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

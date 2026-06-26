@@ -42,8 +42,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Floor Waxing Services | Los Angeles | Long Beach Janitorial"
-            description="Long Beach Janitorial offers professional Floor Waxing services throughout the area & beyond. Learn more & schedule a consultation today!"
+            title="Floor Waxing Services Los Angeles | Bonded & Insured | LBJ"
+            description="Professional floor waxing in Los Angeles and Long Beach. Long Beach Janitorial restores shine and extends floor life. Schedule a consultation today!"
             // openGraphImage={data.openGraphImage.publicURL}
             // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="School Cleaning Services | Janitorial Company Long Beach"
-            description="When you need top school cleaning services in Long Beach, Long Beach Janitorial is here to help. See how we can help & get a consultation today!"
+            title="School Cleaning Services Long Beach | Licensed & Insured | LBJ"
+            description="Long Beach Janitorial provides safe and thorough school cleaning that supports healthy learning environments across Long Beach and Southern California."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

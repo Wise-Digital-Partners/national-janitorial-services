@@ -104,8 +104,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Industries We Serve | Commercial Janitorial Services"
-            description="Long Beach Janitorial is one cleaning company serving many industries. Learn about the industries we serve and how we can help your business here."
+            title="Industries We Serve | Commercial Cleaning Long Beach | LBJ"
+            description="Long Beach Janitorial serves healthcare, retail, hospitality, and more. Explore the industries we clean and find out if we're the right fit for your business."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

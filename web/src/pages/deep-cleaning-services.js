@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Deep Cleaning Services | Long Beach Janitorial"
-            description="For the deep cleaning services your business deserves, partner with Long Beach Janitorial. We offer Long Beach the best in deep cleaning. Learn more!"
+            title="Deep Cleaning Services Long Beach | Licensed & Insured | LBJ"
+            description="Go beyond the surface with Long Beach Janitorial's deep cleaning services. We eliminate grime, bacteria, and buildup in commercial spaces across Long Beach."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

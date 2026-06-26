@@ -19,8 +19,8 @@ const Page = ({ data }) => {
       headerHasBorder={false}
     >
       <SearchEngineOptimization
-        title="Day Porter Services | Long Beach Janitorial"
-        description="Nobody does day porter services like Long Beach Janitorial. We offer the cleaning you need right here in Long Beach, CA. Schedule a consultation!"
+        title="Day Porter Services Long Beach | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial's day porter services keep your facility clean throughout the business day. Reliable, professional, and based in Long Beach, CA."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

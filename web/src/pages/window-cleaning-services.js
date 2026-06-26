@@ -42,8 +42,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Window Cleaning Services | Long Beach Janitorial"
-        description="Long Beach Janitorial offers professional window cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
+        title="Window Cleaning Services | Long Beach & LA County | LBJ"
+        description="Long Beach Janitorial offers professional window cleaning for commercial properties across Long Beach and Southern California. Request your free quote today!"
         // openGraphImage={data.openGraphImage.publicURL}
         // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />

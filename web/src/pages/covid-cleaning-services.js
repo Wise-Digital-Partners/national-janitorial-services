@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="COVID Cleaning Services Long Beach | Long Beach Janitorial"
-            description="Our COVID cleaning services help Long Beach businesses stop the spread. Learn more about our coronavirus cleaning process & schedule a consultation!"
+            title="COVID Cleaning Services Long Beach | EPA-Registered | LBJ"
+            description="Protect your business with COVID cleaning services from Long Beach Janitorial. We help Long Beach businesses stop the spread and stay fully compliant."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

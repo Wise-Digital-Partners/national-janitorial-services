@@ -15,8 +15,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Restaurant Cleaning Services | Long Beach Janitorial"
-        description="Long Beach Janitorial offers top restaurant and hospitality cleaning services throughout the area & beyond. Learn more & schedule a consultation today!"
+        title="Restaurant Cleaning Services Long Beach | Licensed & Insured | LBJ"
+        description="Long Beach Janitorial offers thorough restaurant and hospitality cleaning that meets health codes. Serving Long Beach and Southern California businesses."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
