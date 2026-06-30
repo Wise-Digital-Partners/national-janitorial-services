@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-const SEO = ({ description, lang, meta, keywords, title, openGraphImage, twitterOpenGraphImage }) => {
+const SEO = ({ description, lang, meta, keywords, title, openGraphImage, twitterOpenGraphImage, canonicalUrl }) => {
   const { site } = useStaticQuery(graphql`
     query DefaultSEOQuery {
       site {
@@ -24,6 +24,7 @@ const SEO = ({ description, lang, meta, keywords, title, openGraphImage, twitter
       htmlAttributes={{
         lang,
       }}
+      link={canonicalUrl ? [{ rel: "canonical", href: canonicalUrl }] : []}
       meta={[
         {
           name: `description`,
@@ -95,6 +96,7 @@ SEO.propTypes = {
   title: PropTypes.string,
   twitterOpenGraphImage: PropTypes.string,
   openGraphImage: PropTypes.string,
+  canonicalUrl: PropTypes.string,
 };
 
 export default SEO;

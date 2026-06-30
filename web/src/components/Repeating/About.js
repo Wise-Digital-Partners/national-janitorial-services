@@ -44,8 +44,8 @@ const About = ({ className, headingLevel }) => {
                            </Link>
                         </li>
                         <li className="mb-4">
-                           <Link fade to="/commercial-office-cleaning/" className="text-gray-700 font-bold underline uppercase">
-                              Private Offices
+                           <Link fade to="/office-cleaning-services/" className="text-gray-700 font-bold underline uppercase">
+                              Office Cleaning Services
                            </Link>
                         </li>
                         <li className="mb-4">

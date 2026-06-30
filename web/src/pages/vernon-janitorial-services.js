@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
@@ -30,8 +30,8 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Vernon Janitorial Services | Licensed & Insured | LBJ"
-        description="Long Beach Janitorial delivers reliable janitorial services in Vernon, CA for commercial and industrial facilities. Professional results. Get a quote!"
+        title="Janitorial Services & Commercial Cleaning in Vernon CA | LBJ"
+        description="Professional commercial cleaning and janitorial services in Vernon, CA. Trust our expert team for reliable, high-quality office and industrial cleaning. Request a quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
@@ -78,19 +78,24 @@ const Page = ({ data }) => {
             <div className="order-2 md:order-1 md:col-span-5 md:col-start-1">
               <GatsbyImage
                 image={data.introDesktop.childImageSharp.gatsbyImageData}
-                alt="A Top Commercial Janitorial Services Company in Vernon"
+                alt="Commercial Cleaning & Janitorial Services in Vernon, CA"
                 className="hidden md:block"
               />
               <GatsbyImage
                 image={data.introMobile.childImageSharp.gatsbyImageData}
-                alt="A Top Commercial Janitorial Services Company in Vernon"
+                alt="Commercial Cleaning & Janitorial Services in Vernon, CA"
                 className="md:hidden"
               />
             </div>
             <div className="order-1 md:order-2 md:col-span-7 md:col-end-13">
-              <h1>A Top Commercial Janitorial Services Company in Vernon</h1>
+              <h1>Commercial Cleaning & Janitorial Services in Vernon, CA</h1>
+              <p>
+              Providing top-tier janitorial services specifically tailored to the industrial and commercial hubs of Vernon, CA.
+              </p>
               <p className="mb-0">
-              Professional cleaning is a vital component of running a successful company. Keep your business spotless and safe for your customers and employees with Long Beach Janitorial. As a trusted vendor for commercial janitorial services in Vernon, we adhere to the strict cleaning standards your industry requires. Leave the building maintenance and sanitation to us so you can focus on growing your business.
+              Looking for our primary commercial cleaning services in Long Beach?{" "}
+              <Link to="/" className="font-semibold underline">Visit our main location page</Link>
+              , or contact our Vernon team below for local service.
               </p>
             </div>
           </div>

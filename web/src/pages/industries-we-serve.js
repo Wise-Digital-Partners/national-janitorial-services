@@ -27,7 +27,7 @@ const Page = ({ data }) => {
          image: data.privateOffices.childImageSharp.gatsbyImageData,
          heading: "Private Offices",
          text: "Help keep your employees safe with our professional private office cleaning and sanitation services.",
-         link: "/commercial-office-cleaning/",
+         link: "/office-cleaning-services/",
       },
       {
          id: 4,

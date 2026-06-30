@@ -77,8 +77,8 @@ const menuItems = [
         link: "/hoa-cleaning-services/",
       },
       {
-        title: "Private Offices",
-        link: "/commercial-office-cleaning/",
+        title: "Office Cleaning Services",
+        link: "/office-cleaning-services/",
       },
       {
         title: "Office Buildings",

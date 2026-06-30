@@ -10,22 +10,24 @@ import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Office Cleaning Services Long Beach, CA | Licensed & Insured | LBJ"
+            title="Office Cleaning Services in Long Beach | LBJ"
             description="Long Beach Janitorial's office cleaning in Long Beach, CA keeps workspaces fresh, organized, and productive. Flexible scheduling and customized plans available."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            canonicalUrl="https://longbeachjanitorial.com/office-cleaning-services/"
          />
 
          <HeroStacked
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
-            heading="Long Beach Office Cleaning Services"
+            heading="Professional Office Cleaning Services in Long Beach, CA"
             subtext="Working hard to keep your office clean so you don’t have to."
             textMaxWidth="max-w-4xl"
          />
@@ -53,10 +55,14 @@ const Page = ({ data }) => {
             <div className="container">
                <header className="md:text-center mb-6">
                   <h3>What We Clean</h3>
+                  <p className="md:text-center mb-0">At LBJ, we conduct site visits and work closely with you to develop a cleaning plan. Our certified cleaning experts handle dusting, wiping, vacuuming, disinfection, and more for the following areas.</p>
                </header>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12">
                   <div>
                      <ul className="styled-list">
+                        <li>Work areas</li>
+                        <li>Common areas</li>
+                        <li>Cubicles</li>
                         <li>Carpet</li>
                         <li>Countertops</li>
                         <li>Degreasing (exhaust fans, filters, ducts)</li>
@@ -85,6 +91,8 @@ const Page = ({ data }) => {
                </div>
             </div>
          </section>
+
+         <CovidSplit className="pt-16 md:pt-32 mb-16 md:mb-32" />
 
          <About className="pt-16 md:pt-32 mb-16 md:mb-32" headingLevel="h2" />
 
