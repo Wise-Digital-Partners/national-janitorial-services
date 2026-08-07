@@ -349,52 +349,62 @@ const Page = ({ data }) => {
               <p className="mb-4 font-heading font-bold uppercase text-gray-700">By Industry</p>
               <ul className="styled-list">
                 <li>
-                  <strong>Medical Facility Disinfection Services</strong> — Thorough sanitation and
-                  disinfection for hospitals, medical offices, and dental practices, where a
-                  rigorously sanitized environment is crucial to reduce the risk of infection.
+                  <span>
+                    <strong>Medical Facility Disinfection Services</strong> — Thorough sanitation
+                    and disinfection for hospitals, medical offices, and dental practices, where a
+                    rigorously sanitized environment is crucial to reduce the risk of infection.
+                  </span>
                 </li>
                 <li>
-                  <strong>School &amp; Education Facility Sanitization</strong> — Classroom and
-                  shared-space disinfection scheduled around the academic calendar, including
-                  flu-season programs.
+                  <span>
+                    <strong>School &amp; Education Facility Sanitization</strong> — Classroom and
+                    shared-space disinfection scheduled around the academic calendar, including
+                    flu-season programs.
+                  </span>
                 </li>
                 <li>
-                  <strong>Hospitality &amp; Retail Disinfection</strong> — Sanitization for
-                  restaurants, bars, dealerships, and dispensaries that protects both health
-                  outcomes and customer experience.
+                  <span>
+                    <strong>Hospitality &amp; Retail Disinfection</strong> — Sanitization for
+                    restaurants, bars, dealerships, and dispensaries that protects both health
+                    outcomes and customer experience.
+                  </span>
                 </li>
                 <li>
-                  <strong>Property Management &amp; HOA Disinfection</strong> — Common-area and
-                  shared-space disinfection that supports asset preservation across an entire
-                  property portfolio.
+                  <span>
+                    <strong>Property Management &amp; HOA Disinfection</strong> — Common-area and
+                    shared-space disinfection that supports asset preservation across an entire
+                    property portfolio.
+                  </span>
                 </li>
                 <li>
-                  <strong>Geo-Targeted Commercial Disinfection</strong> — Full commercial
-                  disinfection coverage for businesses in{" "}
-                  <Link fade to="/downey-janitorial-services/" className="text-link font-bold">
-                    Downey
-                  </Link>
-                  ,{" "}
-                  <Link fade to="/lakewood-janitorial-services/" className="text-link font-bold">
-                    Lakewood
-                  </Link>
-                  ,{" "}
-                  <Link
-                    fade
-                    to="/santa-fe-springs-janitorial-services/"
-                    className="text-link font-bold"
-                  >
-                    Santa Fe Springs
-                  </Link>
-                  ,{" "}
-                  <Link fade to="/commerce-janitorial-services/" className="text-link font-bold">
-                    Commerce
-                  </Link>
-                  , and{" "}
-                  <Link fade to="/vernon-janitorial-services/" className="text-link font-bold">
-                    Vernon
-                  </Link>
-                  .
+                  <span>
+                    <strong>Geo-Targeted Commercial Disinfection</strong> — Full commercial
+                    disinfection coverage for businesses in{" "}
+                    <Link fade to="/downey-janitorial-services/" className="text-link font-bold">
+                      Downey
+                    </Link>
+                    ,{" "}
+                    <Link fade to="/lakewood-janitorial-services/" className="text-link font-bold">
+                      Lakewood
+                    </Link>
+                    ,{" "}
+                    <Link
+                      fade
+                      to="/santa-fe-springs-janitorial-services/"
+                      className="text-link font-bold"
+                    >
+                      Santa Fe Springs
+                    </Link>
+                    ,{" "}
+                    <Link fade to="/commerce-janitorial-services/" className="text-link font-bold">
+                      Commerce
+                    </Link>
+                    , and{" "}
+                    <Link fade to="/vernon-janitorial-services/" className="text-link font-bold">
+                      Vernon
+                    </Link>
+                    .
+                  </span>
                 </li>
               </ul>
             </div>
@@ -404,21 +414,29 @@ const Page = ({ data }) => {
               </p>
               <ul className="styled-list">
                 <li>
-                  <strong>Electrostatic Disinfection Services</strong> — Advanced electrostatic
-                  application for faster, more even coverage across large or complex spaces.
+                  <span>
+                    <strong>Electrostatic Disinfection Services</strong> — Advanced electrostatic
+                    application for faster, more even coverage across large or complex spaces.
+                  </span>
                 </li>
                 <li>
-                  <strong>COVID &amp; Disinfection Services</strong> — Same-day, rapid-response deep
-                  cleaning to protect your business from pathogens following a confirmed exposure
-                  event.
+                  <span>
+                    <strong>COVID &amp; Disinfection Services</strong> — Same-day, rapid-response
+                    deep cleaning to protect your business from pathogens following a confirmed
+                    exposure event.
+                  </span>
                 </li>
                 <li>
-                  <strong>EPA-Registered Disinfection Protocols</strong> — A closer look at how EPA
-                  registration standards shape every job we do.
+                  <span>
+                    <strong>EPA-Registered Disinfection Protocols</strong> — A closer look at how
+                    EPA registration standards shape every job we do.
+                  </span>
                 </li>
                 <li>
-                  <strong>Church &amp; House of Worship Sanitization</strong> — Disinfection that
-                  respects the sanctity of the space while protecting the congregation.
+                  <span>
+                    <strong>Church &amp; House of Worship Sanitization</strong> — Disinfection that
+                    respects the sanctity of the space while protecting the congregation.
+                  </span>
                 </li>
               </ul>
             </div>
