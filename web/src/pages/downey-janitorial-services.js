@@ -315,9 +315,9 @@ const Page = ({ data }) => {
           </header>
           <div className="grid max-w-4xl grid-cols-1 gap-y-10">
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 How quickly can you start service for a Downey business?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Turnaround depends on the scope of your property and the service requested. For
                 urgent sanitization needs, we have a proven track record of providing same-day
@@ -327,29 +327,29 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you serve retail and dining properties in Downtown Downey, or only offices and
                 industrial sites?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We serve all commercial property types in Downey, including retail, dining, office,
                 medical, industrial, and HOA-managed properties.
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you schedule cleaning around shift changes at a Downey warehouse or distribution
                 property?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning schedules around your operating hours and shift patterns
                 rather than defaulting to a fixed after-hours window.
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Are your cleaning products safe for medical or healthcare facilities in Downey?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We use EPA-registered disinfectants suited to healthcare and clinical
                 environments, applied according to CDC guidance and the protocol each facility type
@@ -357,19 +357,19 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you offer one-time deep cleaning, or only recurring service, for Downey
                 properties?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We offer both. Many Downey accounts start with a one-time deep clean before moving
                 to a recurring maintenance schedule, though either option is available on its own.
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is there a minimum property size or contract length to work with you in Downey?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We proudly accommodate commercial facilities and offices of all sizes, big or small.
                 Rather than locking you into rigid, one-size-fits-all contracts, we focus on a true
