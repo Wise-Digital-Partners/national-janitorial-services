@@ -384,9 +384,9 @@ const Page = ({ data }) => {
           </header>
           <div className="grid max-w-4xl grid-cols-1 gap-y-10">
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 How quickly can you start service for a Lakewood business?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Turnaround depends on the scope of your property and the service
                 requested, and our onboarding process is highly responsive. For
@@ -407,10 +407,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you serve retail centers, or only offices and schools, in
                 Lakewood?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We serve all commercial property types in Lakewood, including
                 retail, office, medical, education, civic, and HOA-managed
@@ -418,10 +418,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you schedule retail cleaning around store hours at a
                 Lakewood shopping center?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning schedules around your operating hours and
                 customer traffic patterns rather than defaulting to a fixed
@@ -432,10 +432,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Are your cleaning products safe for school or medical facilities
                 in Lakewood?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We use EPA-registered disinfectants suited to healthcare,
                 clinical, and education environments, applied according to CDC
@@ -443,10 +443,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you offer one-time deep cleaning, or only recurring service,
                 for Lakewood properties?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We offer both. Many Lakewood accounts start with a one-time deep
                 clean before moving to a recurring maintenance schedule, though
@@ -454,10 +454,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is there a minimum property size or contract length to work with
                 you in Lakewood?
-              </h4>
+              </h3>
               <p className="mb-0">
                 No. We accommodate commercial facilities and offices of all
                 sizes with customizable cleaning plans built around your

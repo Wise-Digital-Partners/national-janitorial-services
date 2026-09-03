@@ -371,9 +371,9 @@ const Page = ({ data }) => {
           </header>
           <div className="grid max-w-4xl grid-cols-1 gap-y-10">
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 How quickly can you start service for a Commerce business?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Turnaround depends on the scope of your property and the service
                 requested. Our onboarding turnaround is highly responsive and
@@ -393,10 +393,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you clean warehouses and retail properties, or only one type
                 of business, in Commerce?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We serve all commercial property types in Commerce, including
                 warehouses, distribution centers, retail, hospitality-adjacent
@@ -404,10 +404,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you schedule around weekend traffic at a Commerce retail
                 property near the Citadel Outlets?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning schedules around your peak traffic hours.
                 For retail properties in that corridor, that often means heavier
@@ -415,10 +415,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you clean around a multi-shift warehouse schedule in
                 Commerce?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning windows into the gaps between shift
                 changes rather than defaulting to a fixed overnight slot, so
@@ -426,10 +426,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you offer one-time deep cleaning, or only recurring service,
                 for Commerce properties?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We offer both. Our highly trained team is fully equipped to
                 serve the commercial, retail, and industrial businesses of
@@ -440,10 +440,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is there a minimum property size or contract length to work with
                 you in Commerce?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We proudly accommodate commercial facilities and offices of all
                 sizes, big or small. Rather than locking you into rigid,

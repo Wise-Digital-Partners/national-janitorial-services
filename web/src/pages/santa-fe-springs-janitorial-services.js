@@ -433,10 +433,10 @@ const Page = ({ data }) => {
           </header>
           <div className="grid max-w-4xl grid-cols-1 gap-y-10">
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 How quickly can you start service for a Santa Fe Springs
                 facility?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Turnaround depends on the scope of your property and the
                 specific services requested. We have a track record of same-day
@@ -448,10 +448,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you clean around a two- or three-shift warehouse schedule in
                 Santa Fe Springs?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning windows into the gaps between shift
                 changes rather than defaulting to a fixed overnight slot, so
@@ -459,10 +459,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you clean the office space attached to a warehouse or
                 manufacturing facility?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We staff and schedule attached administrative offices
                 separately from the warehouse floor, since each space needs a
@@ -470,10 +470,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is your floor care approach different for a warehouse than for a
                 retail or office property?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. Warehouse and distribution floors see constant pallet-jack
                 and forklift traffic. That calls for a stripping and waxing
@@ -482,10 +482,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you offer one-time deep cleaning, or only recurring service,
                 for Santa Fe Springs facilities?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We offer both. Many industrial accounts start with a one-time
                 deep clean before moving to a recurring maintenance schedule,
@@ -493,10 +493,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is there a minimum facility size or contract length to work with
                 you in Santa Fe Springs?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We accommodate commercial facilities and offices of all sizes.
                 We do not lock you into rigid, one-size-fits-all contracts.

@@ -431,9 +431,9 @@ const Page = ({ data }) => {
           </header>
           <div className="grid max-w-4xl grid-cols-1 gap-y-10">
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 How quickly can you start service for a Vernon facility?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Turnaround depends on the scope of your property and the service
                 requested. Our onboarding is responsive and tailored to the size
@@ -446,10 +446,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you clean food processing and cold storage facilities in
                 Vernon, or only general warehouses?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We clean all three. Food processing and cold storage facilities
                 receive a sanitation-focused cleaning protocol distinct from our
@@ -465,10 +465,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Can you clean around a 24-hour or multi-shift operation in
                 Vernon?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We build cleaning windows into the gaps between shift
                 changes rather than defaulting to a fixed overnight slot, so
@@ -476,10 +476,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Are your cleaning products appropriate for food handling
                 environments?
-              </h4>
+              </h3>
               <p className="mb-0">
                 Yes. We use EPA-registered disinfectants suited to food
                 processing and food-handling environments, including Multi-Clean
@@ -489,10 +489,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Do you offer one-time deep cleaning, or only recurring service,
                 for Vernon facilities?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We offer both. Many Vernon accounts start with a{" "}
                 <Link
@@ -507,10 +507,10 @@ const Page = ({ data }) => {
               </p>
             </div>
             <div>
-              <h4 className="heading-six mb-2">
+              <h3 className="heading-six mb-2">
                 Is there a minimum facility size or contract length to work with
                 you in Vernon?
-              </h4>
+              </h3>
               <p className="mb-0">
                 We accommodate commercial facilities and offices of any size.
                 Rather than locking you into rigid, one-size-fits-all contracts,
