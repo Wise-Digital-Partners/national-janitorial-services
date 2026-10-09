@@ -21,8 +21,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="About Long Beach Janitorial | Licensed & Insured | LBJ"
-            description="Learn about Long Beach Janitorial: 5+ years of experience and 100+ accounts served across Long Beach and Southern California. Meet our team today!"
+            title="About Long Beach Janitorial | Trusted Commercial Cleaning Company"
+            description="Discover Long Beach Janitorial. Fully licensed and insured, we have over 5 years of experience providing safe, compliant commercial cleaning to more than 100 local businesses."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
@@ -31,13 +31,17 @@ const Page = ({ data }) => {
             backgroundImages={heroFullWidthImages}
             padding="pt-24 md:pt-32 pb-40 md:pb-56"
             textAlignment="text-left"
-            textMaxWidth="max-w-xl"
+            textMaxWidth="max-w-2xl"
          >
             <h1>About Long Beach Janitorial</h1>
+            <p>
+               Long Beach Janitorial (LBJ) is a professional commercial cleaning company in Long Beach. Supported by over 5 years of experience keeping facilities safe and sanitary, our team has grown into a trusted janitorial partner for more
+               than 100 businesses across Long Beach and surrounding regions. Formerly operating as National Janitorial Services, LBJ keeps your business spotless and compliant using effective, EPA-approved cleaning products and CDC-aligned
+               disinfection protocols.
+            </p>
             <p className="mb-0">
-               Over 5 years of experience. More than 100 accounts served, Long Beach Janitorial is your trusted partner in keeping your
-               business spotless and safe. We use effective tools to ensure the best possible cleaning for your workplace, building, or facility. Our
-               highly qualified team handles your business with the utmost professionalism and care for janitorial services you can rely on.
+               We proudly serve commercial clients throughout Long Beach and our expansion service cities, including Lakewood, Downey, Santa Fe Springs, Commerce, and Vernon, across the greater southern Los Angeles area. LBJ is fully trained,
+               licensed, and insured, giving property managers, facility directors, and business owners complete peace of mind on every job we take on.
             </p>
          </HeroFullWidth>
 
@@ -68,6 +72,19 @@ const Page = ({ data }) => {
 
          <section className="pb-16 md:pb-32">
             <div className="container">
+               <div className="max-w-4xl mx-auto">
+                  <h2>Why Long Beach Businesses Choose LBJ</h2>
+                  <p className="mb-0">
+                     Our team is trained in the LBJ Floor Protection Standard, our proprietary approach to preserving flooring surfaces across office, retail, and industrial spaces. Every technician follows EPA-registered cleaning protocols and
+                     CDC-aligned health and safety practices, so your facility stays clean without compromising the people who work in it. Whether you manage a single office suite or a multi-building portfolio, LBJ brings the same consistent
+                     standard of care to every account.
+                  </p>
+               </div>
+            </div>
+         </section>
+
+         <section className="pb-16 md:pb-32">
+            <div className="container">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 max-w-3xl mx-auto text-center">
                   <div>
                      <h2 className="mb-10 md:mb-16">Meet the Team</h2>
@@ -80,6 +97,30 @@ const Page = ({ data }) => {
                      <p className="font-heading text-gray-700 text-3xl font-bold mb-2.5">Kris Villareal</p>
                      <p className="font-heading text-gray-400 text-3xl mb-0">Office Manager</p>
                   </div>
+               </div>
+            </div>
+         </section>
+
+         <section className="bg-gray-50 py-14 md:py-20">
+            <div className="container">
+               <div className="max-w-4xl mx-auto">
+                  <h2>Ready to Work With Us?</h2>
+                  <p>
+                     <button type="button" data-modal-open="modal-contact" className="text-link font-bold underline">
+                        Schedule a 30 Minute Site Consultation
+                     </button>{" "}
+                     and see why more than 100 Long Beach businesses trust LBJ for their commercial cleaning needs. Prefer to start simple?{" "}
+                     <button type="button" data-modal-open="modal-contact" className="text-link font-bold underline">
+                        Get a Free Estimate
+                     </button>{" "}
+                     today.
+                  </p>
+                  <p className="mb-0">
+                     <strong>Long Beach Janitorial</strong> 144 San Antonio Dr, Long Beach, CA 90807{" "}
+                     <a href="tel:+15623171575" className="text-link font-bold">
+                        (562) 317-1575
+                     </a>
+                  </p>
                </div>
             </div>
          </section>
