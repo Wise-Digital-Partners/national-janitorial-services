@@ -27,6 +27,7 @@ const Hero = ({
    backgroundSize,
    backgroundPosition,
    backgroundRepeat,
+   alt,
 }) => (
    <section className={`${className || "pt-6 md:pt-14"}`}>
       <div className="container">
@@ -44,6 +45,8 @@ const Hero = ({
          <StyledBackgroundImage
             className="h-full"
             image={image}
+            role={alt ? "img" : undefined}
+            aria-label={alt}
             backgroundFixed={backgroundFixed}
             style={{
                backgroundSize: backgroundSize || "cover",
