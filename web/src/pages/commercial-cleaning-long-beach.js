@@ -51,11 +51,7 @@ const faqs = [
 ];
 
 const ModalButton = ({ children }) => (
-  <button
-    type="button"
-    data-modal-open="modal-contact"
-    className="text-link font-bold underline"
-  >
+  <button type="button" data-modal-open="modal-contact" className="text-link font-bold underline">
     {children}
   </button>
 );
@@ -74,7 +70,6 @@ const Page = ({ data }) => {
         description="Licensed and insured commercial cleaners serving Long Beach offices, medical facilities, and warehouses. 100+ businesses served. Schedule a site consultation."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-        noIndex
       />
 
       <HeroStacked
