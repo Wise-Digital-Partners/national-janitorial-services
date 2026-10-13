@@ -80,7 +80,11 @@ const SEO = ({ description, lang, meta, keywords, title, openGraphImage, twitter
       title={title}
       titleTemplate={`%s`}
     >
-      {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
+      {[].concat(jsonLd || []).map((ld, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(ld)}
+        </script>
+      ))}
     </Helmet>
   );
 };
@@ -101,7 +105,7 @@ SEO.propTypes = {
   openGraphImage: PropTypes.string,
   canonicalUrl: PropTypes.string,
   noIndex: PropTypes.bool,
-  jsonLd: PropTypes.object,
+  jsonLd: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default SEO;

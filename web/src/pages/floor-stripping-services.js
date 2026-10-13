@@ -10,6 +10,7 @@ import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
 
 import styled from "@emotion/styled";
 import tw from "twin.macro";
@@ -46,6 +47,7 @@ const Page = ({ data }) => {
             description="Long Beach Janitorial's floor stripping services prep floors for a fresh coat of wax. Professional results for commercial spaces throughout Long Beach."
             // openGraphImage={data.openGraphImage.publicURL}
             // twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            jsonLd={faqJsonLd}
          />
 
          <HeroStacked
@@ -147,6 +149,9 @@ What’s an often overlooked yet important aspect of a thorough clean? Floor str
          <Testimonials headingLevel="h2" />
 
          <WhyUs className="py-16 md:py-32" headingLevel="h2" />
+
+         <FAQ />
+
 
          <CallToAction headingLevel="h2" />
       </Layout>

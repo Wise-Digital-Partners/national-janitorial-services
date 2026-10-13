@@ -14,6 +14,7 @@ import Badges from "../components/Repeating/Badges";
 // import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
 
@@ -44,7 +45,7 @@ const Page = ({ data }) => {
         description="Top-rated commercial cleaning & office cleaning in Long Beach, CA. Long Beach Janitorial serves businesses of all sizes. Get a free quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-        jsonLd={jsonLd}
+        jsonLd={[jsonLd, faqJsonLd]}
       />
 
       <HeroFullWidth
@@ -128,6 +129,8 @@ const Page = ({ data }) => {
       <About className="mb-16 pt-16 md:mb-32 md:pt-32" headingLevel="h2" />
 
       <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
+
+      <FAQ />
 
       <CallToAction headingLevel="h2" />
     </Layout>

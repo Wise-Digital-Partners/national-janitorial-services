@@ -10,6 +10,7 @@ import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
 
 const Page = ({ data }) => {
   return (
@@ -23,6 +24,7 @@ const Page = ({ data }) => {
         description="Long Beach Janitorial's day porter services keep your facility clean throughout the business day. Reliable, professional, and based in Long Beach, CA."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+        jsonLd={faqJsonLd}
       />
 
       <HeroStacked
@@ -106,6 +108,9 @@ const Page = ({ data }) => {
       <Testimonials headingLevel="h2" />
 
       <WhyUs className="py-16 md:py-32" headingLevel="h2" />
+
+      <FAQ />
+
 
       <CallToAction headingLevel="h2" />
     </Layout>

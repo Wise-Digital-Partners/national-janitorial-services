@@ -10,6 +10,7 @@ import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
 import CovidSplit from "../components/Repeating/CovidSplit";
 
 const Page = ({ data }) => {
@@ -20,6 +21,7 @@ const Page = ({ data }) => {
             description="Long Beach Janitorial's office cleaning in Long Beach, CA keeps workspaces fresh, organized, and productive. Flexible scheduling and customized plans available."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            jsonLd={faqJsonLd}
             canonicalUrl="https://longbeachjanitorial.com/office-cleaning-services/"
          />
 
@@ -101,6 +103,9 @@ const Page = ({ data }) => {
          <Testimonials headingLevel="h2" />
 
          <WhyUs className="py-16 md:py-32" headingLevel="h2" />
+
+         <FAQ />
+
 
          <CallToAction headingLevel="h2" />
       </Layout>

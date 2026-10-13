@@ -11,6 +11,7 @@ import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -32,7 +33,7 @@ const Page = ({ data }) => {
             description="Long Beach Janitorial offers thorough disinfection services that target pathogens on all surfaces. Keep your Long Beach workplace safe and clean daily."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-            jsonLd={jsonLd}
+            jsonLd={[jsonLd, faqJsonLd]}
          />
 
          <HeroStacked
@@ -117,6 +118,9 @@ const Page = ({ data }) => {
          <Testimonials headingLevel="h2" />
 
          <WhyUs className="py-16 md:py-32" headingLevel="h2" />
+
+         <FAQ />
+
 
          <CallToAction headingLevel="h2" />
       </Layout>
