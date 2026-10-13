@@ -85,6 +85,18 @@ const differences = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Hospitality and Food Service Cleaning",
+  "description": "Hospitality and food service cleaning is specialized facility sanitation designed to eliminate biological contaminants and preserve strict health department compliance. Long Beach Janitorial brings over 5 years of experience and 100+ accounts served, deploying licensed and insured cleaning technicians using eco-friendly, EPA-registered disinfectants.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Long Beach Janitorial",
+    "url": "https://longbeachjanitorial.com/restaurant-cleaning-services/"
+  }
+};
+
 const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
@@ -93,6 +105,7 @@ const Page = ({ data }) => {
         description="Commercial kitchen cleaning built around Long Beach health code compliance. Grease, hoods, prep surfaces, and front of house. Book a 30-minute site visit."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+        jsonLd={jsonLd}
       />
 
       <HeroStacked

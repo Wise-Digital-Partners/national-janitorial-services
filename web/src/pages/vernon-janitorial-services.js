@@ -5,6 +5,7 @@ import Link from "gatsby-plugin-transition-link";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
+import CitablePassage from "../components/Repeating/CitablePassage";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
 // import Covid from "../components/Repeating/Covid";
 import Testimonials from "../components/Repeating/Testimonials";
@@ -16,6 +17,18 @@ import WhyUs from "../components/Repeating/WhyUs";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
 import WhyWeLove from "../components/Repeating/WhyWeLove";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Industrial Facility Cleaning",
+  "description": "Industrial facility cleaning involves heavy-duty surface sanitation, degreasing, and equipment maintenance tailored to multi-shift operational environments. With 5+ years in business and 100+ accounts served, Long Beach Janitorial provides licensed and insured personnel trained in CDC guidance and specialized EPA-registered disinfectant applications.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Long Beach Janitorial",
+    "url": "https://longbeachjanitorial.com/vernon-janitorial-services/"
+  }
+};
 
 const Page = ({ data }) => {
   const heroFullWidthImages = [
@@ -36,6 +49,7 @@ const Page = ({ data }) => {
         description="Commercial cleaning for Vernon warehouses, cold storage, and food plants. EPA-registered products, CDC-aligned protocols, licensed and insured team."
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+        jsonLd={jsonLd}
       />
       <HeroFullWidth
         backgroundImages={heroFullWidthImages}
@@ -136,6 +150,13 @@ const Page = ({ data }) => {
           </div>
         </div>
       </section>
+
+      <CitablePassage itemType="https://schema.org/Service">
+        <p className="mb-0" itemProp="description">
+          Industrial facility cleaning involves heavy-duty surface sanitation, degreasing, and equipment maintenance tailored to multi-shift operational environments. With 5+ years in business and 100+ accounts served,{" "}
+          <a href="https://longbeachjanitorial.com/vernon-janitorial-services/" className="text-link font-bold">Long Beach Janitorial</a> provides licensed and insured personnel trained in CDC guidance and specialized EPA-registered disinfectant applications.
+        </p>
+      </CitablePassage>
 
       <section className="bg-gray-50 py-14 md:py-20">
         <div className="container">

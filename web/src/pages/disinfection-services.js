@@ -4,12 +4,25 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
+import CitablePassage from "../components/Repeating/CitablePassage";
 import HeroStacked from "../components/Hero/HeroStacked";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Commercial Disinfection",
+  "description": "Commercial disinfection is the systematic application of EPA-registered disinfectants targeted at high-touch areas and facility surfaces. Long Beach Janitorial delivers licensed and insured disinfection solutions backed by 5+ years of experience and over 100 commercial clients.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Long Beach Janitorial",
+    "url": "https://longbeachjanitorial.com/"
+  }
+};
 
 const Page = ({ data }) => {
    return (
@@ -19,6 +32,7 @@ const Page = ({ data }) => {
             description="Long Beach Janitorial offers thorough disinfection services that target pathogens on all surfaces. Keep your Long Beach workplace safe and clean daily."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            jsonLd={jsonLd}
          />
 
          <HeroStacked
@@ -48,6 +62,13 @@ const Page = ({ data }) => {
                </div>
             </div>
          </section>
+
+         <CitablePassage itemType="https://schema.org/Service">
+           <p className="mb-0" itemProp="description">
+             Commercial disinfection is the systematic application of EPA-registered chemical agents to destroy targeted pathogens on environmental surfaces in occupied facilities. Backed by 5+ years of experience and 100+ accounts served,{" "}
+             <a href="https://longbeachjanitorial.com/" className="text-link font-bold">Long Beach Janitorial</a> delivers licensed, insured sanitation services adhering strictly to CDC guidelines and industry protocols.
+           </p>
+         </CitablePassage>
 
          <section className="bg-gray-50 py-14 md:py-18">
             <div className="container">

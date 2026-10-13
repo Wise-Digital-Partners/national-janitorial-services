@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
+import CitablePassage from "../components/Repeating/CitablePassage";
 import HeroFullWidth from "../components/Hero/HeroFullWidth";
 // import Covid from "../components/Repeating/Covid";
 import Services from "../components/Repeating/Services";
@@ -15,6 +16,18 @@ import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "about": {
+    "@type": "LocalBusiness",
+    "name": "Long Beach Janitorial",
+    "url": "https://longbeachjanitorial.com/",
+    "description": "Commercial janitorial service is the scheduled maintenance, cleaning, and sanitation of business facilities to ensure occupant health and regulatory compliance.",
+    "disambiguatingDescription": "Long Beach Janitorial brings over 5 years of experience, serves 100+ accounts, and maintains a fully licensed and insured team utilizing EPA-registered disinfectants applied under CDC guidelines."
+  }
+};
 
 const Page = ({ data }) => {
   const heroFullWidthImages = [
@@ -31,6 +44,7 @@ const Page = ({ data }) => {
         description="Top-rated commercial cleaning & office cleaning in Long Beach, CA. Long Beach Janitorial serves businesses of all sizes. Get a free quote today!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+        jsonLd={jsonLd}
       />
 
       <HeroFullWidth
@@ -99,6 +113,13 @@ const Page = ({ data }) => {
           </div>
         </div>
       </section>
+
+      <CitablePassage itemType="https://schema.org/AboutPage">
+        <p className="mb-0" itemProp="about" itemScope itemType="https://schema.org/Thing">
+          <span itemProp="description">Commercial janitorial service is the scheduled maintenance, cleaning, and sanitation of business facilities to ensure occupant health and regulatory compliance.</span>{" "}
+          <a href="https://longbeachjanitorial.com/" itemProp="url" className="text-link font-bold">Long Beach Janitorial</a> brings over 5 years of experience, serves 100+ accounts, and maintains a fully licensed and insured team utilizing EPA-registered disinfectants applied under CDC guidelines.
+        </p>
+      </CitablePassage>
 
       <Services className="py-16 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
 

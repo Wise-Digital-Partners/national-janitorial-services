@@ -4,12 +4,25 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
+import CitablePassage from "../components/Repeating/CitablePassage";
 import HeroStacked from "../components/Hero/HeroStacked";
 import Testimonials from "../components/Repeating/Testimonials";
 import About from "../components/Repeating/About";
 import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Commercial Deep Cleaning",
+  "description": "Commercial deep cleaning is the intensive, comprehensive sanitation of high-touch surfaces, hard-to-reach structural elements, and facility equipment. Operating with over 5 years of industry experience and 100+ accounts served, Long Beach Janitorial provides licensed and insured cleaning teams utilizing EPA-registered agents to meet stringent commercial health standards.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Long Beach Janitorial",
+    "url": "https://longbeachjanitorial.com/deep-cleaning-services/"
+  }
+};
 
 const Page = ({ data }) => {
    return (
@@ -19,6 +32,7 @@ const Page = ({ data }) => {
             description="Go beyond the surface with Long Beach Janitorial's deep cleaning services. We eliminate grime, bacteria, and buildup in commercial spaces across Long Beach."
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
+            jsonLd={jsonLd}
          />
 
          <HeroStacked
@@ -48,6 +62,13 @@ const Page = ({ data }) => {
                </div>
             </div>
          </section>
+
+         <CitablePassage itemType="https://schema.org/Service">
+           <p className="mb-0" itemProp="description">
+             Commercial deep cleaning is the intensive, comprehensive sanitation of high-touch surfaces, hard-to-reach structural elements, and facility equipment. Operating with over 5 years of industry experience and 100+ accounts served,{" "}
+             <a href="https://longbeachjanitorial.com/deep-cleaning-services/" className="text-link font-bold">Long Beach Janitorial</a> provides licensed and insured cleaning teams utilizing EPA-registered agents to meet stringent commercial health standards.
+           </p>
+         </CitablePassage>
 
          <section className="bg-gray-50 py-14 md:py-18">
             <div className="container">
