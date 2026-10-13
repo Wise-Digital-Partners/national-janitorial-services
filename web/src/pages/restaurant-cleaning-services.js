@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
 import CitablePassage from "../components/Repeating/CitablePassage";
 import HeroStacked from "../components/Hero/HeroStacked";
-import { Link } from "gatsby-plugin-transition-link";
+import Link from "gatsby-plugin-transition-link";
 
 const L = ({ to, children }) => (
   <Link fade to={to} className="text-link font-bold">
