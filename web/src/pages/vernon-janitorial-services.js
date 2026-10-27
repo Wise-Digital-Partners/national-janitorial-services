@@ -46,7 +46,7 @@ const Page = ({ data }) => {
     >
       <SearchEngineOptimization
         title="Janitorial Services in Vernon, CA | Long Beach Janitorial"
-        description="Commercial cleaning for Vernon warehouses, cold storage, and food plants. EPA-registered products, CDC-aligned protocols, licensed and insured team."
+        description="Professional Vernon janitorial services for industrial & commercial properties. Licensed and insured. Schedule a 30 Minute Site Consultation!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
         jsonLd={jsonLd}

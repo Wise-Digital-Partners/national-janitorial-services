@@ -21,8 +21,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="About Long Beach Janitorial | Trusted Commercial Cleaning Company"
-            description="Discover Long Beach Janitorial. Fully licensed and insured, we have over 5 years of experience providing safe, compliant commercial cleaning to more than 100 local businesses."
+            title="Long Beach Janitorial Services | About Our Company"
+            description="Learn about Long Beach Janitorial Services (formerly National Janitorial). Fully licensed and insured. Schedule a 30 Minute Site Consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />

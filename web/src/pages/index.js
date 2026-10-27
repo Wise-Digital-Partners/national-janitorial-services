@@ -42,7 +42,7 @@ const Page = ({ data }) => {
     <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
         title="Commercial Cleaning Long Beach, CA | Licensed & Insured | LBJ"
-        description="Top-rated commercial cleaning & office cleaning in Long Beach, CA. Long Beach Janitorial serves businesses of all sizes. Get a free quote today!"
+        description="Professional commercial cleaning & office cleaning services in Long Beach, CA. Licensed and insured. Schedule a 30 Minute Site Consultation!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
         jsonLd={[jsonLd, faqJsonLd]}

@@ -15,8 +15,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="HOA Cleaning Services Long Beach | Bonded & Insured | LBJ"
-            description="Long Beach Janitorial provides HOA cleaning that keeps common areas pristine and property values high. Serving residential communities across Long Beach."
+            title="HOA Cleaning Services in Long Beach, CA | LBJ"
+            description="Reliable HOA cleaning services in Long Beach, CA for common areas & property grounds. Licensed and insured. Schedule a 30 Minute Site Consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
          />
