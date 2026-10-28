@@ -24,23 +24,25 @@ export const faqs = [
   },
 ];
 
-export const faqJsonLd = {
+export const buildFaqJsonLd = (items) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: items.map((faq) => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
-};
+});
 
-const FAQ = ({ className }) => (
+export const faqJsonLd = buildFaqJsonLd(faqs);
+
+const FAQ = ({ className, items = faqs }) => (
   <section className={className || "py-16 md:py-32"}>
     <div className="container">
       <div className="max-w-4xl">
         <h2>Frequently Asked Questions</h2>
         <Accordion allowZeroExpanded>
-          {faqs.map((faq) => (
+          {items.map((faq) => (
             <AccordionItem key={faq.question} className="mb-4 bg-gray-50 px-6 py-4 md:px-10">
               <AccordionItemHeading aria-level={3}>
                 <AccordionItemButton className="flex items-center justify-between focus:outline-none">

@@ -54,6 +54,10 @@ const Footer = () => {
                   144 W San Antonio Dr
                   <br /> Long Beach, CA 90807
                 </a>
+                <br />
+                <a href="tel:+1-562-318-0601" className="text-white">
+                  (562) 318-0601
+                </a>
               </address>
             </div>
 
@@ -86,6 +90,15 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-5 md:mb-0 md:mr-6">
+                <Link
+                  fade
+                  to="/reviews/"
+                  className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                >
+                  Reviews
+                </Link>
+              </li>
+              <li className="mb-5 md:mb-0 md:mr-6">
                         <Link fade to="/blog/" className="font-heading text-white hover:text-primary text-xl font-bold uppercase">
                            Blog
                         </Link>
@@ -104,7 +117,7 @@ const Footer = () => {
             <div className="md:flex md:items-center order-2 md:order-1">
               <ul className="flex items-center flex-col md:flex-row">
                 <li className="text-sm text-white mb-3 md:mb-0 md:mr-6">
-                  © {getYear()} National Janitorial Services
+                  © {getYear()} Long Beach Janitorial (formerly National Janitorial Services)
                 </li>
                 <li className="text-sm mb-3 md:mb-0 md:mr-6">
                   <Link fade to="/privacy-policy/" className="text-white">

@@ -14,9 +14,18 @@ import Badges from "../components/Repeating/Badges";
 // import Clients from "../components/Repeating/Clients";
 import WhyUs from "../components/Repeating/WhyUs";
 import CallToAction from "../components/Repeating/CTA";
-import FAQ, { faqJsonLd } from "../components/Repeating/FAQ";
+import FAQ, { faqs, buildFaqJsonLd } from "../components/Repeating/FAQ";
 import ButtonSolid from "../components/Button/ButtonSolid";
 import ButtonGhost from "../components/Button/ButtonGhost";
+
+const homeFaqs = [
+  ...faqs,
+  {
+    question: "Is Long Beach Janitorial the same company as National Janitorial Services?",
+    answer:
+      "Yes. National Janitorial Services is now Long Beach Janitorial. Our team, services, and service standards are unchanged. We kept the commitment to reliable commercial cleaning and updated the name to reflect the Long Beach businesses we serve every day.",
+  },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -26,7 +35,7 @@ const jsonLd = {
     "name": "Long Beach Janitorial",
     "url": "https://longbeachjanitorial.com/",
     "description": "Commercial janitorial service is the scheduled maintenance, cleaning, and sanitation of business facilities to ensure occupant health and regulatory compliance.",
-    "disambiguatingDescription": "Long Beach Janitorial brings over 5 years of experience, serves 100+ accounts, and maintains a fully licensed and insured team utilizing EPA-registered disinfectants applied under CDC guidelines."
+    "disambiguatingDescription": "Long Beach Janitorial brings over 5 years of experience, serves 100+ businesses, and maintains a fully licensed and insured team using EPA-registered disinfectants applied under CDC guidelines."
   }
 };
 
@@ -45,7 +54,7 @@ const Page = ({ data }) => {
         description="Professional commercial cleaning & office cleaning services in Long Beach, CA. Licensed and insured. Schedule a 30 Minute Site Consultation!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
-        jsonLd={[jsonLd, faqJsonLd]}
+        jsonLd={[jsonLd, buildFaqJsonLd(homeFaqs)]}
       />
 
       <HeroFullWidth
@@ -101,14 +110,15 @@ const Page = ({ data }) => {
               />
             </div>
             <div className="order-1 md:order-2 md:col-span-7 md:col-end-13">
+              <p className="mb-4 font-bold">Fully licensed and insured | 100+ businesses served</p>
               <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
               <p className="mb-0">
-                In a COVID-19 world, professional cleaning is more important than ever before. Keep
-                your business spotless and safe for your customers and employees with Long Beach
-                Janitorial (formerly National Janitorial Services). Our commercial janitorial
-                services company serves Long Beach, CA and surrounding regions while following the
-                highest cleaning standards your industry requires. Leave the building maintenance
-                and sanitation to us so you can focus on growing your business.
+                Long Beach Janitorial (formerly National Janitorial Services) helps businesses stay
+                compliant, sanitary, and safe for employees and customers. We use EPA-registered
+                disinfectants applied in line with CDC guidelines, and we follow the highest
+                cleaning standards your industry requires. Our commercial janitorial services
+                company serves Long Beach, CA and surrounding regions. Leave the building
+                maintenance and sanitation to us so you can focus on growing your business.
               </p>
             </div>
           </div>
@@ -118,9 +128,25 @@ const Page = ({ data }) => {
       <CitablePassage itemType="https://schema.org/AboutPage">
         <p className="mb-0" itemProp="about" itemScope itemType="https://schema.org/Thing">
           <span itemProp="description">Commercial janitorial service is the scheduled maintenance, cleaning, and sanitation of business facilities to ensure occupant health and regulatory compliance.</span>{" "}
-          <a href="https://longbeachjanitorial.com/" itemProp="url" className="text-link font-bold">Long Beach Janitorial</a> brings over 5 years of experience, serves 100+ accounts, and maintains a fully licensed and insured team utilizing EPA-registered disinfectants applied under CDC guidelines.
+          <a href="https://longbeachjanitorial.com/" itemProp="url" className="text-link font-bold">Long Beach Janitorial</a> brings over 5 years of experience, serves 100+ businesses, and maintains a fully licensed and insured team using EPA-registered disinfectants applied under CDC guidelines.
         </p>
       </CitablePassage>
+
+      <section className="py-16 md:py-8">
+        <div className="container">
+          <div className="max-w-4xl">
+            <h2>Same Team, New Name</h2>
+            <p>
+              You may have known us as National Janitorial Services. We now operate as Long Beach
+              Janitorial, with the same experienced team, the same high standards, and the same
+              commitment to the local businesses we serve. If you&apos;ve been searching for
+              national cleaners in Long Beach, you&apos;ve found them. We&apos;re local, licensed,
+              and insured, and ready to put together a custom cleaning plan for your facility.
+            </p>
+            <ButtonSolid as="button" modal="modal-contact" text="Get a Free Estimate" />
+          </div>
+        </div>
+      </section>
 
       <Services className="py-16 md:py-32" headingLevel="h2" cardHeadingLevel="h3" />
 
@@ -130,7 +156,7 @@ const Page = ({ data }) => {
 
       <WhyUs className="pb-16 md:pb-32" headingLevel="h2" />
 
-      <FAQ />
+      <FAQ items={homeFaqs} />
 
       <CallToAction headingLevel="h2" />
     </Layout>
