@@ -17,6 +17,7 @@ const Page = ({ data }) => {
          <section className="bg-accent/10 pt-16 pb-20 md:pb-32 md:pt-20">
             <div className="container">
                <div className="mx-auto max-w-3xl">
+                  <h1 className="mb-8 text-center">Our Ambassadors</h1>
                   <iframe
                      src="https://national-janitorial-services-reviews-platform.flywheelsites.com"
                      title="Reviews Platform"

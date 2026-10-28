@@ -387,16 +387,8 @@ const Page = ({ data }) => {
           <div className="max-w-4xl">
             <p>
               Santa Fe Springs is the densest industrial hub in Los Angeles
-              County, in the words of the{" "}
-              <a
-                href="https://www.santafesprings.gov/213/Economic-Development"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link font-bold"
-              >
-                city's own economic development office
-              </a>
-              . Roughly 8.9 square miles hold more than 3,000 businesses and
+              County, in the words of the city's own economic development office.
+              Roughly 8.9 square miles hold more than 3,000 businesses and
               about 55 million square feet of industrial and manufacturing
               space, supporting a daytime workforce of over 30,000 people.
               Retail and standalone office space make up a much smaller share

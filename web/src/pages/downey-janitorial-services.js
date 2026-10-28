@@ -127,7 +127,7 @@ const Page = ({ data }) => {
           </header>
           <ul className="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2">
             <li>
-              <Link fade to="/commercial-office-cleaning/" className="text-link font-bold">
+              <Link fade to="/office-cleaning-services/" className="text-link font-bold">
                 Office Cleaning
               </Link>
               : Daily, weekly, or custom-schedule cleaning for private offices and corporate suites.
