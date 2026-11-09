@@ -25,6 +25,7 @@ module.exports = {
       author: `Long Beach Janitorial`,
    },
    plugins: [
+      `gatsby-plugin-react-helmet`,
       `gatsby-plugin-netlify`,
       `gatsby-plugin-advanced-sitemap`,
       `gatsby-plugin-postcss`,
