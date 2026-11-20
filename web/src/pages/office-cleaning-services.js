@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import Link from "gatsby-plugin-transition-link";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
@@ -17,8 +18,8 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Office Cleaning Services in Long Beach, CA | LBJ"
-            description="Trusted office cleaning services in Long Beach, CA. Dependable, licensed and insured janitorial team. Schedule a 30 Minute Site Consultation today!"
+            title="Office Cleaning Long Beach, CA | Licensed & Insured | LBJ"
+            description="Office cleaning in Long Beach, CA from a licensed and insured janitorial team. Custom plans for your workspace. Schedule a 30 Minute Site Consultation!"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
             jsonLd={faqJsonLd}
@@ -45,6 +46,18 @@ const Page = ({ data }) => {
                         experts use only EPA-registered disinfectants to protect your employees and guests from pathogens. Show employees, clients,
                         and guests you care with a hygienic and welcoming environment.
                      </p>
+                      <p className="mt-4 mb-0">
+                        Office cleaning is one part of our{" "}
+                        <Link fade to="/" className="text-link font-bold">
+                          commercial cleaning in Long Beach
+                        </Link>. See{" "}
+                        <Link fade to="/commercial-cleaning-long-beach/" className="text-link font-bold">
+                          Long Beach commercial cleaning service areas
+                        </Link> for where we work, or why businesses choose us as their{" "}
+                        <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+                          commercial cleaning company in Long Beach
+                        </Link>.
+                      </p>
                   </div>
                   <div>
                      <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Essential Cleaning for Offices" />
