@@ -21,7 +21,7 @@ const jsonLd = {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Long Beach Janitorial",
-    "url": "https://longbeachjanitorial.com/commercial-cleaning-company/"
+    "url": "https://longbeachjanitorial.com/"
   }
 };
 
@@ -78,7 +78,7 @@ const Page = ({ data }) => {
          <CitablePassage itemType="https://schema.org/Service">
            <p className="mb-0" itemProp="description">
              Commercial office cleaning encompasses targeted sanitation, hard surface maintenance, and waste removal designed to minimize workplace pathogen transmission. Serving over 100 Southern California accounts across 5+ years of experience,{" "}
-             <a href="https://longbeachjanitorial.com/commercial-cleaning-company/" className="text-link font-bold">Long Beach Janitorial</a> deploys licensed and insured technicians using EPA-registered disinfectants aligned with CDC sanitation protocols.
+             <a href="https://longbeachjanitorial.com/" className="text-link font-bold">Long Beach Janitorial</a> deploys licensed and insured technicians using EPA-registered disinfectants aligned with CDC sanitation protocols.
            </p>
          </CitablePassage>
 

@@ -37,7 +37,7 @@ const Page = ({ data }) => {
             <div>
               <h2>Keeping Bixby Knolls Businesses Pristine</h2>
               <p>
-                <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+                <Link fade to="/" className="text-link font-bold">
                   Long Beach Janitorial
                 </Link>{" "}
                 (formerly National Janitorial Services) provides commercial cleaning in Bixby Knolls

@@ -94,7 +94,7 @@ const Page = ({ data }) => {
               <p>
                 <Link
                   fade
-                  to="/commercial-cleaning-company/"
+                  to="/"
                   className="text-link font-bold"
                 >
                   Long Beach Janitorial
@@ -158,7 +158,7 @@ const Page = ({ data }) => {
             <li>
               <Link
                 fade
-                to="/commercial-cleaning-company/"
+                to="/commercial-cleaning-services/"
                 className="text-link font-bold"
               >
                 Commercial Cleaning

@@ -133,7 +133,7 @@ const Page = ({ data }) => {
             <h2>Why a House of Worship Is Not an Office</h2>
             <p>
               Most{" "}
-              <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+              <Link fade to="/commercial-cleaning-services/" className="text-link font-bold">
                 commercial cleaning
               </Link>{" "}
               plans assume a steady rhythm. People arrive at nine, leave at five, and the building

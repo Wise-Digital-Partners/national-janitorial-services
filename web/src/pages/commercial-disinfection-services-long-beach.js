@@ -75,7 +75,7 @@ const Page = ({ data }) => {
               shelves haven't been properly sanitized.
             </p>
             <p>
-              <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+              <Link fade to="/" className="text-link font-bold">
                 Long Beach Janitorial
               </Link>{" "}
               (formerly National Janitorial Services) closes that gap with certified experts. We
@@ -578,7 +578,7 @@ const Page = ({ data }) => {
           <p className="mb-0 mt-10 max-w-4xl">
             Peace of mind starts with knowing exactly what's being done to protect your facility,
             not a guess, and not a guarantee we can't back up.{" "}
-            <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+            <Link fade to="/" className="text-link font-bold">
               Long Beach Janitorial's certified experts
             </Link>{" "}
             will walk your space, recommend a disinfection scope specific to your industry, and give
