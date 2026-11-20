@@ -32,7 +32,7 @@ const menuItems = [
         link: "/janitorial-cleaning-company/",
       },
       {
-        title: "Commercial Cleaning",
+        title: "Commercial Cleaning Company",
         link: "/commercial-cleaning-company/",
       },
       {
@@ -139,7 +139,7 @@ const services = [
     link: "/janitorial-cleaning-company/",
   },
   {
-    title: "Commercial Cleaning",
+    title: "Commercial Cleaning Company",
     link: "/commercial-cleaning-company/",
   },
   {

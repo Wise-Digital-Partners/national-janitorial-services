@@ -91,7 +91,7 @@ const Page = ({ data }) => {
             <div className="order-1 md:order-2 md:col-span-7 md:col-end-13">
               <h1>Janitorial Services in Downey, CA</h1>
               <p>
-                <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+                <Link fade to="/" className="text-link font-bold">
                   Long Beach Janitorial
                 </Link>{" "}
                 (formerly National Janitorial Services) is a commercial cleaning company that keeps

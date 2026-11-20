@@ -117,7 +117,7 @@ const Services = ({ className, headingLevel, cardHeadingLevel }) => {
       image: data.commercialCleaning.childImageSharp.gatsbyImageData,
       heading: "Commercial Cleaning",
       text: "From warehouses to other workspaces, we offer first-class facility cleaning and management.",
-      link: "/commercial-cleaning-company/",
+      link: "/commercial-cleaning-services/",
     },
 
     {

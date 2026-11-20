@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import Link from "gatsby-plugin-transition-link";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
@@ -20,7 +21,7 @@ const jsonLd = {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Long Beach Janitorial",
-    "url": "https://longbeachjanitorial.com/commercial-cleaning-company/"
+    "url": "https://longbeachjanitorial.com/"
   }
 };
 
@@ -28,8 +29,9 @@ const Page = ({ data }) => {
    return (
       <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
          <SearchEngineOptimization
-            title="Commercial Cleaning Company | Long Beach Janitorial"
-            description="Top-rated commercial cleaning company serving Long Beach businesses. Fully licensed and insured. Schedule a 30 Minute Site Consultation today!"
+            title="Commercial Cleaning Company in Long Beach | Why Choose LBJ"
+            description="Choosing a commercial cleaning company in Long Beach? See what 100+ local businesses get from LBJ: licensed, insured, EPA-registered disinfectants."
+            canonicalUrl="https://longbeachjanitorial.com/commercial-cleaning-company/"
             openGraphImage={data.openGraphImage.publicURL}
             twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
             jsonLd={jsonLd}
@@ -39,8 +41,8 @@ const Page = ({ data }) => {
             image={data.heroStacked.childImageSharp.gatsbyImageData}
             backgroundFixed={true}
             imageMaxHeight="max-h-[468px]"
-            heading="Long Beach Commercial Cleaning Company"
-            subtext="High-caliber cleaning for your commercial space."
+            heading="Choosing a Commercial Cleaning Company in Long Beach"
+            subtext="What to look for, and why 100+ local businesses chose LBJ."
             textMaxWidth="max-w-4xl"
          />
 
@@ -52,6 +54,19 @@ const Page = ({ data }) => {
                      <p className="mb-0">
                      We are a Long Beach commercial cleaning company specializing in keeping your workplace clean and healthy. Our experienced and insured cleaners use top-notch disinfectants and cleaning products to provide high-quality services for all types of commercial spaces, from hospitals and HOAs to private offices. Whether you need regular preventative maintenance cleaning or a deep clean, we have the expertise to get the job done right. We are committed to providing our clients with a clean, healthy, and productive work environment.  We are proud to be trusted by clients in various industries such as healthcare, education, and property management.
                      </p>
+                   <p className="mt-4 mb-0">
+                     For an overview of all our{" "}
+                     <Link fade to="/" className="text-link font-bold">
+                       commercial cleaning in Long Beach
+                     </Link>,
+                     see our{" "}
+                     <Link fade to="/commercial-cleaning-long-beach/" className="text-link font-bold">
+                       Long Beach commercial cleaning service areas
+                     </Link>. Most new clients start with{" "}
+                     <Link fade to="/office-cleaning-services/" className="text-link font-bold">
+                       office cleaning in Long Beach
+                     </Link>.
+                   </p>
                   </div>
                   <div>
                      <GatsbyImage image={data.intro.childImageSharp.gatsbyImageData} alt="Commercial Cleaning for Spotless Businesses" />
@@ -63,7 +78,7 @@ const Page = ({ data }) => {
          <CitablePassage itemType="https://schema.org/Service">
            <p className="mb-0" itemProp="description">
              Commercial office cleaning encompasses targeted sanitation, hard surface maintenance, and waste removal designed to minimize workplace pathogen transmission. Serving over 100 Southern California accounts across 5+ years of experience,{" "}
-             <a href="https://longbeachjanitorial.com/commercial-cleaning-company/" className="text-link font-bold">Long Beach Janitorial</a> deploys licensed and insured technicians using EPA-registered disinfectants aligned with CDC sanitation protocols.
+             <a href="https://longbeachjanitorial.com/" className="text-link font-bold">Long Beach Janitorial</a> deploys licensed and insured technicians using EPA-registered disinfectants aligned with CDC sanitation protocols.
            </p>
          </CitablePassage>
 

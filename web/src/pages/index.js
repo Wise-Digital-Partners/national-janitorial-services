@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Link from "gatsby-plugin-transition-link";
 
 import Layout from "../components/Layout";
 import SearchEngineOptimization from "../components/SEO";
@@ -51,7 +52,7 @@ const Page = ({ data }) => {
     <Layout navigationStyle="overlap" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
         title="Commercial Cleaning Long Beach, CA | Licensed & Insured | LBJ"
-        description="Professional commercial cleaning & office cleaning services in Long Beach, CA. Licensed and insured. Schedule a 30 Minute Site Consultation!"
+        description="Long Beach Janitorial provides commercial cleaning and janitorial services in Long Beach, CA. Licensed and insured. Schedule a 30 Minute Site Consultation!"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
         jsonLd={[jsonLd, buildFaqJsonLd(homeFaqs)]}
@@ -100,25 +101,39 @@ const Page = ({ data }) => {
             <div className="order-2 md:order-1 md:col-span-5 md:col-start-1">
               <GatsbyImage
                 image={data.introDesktop.childImageSharp.gatsbyImageData}
-                alt="A Top Commercial Janitorial Services Company In Long Beach"
+                alt="Commercial cleaning and janitorial services in Long Beach, CA"
                 className="hidden md:block"
               />
               <GatsbyImage
                 image={data.introMobile.childImageSharp.gatsbyImageData}
-                alt="A Top Commercial Janitorial Services Company In Long Beach"
+                alt="Commercial cleaning and janitorial services in Long Beach, CA"
                 className="md:hidden"
               />
             </div>
             <div className="order-1 md:order-2 md:col-span-7 md:col-end-13">
               <p className="mb-4 font-bold">Fully licensed and insured | 100+ businesses served</p>
-              <h1>A Top Commercial Janitorial Services Company In Long Beach</h1>
+              <h1>Commercial Cleaning &amp; Janitorial Services in Long Beach, CA</h1>
               <p className="mb-0">
                 Long Beach Janitorial (formerly National Janitorial Services) helps businesses stay
                 compliant, sanitary, and safe for employees and customers. We use EPA-registered
                 disinfectants applied in line with CDC guidelines, and we follow the highest
-                cleaning standards your industry requires. Our commercial janitorial services
-                company serves Long Beach, CA and surrounding regions. Leave the building
+                cleaning standards your industry requires. Our Long Beach janitorial services and commercial cleaning reach businesses across Long Beach, CA and surrounding regions. Leave the building
                 maintenance and sanitation to us so you can focus on growing your business.
+              </p>
+              <p className="mt-4 mb-0">
+                Explore our{" "}
+                <Link fade to="/commercial-cleaning-long-beach/" className="text-link font-bold">
+                  Long Beach commercial cleaning service areas
+                </Link>,
+                see why businesses choose a{" "}
+                <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+                  commercial cleaning company in Long Beach
+                </Link>{" "}
+                like ours, or learn about our{" "}
+                <Link fade to="/office-cleaning-services/" className="text-link font-bold">
+                  office cleaning in Long Beach
+                </Link>
+                .
               </p>
             </div>
           </div>

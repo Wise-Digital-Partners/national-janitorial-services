@@ -94,7 +94,7 @@ const Page = ({ data }) => {
               <p>
                 <Link
                   fade
-                  to="/commercial-cleaning-company/"
+                  to="/"
                   className="text-link font-bold"
                 >
                   Long Beach Janitorial

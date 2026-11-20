@@ -83,6 +83,15 @@ const Footer = () => {
               <li className="mb-5 md:mb-0 md:mr-6">
                 <Link
                   fade
+                  to="/commercial-cleaning-long-beach/"
+                  className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
+                >
+                  Service Areas
+                </Link>
+              </li>
+              <li className="mb-5 md:mb-0 md:mr-6">
+                <Link
+                  fade
                   to="/about/"
                   className="font-heading text-white hover:text-primary text-xl font-bold uppercase"
                 >

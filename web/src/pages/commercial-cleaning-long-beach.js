@@ -66,8 +66,9 @@ const Page = ({ data }) => {
   return (
     <Layout navigationStyle="standard" headerLinkColor="" headerHasBorder={false}>
       <SearchEngineOptimization
-        title="Commercial Cleaners in Long Beach, CA | Licensed & Insured"
-        description="Licensed and insured commercial cleaners serving Long Beach offices, medical facilities, and warehouses. 100+ businesses served. Schedule a site consultation."
+        title="Commercial Cleaning Service Areas in Long Beach, CA | LBJ"
+        description="Commercial cleaning coverage across Long Beach, Signal Hill, Downey, Lakewood, Santa Fe Springs, Commerce and Vernon. Confirm your address with LBJ."
+        canonicalUrl="https://longbeachjanitorial.com/commercial-cleaning-long-beach/"
         openGraphImage={data.openGraphImage.publicURL}
         twitterOpenGraphImage={data.twitterOpenGraphImage.publicURL}
       />
@@ -76,7 +77,7 @@ const Page = ({ data }) => {
         image={data.heroStacked.childImageSharp.gatsbyImageData}
         backgroundFixed={true}
         imageMaxHeight="max-h-[468px]"
-        heading="Commercial Cleaning & Janitorial Services in Long Beach, CA"
+        heading="Commercial Cleaning Service Areas: Long Beach, Signal Hill & the Gateway Cities"
         textMaxWidth="max-w-5xl"
         alt="Commercial cleaners servicing a Long Beach office building"
       />
@@ -85,7 +86,7 @@ const Page = ({ data }) => {
         <div className="container">
           <div className="max-w-4xl">
             <p>
-              <strong>Reliable Commercial Cleaning & Janitorial Services in Long Beach</strong>
+              <strong>Commercial Cleaning Coverage Across Long Beach and the Gateway Cities</strong>
             </p>
             <p>
               Tailored facility maintenance designed to keep your business clean, safe, and
@@ -96,8 +97,11 @@ const Page = ({ data }) => {
               <ModalButton>Get a Free Estimate</ModalButton> | <Phone />
             </p>
             <p className="mb-0">
-              Long Beach Janitorial (formerly National Janitorial Services) provides commercial
-              cleaning services in Long Beach for offices, medical facilities, and industrial
+              Long Beach Janitorial (formerly National Janitorial Services) provides{" "}
+              <Link fade to="/" className="text-link font-bold">
+                commercial cleaning in Long Beach
+              </Link>{" "}
+              for offices, medical facilities, and industrial
               spaces. We are a licensed and insured local team of commercial cleaners, not a
               rotating crew from a national call center. With 100+ businesses served, our{" "}
               <Link fade to="/janitorial-cleaning-company/" className="text-link font-bold">
@@ -135,9 +139,9 @@ const Page = ({ data }) => {
               Routine dusting, trash removal, and workspace sanitization keep desks, break rooms,
               and shared equipment presentable for staff and visitors every day.{" "}
               <Link fade to="/office-cleaning-services/" className="text-link font-bold">
-                Office cleaning
+                Office cleaning in Long Beach
               </Link>{" "}
-              is the entry point for most Long Beach clients, running on a daily or weekly schedule.
+              is the entry point for most of our clients, running on a daily or weekly schedule.
             </p>
             <p>
               It is also the easiest place to start a new relationship. We build the scope around
@@ -278,7 +282,10 @@ const Page = ({ data }) => {
                 Long Beach Janitorial team
               </Link>{" "}
               is based in the city it serves, so accountability is a phone call, not a ticket
-              number.
+              number. See why businesses choose us as their{" "}
+              <Link fade to="/commercial-cleaning-company/" className="text-link font-bold">
+                commercial cleaning company in Long Beach
+              </Link>.
             </p>
             <ul className="styled-list mb-0">
               <li>
